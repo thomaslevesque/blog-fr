@@ -200,7 +200,7 @@ namespace System
 }
 ```
 
-C’est la même approche qui permettait d’utiliser Linq en ciblant .NET 2.0 ([LinqBridge](http://www.albahari.com/nutshell/linqbridge.aspx)) ou les [attributs d’infos de l’appelant quand on cible .NET 4.0 ou plus ancien](http://www.thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/). Bien sûr, ça nécessite quand même le compilateur C# 6 pour fonctionner…
+C’est la même approche qui permettait d’utiliser Linq en ciblant .NET 2.0 ([LinqBridge](http://www.albahari.com/nutshell/linqbridge.aspx)) ou les [attributs d’infos de l’appelant quand on cible .NET 4.0 ou plus ancien](/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/). Bien sûr, ça nécessite quand même le compilateur C# 6 pour fonctionner…
 
 ### Conclusion
 

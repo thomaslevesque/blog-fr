@@ -73,5 +73,7 @@ namespace WpfApplication1
             WpfApplication1.Properties.Settings.Default.Save();
         }
 ```
-  Et voilà, les dimensions de la fenêtre seront enregistrées et restaurées à chaque lancement de l’application, sans qu’on ait rien de plus à coder !  [Télécharger les sources](http://www.thomaslevesque.fr/files/2012/06/SettingBindingSample.zip)**Mise à jour :** Si vous voulez en savoir plus sur les markup extensions, je vous invite à lire le tutoriel que j'ai écrit suite à ce billet : [Les markup extensions en WPF](http://tlevesque.developpez.com/dotnet/wpf-markup-extensions/)
+  Et voilà, les dimensions de la fenêtre seront enregistrées et restaurées à chaque lancement de l’application, sans qu’on ait rien de plus à coder !  [Télécharger les sources](SettingBindingSample.zip)
+
+  **Mise à jour :** Si vous voulez en savoir plus sur les markup extensions, je vous invite à lire le tutoriel que j'ai écrit suite à ce billet : [Les markup extensions en WPF](http://tlevesque.developpez.com/dotnet/wpf-markup-extensions/)
 

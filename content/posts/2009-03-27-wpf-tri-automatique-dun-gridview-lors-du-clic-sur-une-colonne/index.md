@@ -234,5 +234,7 @@ namespace Wpf.Util
     }
 }
 ```
-  On pourrait bien sûr envisager certaines améliorations, notamment visuelles, comme l'ajout d'une flèche sur la colonne triée (à l'aide d'un `Adorner` par exemple). Mais en attendant, cette classe couvre tout l'aspect fonctionnel du tri, donc n'hésitez pas à l'utiliser !  **Mise à jour :** l'affichage du symbole de tri est maintenant géré par la classe `GridViewSort`, la nouvelle version est disponible dans [ce billet](http://www.thomaslevesque.fr/2009/08/04/wpf-tri-automatique-d%E2%80%99un-gridview-suite/).
+  On pourrait bien sûr envisager certaines améliorations, notamment visuelles, comme l'ajout d'une flèche sur la colonne triée (à l'aide d'un `Adorner` par exemple). Mais en attendant, cette classe couvre tout l'aspect fonctionnel du tri, donc n'hésitez pas à l'utiliser !
+
+  **Mise à jour :** l'affichage du symbole de tri est maintenant géré par la classe `GridViewSort`, la nouvelle version est disponible dans [ce billet](/2009/08/04/wpf-tri-automatique-dun-gridview-suite/).
 

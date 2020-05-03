@@ -14,7 +14,7 @@ categories:
 ---
 
 
-Dans mon [précedent billet](http://www.thomaslevesque.fr/2016/07/28/tuples-en-c-7/), j'ai parlé d'une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n'était pas tout à fait terminée ; il lui manquait 2 aspects importants :
+Dans mon [précedent billet](/2016/07/28/tuples-en-c-7/), j'ai parlé d'une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n'était pas tout à fait terminée ; il lui manquait 2 aspects importants :
 
 - la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies
 - la déconstruction des tuples en variables distinctes

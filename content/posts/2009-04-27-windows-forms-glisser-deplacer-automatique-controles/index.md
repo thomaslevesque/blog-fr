@@ -47,5 +47,5 @@ Pour l'utiliser, il y en a pour tous les goûts ;)
         }
 ```
 
-  La solution en pièce jointe contient la librairie réutilisable WinFormsDragMove, ainsi qu'un projet de test qui illustre les différentes manières d'utiliser cette librairie. Une version compatible C# 2 des ces projets est également inclue.  [Télécharger les sources](http://www.thomaslevesque.fr/files/2012/06/DragMove.zip)
+  La solution en pièce jointe contient la librairie réutilisable WinFormsDragMove, ainsi qu'un projet de test qui illustre les différentes manières d'utiliser cette librairie. Une version compatible C# 2 des ces projets est également inclue.  [Télécharger les sources](DragMove.zip)
 

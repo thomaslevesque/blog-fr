@@ -83,7 +83,9 @@ Comme je l'avais évoqué dans mon précédent post, on ne peut pas ajouter des 
 ```csharp
 private ObservableCollection<string> _strings = new AsyncObservableCollection<string>();
 ```
-  La `ListBox` peut maintenant refléter en temps réel les changements intervenus dans la collection.  Enjoy ;)  **Mise à jour :** Je viens de remarquer un bug dans mon implémentation : dans certains cas le fait de passer par un `Post` pour lever l'évènement alors que la collection est modifiée à partir du thread principal peut produire un comportement inattendu. Dans ce cas il faut évidemment lever l'évènement directement, en vérifiant que le `SynchronizationContext` courant est le même que celui dans lequel a été créée la collection. Et puisqu'on en est à se préoccuper du `SynchronizationContext`, autant l'utiliser directement et se passer de l'`AsyncOperation`, qui finalement n'apporte rien. Voici donc la nouvelle implémentation :  
+  La `ListBox` peut maintenant refléter en temps réel les changements intervenus dans la collection.  Enjoy ;)
+
+  **Mise à jour :** Je viens de remarquer un bug dans mon implémentation : dans certains cas le fait de passer par un `Post` pour lever l'évènement alors que la collection est modifiée à partir du thread principal peut produire un comportement inattendu. Dans ce cas il faut évidemment lever l'évènement directement, en vérifiant que le `SynchronizationContext` courant est le même que celui dans lequel a été créée la collection. Et puisqu'on en est à se préoccuper du `SynchronizationContext`, autant l'utiliser directement et se passer de l'`AsyncOperation`, qui finalement n'apporte rien. Voici donc la nouvelle implémentation :  
 ```csharp
     public class AsyncObservableCollection<T> : ObservableCollection<T>
     {

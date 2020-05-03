@@ -13,7 +13,7 @@ categories:
   - WPF
 ---
 
-*Note : Ce billet est la suite de celui sur [une markup extension qui met à jour sa cible](http://www.thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/), et réutilise le même code de départ.*  Vous avez peut-être remarqué que l'utilisation d'une markup extension personnalisée dans un template donnait parfois des résultats inattendus... Nous allons voir dans ce billet comment faire une markup extension qui se comporte correctement dans un template.  **Illustration du problème**  Reprenons l'exemple du précédent billet : une markup extension qui renvoie l'état de la connectivité réseau, et met à jour la propriété cible quand le réseau est connecté ou déconnecté :  
+*Note : Ce billet est la suite de celui sur [une markup extension qui met à jour sa cible](/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/), et réutilise le même code de départ.*  Vous avez peut-être remarqué que l'utilisation d'une markup extension personnalisée dans un template donnait parfois des résultats inattendus... Nous allons voir dans ce billet comment faire une markup extension qui se comporte correctement dans un template.  **Illustration du problème**  Reprenons l'exemple du précédent billet : une markup extension qui renvoie l'état de la connectivité réseau, et met à jour la propriété cible quand le réseau est connecté ou déconnecté :  
 ```xml
 <CheckBox IsChecked="{my:NetworkAvailable}" Content="Network is available" />
 ```

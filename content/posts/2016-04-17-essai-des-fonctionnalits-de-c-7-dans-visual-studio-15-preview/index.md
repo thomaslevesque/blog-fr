@@ -192,7 +192,7 @@ string description = o match
 
 Cela ressemble beaucoup à un `switch`, sauf que c’est une expression et non une instruction.
 
-Il y a encore beaucoup à dire sur le pattern matching, mais ça devient un peu long pour un article de blog, je vous invite donc à consulter [la spec sur Github](https://github.com/dotnet/roslyn/blob/features/patterns/docs/features/patterns.md) pour plus de détails.
+Il y a encore beaucoup à dire sur le pattern matching, mais ça devient un peu long pour un article de blog, je vous invite donc à consulter [la spec sur Github](https://github.com/dotnet/roslyn/blob/master/docs/features/patterns.md) pour plus de détails.
 
 ### Littéraux binaires et séparateurs de chiffres
 

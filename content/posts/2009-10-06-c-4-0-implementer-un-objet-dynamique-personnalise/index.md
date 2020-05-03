@@ -171,5 +171,6 @@ foreach (var item in bornInThe20thCentury)
 ```
 
 Voilà, maintenant que vous connaissez le principe, vous pouvez donner libre cours à votre imagination :)
-**Mise à jour :** Aussitôt après la publication de cet article, voilà que je tombe sur la classe [`ExpandoObject`](http://msdn.microsoft.com/en-us/library/system.dynamic.expandoobject%28VS.100%29.aspx), qui fait exactement la même chose que la classe `MyDynamicObject` ci-dessus... il semblerait donc que j'ai encore réinventé la roue ! Cela dit, il est toujours intéressant de voir le fonctionnement d'un objet dynamique, ne serait-ce qu'à des fins didactiques ;). Pour plus d'infos sur `ExpandoObject`, voir [ce billet sur le blog C# FAQ](http://blogs.msdn.com/csharpfaq/archive/2009/10/01/dynamic-in-c-4-0-introducing-the-expandoobject.aspx)
+
+**Mise à jour :** Aussitôt après la publication de cet article, voilà que je tombe sur la classe [`ExpandoObject`](http://msdn.microsoft.com/en-us/library/system.dynamic.expandoobject%28VS.100%29.aspx), qui fait exactement la même chose que la classe `MyDynamicObject` ci-dessus... il semblerait donc que j'ai encore réinventé la roue ! Cela dit, il est toujours intéressant de voir le fonctionnement d'un objet dynamique, ne serait-ce qu'à des fins didactiques ;). Pour plus d'infos sur `ExpandoObject`, voir [ce billet sur le blog C# FAQ](https://devblogs.microsoft.com/visualstudio/dynamic-in-c-4-0-introducing-the-expandoobject/)
 

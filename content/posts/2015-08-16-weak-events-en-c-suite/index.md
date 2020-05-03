@@ -13,7 +13,7 @@ categories:
 ---
 
 
-Il y a quelques années, j’ai blogué à propos d’une [implémentation générique du pattern “weak event” en C#](http://www.thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/). Le but était de pallier les problèmes de fuites mémoire liés aux évènements quand on oublie de s’en désabonner. L’implémentation était basée sur l’utilisation de références faibles sur les abonnés, de façon à éviter d’empêcher qu’ils soient libérés par le garbage collector.
+Il y a quelques années, j’ai blogué à propos d’une [implémentation générique du pattern “weak event” en C#](/2010/05/16/c-une-implementation-du-pattern-weakevent/). Le but était de pallier les problèmes de fuites mémoire liés aux évènements quand on oublie de s’en désabonner. L’implémentation était basée sur l’utilisation de références faibles sur les abonnés, de façon à éviter d’empêcher qu’ils soient libérés par le garbage collector.
 
 Ma solution initiale était plus une preuve de concept qu’autre chose, et avait un sérieux problème de performance, dû à l’utilisation de `DynamicInvoke` à chaque fois que l’évènement était déclenché. Au fil des années, j’ai revisité le problème des “weak events” plusieurs fois, en apportant quelques améliorations à chaque fois, et j’ai maintenant une implémentation qui devrait être suffisamment performante pour la plupart des cas d’utilisation. L’API publique est similaire à celle de ma première solution. En gros, au lieu d’écrire un évènement comme ceci :
 
@@ -56,5 +56,5 @@ Notez que techniquement, le delegate créé n’est pas un “vrai” open-insta
 
 Le code source est disponible sur GitHub: [WeakEvent](https://github.com/thomaslevesque/WeakEvent). Un package NuGet est disponible ici : [ThomasLevesque.WeakEvent](https://www.nuget.org/packages/ThomasLevesque.WeakEvent/).
 
-Le dépôt GitHub contient aussi des snippets pour [Visual Studio](https://github.com/thomaslevesque/WeakEvent/blob/master/Snippets/VisualStudio/wevt.snippet) et pour [ReSharper](https://github.com/thomaslevesque/WeakEvent/blob/master/Snippets/ReSharper/wevt.DotSettings), pour faciliter l’écriture du code de plomberie pour un weak event.
+Le dépôt GitHub contient aussi des snippets pour [Visual Studio](https://github.com/thomaslevesque/WeakEvent/blob/master/tools/Snippets/VisualStudio/wevt.snippet) et pour [ReSharper](https://github.com/thomaslevesque/WeakEvent/blob/master/tools/Snippets/ReSharper/wevt.DotSettings), pour faciliter l’écriture du code de plomberie pour un weak event.
 
