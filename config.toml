@@ -1,0 +1,53 @@
+baseURL = "https://thomaslevesque.github.io/blog-fr/"
+languageCode = "fr-fr"
+defaultContentLanguage = "fr"
+title = "Blog .NET de Thomas Levesque"
+theme = "mainroad"
+publishDir = "../blog-fr"
+googleAnalytics = "UA-31645024-1"
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "À propos"
+    url = "/a-propos/"
+
+[permalinks]
+  posts = "/:year/:month/:day/:title/"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# Mainroad theme settings
+
+[Author] # Used in authorbox
+  name = "Thomas Levesque"
+  bio = "Thomas Levesque est un développeur français vivant à Paris."
+  avatar = "images/avatar.jpg"
+
+[Params]
+  subtitle = "Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"
+  description = "Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"
+  copyright = "Thomas Levesque"
+  authorbox = true
+  opengraph = true
+  twitter_cards = true
+  post_meta = ["date" ]
+  pager = true
+  customCSS = ["css/social.css"]
+
+[Params.sidebar]
+  home = "right" # Configure layout for home page
+  list = "right"  # Configure layout for list pages
+  single = "right" # Configure layout for single pages
+  # Enable widgets in given order
+  widgets = ["search", "social", "recent", "taglist"]
+
+[Params.widgets]
+  recent_num = 5 # Set the number of articles in the "Recent articles" widget
+  tags_counter = false
+  tags_num = 15
+
+[Params.widgets.social]
+  github = "thomaslevesque"
+  twitter = "thomaslevesque"
