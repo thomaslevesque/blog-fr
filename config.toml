@@ -1,4 +1,4 @@
-baseURL = "https://thomaslevesque.github.io/blog-fr/"
+baseURL = "https://thomaslevesque.fr/"
 languageCode = "fr-fr"
 defaultContentLanguage = "fr"
 title = "Blog .NET de Thomas Levesque"
