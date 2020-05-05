@@ -18,15 +18,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         submodules: recursive
-        path: src
 
     - name: Build website with Hugo
       uses: srt32/hugo-action@v0.0.3
       with:
-        args: --source src --destination out --environment production
+        args: --environment production
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: blog
-        path: out/
+        path: public/
