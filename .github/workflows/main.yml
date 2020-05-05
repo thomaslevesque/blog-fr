@@ -21,7 +21,7 @@ jobs:
         path: src
 
     - name: Build website with Hugo
-      uses: srt32/hugo-action@v0.03
+      uses: srt32/hugo-action@v0.0.3
       with:
         args: --environment --destination $GITHUB_WORKSPACE/out
 
