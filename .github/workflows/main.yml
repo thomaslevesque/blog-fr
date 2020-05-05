@@ -10,19 +10,27 @@ jobs:
 
     steps:
 
-    - name: Checkout
+    - name: Checkout source
       uses: actions/checkout@v2
       with:
         submodules: recursive
         path: src
+
+    - name: Checkout destination
+      uses: actions/checkout@v2
+      with:
+        repository: thomaslevesque/blog-fr
+        ref: gh-pages
+        path: out
 
     - name: Build website with Hugo
       uses: srt32/hugo-action@v0.0.3
       with:
         args: --source $GITHUB_WORKSPACE/src --destination $GITHUB_WORKSPACE/out --environment production
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: blog
-        path: ${{ github.workspace }}/out/
+    - name: Commit and push result
+      run: |
+        cd $GITHUB_WORKSPACE/out
+        git add .
+        git commit -m "Publish site for $GITHUB_SHA"
+        git push
