@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>caller info on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/caller-info/</link>
+    <description>Recent content in caller info on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Wed, 13 Jun 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/caller-info/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework</title>
+      <link>https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/</link>
+      <pubDate>Wed, 13 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/</guid>
+      <description>Les attributs d&#39;informations de l&#39;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&#39;appliquent aux paramètres optionnels d&#39;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&#39;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
+static void Log( string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0) { Console.</description>
+    </item>
+    
+  </channel>
+</rss>

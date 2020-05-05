@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sérialisation XML on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/s%C3%A9rialisation-xml/</link>
+    <description>Recent content in sérialisation XML on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Thu, 11 Jun 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/s%C3%A9rialisation-xml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[C#] Relation parent/enfant et sérialisation XML</title>
+      <link>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</guid>
+      <description>Me revoilà avec un peu de retard, j&#39;ai un peu manqué de temps libre ces dernières semaines&amp;hellip; Voilà donc un petit post pour présenter une idée qui m&#39;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&#39;est de conception C# qu&#39;il s&#39;agit ! Le problème Il est assez courant, dans un programme, d&#39;avoir un objet parent qui possède une collection d&#39;enfants ayant une référence vers leur parent.</description>
+    </item>
+    
+  </channel>
+</rss>

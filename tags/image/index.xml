@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>image on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/image/</link>
+    <description>Recent content in image on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 05 Sep 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/image/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WPF] Empêcher l’utilisateur de coller une image dans un RichTextBox</title>
+      <link>https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/</guid>
+      <description>Le contrôle RichTextBox de WPF est assez puissant, et très pratique quand on a besoin d’accepter une saisie en texte riche. Cependant, l’une de ses fonctionnalités peut devenir problématique : l’utilisateur peut coller une image. Selon ce qu’on veut faire du texte saisi par l’utilisateur, ce n’est pas forcément souhaitable.
+Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutions que j’ai trouvées suggéraient d’intercepter la frappe de touches Ctrl-V, et de bloquer l’événement si le presse-papiers contient une image.</description>
+    </item>
+    
+    <item>
+      <title>Afficher des suggestions de résultat dans une SearchBox WinRT : bug concernant l’image</title>
+      <link>https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/</guid>
+      <description>Aujourd’hui je me suis heurté à un bug bizarre qui m’a fait perdre une heure ou deux, donc je me suis dit que ça méritait d’écrire un billet à ce sujet au cas où quelqu’un d’autre rencontrerait le même problème.
+Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scénarios de recherche directement dans une application Windows Store. L’une de ses fonctionnalités est l’affichage de suggestions basées sur la saisie de l’utilisateur.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)</title>
+      <link>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</link>
+      <pubDate>Thu, 05 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</guid>
+      <description>Hum&amp;hellip; 2 mois depuis mon précédent (et premier) post&amp;hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
+Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&amp;hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&amp;hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable.</description>
+    </item>
+    
+  </channel>
+</rss>

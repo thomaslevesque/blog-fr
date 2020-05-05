@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>InputBinding on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/inputbinding/</link>
+    <description>Recent content in InputBinding on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 25 Oct 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/inputbinding/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[VS 2010] Support du binding dans les InputBindings</title>
+      <link>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</guid>
+      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&#39;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&#39;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&#39;ailleurs, les InputBindings n&#39;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&#39;ici, pour lier la commande d&#39;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&#39;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Utiliser les InputBindings avec le pattern MVVM</title>
+      <link>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</link>
+      <pubDate>Tue, 17 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
+      <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
+&amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+ La propriété Command n&#39;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&#39;arbre logique ou visuel du contrôle, ils n&#39;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&#39;écrire du code-behind.</description>
+    </item>
+    
+  </channel>
+</rss>

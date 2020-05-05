@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>filtres d&#39;exception on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/filtres-dexception/</link>
+    <description>Recent content in filtres d&#39;exception on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 23 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/filtres-dexception/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Filtres d’exception en C# 6 : leur plus grand avantage n’est pas celui qu’on croit</title>
+      <link>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</guid>
+      <description>Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc catch :
+static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&amp;quot;Error 42 occurred&amp;quot;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.</description>
+    </item>
+    
+  </channel>
+</rss>

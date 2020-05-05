@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# 4.0 on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/c#-4.0/</link>
+    <description>Recent content in C# 4.0 on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 06 Oct 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/c#-4.0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[C# 4.0] Implémenter un objet dynamique personnalisé</title>
+      <link>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</link>
+      <pubDate>Tue, 06 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</guid>
+      <description>Comme vous le savez sans doute déjà si vous vous intéressez à l’actualité de .NET, la future version 4.0 de C#, actuellement en beta, introduit un nouveau type appelé dynamic. Celui ci permet d’accéder à des propriétés ou méthodes d’un objet qui ne sont pas connus statiquement (à la compilation). Ils seront résolus dynamiquement à l’exécution grâce au DLR (Dynamic Language Runtime), qui est l’une des grandes nouveautés de .NET 4.</description>
+    </item>
+    
+  </channel>
+</rss>

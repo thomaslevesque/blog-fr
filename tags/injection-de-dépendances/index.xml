@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>injection de dépendances on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/injection-de-d%C3%A9pendances/</link>
+    <description>Recent content in injection de dépendances on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 17 Jan 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/injection-de-d%C3%A9pendances/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Injecter automatiquement des fakes dans une test fixture avec FakeItEasy</title>
+      <link>https://thomaslevesque.fr/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/</link>
+      <pubDate>Sun, 17 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/</guid>
+      <description>Aujourd’hui j’aimerais partager avec vous une fonctionnalité sympa de FakeItEasy que j’ai découverte récemment.
+Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a généralement besoin de créer des objets factices (fakes) pour les dépendances et de les injecter manuellement dans la classe testée (SUT, System Under Test), ou d’utiliser un conteneur IoC pour enregistrer les dépendances factices et construire le SUT. C’est un peu laborieux, et il y a quelques mois j’avais créé une extension Unity pour créer automatiquement les fakes et rendre tout ça plus facile.</description>
+    </item>
+    
+    <item>
+      <title>Créer un conteneur qui crée automatiquement des objets factices avec Unity et FakeItEasy</title>
+      <link>https://thomaslevesque.fr/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/</guid>
+      <description>L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup FakeItEasy ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici.</description>
+    </item>
+    
+  </channel>
+</rss>

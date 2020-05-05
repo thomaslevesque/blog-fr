@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>annotations on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/annotations/</link>
+    <description>Recent content in annotations on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Wed, 25 Mar 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/annotations/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tirer parti des annotations de ReSharper</title>
+      <link>https://thomaslevesque.fr/2015/03/25/tirer-parti-des-annotations-de-resharper/</link>
+      <pubDate>Wed, 25 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/03/25/tirer-parti-des-annotations-de-resharper/</guid>
+      <description>Je ne pense pas qu’il soit vraiment nécessaire de présenter ReSharper (souvent abbrégé R#), mais au cas où vous ne connaitriez pas, il s’agit d’un outil créé par JetBrains qui analyse votre code C# ou VB.NET en temps réel pour vous avertir des bugs potentiels, mauvaises pratiques, non-respect des conventions, etc. Il propose aussi de nombreux refactorings et générateurs de code bien utiles. Je l’utilise depuis quelques années maintenant, et cela a beaucoup amélioré ma productivité et la qualité de mon code.</description>
+    </item>
+    
+  </channel>
+</rss>

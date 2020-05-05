@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Entity Framework on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/entity-framework/</link>
+    <description>Recent content in Entity Framework on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 03 Oct 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/entity-framework/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Entity Framework] Utiliser Include avec des expressions lambda</title>
+      <link>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</guid>
+      <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&#39;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&#39;accès à ces entités :
+var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where ord.Date &amp;gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :</description>
+    </item>
+    
+  </channel>
+</rss>

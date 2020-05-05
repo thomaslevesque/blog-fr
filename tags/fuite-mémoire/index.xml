@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fuite mémoire on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/fuite-m%C3%A9moire/</link>
+    <description>Recent content in fuite mémoire on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 16 Aug 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/fuite-m%C3%A9moire/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Weak events en C#, suite</title>
+      <link>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</guid>
+      <description>Il y a quelques années, j’ai blogué à propos d’une implémentation générique du pattern “weak event” en C#. Le but était de pallier les problèmes de fuites mémoire liés aux évènements quand on oublie de s’en désabonner. L’implémentation était basée sur l’utilisation de références faibles sur les abonnés, de façon à éviter d’empêcher qu’ils soient libérés par le garbage collector.
+Ma solution initiale était plus une preuve de concept qu’autre chose, et avait un sérieux problème de performance, dû à l’utilisation de DynamicInvoke à chaque fois que l’évènement était déclenché.</description>
+    </item>
+    
+  </channel>
+</rss>

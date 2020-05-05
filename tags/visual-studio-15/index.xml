@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visual Studio 15 on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/visual-studio-15/</link>
+    <description>Recent content in Visual Studio 15 on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 23 Aug 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/visual-studio-15/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Déconstruction de tuples en C# 7</title>
+      <link>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</guid>
+      <description>Dans mon précedent billet, j&#39;ai parlé d&#39;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&#39;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
+ la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&#39;équipe du langage C# n&#39;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
+    </item>
+    
+  </channel>
+</rss>

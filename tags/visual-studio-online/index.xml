@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visual Studio Online on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/visual-studio-online/</link>
+    <description>Recent content in Visual Studio Online on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 12 Oct 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/visual-studio-online/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Intégration avec Visual Studio Online &#43; Git dans Team Explorer</title>
+      <link>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</guid>
+      <description>J’ai commencé récemment à utiliser Visual Studio Online pour des projets personnels, et je dois dire que c’est une très bonne plateforme, même si ce serait bien de pouvoir héberger des projets publics et non pas seulement privés. J’apprécie particulièrement l’intégration dans le Team Explorer de Visual Studio pour gérer les tâches et les builds.
+Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle de version : le remote pour VS Online doit s’appeler origin, sinon Team Explorer ne détecte pas qu’il s’agit d’un projet VS Online, et n’affiche pas les pages “Builds” et “Work Items”.</description>
+    </item>
+    
+  </channel>
+</rss>

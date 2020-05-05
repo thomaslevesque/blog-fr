@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>récursion terminale on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/r%C3%A9cursion-terminale/</link>
+    <description>Recent content in récursion terminale on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 30 Aug 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/r%C3%A9cursion-terminale/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Récursion terminale en C#</title>
+      <link>https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/</link>
+      <pubDate>Tue, 30 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/</guid>
+      <description>&lt;p&gt;Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (&lt;code&gt;StackOverflowException&lt;/code&gt; en .NET).&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

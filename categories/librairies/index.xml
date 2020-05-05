@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Librairies on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/categories/librairies/</link>
+    <description>Recent content in Librairies on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 16 Aug 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/categories/librairies/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Weak events en C#, suite</title>
+      <link>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</guid>
+      <description>Il y a quelques années, j’ai blogué à propos d’une implémentation générique du pattern “weak event” en C#. Le but était de pallier les problèmes de fuites mémoire liés aux évènements quand on oublie de s’en désabonner. L’implémentation était basée sur l’utilisation de références faibles sur les abonnés, de façon à éviter d’empêcher qu’ils soient libérés par le garbage collector.
+Ma solution initiale était plus une preuve de concept qu’autre chose, et avait un sérieux problème de performance, dû à l’utilisation de DynamicInvoke à chaque fois que l’évènement était déclenché.</description>
+    </item>
+    
+    <item>
+      <title>Une nouvelle bibliothèque pour afficher des GIFs animés dans les applications XAML</title>
+      <link>https://thomaslevesque.fr/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/</guid>
+      <description>Il y a quelques années, j’avais écrit un article qui montrait comment afficher un GIF animé en WPF. L’article incluait le code complet, et avait eu un certain succès, puisque WPF n’avait pas de support intégré pour les GIFs animés. Suite aux problèmes mentionnés dans les commentaires, j’ai apporté de nombreuses modifications au code dans l’article. Au bout d’un certain temps j’ai fini par trouver que ce n’était vraiment pas pratique, j’ai donc publié le code sur CodePlex (il a depuis déménagé vers GitHub) sous le nom WpfAnimatedGif, et j’ai commencé à le maintenir en tant que projet open-source.</description>
+    </item>
+    
+    <item>
+      <title>Afficher facilement une taille de fichier sous forme lisible par un humain</title>
+      <link>https://thomaslevesque.fr/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/</guid>
+      <description>Si vous écrivez une application qui a un rapport avec la gestion de fichiers, vous aurez probablement besoin d’afficher la taille des fichiers. Mais si un fichier a une taille de 123456789 octets, ce n’est évidemment pas la valeur qu’il faudra afficher, car c’est difficile à lire, et l’utilisateur n’a généralement pas besoin de connaitre la taille à l’octet près. Vous allez plutôt afficher quelque chose comme 118 Mo.
+Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey</title>
+      <link>https://thomaslevesque.fr/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/</link>
+      <pubDate>Tue, 11 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/</guid>
+      <description>Un besoin fréquent pour les applications de bureau est de gérer des raccourcis claviers globaux, pour pouvoir réagir aux raccourcis même quand l’application n’a pas le focus. Malheureusement, il n’y aucune fonctionnalité intégrée dans le .NET Framework pour gérer ça.
+Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de librairies open-source qui se proposent d’y remédier (par exemple VirtualInput). La plupart d’entre elles sont basées sur des hooks système globaux, ce qui leur permet d’intercepter toutes les frappes de touche, même celles qui ne vous intéressent pas.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# 6 on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/c#-6/</link>
+    <description>Recent content in C# 6 on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 23 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/c#-6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Filtres d’exception en C# 6 : leur plus grand avantage n’est pas celui qu’on croit</title>
+      <link>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</guid>
+      <description>Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc catch :
+static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&amp;quot;Error 42 occurred&amp;quot;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.</description>
+    </item>
+    
+    <item>
+      <title>Personnaliser l’interpolation de chaine avec C# 6</title>
+      <link>https://thomaslevesque.fr/2015/02/25/personnaliser-linterpolation-de-chaine-avec-c-6/</link>
+      <pubDate>Wed, 25 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/02/25/personnaliser-linterpolation-de-chaine-avec-c-6/</guid>
+      <description>L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :
+string text = $&amp;quot;{p.Name} was born on {p.DateOfBirth:D}&amp;quot;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :</description>
+    </item>
+    
+    <item>
+      <title>StringTemplate: une autre approche de l’interpolation de chaines</title>
+      <link>https://thomaslevesque.fr/2014/11/17/stringtemplate-une-autre-approche-de-l-interpolation-de-chaines/</link>
+      <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/17/stringtemplate-une-autre-approche-de-l-interpolation-de-chaines/</guid>
+      <description>Avec la version 6 de C# qui approche, il y a beaucoup de discussions sur CodePlex et ailleurs à propos de l’interpolation de chaines. Pas très étonnant, puisqu’il s’agit d’une des fonctionnalités majeures de cette version… Au cas où vous auriez vécu dans une grotte ces derniers mois et n’en auriez pas entendu parler, l’interpolation de chaines est un moyen d’insérer des expressions C# à l’intérieur d’une chaine de caractère, de façon à ce qu’elles soient évaluées lors de l’exécution et remplacées par leurs valeurs.</description>
+    </item>
+    
+  </channel>
+</rss>

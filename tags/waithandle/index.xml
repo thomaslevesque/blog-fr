@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>waithandle on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/waithandle/</link>
+    <description>Recent content in waithandle on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/waithandle/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Support de l’asynchronisme et de l’annulation pour les wait handles</title>
+      <link>https://thomaslevesque.fr/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/</guid>
+      <description>Le .NET Framework fournit un certain nombre de primitives de synchronisation bas niveau. Les plus couramment utilisées sont appelées “wait handles”, et héritent de la classe WaitHandle : Semaphore, Mutex, AutoResetEvent et ManualResetEvent. Ces classes existent depuis .NET 2.0 (voire 1.1 pour certaines), mais elles n’ont pas beaucoup évolué depuis, ce qui fait qu’elles ne supportent pas des fonctionnalités introduites plus tard et devenues très courantes. En particulier, elles ne supportent pas l’attente asynchrone, ni l’annulation de l’attente.</description>
+    </item>
+    
+  </channel>
+</rss>

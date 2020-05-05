@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visual Studio on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/visual-studio/</link>
+    <description>Recent content in Visual Studio on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 14 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/visual-studio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Transformer les templates T4 pendant la build, et passer des variables du projet</title>
+      <link>https://thomaslevesque.fr/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/</guid>
+      <description>T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&#39;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&#39;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&#39;on souhaite regénérer les sorties des templates à chaque build.</description>
+    </item>
+    
+    <item>
+      <title>Propriétés et éléments MSBuild partagés avec Directory.Build.props</title>
+      <link>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</guid>
+      <description>Pour être honnête, je n&#39;ai jamais vraiment aimé MSBuild jusqu&#39;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&#39;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&#39;était mal documenté&amp;hellip; Mais avec l&#39;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.
+MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&#39;est le nom officiel, mais c&#39;est celui que j&#39;utiliserai).</description>
+    </item>
+    
+    <item>
+      <title>Tester et déboguer une bibliothèque depuis LINQPad</title>
+      <link>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</guid>
+      <description>Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&#39;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&#39;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code .</description>
+    </item>
+    
+    <item>
+      <title>Tuples en C# 7</title>
+      <link>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</link>
+      <pubDate>Thu, 28 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
+      <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
+.NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {int count = 0;double sum = 0.0;foreach (var value in values){ count++; sum += value;}return Tuple.</description>
+    </item>
+    
+    <item>
+      <title>Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview</title>
+      <link>https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/</link>
+      <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/</guid>
+      <description>Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !</description>
+    </item>
+    
+    <item>
+      <title>Intégration avec Visual Studio Online &#43; Git dans Team Explorer</title>
+      <link>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</guid>
+      <description>J’ai commencé récemment à utiliser Visual Studio Online pour des projets personnels, et je dois dire que c’est une très bonne plateforme, même si ce serait bien de pouvoir héberger des projets publics et non pas seulement privés. J’apprécie particulièrement l’intégration dans le Team Explorer de Visual Studio pour gérer les tâches et les builds.
+Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle de version : le remote pour VS Online doit s’appeler origin, sinon Team Explorer ne détecte pas qu’il s’agit d’un projet VS Online, et n’affiche pas les pages “Builds” et “Work Items”.</description>
+    </item>
+    
+    <item>
+      <title>Exécuter un outil personnalisé automatiquement quand un fichier est modifié</title>
+      <link>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</link>
+      <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</guid>
+      <description>Aussi loin que je me souvienne, il y a toujours eu dans Visual Studio quelque chose appelé “outils personnalisés” (custom tools), également connus sous le nom de single-file generators. Quand vous appliquez un tel outil à un fichier de votre projet, il génère quelque chose (généralement du code, mais pas forcément) en fonction du contenu du fichier. Par exemple, l’outil personnalisé par défaut pour les fichiers de ressource s’appelle ResXFileCodeGenerator, et génère une classe qui permet d’accéder facilement aux ressources définies dans le fichier resx.</description>
+    </item>
+    
+    <item>
+      <title>[VS 2010] Support du binding dans les InputBindings</title>
+      <link>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</guid>
+      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&#39;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&#39;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&#39;ailleurs, les InputBindings n&#39;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&#39;ici, pour lier la commande d&#39;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&#39;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
+    </item>
+    
+    <item>
+      <title>[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre</title>
+      <link>https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/</link>
+      <pubDate>Thu, 05 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/</guid>
+      <description>Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&#39;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : L&#39;astuce suivante permet d&#39;obtenir le même comportement pour vos propres fichiers. Supposons que vous souhaitiez personnaliser les classes générées par le designer d&#39;entités. Vous ne pouvez pas modifier le fichier Model1.Designer.cs, puisque vos modifications seraient écrasées par le designer.</description>
+    </item>
+    
+  </channel>
+</rss>

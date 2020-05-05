@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AutoRunCustomTool on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/autoruncustomtool/</link>
+    <description>Recent content in AutoRunCustomTool on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 15 Nov 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/autoruncustomtool/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Exécuter un outil personnalisé automatiquement quand un fichier est modifié</title>
+      <link>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</link>
+      <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</guid>
+      <description>Aussi loin que je me souvienne, il y a toujours eu dans Visual Studio quelque chose appelé “outils personnalisés” (custom tools), également connus sous le nom de single-file generators. Quand vous appliquez un tel outil à un fichier de votre projet, il génère quelque chose (généralement du code, mais pas forcément) en fonction du contenu du fichier. Par exemple, l’outil personnalisé par défaut pour les fichiers de ressource s’appelle ResXFileCodeGenerator, et génère une classe qui permet d’accéder facilement aux ressources définies dans le fichier resx.</description>
+    </item>
+    
+  </channel>
+</rss>

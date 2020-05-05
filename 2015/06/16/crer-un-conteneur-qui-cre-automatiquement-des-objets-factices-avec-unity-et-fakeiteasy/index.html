@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Créer un conteneur qui crée automatiquement des objets factices avec Unity et FakeItEasy - Blog .NET de Thomas Levesque</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Créer un conteneur qui crée automatiquement des objets factices avec Unity et FakeItEasy" />
+<meta property="og:description" content="L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup FakeItEasy ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomaslevesque.fr/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/" />
+<meta property="article:published_time" content="2015-06-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-06-16T00:00:00+00:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Créer un conteneur qui crée automatiquement des objets factices avec Unity et FakeItEasy"/>
+<meta name="twitter:description" content="L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup FakeItEasy ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/social.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-31645024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+				<div class="logo__title">Blog .NET de Thomas Levesque</div>
+				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/a-propos/">
+				
+				<span class="menu__text">À propos</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Créer un conteneur qui crée automatiquement des objets factices avec Unity et FakeItEasy</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-06-16T00:00:00Z">June 16, 2015</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup <a href="https://github.com/FakeItEasy/FakeItEasy">FakeItEasy</a> ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici.</p>
+<p>Mais malgré toutes les qualités de FakeItEasy, l’enregistrement des fakes (objets factices) pour les dépendances de la classe testée est encore un peu laborieuse. Ce serait bien si le conteneur IoC pouvait nous créer automatiquement des fakes à la volée, non ? Le code suivant :</p>
+<pre><code>var container = new UnityContainer();
+ 
+// Setup dependencies
+var fooProvider = A.Fake&lt;IFooProvider&gt;();
+container.RegisterInstance(fooProvider);
+var barService = A.Fake&lt;IBarService&gt;();
+container.RegisterInstance(barService);
+var bazManager = A.Fake&lt;IBazManager&gt;();
+container.RegisterInstance(bazManager);
+ 
+var sut = container.Resolve&lt;SystemUnderTest&gt;();
+</code></pre><p>Pourrait être réduit à ceci :</p>
+<pre><code>var container = new UnityContainer();
+ 
+// This will cause the container to provide fakes for all dependencies
+container.AddNewExtension&lt;AutoFakeExtension&gt;();
+ 
+var sut = container.Resolve&lt;SystemUnderTest&gt;();
+</code></pre><p>Eh bien, c’est en fait assez facile à faire avec Unity. Unity n’est pas vraiment le conteneur IoC le plus à la mode, mais il est bien supporté, facile à utiliser, et extensible. J’ai créé l’extension suivante pour permettre le scénario décrit plus haut :</p>
+<pre><code>public class AutoFakeExtension : UnityContainerExtension
+{
+    protected override void Initialize()
+    {
+        Context.Strategies.AddNew&lt;AutoFakeBuilderStrategy&gt;(UnityBuildStage.PreCreation);
+    }
+     
+    private class AutoFakeBuilderStrategy : BuilderStrategy
+    {
+        private static readonly MethodInfo _fakeGenericDefinition;
+     
+        static AutoFakeBuilderStrategy()
+        {
+            _fakeGenericDefinition = typeof(A).GetMethod(&quot;Fake&quot;, Type.EmptyTypes);
+        }
+         
+        public override void PreBuildUp(IBuilderContext context)
+        {
+            if (context.Existing == null)
+            {
+                var type = context.BuildKey.Type;
+                if (type.IsInterface || type.IsAbstract)
+                {
+                    var fakeMethod = _fakeGenericDefinition.MakeGenericMethod(type);
+                    var fake = fakeMethod.Invoke(null, new object[0]);
+                    context.PersistentPolicies.Set&lt;ILifetimePolicy&gt;(new ContainerControlledLifetimeManager(), context.BuildKey);
+                    context.Existing = fake;
+                    context.BuildComplete = true;
+                }
+            }
+            base.PreBuildUp(context);
+        }
+    }
+}
+</code></pre><p>Quelques commentaires sur ce code :</p>
+<ul>
+<li>La logique est un peu rudimentaire (on génère un fake uniquement pour les interfaces et classes abstraites), mais elle peut facilement être ajustée selon les besoins.</li>
+<li>Le vilain hack de réflexion est dû au fait que FakeItEasy n’a pas de surcharge non générique pour la méthode <code>A.Fake</code> qui accepte un <code>Type</code> en paramètre. Nul n’est parfait…</li>
+<li>La durée de vie du fake est définie à “container controlled” (c’est-à-dire qu’elle a la durée de vie du conteneur), parce que si on a besoin de configurer les appels sur le fake, il faut qu’on puisse accéder à la même instance que celle qui est injectée dans la classe testée :</li>
+</ul>
+<pre><code>var fooProvider = container.Resolve&lt;IFooProvider&gt;();
+A.CallTo(() =&gt; fooProvider.GetFoo(42)).Returns(new Foo { Id = 42, Name = “test” });
+</code></pre><p>Remarquez que si on enregistre explicitement une dépendance dans le conteneur, elle sera utilisée en priorité et aucun fake ne sera créé. On peut donc utiliser cette extension tout en gardant la possibilité de spécifier certaines dépendances manuellement :</p>
+<pre><code>var container = new UnityContainer();
+container.AddNewExtension&lt;AutoFakeExtension&gt;();
+container.RegisterType&lt;IFooProvider, TestFooProvider&gt;();
+var sut = container.Resolve&lt;SystemUnderTest&gt;();
+</code></pre><p>Bien sûr, cette extension pourrait facilement être modifiée pour utiliser un framework de mock autre que FakeItEasy. Je suppose que le même principe pourrait aussi être appliqué à d’autres conteneurs IoC, pourvu qu’ils aient des points d’extension appropriés.</p>
+<h3 id="et-autofixture-dans-tout-a-">Et AutoFixture dans tout ça ?</h3>
+<p>Avant que vous ne posiez la question : oui, je connais <a href="https://github.com/AutoFixture/AutoFixture">AutoFixture</a>. C’est une très bonne librairie, et j’ai aussi essayé de l’utiliser, avec un certain succès. Le code est d’ailleurs très similaire aux exemples ci-dessus. La principale raison pour laquelle je n’ai pas continué à l’utiliser est qu’AutoFixture n’est pas vraiment un conteneur IoC (bien qu’il fasse certaines des choses que fait un conteneur IoC), et je préfère utiliser le même mécanisme d’injection de dépendance dans mes tests unitaires que dans le code applicatif. De plus, je n’étais pas très à l’aise avec la façon dont AutoFixture gère les propriétés quand il crée une instance de la classe à tester. Par défaut, il initialise toutes les propriétés publiques avec des fakes de leur type ; c’est très bien dans le cas des propriétés utilisées pour l’injection de dépendance, mais ça n’a pas de sens pour les autres propriétés. Je sais qu’il est possible d’inhiber ce comportement pour des propriétés spécifiques, mais il faut le faire manuellement au cas par cas ; cela ne prend pas en compte les attributs spécifiques au conteneur IoC, comme <code>[Dependency]</code>. Au final, j’ai trouvé plus simple d’utiliser mon extension Unity personnalisée, dont je comprends et maitrise bien le comportement.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/c%23/" rel="tag">C#</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/fakeiteasy/" rel="tag">FakeItEasy</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/injection-de-d%C3%A9pendances/" rel="tag">injection de dépendances</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mocking/" rel="tag">mocking</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/unity/" rel="tag">Unity</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">À propos Thomas Levesque</span>
+	</div>
+	<div class="authorbox__description">
+		Thomas Levesque est un développeur français vivant à Paris.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Précédent</span>
+			<p class="pager__title">Support de l’asynchronisme et de l’annulation pour les wait handles</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/" rel="next">
+			<span class="pager__subtitle">Suivant&thinsp;»</span>
+			<p class="pager__title">Filtres d’exception en C# 6 : leur plus grand avantage n’est pas celui qu’on croit</p>
+		</a>
+	</div>
+</nav>
+
+<div>
+    <script src="https://utteranc.es/client.js"
+            repo="thomaslevesque/blog-fr"
+            issue-term="pathname"
+            label="post-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+	</form>
+</div>
+<div class="widget-social widget">
+    <h4 class="widget-social__title widget__title">Social</h4>
+    <div class="widget-social__content widget__content">
+        <a class="widget-social__link-custom widget__link" title="GitHub" rel="noopener noreferrer" href="https://github.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+        </a>
+        <a class="widget-social__link-custom widget__link" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+        </a>
+    </div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Articles récents</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2018/04/17/fin-de-mon-blog-en-francais/">Fin de mon blog en français</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/">Comprendre le pipeline de middleware d&#39;ASP.NET Core</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/">Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/">Meilleure gestion du timeout avec HttpClient</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/">Transformer les templates T4 pendant la build, et passer des variables du projet</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Mots-clefs</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/c%23/" title="c#">c#</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wpf/" title="wpf">wpf</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xaml/" title="xaml">xaml</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/visual-studio/" title="visual-studio">visual-studio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/async/" title="async">async</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/binding/" title="binding">binding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markup-extension/" title="markup-extension">markup-extension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="mvvm">mvvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linq/" title="linq">linq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tests-unitaires/" title="tests-unitaires">tests-unitaires</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/winrt/" title="winrt">winrt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net/" title=".net">.net</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-4.0/" title=".net-4.0">.net-4.0</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-core/" title=".net-core">.net-core</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/asynchrone/" title="asynchrone">asynchrone</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Thomas Levesque.
+			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

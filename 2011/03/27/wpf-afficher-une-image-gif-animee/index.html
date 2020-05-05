@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[WPF] Afficher une image GIF animée - Blog .NET de Thomas Levesque</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="[WPF] Afficher une image GIF animée" />
+<meta property="og:description" content="WPF est une technologie géniale, mais parfois on a l&#39;impression qu&#39;il lui manque certaines fonctionnalités assez basiques&hellip; Un exemple souvent cité est l&#39;absence de support pour les images GIF animées. En fait, le format GIF proprement dit est supporté, mais le contrôle Image n&#39;affiche que la première image de l&#39;animation. De nombreuses solutions à ce problème ont été proposées sur les forums et blogs techniques, généralement des variantes autour des approches suivantes :" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomaslevesque.fr/2011/03/27/wpf-afficher-une-image-gif-animee/" />
+<meta property="article:published_time" content="2011-03-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2011-03-27T00:00:00+00:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[WPF] Afficher une image GIF animée"/>
+<meta name="twitter:description" content="WPF est une technologie géniale, mais parfois on a l&#39;impression qu&#39;il lui manque certaines fonctionnalités assez basiques&hellip; Un exemple souvent cité est l&#39;absence de support pour les images GIF animées. En fait, le format GIF proprement dit est supporté, mais le contrôle Image n&#39;affiche que la première image de l&#39;animation. De nombreuses solutions à ce problème ont été proposées sur les forums et blogs techniques, généralement des variantes autour des approches suivantes :"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/social.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-31645024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+				<div class="logo__title">Blog .NET de Thomas Levesque</div>
+				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/a-propos/">
+				
+				<span class="menu__text">À propos</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[WPF] Afficher une image GIF animée</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-03-27T00:00:00Z">March 27, 2011</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>WPF est une technologie géniale, mais parfois on a l'impression qu'il lui manque certaines fonctionnalités assez basiques&hellip; Un exemple souvent cité est l'absence de support pour les images GIF animées. En fait, le format GIF proprement dit est supporté, mais le contrôle <code>Image</code> n'affiche que la première image de l'animation.  De nombreuses solutions à ce problème ont été proposées sur les forums et blogs techniques, généralement des variantes autour des approches suivantes :</p>
+<ul>
+<li>
+<p>Utiliser le contrôle <code>MediaElement</code> : malheureusement ce contrôle ne supporte que les URI de type <code>file://</code> ou <code>http://</code>, et non le schéma d'URI <code>pack://</code> utilisé pour les ressources WPF ; l'image ne peut donc pas être inclue dans les ressources, elle doit être dans un fichier à part. De plus, la transparence n'est pas supportée, si bien que le résultat final est assez laid</p>
+</li>
+<li>
+<p>Utiliser le contrôle <code>PictureBox</code> de Windows Forms, via un <code>WindowsFormsHost</code> : personnellement j'ai horreur d'utiliser des contrôles Windows Forms en WPF, ça me donne l'impression de faire quelque chose de mal :P</p>
+</li>
+<li>
+<p>Créer un contrôle dérivé de <code>Image</code> qui gère l'animation. Pour l'implémentation, certaines solutions tirent partie de la classe <code>ImageAnimator</code> de <code>System.Drawing</code> (GDI), d'autres utilisent une animation WPF pour changer de frame. C'est une approche assez &ldquo;propre&rdquo;, mais qui oblige à utiliser un contrôle spécifique pour les GIF. De plus la solution utilisant <code>ImageAnimator</code> se révèle assez peu fluide.</p>
+<p>Comme vous l'aurez deviné, aucune de ces solutions ne me satisfait vraiment&hellip; De plus, aucune ne gère proprement la durée de chaque frame, et suppose simplement que toutes les frames durent 100ms (c'est presque toujours le cas, mais le <em>presque</em>fait toute la différence&hellip;). Je n'ai donc gardé que les meilleures idées dans les approches ci-dessus pour créer ma propre solution. Les objectifs que je souhaitais atteindre sont les suivants :</p>
+</li>
+<li>
+<p>Ne pas dépendre de Windows Forms ou de GDI</p>
+</li>
+<li>
+<p>Afficher l'image animée dans un contrôle <code>Image</code> standard</p>
+</li>
+<li>
+<p>Pouvoir utiliser le même code XAML pour une image fixe ou animée</p>
+</li>
+<li>
+<p>Supporter la transparence</p>
+</li>
+<li>
+<p>Tenir compte de la durée réelle de chaque frame de l'image</p>
+<p>Pour arriver à ce résultat, je suis parti d'une idée simple, voire évidente : pour animer l'image, il suffit d'appliquer une animation à la propriété <code>Source</code> du contrôle <code>Image</code>. Or WPF fournit tous les outils nécessaires pour réaliser ce type d'animation ; en l'occurrence la classe <a href="http://msdn.microsoft.com/fr-fr/library/system.windows.media.animation.objectanimationusingkeyframes.aspx"><code>ObjectAnimationUsingKeyFrames</code></a> répond parfaitement au besoin : on peut spécifier à quel instant exact affecter une valeur donnée à la propriété, ce qui permet de tenir compte de la durée des frames.  Le problème suivant est d'extraire les différentes frames de l'image : heureusement ce scénario est prévu dans WPF, et la classe <a href="http://msdn.microsoft.com/fr-fr/library/system.windows.media.imaging.bitmapdecoder.aspx"><code>BitmapDecoder</code></a> fournit une propriété <code>Frames</code> qui sert à ça. Donc, pas de difficulté majeure à ce niveau&hellip;  Enfin, dernier obstacle : extraire la durée de chaque frame. C'est finalement la partie qui m'a demandé le plus de recherche&hellip; J'ai d'abord cru qu'il faudrait lire manuellement le fichier pour trouver cette information, en décodant directement les données binaires. Mais la solution est finalement assez simple, et tire partie de la classe <a href="http://msdn.microsoft.com/fr-fr/library/system.windows.media.imaging.bitmapmetadata.aspx"><code>BitmapMetadata</code></a>. La seule difficulté a été de localiser le &ldquo;chemin&rdquo; de la métadonnée qui contient cette information, mais après quelques tâtonnements, la voilà : <code>/grctlext/Delay</code>.  La solution finale est implémentée sous forme d'une propriété attachée <code>AnimatedSource</code> applicable au contrôle <code>Image</code>, qui s'utilise en lieu et place de <code>Source</code> :</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Image</span> <span style="color:#a6e22e">Stretch=</span><span style="color:#e6db74">&#34;None&#34;</span> <span style="color:#a6e22e">my:ImageBehavior.AnimatedSource=</span><span style="color:#e6db74">&#34;/Images/animation.gif&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>On peut également affecter une image fixe à cette propriété, elle s'affichera normalement ; on peut donc utiliser cette propriété sans se soucier de savoir si l'image à afficher sera fixe ou animée.  Au final, tous les objectifs fixés au départ sont donc atteints, et il y a même une cerise sur le gâteau : cette solution fonctionne également dans le designer (du moins dans Visual Studio 2010), on voit donc directement l'animation quand on affecte la propriété <code>AnimatedSource</code> :)  Sans plus attendre, voilà le code complet :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ImageBehavior</span>
+    {
+        <span style="color:#75715e">#region AnimatedSource
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">
+</span><span style="color:#a6e22e">        [AttachedPropertyBrowsableForType(typeof(Image))]</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> ImageSource GetAnimatedSource(Image obj)
+        {
+            <span style="color:#66d9ef">return</span> (ImageSource)obj.GetValue(AnimatedSourceProperty);
+        }
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> SetAnimatedSource(Image obj, ImageSource <span style="color:#66d9ef">value</span>)
+        {
+            obj.SetValue(AnimatedSourceProperty, <span style="color:#66d9ef">value</span>);
+        }
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> DependencyProperty AnimatedSourceProperty =
+            DependencyProperty.RegisterAttached(
+              <span style="color:#e6db74">&#34;AnimatedSource&#34;</span>,
+              <span style="color:#66d9ef">typeof</span>(ImageSource),
+              <span style="color:#66d9ef">typeof</span>(ImageBehavior),
+              <span style="color:#66d9ef">new</span> UIPropertyMetadata(
+                <span style="color:#66d9ef">null</span>,
+                AnimatedSourceChanged));
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> AnimatedSourceChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            Image imageControl = o <span style="color:#66d9ef">as</span> Image;
+            <span style="color:#66d9ef">if</span> (imageControl == <span style="color:#66d9ef">null</span>)
+                <span style="color:#66d9ef">return</span>;
+
+            <span style="color:#66d9ef">var</span> oldValue = e.OldValue <span style="color:#66d9ef">as</span> ImageSource;
+            <span style="color:#66d9ef">var</span> newValue = e.NewValue <span style="color:#66d9ef">as</span> ImageSource;
+            <span style="color:#66d9ef">if</span> (oldValue != <span style="color:#66d9ef">null</span>)
+            {
+                imageControl.BeginAnimation(Image.SourceProperty, <span style="color:#66d9ef">null</span>);
+            }
+            <span style="color:#66d9ef">if</span> (newValue != <span style="color:#66d9ef">null</span>)
+            {
+                imageControl.DoWhenLoaded(InitAnimationOrImage);
+            }
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> InitAnimationOrImage(Image imageControl)
+        {
+            BitmapSource source = GetAnimatedSource(imageControl) <span style="color:#66d9ef">as</span> BitmapSource;
+            <span style="color:#66d9ef">if</span> (source != <span style="color:#66d9ef">null</span>)
+            {
+                <span style="color:#66d9ef">var</span> decoder = GetDecoder(source) <span style="color:#66d9ef">as</span> GifBitmapDecoder;
+                <span style="color:#66d9ef">if</span> (decoder != <span style="color:#66d9ef">null</span> &amp;&amp; decoder.Frames.Count &gt; <span style="color:#ae81ff">1</span>)
+                {
+                    <span style="color:#66d9ef">var</span> animation = <span style="color:#66d9ef">new</span> ObjectAnimationUsingKeyFrames();
+                    <span style="color:#66d9ef">var</span> totalDuration = TimeSpan.Zero;
+                    BitmapSource prevFrame = <span style="color:#66d9ef">null</span>;
+                    FrameInfo prevInfo = <span style="color:#66d9ef">null</span>;
+                    <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> rawFrame <span style="color:#66d9ef">in</span> decoder.Frames)
+                    {
+                        <span style="color:#66d9ef">var</span> info = GetFrameInfo(rawFrame);
+                        <span style="color:#66d9ef">var</span> frame = MakeFrame(
+                            source,
+                            rawFrame, info,
+                            prevFrame, prevInfo);
+
+                        <span style="color:#66d9ef">var</span> keyFrame = <span style="color:#66d9ef">new</span> DiscreteObjectKeyFrame(frame, totalDuration);
+                        animation.KeyFrames.Add(keyFrame);
+                        
+                        totalDuration += info.Delay;
+                        prevFrame = frame;
+                        prevInfo = info;
+                    }
+                    animation.Duration = totalDuration;
+                    animation.RepeatBehavior = RepeatBehavior.Forever;
+                    <span style="color:#66d9ef">if</span> (animation.KeyFrames.Count &gt; <span style="color:#ae81ff">0</span>)
+                        imageControl.Source = (ImageSource)animation.KeyFrames[<span style="color:#ae81ff">0</span>].Value;
+                    <span style="color:#66d9ef">else</span>
+                        imageControl.Source = decoder.Frames[<span style="color:#ae81ff">0</span>];
+                    imageControl.BeginAnimation(Image.SourceProperty, animation);
+                    <span style="color:#66d9ef">return</span>;
+                }
+            }
+            imageControl.Source = source;
+            <span style="color:#66d9ef">return</span>;
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> BitmapDecoder GetDecoder(BitmapSource image)
+        {
+            BitmapDecoder decoder = <span style="color:#66d9ef">null</span>;
+            <span style="color:#66d9ef">var</span> frame = image <span style="color:#66d9ef">as</span> BitmapFrame;
+            <span style="color:#66d9ef">if</span> (frame != <span style="color:#66d9ef">null</span>)
+                decoder = frame.Decoder;
+
+            <span style="color:#66d9ef">if</span> (decoder == <span style="color:#66d9ef">null</span>)
+            {
+                <span style="color:#66d9ef">var</span> bmp = image <span style="color:#66d9ef">as</span> BitmapImage;
+                <span style="color:#66d9ef">if</span> (bmp != <span style="color:#66d9ef">null</span>)
+                {
+                    <span style="color:#66d9ef">if</span> (bmp.StreamSource != <span style="color:#66d9ef">null</span>)
+                    {
+                        decoder = BitmapDecoder.Create(bmp.StreamSource, bmp.CreateOptions, bmp.CacheOption);
+                    }
+                    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (bmp.UriSource != <span style="color:#66d9ef">null</span>)
+                    {
+                        Uri uri = bmp.UriSource;
+                        <span style="color:#66d9ef">if</span> (bmp.BaseUri != <span style="color:#66d9ef">null</span> &amp;&amp; !uri.IsAbsoluteUri)
+                            uri = <span style="color:#66d9ef">new</span> Uri(bmp.BaseUri, uri);
+                        decoder = BitmapDecoder.Create(uri, bmp.CreateOptions, bmp.CacheOption);
+                    }
+                }
+            }
+
+            <span style="color:#66d9ef">return</span> decoder;
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> BitmapSource MakeFrame(
+            BitmapSource fullImage,
+            BitmapSource rawFrame, FrameInfo frameInfo,
+            BitmapSource previousFrame, FrameInfo previousFrameInfo)
+        {
+            DrawingVisual visual = <span style="color:#66d9ef">new</span> DrawingVisual();
+            <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> context = visual.RenderOpen())
+            {
+                <span style="color:#66d9ef">if</span> (previousFrameInfo != <span style="color:#66d9ef">null</span> &amp;&amp; previousFrame != <span style="color:#66d9ef">null</span> &amp;&amp;
+                    previousFrameInfo.DisposalMethod == FrameDisposalMethod.Combine)
+                {
+                    <span style="color:#66d9ef">var</span> fullRect = <span style="color:#66d9ef">new</span> Rect(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, fullImage.PixelWidth, fullImage.PixelHeight);
+                    context.DrawImage(previousFrame, fullRect);
+                }
+
+                context.DrawImage(rawFrame, frameInfo.Rect);
+            }
+            <span style="color:#66d9ef">var</span> bitmap = <span style="color:#66d9ef">new</span> RenderTargetBitmap(
+                fullImage.PixelWidth, fullImage.PixelHeight,
+                fullImage.DpiX, fullImage.DpiY,
+                PixelFormats.Pbgra32);
+            bitmap.Render(visual);
+            <span style="color:#66d9ef">return</span> bitmap;
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FrameInfo</span>
+        {
+            <span style="color:#66d9ef">public</span> TimeSpan Delay { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+            <span style="color:#66d9ef">public</span> FrameDisposalMethod DisposalMethod { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> Width { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> Height { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> Left { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> Top { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+
+            <span style="color:#66d9ef">public</span> Rect Rect
+            {
+                <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Rect(Left, Top, Width, Height); }
+            }
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">enum</span> FrameDisposalMethod
+        {
+            Replace = <span style="color:#ae81ff">0</span>,
+            Combine = <span style="color:#ae81ff">1</span>,
+            RestoreBackground = <span style="color:#ae81ff">2</span>,
+            RestorePrevious = <span style="color:#ae81ff">3</span>
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> FrameInfo GetFrameInfo(BitmapFrame frame)
+        {
+            <span style="color:#66d9ef">var</span> frameInfo = <span style="color:#66d9ef">new</span> FrameInfo
+            {
+                Delay = TimeSpan.FromMilliseconds(<span style="color:#ae81ff">1</span><span style="color:#ae81ff">0</span><span style="color:#ae81ff">0</span>),
+                DisposalMethod = FrameDisposalMethod.Replace,
+                Width = frame.PixelWidth,
+                Height = frame.PixelHeight,
+                Left = <span style="color:#ae81ff">0</span>,
+                Top = <span style="color:#ae81ff">0</span>
+            };
+
+            BitmapMetadata metadata;
+            <span style="color:#66d9ef">try</span>
+            {
+                metadata = frame.Metadata <span style="color:#66d9ef">as</span> BitmapMetadata;
+                <span style="color:#66d9ef">if</span> (metadata != <span style="color:#66d9ef">null</span>)
+                {
+                    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> delayQuery = <span style="color:#e6db74">&#34;/grctlext/Delay&#34;</span>;
+                    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> disposalQuery = <span style="color:#e6db74">&#34;/grctlext/Disposal&#34;</span>;
+                    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> widthQuery = <span style="color:#e6db74">&#34;/imgdesc/Width&#34;</span>;
+                    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> heightQuery = <span style="color:#e6db74">&#34;/imgdesc/Height&#34;</span>;
+                    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> leftQuery = <span style="color:#e6db74">&#34;/imgdesc/Left&#34;</span>;
+                    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> topQuery = <span style="color:#e6db74">&#34;/imgdesc/Top&#34;</span>;
+
+                    <span style="color:#66d9ef">var</span> delay = metadata.GetQueryOrNull&lt;<span style="color:#66d9ef">ushort</span>&gt;(delayQuery);
+                    <span style="color:#66d9ef">if</span> (delay.HasValue)
+                        frameInfo.Delay = TimeSpan.FromMilliseconds(<span style="color:#ae81ff">1</span><span style="color:#ae81ff">0</span> * delay.Value);
+
+                    <span style="color:#66d9ef">var</span> disposal = metadata.GetQueryOrNull&lt;<span style="color:#66d9ef">byte</span>&gt;(disposalQuery);
+                    <span style="color:#66d9ef">if</span> (disposal.HasValue)
+                        frameInfo.DisposalMethod = (FrameDisposalMethod) disposal.Value;
+
+                    <span style="color:#66d9ef">var</span> width = metadata.GetQueryOrNull&lt;<span style="color:#66d9ef">ushort</span>&gt;(widthQuery);
+                    <span style="color:#66d9ef">if</span> (width.HasValue)
+                        frameInfo.Width = width.Value;
+
+                    <span style="color:#66d9ef">var</span> height = metadata.GetQueryOrNull&lt;<span style="color:#66d9ef">ushort</span>&gt;(heightQuery);
+                    <span style="color:#66d9ef">if</span> (height.HasValue)
+                        frameInfo.Height = height.Value;
+
+                    <span style="color:#66d9ef">var</span> left = metadata.GetQueryOrNull&lt;<span style="color:#66d9ef">ushort</span>&gt;(leftQuery);
+                    <span style="color:#66d9ef">if</span> (left.HasValue)
+                        frameInfo.Left = left.Value;
+
+                    <span style="color:#66d9ef">var</span> top = metadata.GetQueryOrNull&lt;<span style="color:#66d9ef">ushort</span>&gt;(topQuery);
+                    <span style="color:#66d9ef">if</span> (top.HasValue)
+                        frameInfo.Top = top.Value;
+                }
+            }
+            <span style="color:#66d9ef">catch</span> (NotSupportedException)
+            {
+            }
+
+            <span style="color:#66d9ef">return</span> frameInfo;
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> T? GetQueryOrNull&lt;T&gt;(<span style="color:#66d9ef">this</span> BitmapMetadata metadata, <span style="color:#66d9ef">string</span> query)
+            <span style="color:#66d9ef">where</span> T : <span style="color:#66d9ef">struct</span>
+        {
+            <span style="color:#66d9ef">if</span> (metadata.ContainsQuery(query))
+            {
+                <span style="color:#66d9ef">object</span> <span style="color:#66d9ef">value</span> = metadata.GetQuery(query);
+                <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">value</span> != <span style="color:#66d9ef">null</span>)
+                    <span style="color:#66d9ef">return</span> (T) <span style="color:#66d9ef">value</span>;
+            }
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+        }
+
+        <span style="color:#75715e">#endregion
+</span><span style="color:#75715e"></span>    }
+</code></pre></div><p>Et voici la méthode d'extension <code>DoWhenLoaded</code> utilisée dans le code ci-dessus :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> DoWhenLoaded&lt;T&gt;(<span style="color:#66d9ef">this</span> T element, Action&lt;T&gt; action)
+    <span style="color:#66d9ef">where</span> T : FrameworkElement
+{
+    <span style="color:#66d9ef">if</span> (element.IsLoaded)
+    {
+        action(element);
+    }
+    <span style="color:#66d9ef">else</span>
+    {
+        RoutedEventHandler handler = <span style="color:#66d9ef">null</span>;
+        handler = (sender, e) =&gt;
+        {
+            element.Loaded -= handler;
+            action(element);
+        };
+        element.Loaded += handler;
+    }
+}
+</code></pre></div><p>Cette classe sera inclue dans la prochaine version de la librairie <a href="http://dvp-net.developpez.com/">Dvp.NET</a>, dont j'avais <a href="/2010/03/18/dvp-net-premiere-version-de-la-librairie-dvp-net/">déjà parlé il y quelque temps</a>.</p>
+<p><strong>Mise à jour</strong> : le code qui récupère la durée d'une frame ne fonctionne que sous Windows Seven, et sous Windows Vista si la <a href="http://support.microsoft.com/kb/971644/fr-fr">Platform Update</a> est installée (non testé). La durée par défaut (100ms) sera utilisée sur les autres versions de Windows. Je mettrai à jour l'article si je trouve une solution qui fonctionne sur tous les systèmes (je sais que je pourrais utiliser <code>System.Drawing.Bitmap</code>, mais je préfèrerais éviter&hellip;)</p>
+<p><strong>Mise à jour 2</strong> : comme Klaus l'a signalé dans un commentaire sur la version anglaise de mon blog, la classe <code>ImageBehavior</code> ne gérait pas certains attributs importants des frames : la méthode de destruction (est-ce qu'une frame doit simplement remplacer la frame précédente, ou être combinée avec elle), et la position des frames (Left/Top/Width/Height). J'ai mis à jour le code pour gérer ces attributs correctement. Merci Klaus !</p>
+<p><strong>Mise à jour 3</strong> : encore un petit bug corrigé, la récupération du décodeur à partir d'une URI relative ne fonctionnait pas. Merci à l'anonyme qui l'a signalé!</p>
+<p><strong>Mise à jour 4</strong> : plutôt que de continuer à poster les améliorations sur ce billet, j'ai finalement créé un <a href="https://github.com/XamlAnimatedGif/WpfAnimatedGif/">projet sur <strike>CodePlex</strike> GitHub</a> où cette classe sera maintenue. Vous pouvez aussi l'installer avec NuGet, l'id du package est <a href="https://nuget.org/packages/WpfAnimatedGif">WpfAnimatedGif</a>. Merci à Diego Mijelshon pour la suggestion!</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/anim%C3%A9/" rel="tag">animé</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/gif/" rel="tag">gif</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/wpf/" rel="tag">WPF</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">À propos Thomas Levesque</span>
+	</div>
+	<div class="authorbox__description">
+		Thomas Levesque est un développeur français vivant à Paris.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2011/03/21/wpf-comment-faire-un-binding-dans-les-cas-o-on-nhrite-pas-du-datacontext/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Précédent</span>
+			<p class="pager__title">[WPF] Comment faire un binding dans les cas où on n’hérite pas du DataContext</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2011/08/30/rcursion-terminale-en-c/" rel="next">
+			<span class="pager__subtitle">Suivant&thinsp;»</span>
+			<p class="pager__title">Récursion terminale en C#</p>
+		</a>
+	</div>
+</nav>
+
+<div>
+    <script src="https://utteranc.es/client.js"
+            repo="thomaslevesque/blog-fr"
+            issue-term="pathname"
+            label="post-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+	</form>
+</div>
+<div class="widget-social widget">
+    <h4 class="widget-social__title widget__title">Social</h4>
+    <div class="widget-social__content widget__content">
+        <a class="widget-social__link-custom widget__link" title="GitHub" rel="noopener noreferrer" href="https://github.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+        </a>
+        <a class="widget-social__link-custom widget__link" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+        </a>
+    </div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Articles récents</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2018/04/17/fin-de-mon-blog-en-francais/">Fin de mon blog en français</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/">Comprendre le pipeline de middleware d&#39;ASP.NET Core</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/">Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/">Meilleure gestion du timeout avec HttpClient</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/">Transformer les templates T4 pendant la build, et passer des variables du projet</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Mots-clefs</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/c%23/" title="c#">c#</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wpf/" title="wpf">wpf</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xaml/" title="xaml">xaml</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/visual-studio/" title="visual-studio">visual-studio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/async/" title="async">async</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/binding/" title="binding">binding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markup-extension/" title="markup-extension">markup-extension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="mvvm">mvvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linq/" title="linq">linq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tests-unitaires/" title="tests-unitaires">tests-unitaires</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/winrt/" title="winrt">winrt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net/" title=".net">.net</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-4.0/" title=".net-4.0">.net-4.0</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-core/" title=".net-core">.net-core</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/asynchrone/" title="asynchrone">asynchrone</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Thomas Levesque.
+			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

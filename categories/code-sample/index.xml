@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code sample on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/categories/code-sample/</link>
+    <description>Recent content in Code sample on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 07 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/categories/code-sample/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Support de l’asynchronisme et de l’annulation pour les wait handles</title>
+      <link>https://thomaslevesque.fr/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/</guid>
+      <description>Le .NET Framework fournit un certain nombre de primitives de synchronisation bas niveau. Les plus couramment utilisées sont appelées “wait handles”, et héritent de la classe WaitHandle : Semaphore, Mutex, AutoResetEvent et ManualResetEvent. Ces classes existent depuis .NET 2.0 (voire 1.1 pour certaines), mais elles n’ont pas beaucoup évolué depuis, ce qui fait qu’elles ne supportent pas des fonctionnalités introduites plus tard et devenues très courantes. En particulier, elles ne supportent pas l’attente asynchrone, ni l’annulation de l’attente.</description>
+    </item>
+    
+    <item>
+      <title>Gérer les problèmes de timeout lors de l’upload de gros fichiers avec HttpWebRequest</title>
+      <link>https://thomaslevesque.fr/2014/01/14/gerer-problemes-timeout-upload-gros-fichiers-httpwebrequest/</link>
+      <pubDate>Tue, 14 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/01/14/gerer-problemes-timeout-upload-gros-fichiers-httpwebrequest/</guid>
+      <description>Si vous avez déjà eu à uploader de gros volumes de données en HTTP, vous avez probablement rencontré des problèmes de timeout. La valeur par défault de Timeout pour HttpWebRequest est de 100 secondes, ce qui signifie que s’il s’écoule plus que cette durée entre le moment où vous envoyez les en-têtes de la requête et celui où vous recevez les en-têtes de la réponse, votre requête échouera. Bien sûr, si vous uploadez un gros fichier, vous devez augmenter ce timeout… mais à quelle valeur ?</description>
+    </item>
+    
+    <item>
+      <title>Une façon simple et sécurisée de stocker un mot de passe à l&#39;aide de Data Protection API</title>
+      <link>https://thomaslevesque.fr/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/</link>
+      <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/</guid>
+      <description>Si vous écrivez une application cliente qui a besoin de stocker des identifiants d&#39;utilisateur, ce n&#39;est généralement pas une bonne idée de stocker le mot de passe en clair, pour des raisons évidentes de sécurité. Il faut donc le chiffrer, mais dès qu&#39;on commence à envisager le chiffrement, cela soulève toutes sortes de problèmes&amp;hellip; Quel algorithme utiliser ? Quelle clé de chiffrement ? Clairement on va avoir besoin de cette clé pour déchiffrer le mot de passe, il faut donc qu&#39;elle se trouve dans l&#39;exécutable ou dans la configuration.</description>
+    </item>
+    
+    <item>
+      <title>Récursion terminale en C#</title>
+      <link>https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/</link>
+      <pubDate>Tue, 30 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/</guid>
+      <description>&lt;p&gt;Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (&lt;code&gt;StackOverflowException&lt;/code&gt; en .NET).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[Entity Framework] Utiliser Include avec des expressions lambda</title>
+      <link>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</guid>
+      <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&#39;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&#39;accès à ces entités :
+var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where ord.Date &amp;gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Une grille simplifiée utilisant des attributs XAML</title>
+      <link>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</link>
+      <pubDate>Tue, 20 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</guid>
+      <description>Le composant Grid est l&#39;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&#39;utiliser, bien que simple à écrire, est relativement lourd :
+&amp;lt;Grid&amp;gt; &amp;lt;Grid.RowDefinitions&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt; &amp;lt;/Grid.RowDefinitions&amp;gt; &amp;lt;Grid.ColumnDefinitions&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt; &amp;lt;/Grid.ColumnDefinitions&amp;gt; &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;0&amp;#34; /&amp;gt; &amp;lt;TextBox Text=&amp;#34;Hello world&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;1&amp;#34;/&amp;gt; &amp;lt;Rectangle Fill=&amp;#34;Black&amp;#34; Grid.Row=&amp;#34;1&amp;#34; Grid.ColumnSpan=&amp;#34;2&amp;#34;/&amp;gt; &amp;lt;Label Content=&amp;#34;Image&amp;#34; Grid.</description>
+    </item>
+    
+    <item>
+      <title>[C#] Une implémentation du pattern WeakEvent</title>
+      <link>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</link>
+      <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</guid>
+      <description>Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&#39;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&#39;exécution de l&#39;application.</description>
+    </item>
+    
+    <item>
+      <title>Automatiser la vérification des null avec les expressions Linq</title>
+      <link>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</link>
+      <pubDate>Sat, 20 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
+      <description>Le problème Je suis sûr qu&#39;il vous est déjà arrivé d&#39;écrire ce genre de code :
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&#39;il n&#39;est pas nul, ce qui peut vite s&#39;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&#39;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+    </item>
+    
+    <item>
+      <title>[C# 4.0] Implémenter un objet dynamique personnalisé</title>
+      <link>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</link>
+      <pubDate>Tue, 06 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</guid>
+      <description>Comme vous le savez sans doute déjà si vous vous intéressez à l’actualité de .NET, la future version 4.0 de C#, actuellement en beta, introduit un nouveau type appelé dynamic. Celui ci permet d’accéder à des propriétés ou méthodes d’un objet qui ne sont pas connus statiquement (à la compilation). Ils seront résolus dynamiquement à l’exécution grâce au DLR (Dynamic Language Runtime), qui est l’une des grandes nouveautés de .NET 4.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Markup extensions et templates</title>
+      <link>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</link>
+      <pubDate>Sat, 22 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</guid>
+      <description>Note : Ce billet est la suite de celui sur une markup extension qui met à jour sa cible, et réutilise le même code de départ. Vous avez peut-être remarqué que l&#39;utilisation d&#39;une markup extension personnalisée dans un template donnait parfois des résultats inattendus&amp;hellip; Nous allons voir dans ce billet comment faire une markup extension qui se comporte correctement dans un template. Illustration du problème Reprenons l&#39;exemple du précédent billet : une markup extension qui renvoie l&#39;état de la connectivité réseau, et met à jour la propriété cible quand le réseau est connecté ou déconnecté :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Tri automatique d’un GridView : suite</title>
+      <link>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</link>
+      <pubDate>Tue, 04 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</guid>
+      <description>Il y a quelques mois, j&#39;avais publié un billet où j&#39;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&#39;avais laissé un point ouvert : l&#39;ajout d&#39;un symbole dans l&#39;en-tête de colonne pour indiquer visuellement la direction du tri. C&#39;est maintenant chose faite ! Pour arriver à ce résultat, j&#39;ai utilisé un Adorner : c&#39;est un composant qui permet de dessiner &amp;ldquo;par-dessus&amp;rdquo; un élément graphique existant, sur une couche de dessin indépendante.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Une markup extension qui met à jour sa cible</title>
+      <link>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</link>
+      <pubDate>Tue, 28 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</guid>
+      <description>Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&amp;hellip; Cependant, celles-ci ont une limitation qui peut s&#39;avérer assez gênante : elles ne sont évaluées qu&#39;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&amp;hellip; Cela peut être utile dans différents cas, notamment :
+  si la valeur de la markup extension peut changer en réponse à un évènement</description>
+    </item>
+    
+    <item>
+      <title>[C#] Relation parent/enfant et sérialisation XML</title>
+      <link>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</guid>
+      <description>Me revoilà avec un peu de retard, j&#39;ai un peu manqué de temps libre ces dernières semaines&amp;hellip; Voilà donc un petit post pour présenter une idée qui m&#39;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&#39;est de conception C# qu&#39;il s&#39;agit ! Le problème Il est assez courant, dans un programme, d&#39;avoir un objet parent qui possède une collection d&#39;enfants ayant une référence vers leur parent.</description>
+    </item>
+    
+    <item>
+      <title>[Windows Forms] Glisser-déplacer automatique de contrôles (DragMove)</title>
+      <link>https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/</link>
+      <pubDate>Mon, 27 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/</guid>
+      <description>Je ressors de mes tiroirs un code que j&#39;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&amp;hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&#39;utilise comme ceci :
+private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&#39;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&#39;à ce que le bouton soit relâché.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding sur une collection asynchrone</title>
+      <link>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</link>
+      <pubDate>Fri, 17 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</guid>
+      <description>Comme je l&#39;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&#39;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&#39;exemple d&#39;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
+private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;(); public ObservableCollection&amp;lt;string&amp;gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&amp;#34;Strings&amp;#34;); } } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&#39;exception citée plus haut.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding asynchrone sur une propriété du ViewModel</title>
+      <link>https://thomaslevesque.fr/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/</link>
+      <pubDate>Wed, 01 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/</guid>
+      <description>Mise à jour : Comme l&#39;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&amp;hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&amp;hellip; J&#39;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&#39;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Tri automatique d&#39;un GridView lors du clic sur une colonne</title>
+      <link>https://thomaslevesque.fr/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/</link>
+      <pubDate>Fri, 27 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/</guid>
+      <description>Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&amp;hellip; Avec le DataGridView de Windows Forms, c&#39;était &amp;ldquo;automagique&amp;rdquo; : quand l&#39;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&amp;hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&#39;évènement Click du GridViewColumnHeader.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Utiliser les InputBindings avec le pattern MVVM</title>
+      <link>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</link>
+      <pubDate>Tue, 17 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
+      <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
+&amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+ La propriété Command n&#39;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&#39;arbre logique ou visuel du contrôle, ils n&#39;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&#39;écrire du code-behind.</description>
+    </item>
+    
+    <item>
+      <title>Créer un lecteur RSS en 5 minutes</title>
+      <link>https://thomaslevesque.fr/2009/02/13/creer-un-lecteur-rss-en-5-minutes/</link>
+      <pubDate>Fri, 13 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/02/13/creer-un-lecteur-rss-en-5-minutes/</guid>
+      <description>Aujourd&#39;hui, je suis tombé par hasard sur une petite classe bien pratique : SyndicationFeed. Cette classe, apparue dans le framework 3.5, permet de manipuler des flux de syndication (comme RSS 2.0 ou Atom 1.0) avec un minimum de code. On peut l&#39;utiliser pour créer et diffuser des flux, ou pour lire des flux existants. Par exemple, voilà comment récupérer le fil d&#39;actualité de Google News et afficher son titre, son lien d&#39;origine et les titres de ses articles :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)</title>
+      <link>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</link>
+      <pubDate>Thu, 05 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</guid>
+      <description>Hum&amp;hellip; 2 mois depuis mon précédent (et premier) post&amp;hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
+Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&amp;hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&amp;hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding sur les paramètres d’application à l’aide d’une Markup extension</title>
+      <link>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</guid>
+      <description>Voilà, c’est fait, j&#39;ai créé mon blog sur .NET&amp;hellip; j&#39;ai mis le temps, mais j&#39;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&#39;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&#39;auto-former sur les dernières nouveautés du framework.</description>
+    </item>
+    
+  </channel>
+</rss>

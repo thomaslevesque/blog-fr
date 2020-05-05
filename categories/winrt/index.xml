@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WinRT on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/categories/winrt/</link>
+    <description>Recent content in WinRT on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 22 Nov 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/categories/winrt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WinRT] Sélectionner un élément de liste lors d’un appui long</title>
+      <link>https://thomaslevesque.fr/2013/11/22/winrt-selectionner-un-element-de-liste-lors-d-un-appui-long/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/22/winrt-selectionner-un-element-de-liste-lors-d-un-appui-long/</guid>
+      <description>Comme vous le savez probablement, la méthode standard pour sélectionner ou déselectionner un élément dans un contrôle de liste WinRT est de le faire glisser légèrement vers le haut ou vers le bas. Même si j’aime bien ce geste, il n’est pas très intuitif pour les utilisateurs qui ne sont pas habitués à Modern UI. Et ça devient encore plus déroutant, car ma déclaration précédente n’est pas tout à fait exacte : en fait, il faut faire glisser l’élément perpendiculairement à la direction de défilement de la liste.</description>
+    </item>
+    
+    <item>
+      <title>Helper fortement typé pour les notifications toast</title>
+      <link>https://thomaslevesque.fr/2013/11/10/helper-fortement-type-pour-les-notifications-toast/</link>
+      <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/10/helper-fortement-type-pour-les-notifications-toast/</guid>
+      <description>Windows 8 fournit une API pour afficher des notifications toast. Malheureusement, elle est très peu pratique à utiliser : pour définir le contenu d’une notification, il faut utiliser un modèle prédéfini qui est fourni sous la forme d’un XmlDocument, et fixer la valeur de chaque champ dans le XML. Il n’y a rien dans l’API pour indiquer quels champs sont définis dans le modèle et à quoi ils correspondent, il faut consulter le catalogue de modèles de toast dans la documentation.</description>
+    </item>
+    
+    <item>
+      <title>Afficher des suggestions de résultat dans une SearchBox WinRT : bug concernant l’image</title>
+      <link>https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/</guid>
+      <description>Aujourd’hui je me suis heurté à un bug bizarre qui m’a fait perdre une heure ou deux, donc je me suis dit que ça méritait d’écrire un billet à ce sujet au cas où quelqu’un d’autre rencontrerait le même problème.
+Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scénarios de recherche directement dans une application Windows Store. L’une de ses fonctionnalités est l’affichage de suggestions basées sur la saisie de l’utilisateur.</description>
+    </item>
+    
+    <item>
+      <title>Détecter les changements d’une propriété de dépendance dans WinRT</title>
+      <link>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</link>
+      <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</guid>
+      <description>Aujourd&#39;hui j&#39;aimerais partager une astuce que j&#39;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&#39;est mon premier billet à ce sujet, donc j&#39;espère que je ne vais pas trop me ridiculiser&amp;hellip;
+Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&#39;est pas toujours le cas.</description>
+    </item>
+    
+  </channel>
+</rss>

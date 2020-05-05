@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Automatiser la vérification des null avec les expressions Linq - Blog .NET de Thomas Levesque</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Automatiser la vérification des null avec les expressions Linq" />
+<meta property="og:description" content="Le problème Je suis sûr qu&#39;il vous est déjà arrivé d&#39;écrire ce genre de code :
+X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&#39;il n&#39;est pas nul, ce qui peut vite s&#39;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&#39;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/" />
+<meta property="article:published_time" content="2010-02-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2010-02-20T00:00:00+00:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Automatiser la vérification des null avec les expressions Linq"/>
+<meta name="twitter:description" content="Le problème Je suis sûr qu&#39;il vous est déjà arrivé d&#39;écrire ce genre de code :
+X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&#39;il n&#39;est pas nul, ce qui peut vite s&#39;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&#39;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/social.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-31645024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+				<div class="logo__title">Blog .NET de Thomas Levesque</div>
+				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/a-propos/">
+				
+				<span class="menu__text">À propos</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Automatiser la vérification des null avec les expressions Linq</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-02-20T00:00:00Z">February 20, 2010</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p><strong>Le problème</strong>  Je suis sûr qu'il vous est déjà arrivé d'écrire ce genre de code :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">X x = GetX();
+<span style="color:#66d9ef">string</span> name = <span style="color:#e6db74">&#34;Default&#34;</span>;
+<span style="color:#66d9ef">if</span> (xx != <span style="color:#66d9ef">null</span> &amp;&amp; xx.Foo != <span style="color:#66d9ef">null</span> &amp;&amp; xx.Foo.Bar != <span style="color:#66d9ef">null</span> &amp;&amp; xx.Foo.Bar.Baz != <span style="color:#66d9ef">null</span>)
+{
+    name = xx.Foo.Bar.Baz.Name;
+}
+</code></pre></div><p>On veut juste obtenir <code>name = xx.Foo.Bar.Baz.Name</code>, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu'il n'est pas nul, ce qui peut vite s'avérer pénible si la propriété voulue est profondément enfouie dans un graphe d'objets&hellip;  <strong>Une solution</strong>  Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions. Il est possible, à partir d'une expression lambda, d'obtenir son arbre syntaxique (ou AST : Abstract Syntax Tree), et de faire toutes sortes de manipulations sur cet arbre. On peut également générer dynamiquement un arbre syntaxique, et le compiler pour obtenir un delegate qu'on pourra ensuite exécuter.  Mais quel rapport avec le problème qui nous intéresse ? Eh bien tout simplement, nous allons pouvoir utiliser les expressions Linq pour analyser l'arbre syntaxique correspondant à l'accès à la propriété <code>xx.Foo.Bar.Baz.Name</code>, et réécrire cet arbre de façon à y ajouter des tests de nullité pour chaque objet intermédiaire.  Nous allons donc créer une méthode d'extension <code>NullSafeEval</code>, qui prendra en premier paramètre une expression lambda définissant comment accéder à la propriété voulue, et en deuxième paramètre la valeur par défaut à renvoyer si un objet nul est rencontré en cours de route.  Cette méthode va transformer l'expression <code>xx.Foo.Bar.Baz.Name</code> en ceci :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    (xx == <span style="color:#66d9ef">null</span>)
+    ? defaultValue
+    : (xx.Foo == <span style="color:#66d9ef">null</span>)
+      ? defaultValue
+      : (xx.Foo.Bar == <span style="color:#66d9ef">null</span>)
+        ? defaultValue
+        : (xx.Foo.Bar.Baz == <span style="color:#66d9ef">null</span>)
+          ? defaultValue
+          : xx.Foo.Bar.Baz.Name;
+</code></pre></div><p>Voici l'implémentation de la méthode <code>NullSafeEval</code> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> TResult NullSafeEval&lt;TSource, TResult&gt;(<span style="color:#66d9ef">this</span> TSource source, Expression&lt;Func&lt;TSource, TResult&gt;&gt; expression, TResult defaultValue)
+        {
+            <span style="color:#66d9ef">var</span> safeExp = Expression.Lambda&lt;Func&lt;TSource, TResult&gt;&gt;(
+                NullSafeEvalWrapper(expression.Body, Expression.Constant(defaultValue)),
+                expression.Parameters[<span style="color:#ae81ff">0</span>]);
+
+            <span style="color:#66d9ef">var</span> safeDelegate = safeExp.Compile();
+            <span style="color:#66d9ef">return</span> safeDelegate(source);
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> Expression NullSafeEvalWrapper(Expression expr, Expression defaultValue)
+        {
+            Expression obj;
+            Expression safe = expr;
+
+            <span style="color:#66d9ef">while</span> (!IsNullSafe(expr, <span style="color:#66d9ef">out</span> obj))
+            {
+                <span style="color:#66d9ef">var</span> isNull = Expression.Equal(obj, Expression.Constant(<span style="color:#66d9ef">null</span>));
+
+                safe =
+                    Expression.Condition
+                    (
+                        isNull,
+                        defaultValue,
+                        safe
+                    );
+
+                expr = obj;
+            }
+            <span style="color:#66d9ef">return</span> safe;
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> IsNullSafe(Expression expr, <span style="color:#66d9ef">out</span> Expression nullableObject)
+        {
+            nullableObject = <span style="color:#66d9ef">null</span>;
+
+            <span style="color:#66d9ef">if</span> (expr <span style="color:#66d9ef">is</span> MemberExpression || expr <span style="color:#66d9ef">is</span> MethodCallExpression)
+            {
+                Expression obj;
+                MemberExpression memberExpr = expr <span style="color:#66d9ef">as</span> MemberExpression;
+                MethodCallExpression callExpr = expr <span style="color:#66d9ef">as</span> MethodCallExpression;
+
+                <span style="color:#66d9ef">if</span> (memberExpr != <span style="color:#66d9ef">null</span>)
+                {
+                    <span style="color:#75715e">// Static fields don&#39;t require an instance
+</span><span style="color:#75715e"></span>                    FieldInfo field = memberExpr.Member <span style="color:#66d9ef">as</span> FieldInfo;
+                    <span style="color:#66d9ef">if</span> (field != <span style="color:#66d9ef">null</span> &amp;&amp; field.IsStatic)
+                        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+
+                    <span style="color:#75715e">// Static properties don&#39;t require an instance
+</span><span style="color:#75715e"></span>                    PropertyInfo property = memberExpr.Member <span style="color:#66d9ef">as</span> PropertyInfo;
+                    <span style="color:#66d9ef">if</span> (property != <span style="color:#66d9ef">null</span>)
+                    {
+                        MethodInfo getter = property.GetGetMethod();
+                        <span style="color:#66d9ef">if</span> (getter != <span style="color:#66d9ef">null</span> &amp;&amp; getter.IsStatic)
+                            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+                    }
+                    obj = memberExpr.Expression;
+                }
+                <span style="color:#66d9ef">else</span>
+                {
+                    <span style="color:#75715e">// Static methods don&#39;t require an instance
+</span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">if</span> (callExpr.Method.IsStatic)
+                        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+
+                    obj = callExpr.Object;
+                }
+
+                <span style="color:#75715e">// Value types can&#39;t be null
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (obj.Type.IsValueType)
+                    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+
+                <span style="color:#75715e">// Instance member access or instance method call is not safe
+</span><span style="color:#75715e"></span>                nullableObject = obj;
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+            }
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+        }
+</code></pre></div><p>En résumé, ce code remonte l'arbre de l'expression lambda, en encadrant chaque appel à une propriété ou méthode d'instance par une expression conditionnelle <em>(condition ? valeur si vrai : valeur si faux)</em>.  Et voilà comment on utilise cette méthode :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">string</span> name = xx.NullSafeEval(x =&gt; x.Foo.Bar.Baz.Name, <span style="color:#e6db74">&#34;Default&#34;</span>);
+</code></pre></div><p>C'est tout de même plus clair et plus concis que notre code initial :)  Notez que l'implémentation proposée gère non seulement les accès aux propriétés, mais également les appels de méthode, on pourrait donc avoir quelque chose comme ça :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">string</span> name = xx.NullSafeEval(x =&gt; x.Foo.GetBar(<span style="color:#ae81ff">4</span><span style="color:#ae81ff">2</span>).Baz.Name, <span style="color:#e6db74">&#34;Default&#34;</span>);
+</code></pre></div><p>Les indexeurs ne sont pas encore gérés, mais pourraient être ajoutés sans grande difficulté ; je vous laisse le soin de le faire si vous en avez l'usage ;)  <strong>Limitations</strong>  Même si cette solution peut sembler très intéressante au premier abord, lisez la suite avant de vous précipiter pour intégrer ce code dans des programmes réels&hellip;</p>
+<ul>
+<li>Tout d'abord, le code proposé est avant tout un &ldquo;proof of concept&rdquo; et n'a pas subi de tests approfondis, sa fiabilité peut donc laisser à désirer.</li>
+<li>Ensuite, il ne faut pas perdre de vue que la génération dynamique de code à partir d'une expression est très pénalisante pour les performances&hellip;<br><br>Une piste possible pour limiter ce problème serait de mettre en cache les delegates obtenus pour chaque expression, de façon à ne pas les regénérer inutilement. Malheureusement, il n'y a pas (à ma connaissance) de moyen simple de comparer deux expressions Linq, ce qui complique sensiblement l'implémentation de ce cache&hellip;</li>
+<li>D'autre part, vous aurez peut-être remarqué que les propriétés et méthodes intermédiaires de l'expression sont évaluées plusieurs fois ; non seulement cela peut avoir un impact non négligeable sur les performances, mais surtout, cela peut causer des effets de bord aux conséquences difficilement prévisibles&hellip;<br><br>Une solution possible serait de réécrire l'expression de la façon suivante :<br><br></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Foo foo = <span style="color:#66d9ef">null</span>;
+Bar bar = <span style="color:#66d9ef">null</span>;
+Baz baz = <span style="color:#66d9ef">null</span>;
+<span style="color:#66d9ef">var</span> name =
+    (x == <span style="color:#66d9ef">null</span>)
+    ? defaultValue
+    : ((foo = x.Foo) == <span style="color:#66d9ef">null</span>)
+      ? defaultValue
+      : ((bar = foo.Bar) == <span style="color:#66d9ef">null</span>)
+        ? defaultValue
+        : ((baz = bar.Baz) == <span style="color:#66d9ef">null</span>)
+          ? defaultValue
+          : baz.Name;
+</code></pre></div><p><br><br>Malheureusement, ce n'est pas possible en .NET 3.5 : en effet, cette version ne supporte que des expressions simples, il n'est donc pas possible de déclarer des variables ou de leur affecter une valeur, ni d'écrire plusieurs instructions distinctes. En revanche, en .NET 4.0, le support des expressions Linq a été grandement amélioré, et il est possible de générer ce type de code. J'ai commencé à transformer le code de <code>NullSafeEval</code> pour arriver à ce résultat, mais ça s'avère beaucoup plus complexe que prévu&hellip; je publierai la nouvelle méthode si j'arrive à quelque chose de concluant ;)</p>
+<p>Au final, je ne recommande donc pas d'utiliser cette technique dans du code réel, en tous cas en l'état actuel. Cela donne cependant un aperçu intéressant des possibilités des expressions Linq. Sachez qu'elle sont également utilisées, entre autres :</p>
+<ul>
+<li>Pour la génération de requêtes SQL dans des ORM comme Linq to SQL ou Entity Framework</li>
+<li>Pour construire dynamiquement des prédicats complexes, comme dans la classe <a href="http://www.albahari.com/nutshell/predicatebuilder.aspx">PredicateBuilder</a> de Joseph Albahari</li>
+<li>Pour implementer la &ldquo;réflexion statique&rdquo; dont on a <a href="http://www.google.com/search?tbo=1&amp;tbs=blg:1&amp;q=static+reflection">beaucoup parlé sur les blogs</a> depuis quelques temps</li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/c%23/" rel="tag">C#</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/expression/" rel="tag">expression</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/linq/" rel="tag">linq</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/null-check/" rel="tag">null check</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/proof-of-concept/" rel="tag">proof of concept</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">À propos Thomas Levesque</span>
+	</div>
+	<div class="authorbox__description">
+		Thomas Levesque est un développeur français vivant à Paris.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Précédent</span>
+			<p class="pager__title">[VS 2010] Support du binding dans les InputBindings</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2010/03/18/dvp-net-premiere-version-de-la-librairie-dvp-net/" rel="next">
+			<span class="pager__subtitle">Suivant&thinsp;»</span>
+			<p class="pager__title">[Dvp.NET] Première version de la librairie Dvp.NET !</p>
+		</a>
+	</div>
+</nav>
+
+<div>
+    <script src="https://utteranc.es/client.js"
+            repo="thomaslevesque/blog-fr"
+            issue-term="pathname"
+            label="post-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+	</form>
+</div>
+<div class="widget-social widget">
+    <h4 class="widget-social__title widget__title">Social</h4>
+    <div class="widget-social__content widget__content">
+        <a class="widget-social__link-custom widget__link" title="GitHub" rel="noopener noreferrer" href="https://github.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+        </a>
+        <a class="widget-social__link-custom widget__link" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+        </a>
+    </div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Articles récents</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2018/04/17/fin-de-mon-blog-en-francais/">Fin de mon blog en français</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/">Comprendre le pipeline de middleware d&#39;ASP.NET Core</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/">Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/">Meilleure gestion du timeout avec HttpClient</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/">Transformer les templates T4 pendant la build, et passer des variables du projet</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Mots-clefs</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/c%23/" title="c#">c#</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wpf/" title="wpf">wpf</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xaml/" title="xaml">xaml</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/visual-studio/" title="visual-studio">visual-studio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/async/" title="async">async</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/binding/" title="binding">binding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markup-extension/" title="markup-extension">markup-extension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="mvvm">mvvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linq/" title="linq">linq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tests-unitaires/" title="tests-unitaires">tests-unitaires</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/winrt/" title="winrt">winrt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net/" title=".net">.net</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-4.0/" title=".net-4.0">.net-4.0</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-core/" title=".net-core">.net-core</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/asynchrone/" title="asynchrone">asynchrone</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Thomas Levesque.
+			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

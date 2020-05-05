@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Outils on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/categories/outils/</link>
+    <description>Recent content in Outils on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Wed, 25 Mar 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/categories/outils/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tirer parti des annotations de ReSharper</title>
+      <link>https://thomaslevesque.fr/2015/03/25/tirer-parti-des-annotations-de-resharper/</link>
+      <pubDate>Wed, 25 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/03/25/tirer-parti-des-annotations-de-resharper/</guid>
+      <description>Je ne pense pas qu’il soit vraiment nécessaire de présenter ReSharper (souvent abbrégé R#), mais au cas où vous ne connaitriez pas, il s’agit d’un outil créé par JetBrains qui analyse votre code C# ou VB.NET en temps réel pour vous avertir des bugs potentiels, mauvaises pratiques, non-respect des conventions, etc. Il propose aussi de nombreux refactorings et générateurs de code bien utiles. Je l’utilise depuis quelques années maintenant, et cela a beaucoup amélioré ma productivité et la qualité de mon code.</description>
+    </item>
+    
+    <item>
+      <title>Intégration avec Visual Studio Online &#43; Git dans Team Explorer</title>
+      <link>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</guid>
+      <description>J’ai commencé récemment à utiliser Visual Studio Online pour des projets personnels, et je dois dire que c’est une très bonne plateforme, même si ce serait bien de pouvoir héberger des projets publics et non pas seulement privés. J’apprécie particulièrement l’intégration dans le Team Explorer de Visual Studio pour gérer les tâches et les builds.
+Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle de version : le remote pour VS Online doit s’appeler origin, sinon Team Explorer ne détecte pas qu’il s’agit d’un projet VS Online, et n’affiche pas les pages “Builds” et “Work Items”.</description>
+    </item>
+    
+    <item>
+      <title>Exécuter un outil personnalisé automatiquement quand un fichier est modifié</title>
+      <link>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</link>
+      <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</guid>
+      <description>Aussi loin que je me souvienne, il y a toujours eu dans Visual Studio quelque chose appelé “outils personnalisés” (custom tools), également connus sous le nom de single-file generators. Quand vous appliquez un tel outil à un fichier de votre projet, il génère quelque chose (généralement du code, mais pas forcément) en fonction du contenu du fichier. Par exemple, l’outil personnalisé par défaut pour les fichiers de ressource s’appelle ResXFileCodeGenerator, et génère une classe qui permet d’accéder facilement aux ressources définies dans le fichier resx.</description>
+    </item>
+    
+  </channel>
+</rss>

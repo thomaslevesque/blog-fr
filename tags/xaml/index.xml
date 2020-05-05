@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XAML on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/xaml/</link>
+    <description>Recent content in XAML on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 18 Jan 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/xaml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Une nouvelle bibliothèque pour afficher des GIFs animés dans les applications XAML</title>
+      <link>https://thomaslevesque.fr/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/</guid>
+      <description>Il y a quelques années, j’avais écrit un article qui montrait comment afficher un GIF animé en WPF. L’article incluait le code complet, et avait eu un certain succès, puisque WPF n’avait pas de support intégré pour les GIFs animés. Suite aux problèmes mentionnés dans les commentaires, j’ai apporté de nombreuses modifications au code dans l’article. Au bout d’un certain temps j’ai fini par trouver que ce n’était vraiment pas pratique, j’ai donc publié le code sur CodePlex (il a depuis déménagé vers GitHub) sous le nom WpfAnimatedGif, et j’ai commencé à le maintenir en tant que projet open-source.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey</title>
+      <link>https://thomaslevesque.fr/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/</link>
+      <pubDate>Tue, 11 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/</guid>
+      <description>Un besoin fréquent pour les applications de bureau est de gérer des raccourcis claviers globaux, pour pouvoir réagir aux raccourcis même quand l’application n’a pas le focus. Malheureusement, il n’y aucune fonctionnalité intégrée dans le .NET Framework pour gérer ça.
+Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de librairies open-source qui se proposent d’y remédier (par exemple VirtualInput). La plupart d’entre elles sont basées sur des hooks système globaux, ce qui leur permet d’intercepter toutes les frappes de touche, même celles qui ne vous intéressent pas.</description>
+    </item>
+    
+    <item>
+      <title>Détecter les changements d’une propriété de dépendance dans WinRT</title>
+      <link>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</link>
+      <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</guid>
+      <description>Aujourd&#39;hui j&#39;aimerais partager une astuce que j&#39;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&#39;est mon premier billet à ce sujet, donc j&#39;espère que je ne vais pas trop me ridiculiser&amp;hellip;
+Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&#39;est pas toujours le cas.</description>
+    </item>
+    
+    <item>
+      <title>[WPF 4.5] Abonnement à un évènement à l’aide d’une markup extension</title>
+      <link>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</link>
+      <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</guid>
+      <description>Voilà un certain temps que je n&#39;avais plus parlé des markup extensions&amp;hellip; J&#39;y reviens à l&#39;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&#39;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&#39;ici, il était possible d&#39;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&#39;abonner à un évènement.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Une grille simplifiée utilisant des attributs XAML</title>
+      <link>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</link>
+      <pubDate>Tue, 20 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</guid>
+      <description>Le composant Grid est l&#39;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&#39;utiliser, bien que simple à écrire, est relativement lourd :
+&amp;lt;Grid&amp;gt; &amp;lt;Grid.RowDefinitions&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt; &amp;lt;/Grid.RowDefinitions&amp;gt; &amp;lt;Grid.ColumnDefinitions&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt; &amp;lt;/Grid.ColumnDefinitions&amp;gt; &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;0&amp;#34; /&amp;gt; &amp;lt;TextBox Text=&amp;#34;Hello world&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;1&amp;#34;/&amp;gt; &amp;lt;Rectangle Fill=&amp;#34;Black&amp;#34; Grid.Row=&amp;#34;1&amp;#34; Grid.ColumnSpan=&amp;#34;2&amp;#34;/&amp;gt; &amp;lt;Label Content=&amp;#34;Image&amp;#34; Grid.</description>
+    </item>
+    
+    <item>
+      <title>[VS 2010] Support du binding dans les InputBindings</title>
+      <link>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</guid>
+      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&#39;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&#39;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&#39;ailleurs, les InputBindings n&#39;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&#39;ici, pour lier la commande d&#39;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&#39;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Markup extensions et templates</title>
+      <link>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</link>
+      <pubDate>Sat, 22 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</guid>
+      <description>Note : Ce billet est la suite de celui sur une markup extension qui met à jour sa cible, et réutilise le même code de départ. Vous avez peut-être remarqué que l&#39;utilisation d&#39;une markup extension personnalisée dans un template donnait parfois des résultats inattendus&amp;hellip; Nous allons voir dans ce billet comment faire une markup extension qui se comporte correctement dans un template. Illustration du problème Reprenons l&#39;exemple du précédent billet : une markup extension qui renvoie l&#39;état de la connectivité réseau, et met à jour la propriété cible quand le réseau est connecté ou déconnecté :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Tri automatique d’un GridView : suite</title>
+      <link>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</link>
+      <pubDate>Tue, 04 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</guid>
+      <description>Il y a quelques mois, j&#39;avais publié un billet où j&#39;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&#39;avais laissé un point ouvert : l&#39;ajout d&#39;un symbole dans l&#39;en-tête de colonne pour indiquer visuellement la direction du tri. C&#39;est maintenant chose faite ! Pour arriver à ce résultat, j&#39;ai utilisé un Adorner : c&#39;est un composant qui permet de dessiner &amp;ldquo;par-dessus&amp;rdquo; un élément graphique existant, sur une couche de dessin indépendante.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Une markup extension qui met à jour sa cible</title>
+      <link>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</link>
+      <pubDate>Tue, 28 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</guid>
+      <description>Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&amp;hellip; Cependant, celles-ci ont une limitation qui peut s&#39;avérer assez gênante : elles ne sont évaluées qu&#39;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&amp;hellip; Cela peut être utile dans différents cas, notamment :
+  si la valeur de la markup extension peut changer en réponse à un évènement</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Utiliser les InputBindings avec le pattern MVVM</title>
+      <link>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</link>
+      <pubDate>Tue, 17 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
+      <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
+&amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+ La propriété Command n&#39;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&#39;arbre logique ou visuel du contrôle, ils n&#39;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&#39;écrire du code-behind.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding sur les paramètres d’application à l’aide d’une Markup extension</title>
+      <link>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</guid>
+      <description>Voilà, c’est fait, j&#39;ai créé mon blog sur .NET&amp;hellip; j&#39;ai mis le temps, mais j&#39;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&#39;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&#39;auto-former sur les dernières nouveautés du framework.</description>
+    </item>
+    
+  </channel>
+</rss>

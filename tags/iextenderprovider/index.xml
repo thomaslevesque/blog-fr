@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IExtenderProvider on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/iextenderprovider/</link>
+    <description>Recent content in IExtenderProvider on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 27 Apr 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/iextenderprovider/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Windows Forms] Glisser-déplacer automatique de contrôles (DragMove)</title>
+      <link>https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/</link>
+      <pubDate>Mon, 27 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/</guid>
+      <description>Je ressors de mes tiroirs un code que j&#39;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&amp;hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&#39;utilise comme ceci :
+private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&#39;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&#39;à ce que le bouton soit relâché.</description>
+    </item>
+    
+  </channel>
+</rss>

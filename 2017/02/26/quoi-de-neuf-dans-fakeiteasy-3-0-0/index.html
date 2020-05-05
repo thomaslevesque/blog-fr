@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Quoi de neuf dans FakeItEasy 3.0.0 ? - Blog .NET de Thomas Levesque</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Quoi de neuf dans FakeItEasy 3.0.0 ?" />
+<meta property="og:description" content="FakeItEasy est un framework de mocking populaire pour .NET, avec une API intuitive et facile à utiliser. Depuis environ un an, je suis un des principaux développeurs de FakeItEasy, avec Adam Ralph and Blair Conrad. Ça a été un vrai plaisir de travailler avec eux, et je me suis éclaté !
+Aujourd&#39;hui j&#39;ai le plaisir d&#39;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomaslevesque.fr/2017/02/26/quoi-de-neuf-dans-fakeiteasy-3-0-0/" />
+<meta property="article:published_time" content="2017-02-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-02-26T00:00:00+00:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Quoi de neuf dans FakeItEasy 3.0.0 ?"/>
+<meta name="twitter:description" content="FakeItEasy est un framework de mocking populaire pour .NET, avec une API intuitive et facile à utiliser. Depuis environ un an, je suis un des principaux développeurs de FakeItEasy, avec Adam Ralph and Blair Conrad. Ça a été un vrai plaisir de travailler avec eux, et je me suis éclaté !
+Aujourd&#39;hui j&#39;ai le plaisir d&#39;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/social.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-31645024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+				<div class="logo__title">Blog .NET de Thomas Levesque</div>
+				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/a-propos/">
+				
+				<span class="menu__text">À propos</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Quoi de neuf dans FakeItEasy 3.0.0 ?</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-26T00:00:00Z">February 26, 2017</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p><a href="https://fakeiteasy.github.io/">FakeItEasy</a> est un framework de mocking populaire pour .NET, avec une API intuitive et facile à utiliser. Depuis environ un an, je suis un des principaux développeurs de FakeItEasy, avec <a href="https://github.com/adamralph/">Adam Ralph</a> and <a href="https://github.com/blairconrad/">Blair Conrad</a>. Ça a été un vrai plaisir de travailler avec eux, et je me suis éclaté !</p>
+<p><strong>Aujourd'hui j'ai le plaisir d'annoncer la sortie de <a href="https://github.com/FakeItEasy/FakeItEasy/releases/tag/3.0.0">FakeItEasy 3.0.0</a>, avec le support de .NET Core et quelques fonctionnalités utiles.</strong></p>
+<p>Voyons ce que cette nouvelle version apporte !</p>
+<h2 id="support-de-net-core">Support de .NET Core</h2>
+<p>En plus de .NET 4+, FakeItEasy supporte maintenant .NET Standard 1.6, vous pouvez donc l'utiliser dans vos projets .NET Core.</p>
+<p>Notez qu'en raison de certaines limitations de .NET Standard 1.x, il y a quelques différences mineures avec la version .NET 4 de FakeItEasy :</p>
+<ul>
+<li>Les fakes ne sont pas sérialisables avec la sérialisation binaire</li>
+<li>Les fakes &ldquo;auto-initialisés&rdquo; (self-initializing fakes) ne sont pas supportés (c'est-à-dire <code>fakeService = A.Fake&lt;IService&gt;(options =&gt; options.Wrapping(realService).RecordedBy(recorder))</code>).</li>
+</ul>
+<p>Un immense merci aux personnes qui ont rendu possible le support de .NET Core :</p>
+<ul>
+<li><a href="https://github.com/jonorossi">Jonathon Rossi</a>, qui maintient le projet <a href="https://github.com/castleproject/Core">Castle.Core</a>. FakeItEasy s'appuie beaucoup sur Castle.Core, il n'aurait donc pas été possible de supporter .NET Core sans que Castle.Core le supporte aussi.</li>
+<li><a href="https://github.com/jeremymeng">Jeremy Meng</a> de Microsoft, qui a fait l'essentiel du gros-œuvre pour porter FakeItEasy et Castle.Core vers .NET Core.</li>
+</ul>
+<h2 id="analyseur">Analyseur</h2>
+<h3 id="support-de-vbnet">Support de VB.NET</h3>
+<p>L&rsquo;<a href="http://fakeiteasy.readthedocs.io/en/stable/analyzer/">analyseur FakeItEasy</a>, qui avertit en cas d'usage incorrect de la librairie, supporte maintenant VB.NET en plus de C#.</p>
+<h2 id="nouvelles-fonctionnalits-et-amliorations">Nouvelles fonctionnalités et améliorations</h2>
+<h3 id="syntaxe-amliore-pour-configurer-des-appels-successifs-au-mme-membre">Syntaxe améliorée pour configurer des appels successifs au même membre</h3>
+<p>Quand on configure les appels vers un fake, cela crée des règles qui sont &ldquo;empilées&rdquo; les unes sur les autres, ce qui fait qu'on peut écraser une règle précédemment configurée. Combiné avec la possibilité de spécifier le nombre de fois qu'une règle doit s'appliquer, cela permet de configurer des choses comme &ldquo;renvoie 42 deux fois, puis lance une exception&rdquo;. Jusqu'ici, pour faire cela il fallait configurer les appels dans l'ordre inverse, ce qui n'était pas très intuitif et obligeait à répéter la spécification de l'appel :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">A.CallTo(() =&gt; foo.Bar()).Throws(<span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;oops&#34;</span>));
+A.CallTo(() =&gt; foo.Bar()).Returns(<span style="color:#ae81ff">4</span><span style="color:#ae81ff">2</span>).Twice();
+</code></pre></div><p>FakeItEasy 3.0.0 introduit une nouvelle syntaxe pour rendre cela plus simple :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">A.CallTo(() =&gt; foo.Bar()).Returns(<span style="color:#ae81ff">4</span><span style="color:#ae81ff">2</span>).Twice()
+    .Then.Throws(<span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;oops&#34;</span>));
+</code></pre></div><p>Notez que si vous ne spécifiez pas le nombre de fois que la règle doit s'appliquer, elle s'appliquera indéfiniment jusqu'à ce qu'elle soit écrasée. Par conséquent, on ne peut utiliser <code>Then</code> qu'après <code>Once()</code>, <code>Twice()</code> ou <code>NumberOfTimes(...)</code>.</p>
+<p>C'est un breaking change au niveau de l'API, dans la mesure où la forme des interfaces de configuration a changé, mais à moins que vous ne manipuliez explicitement ces interfaces, vous ne devriez pas être affecté.</p>
+<h3 id="support-automatique-pour-lannulation">Support automatique pour l'annulation</h3>
+<p>Quand une méthode accepte un paramètre de type <code>CancellationToken</code>, elle doit généralement lancer une exception si on lui passe un token qui est déjà annulé. Jusqu'à maintenant, ce comportement devait être configuré manuellement. Dans FakeItEasy 3.0.0, les méthodes d'un fake lanceront une <code>OperationCanceledException</code> par défaut si on les appelle avec un token déjà annulé. Les méthodes asynchrones renverront une tâche annulée.</p>
+<p>Techniquement, c'est également un breaking change, mais la plupart des utilisateurs ne devraient pas être affectés.</p>
+<h3 id="lancer-une-exceptionde-faon-asynchrone">Lancer une exceptionde façon asynchrone</h3>
+<p>FakeItEasy permet de configurer une méthode pour qu'elle lance une exception grâce à la méthode <code>Throws</code>. Mais pour les méthodes asynchrones, il y a en fait deux façons de signaler une erreur :</p>
+<ul>
+<li>lancer une exception de façon synchrone, avant même de renvoyer une tâche (c'est ce que fait <code>Throws</code>)</li>
+<li>renvoyer une tâche échouée (cela devait être fait manuellement jusqu'à maintenant)</li>
+</ul>
+<p>Dans certains cas la différence peut être importante pour l'appelant, s'il n'<code>await</code> pas directement la méthode asynchrone. FakeItEasy introduit une méthode <code>ThrowsAsync</code> pour configurer une méthode pour qu'elle renvoie une tâche échouée :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">A.CallTo(() =&gt; foo.BarAsync()).ThrowsAsync(<span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;foo&#34;</span>));
+</code></pre></div><h3 id="configuration-des-setters-de-proprits-sur-les-fakes-non-naturels">Configuration des setters de propriétés sur les fakes non-naturels</h3>
+<p>Les fakes non-naturels (c'est-à-dire <code>Fake&lt;T&gt;</code>) ont maintenant une méthode <code>CallsToSet</code>, qui fait la même chose que <code>A.CallToSet</code> sur les fakes naturels :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> fake = <span style="color:#66d9ef">new</span> Fake&lt;IFoo&gt;();
+fake.CallsToSet(foo =&gt; foo.Bar).To(<span style="color:#ae81ff">0</span>).Throws(<span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;The value of Bar can&#39;t be 0&#34;</span>));
+</code></pre></div><h3 id="api-amliore-pour-spcifier-des-attributs-supplmentaires">API améliorée pour spécifier des attributs supplémentaires</h3>
+<p>L'API pour spécifier des attributs supplémentaires sur les fakes n'était pas très pratique; il fallait créer une collection de <code>CustomAttributeBuilder</code>s, qui eux-mêmes devaient être créés en spécifiant le constructeur et les valeurs des arguments. La méthode <code>WithAdditionalAttributes</code> a été supprimée dans FakeItEasy 3.0.0 et remplacée par une méthode plus simple <code>WithAttributes</code> qui accepte des expressions :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> foo = A.Fake&lt;IFoo&gt;(x =&gt; x.WithAttributes(() =&gt; <span style="color:#66d9ef">new</span> FooAttribute()));
+</code></pre></div><p>C'est un breaking change.</p>
+<h2 id="autres-changements-notables">Autres changements notables</h2>
+<h3 id="dprciation-des-fakes-auto-initialiss-self-initializing-fakes">Dépréciation des fakes auto-initialisés (self-initializing fakes)</h3>
+<p>Les fakes &ldquo;auto-initialisés&rdquo; permettent d'enregistrer les appels faits sur un vrai objet, et de faire rejouer les résultats obtenus par un fake (voir <a href="https://martinfowler.com/bliki/SelfInitializingFake.html">l'article de Martin Fowler</a> à ce sujet). Cette fonctionnalité était utilisée par <em>très</em> peu de gens, et n'avait pas vraiment sa place dans la librairie principale de FakeItEasy. Elle est donc dépréciée et sera retirée dans une version future. Nous envisageons de fournir une fonctionnalité équivalente en tant que package distinct.</p>
+<h3 id="corrections-de-bugs">Corrections de bugs</h3>
+<ul>
+<li>Créer plusieurs fakes d'un même type avec des attributs supplémentaires différents génère maintenant plusieurs types de fake distincts. (<a href="https://github.com/FakeItEasy/FakeItEasy/issues/436">#436</a>)</li>
+<li>Tous les appels non-void tentent maintenant de renvoyer un Dummy par défaut, même après avoir été reconfigurés par <code>Invokes</code> ou <code>DoesNothing</code> (<a href="https://github.com/FakeItEasy/FakeItEasy/issues/830">#830</a>)</li>
+</ul>
+<hr>
+<p>La liste complète des changements est disponible dans les <a href="https://github.com/FakeItEasy/FakeItEasy/releases/tag/3.0.0">notes de versions</a>.</p>
+<p>Les autres personnes ayant contribué à cette version sont :</p>
+<ul>
+<li>Artem Zinenko - <a href="https://github.com/ar7z1">@ar7z1</a></li>
+<li>Christian Merat - <a href="https://github.com/cmerat">@cmerat</a></li>
+<li><a href="https://github.com/thunderbird55">@thunderbird55</a></li>
+</ul>
+<p>Un grand merci à eux !</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/fakeiteasy/" rel="tag">FakeItEasy</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mocking/" rel="tag">mocking</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/tests-unitaires/" rel="tag">tests unitaires</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">À propos Thomas Levesque</span>
+	</div>
+	<div class="authorbox__description">
+		Thomas Levesque est un développeur français vivant à Paris.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Précédent</span>
+			<p class="pager__title">Méthodes C# dans les en-têtes de diff git</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/" rel="next">
+			<span class="pager__subtitle">Suivant&thinsp;»</span>
+			<p class="pager__title">Parser du texte facilement en C# avec Sprache</p>
+		</a>
+	</div>
+</nav>
+
+<div>
+    <script src="https://utteranc.es/client.js"
+            repo="thomaslevesque/blog-fr"
+            issue-term="pathname"
+            label="post-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+	</form>
+</div>
+<div class="widget-social widget">
+    <h4 class="widget-social__title widget__title">Social</h4>
+    <div class="widget-social__content widget__content">
+        <a class="widget-social__link-custom widget__link" title="GitHub" rel="noopener noreferrer" href="https://github.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+        </a>
+        <a class="widget-social__link-custom widget__link" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+        </a>
+    </div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Articles récents</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2018/04/17/fin-de-mon-blog-en-francais/">Fin de mon blog en français</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/">Comprendre le pipeline de middleware d&#39;ASP.NET Core</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/">Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/">Meilleure gestion du timeout avec HttpClient</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/">Transformer les templates T4 pendant la build, et passer des variables du projet</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Mots-clefs</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/c%23/" title="c#">c#</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wpf/" title="wpf">wpf</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xaml/" title="xaml">xaml</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/visual-studio/" title="visual-studio">visual-studio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/async/" title="async">async</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/binding/" title="binding">binding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markup-extension/" title="markup-extension">markup-extension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="mvvm">mvvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linq/" title="linq">linq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tests-unitaires/" title="tests-unitaires">tests-unitaires</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/winrt/" title="winrt">winrt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net/" title=".net">.net</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-4.0/" title=".net-4.0">.net-4.0</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-core/" title=".net-core">.net-core</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/asynchrone/" title="asynchrone">asynchrone</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Thomas Levesque.
+			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

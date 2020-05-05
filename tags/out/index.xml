@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>out on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/out/</link>
+    <description>Recent content in out on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 04 Nov 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/out/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Passage de paramètres par référence à une méthode asynchrone</title>
+      <link>https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/</guid>
+      <description>L’asynchronisme dans C# est une fonctionnalité géniale, et je l’ai beaucoup utilisé depuis son apparition. Mais il y a quelques limitations agaçantes; par exemple, on ne peut pas passer des paramètres par référence (ref ou out) à une méthode asynchrone. Il y a de bonnes raisons pour cela; la plus évidente est que si vous passez par référence une variable locale, elle est stockée sur la pile, or la pile ne va pas rester disponible pendant toute l’exécution de la méthode asynchone (seulement jusqu’au premier await), donc l’emplacement de la variable n’existera plus.</description>
+    </item>
+    
+  </channel>
+</rss>

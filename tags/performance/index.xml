@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>performance on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/performance/</link>
+    <description>Recent content in performance on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 01 Apr 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Amélioration des performances de Linq dans .NET Core</title>
+      <link>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</guid>
+      <description>Depuis le temps qu&#39;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&#39;est déjà assez cool en soi, mais ça ne s&#39;arrête pas là : .NET Core apporte aussi beaucoup d&#39;améliorations à la Base Class Library.
+Par exemple, Linq est plus rapide dans .</description>
+    </item>
+    
+    <item>
+      <title>Optimiser ToArray et ToList en fournissant le nombre d’éléments</title>
+      <link>https://thomaslevesque.fr/2014/12/08/optimiser-toarray-et-tolist-en-fournissant-le-nombre-dlments/</link>
+      <pubDate>Mon, 08 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/12/08/optimiser-toarray-et-tolist-en-fournissant-le-nombre-dlments/</guid>
+      <description>Les méthodes d’extension ToArray et ToList sont des moyens pratiques de matérialiser une séquence énumérable (par exemple une requête Linq). Cependant, quelque chose me chiffonne : ces deux méthodes sont très inefficaces si elles ne connaissent pas le nombre d’éléments dans la séquence (ce qui est presque toujours le cas quand on les utilise sur une requête Linq). Concentrons nous sur ToArray pour l’instant (ToList a quelques différences, mais le principe est essentiellement le même).</description>
+    </item>
+    
+  </channel>
+</rss>

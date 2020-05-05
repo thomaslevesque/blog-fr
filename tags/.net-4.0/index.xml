@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.NET 4.0 on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/.net-4.0/</link>
+    <description>Recent content in .NET 4.0 on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 03 Oct 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/.net-4.0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Entity Framework] Utiliser Include avec des expressions lambda</title>
+      <link>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</guid>
+      <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&#39;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&#39;accès à ces entités :
+var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where ord.Date &amp;gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :</description>
+    </item>
+    
+    <item>
+      <title>[VS 2010] Support du binding dans les InputBindings</title>
+      <link>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</guid>
+      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&#39;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&#39;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&#39;ailleurs, les InputBindings n&#39;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&#39;ici, pour lier la commande d&#39;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&#39;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
+    </item>
+    
+    <item>
+      <title>[C# 4.0] Implémenter un objet dynamique personnalisé</title>
+      <link>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</link>
+      <pubDate>Tue, 06 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</guid>
+      <description>Comme vous le savez sans doute déjà si vous vous intéressez à l’actualité de .NET, la future version 4.0 de C#, actuellement en beta, introduit un nouveau type appelé dynamic. Celui ci permet d’accéder à des propriétés ou méthodes d’un objet qui ne sont pas connus statiquement (à la compilation). Ils seront résolus dynamiquement à l’exécution grâce au DLR (Dynamic Language Runtime), qui est l’une des grandes nouveautés de .NET 4.</description>
+    </item>
+    
+  </channel>
+</rss>

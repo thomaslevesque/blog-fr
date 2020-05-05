@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Visual Studio 2012 on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/visual-studio-2012/</link>
+    <description>Recent content in Visual Studio 2012 on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 11 Jun 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/visual-studio-2012/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Les autres nouveautés de Visual Studio 2012</title>
+      <link>https://thomaslevesque.fr/2012/06/11/les-autres-nouveautes-de-visual-studio-2012/</link>
+      <pubDate>Mon, 11 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2012/06/11/les-autres-nouveautes-de-visual-studio-2012/</guid>
+      <description>Visual Studio 2012 RC est sorti il y a 10 jours, et bien que je n’ai pas encore eu beaucoup de temps pour jouer avec, j’en suis assez satisfait pour l’instant. Beaucoup de choses ont déjà été dites sur le design, ainsi que sur les nouvelles fonctionnalités les plus importantes, mais il y a aussi beaucoup de petites améliorations moins remarquables qui vont nous faciliter la vie. Comme je n’ai pas vu grand chose d’écrit à ce sujet, je me suis dit qu’il serait utile de faire une petite liste de ce que j’ai remarqué jusqu’ici.</description>
+    </item>
+    
+  </channel>
+</rss>

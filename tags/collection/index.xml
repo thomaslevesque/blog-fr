@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>collection on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/collection/</link>
+    <description>Recent content in collection on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Thu, 11 Jun 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/collection/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[C#] Relation parent/enfant et sérialisation XML</title>
+      <link>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</guid>
+      <description>Me revoilà avec un peu de retard, j&#39;ai un peu manqué de temps libre ces dernières semaines&amp;hellip; Voilà donc un petit post pour présenter une idée qui m&#39;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&#39;est de conception C# qu&#39;il s&#39;agit ! Le problème Il est assez courant, dans un programme, d&#39;avoir un objet parent qui possède une collection d&#39;enfants ayant une référence vers leur parent.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding sur une collection asynchrone</title>
+      <link>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</link>
+      <pubDate>Fri, 17 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</guid>
+      <description>Comme je l&#39;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&#39;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&#39;exemple d&#39;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
+private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;(); public ObservableCollection&amp;lt;string&amp;gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&amp;#34;Strings&amp;#34;); } } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&#39;exception citée plus haut.</description>
+    </item>
+    
+  </channel>
+</rss>

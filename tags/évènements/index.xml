@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>évènements on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/%C3%A9v%C3%A8nements/</link>
+    <description>Recent content in évènements on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 16 Aug 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/%C3%A9v%C3%A8nements/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Weak events en C#, suite</title>
+      <link>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</guid>
+      <description>Il y a quelques années, j’ai blogué à propos d’une implémentation générique du pattern “weak event” en C#. Le but était de pallier les problèmes de fuites mémoire liés aux évènements quand on oublie de s’en désabonner. L’implémentation était basée sur l’utilisation de références faibles sur les abonnés, de façon à éviter d’empêcher qu’ils soient libérés par le garbage collector.
+Ma solution initiale était plus une preuve de concept qu’autre chose, et avait un sérieux problème de performance, dû à l’utilisation de DynamicInvoke à chaque fois que l’évènement était déclenché.</description>
+    </item>
+    
+    <item>
+      <title>[WPF 4.5] Abonnement à un évènement à l’aide d’une markup extension</title>
+      <link>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</link>
+      <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</guid>
+      <description>Voilà un certain temps que je n&#39;avais plus parlé des markup extensions&amp;hellip; J&#39;y reviens à l&#39;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&#39;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&#39;ici, il était possible d&#39;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&#39;abonner à un évènement.</description>
+    </item>
+    
+  </channel>
+</rss>

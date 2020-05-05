@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview - Blog .NET de Thomas Levesque</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview" />
+<meta property="og:description" content="Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/" />
+<meta property="article:published_time" content="2016-04-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-04-17T00:00:00+00:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview"/>
+<meta name="twitter:description" content="Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/social.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-31645024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+				<div class="logo__title">Blog .NET de Thomas Levesque</div>
+				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/a-propos/">
+				
+				<span class="menu__text">À propos</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-04-17T00:00:00Z">April 17, 2016</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les <a href="https://www.visualstudio.com/en-us/news/vs15-preview-vs.aspx">notes de version</a>. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !</p>
+<h3 id="activer-les-nouvelles-fonctionnalits">Activer les nouvelles fonctionnalités</h3>
+<p>Les nouvelles fonctionnalités ne sont pas activées par défaut. On peut les activer individuellement avec l’option <code>/feature:</code> en ligne de commande, mais le plus simple est de toutes les activer en ajoutant <code>__DEMO__</code> et <code>__DEMO_EXPERIMENTAL__</code> dans les symboles de compilation conditionnelle (Propriétés du projet, onglet <em>Build</em>).</p>
+<h3 id="fonctions-locales">Fonctions locales</h3>
+<p>La plupart des langages fonctionnels permettent de déclarer des fonctions dans le corps d’autres fonctions. Il est maintenant possible de faire la même chose en C# 7 ! La syntaxe pour déclarer une méthode dans une autre est sans grande surprise :</p>
+<pre><code>long Factorial(int n)
+{
+    long Fact(int i, long acc)
+    {
+        return i == 0 ? acc : Fact(i - 1, acc * i);
+    }
+    return Fact(n, 1);
+}
+</code></pre><p>Ici, la méthode <code>Fact</code> est locale à la méthode <code>Factorial</code> (au cas où vous vous posez la question, c’est une implémentation avec récursion terminale de la factorielle — ce qui n’a pas beaucoup de sens, vu que C# ne supporte pas la récursion terminale, mais bon, c’est juste un exemple…).</p>
+<p>Bien sûr, il était déjà possible de simuler une fonction locale à l’aide d’une expression lambda, mais cela avait plusieurs inconvénients :</p>
+<ul>
+<li>c’est moins lisible, car il faut déclarer explicitement le type du delegate ;</li>
+<li>c’est plus lent, à cause du coût de création d’une instance de delegate, et de l’appel via le delegate ;</li>
+<li>l’écriture d’expressions lambda récursives est peu intuitive.</li>
+</ul>
+<p>Voici les principaux avantages des fonctions locales :</p>
+<ul>
+<li>quand une méthode est utilisée seulement comme auxiliaire d’une autre méthode, la rendre locale permet de rendre cette relation plus explicite;</li>
+<li>comme les lambdas, une fonction locale peut capturer les variables et paramètres de la méthode qui la contient;</li>
+<li>les fonctions locales supportent la récursion comme n’importe quelle autre méthode</li>
+</ul>
+<p>Pour en savoir plus sur les fonctions locales, allez voir <a href="https://github.com/dotnet/roslyn/issues/2930">sur le dépôt Github de Roslyn</a>.</p>
+<h3 id="valeurs-de-retour-et-variables-locales-par-rfrence">Valeurs de retour et variables locales par référence</h3>
+<p>Il est possible, depuis la première version de C#, de passer des paramètres par référence, ce qui est conceptuellement similaire au fait de passer un pointeur dans un langage comme C. Jusqu’ici, cette possibilité était limitée aux paramètres, mais C# 7 l’étend aux valeurs de retour et aux variables locales. Voici un exemple :</p>
+<pre><code>static void TestRefReturn()
+{
+    var foo = new Foo();
+    Console.WriteLine(foo); // 0, 0
+     
+    foo.GetByRef(&quot;x&quot;) = 42;
+ 
+    ref int y = ref foo.GetByRef(&quot;y&quot;);
+    y = 99;
+ 
+    Console.WriteLine(foo); // 42, 99
+}
+ 
+class Foo
+{
+    private int x;
+    private int y;
+ 
+    public ref int GetByRef(string name)
+    {
+        if (name == &quot;x&quot;)
+            return ref x;
+        if (name == &quot;y&quot;)
+            return ref y;
+        throw new ArgumentException(nameof(name));
+    }
+ 
+    public override string ToString() =&gt; $&quot;{x},{y}&quot;;
+}
+</code></pre><p>Examinons ce code d’un peu plus près.</p>
+<ul>
+<li>A la ligne 6, on dirait que j’affecte une valeur à une méthode. Qu’est-ce que ça peut bien vouloir dire ? Eh bien, la méthode <code>GetByRef</code> renvoie un champ de la classe <code>Foo</code> <em>par référence</em> (notez le type de retour <code>ref int</code>). Si je passe <code>&quot;x&quot;</code> en argument, elle renvoie le champ <code>x</code> par référence (et non une copie de la valeur du champ). Donc si j’affecte une valeur à cela, la valeur du champ <code>x</code> est également modifiée.</li>
+<li>A la ligne 8, au lieu de simplement affecter une valeur directement au champ renvoyé par <code>GetByRef</code>, je passe par une variable locale <code>y</code>. Cette variable partage maintenant le même emplacement mémoire que le champ <code>foo.y</code>. Si j’affecte une valeur à <code>y</code>, cela modifie donc aussi <code>foo.y</code>.</li>
+</ul>
+<p>Notez qu’il est également possible de renvoyer par référence un emplacement dans un tableau :</p>
+<pre><code>private MyBigStruct[] array = new MyBigStruct[10];
+private int current;
+ 
+public ref MyBigStruct GetCurrentItem()
+{
+    return ref array[current];
+}
+</code></pre><p>Il est probable que la plupart des développeurs C# n’auront jamais besoin de cette fonctionnalité; elle est assez bas-niveau, et ce n’est pas le genre de chose dont on a habituellement besoin quand on écrit des applications métier. Cependant, elle est très utile pour du code dont les performances sont critiques : copier une structure de grande taille est assez couteux, donc avoir la possibilité de la renvoyer plutôt par référence peut représenter un gain de performance non négligeable.</p>
+<p>Pour en savoir plus sur cette fonctionnalité, rendez-vous <a href="https://github.com/dotnet/roslyn/issues/118">sur Github</a>.</p>
+<h3 id="pattern-matching">Pattern matching</h3>
+<p>Le pattern matching (parfois traduit en “filtrage par motif”, mais je trouve cette traduction un peu bancale) est une fonctionnalité très courante dans les langages fonctionnels. C# 7 introduit certains aspects du pattern matching, sous forme d’extensions de l’opérateur <code>is</code>. Par exemple, quand on teste le type d’une variable, on peut maintenant introduire une nouvelle variable après le type, de façon à ce que cette variable reçoive la valeur de l’opérande de gauche, mais avec le type indiqué par l’opérande de droite (ce sera plus clair dans un instant avec un exemple).</p>
+<p>Par exemple, si vous devez tester qu’une valeur est de type <code>DateTime</code>, puis faire quelque chose avec ce <code>DateTime</code>, il faut actuellement tester le type, puis convertir la valeur vers ce type :</p>
+<pre><code>object o = GetValue();
+if (o is DateTime)
+{
+    var d = (DateTime)o;
+    // Do something with d
+}
+</code></pre><p>En C# 7, on peut simplifier un peu :</p>
+<pre><code>object o = GetValue();
+if (o is DateTime d)
+{
+    // Do something with d
+}
+</code></pre><p><code>d</code> est maintenant déclarée directement dans l’expression <code>o is DateTime</code>.</p>
+<p>Cette fonctionnalité peut aussi être utilisée dans un block <code>switch</code> :</p>
+<pre><code>object v = GetValue();
+switch (v)
+{
+    case string s:
+        Console.WriteLine($&quot;{v} is a string of length {s.Length}&quot;);
+        break;
+    case int i:
+        Console.WriteLine($&quot;{v} is an {(i % 2 == 0 ? &quot;even&quot; : &quot;odd&quot;)} int&quot;);
+        break;
+    default:
+        Console.WriteLine($&quot;{v} is something else&quot;);
+        break;
+}
+</code></pre><p>Dans ce code, chaque <code>case</code> introduit une variable du type approprié, qu’on peut ensuite utiliser dans le corps du <code>case</code>.</p>
+<p>Pour l’instant, je n’ai couvert que le pattern matching avec un simple test du type, mais il existe aussi des formes plus sophistiquées. Par exemple :</p>
+<pre><code>switch (DateTime.Today)
+{
+    case DateTime(*, 10, 31):
+        Console.WriteLine(&quot;Happy Halloween!&quot;);
+        break;
+    case DateTime(var year, 7, 4) when year &gt; 1776:
+        Console.WriteLine(&quot;Happy Independance Day!&quot;);
+        break;
+    case DateTime { DayOfWeek is DayOfWeek.Saturday }:
+    case DateTime { DayOfWeek is DayOfWeek.Sunday }:
+        Console.WriteLine(&quot;Have a nice week-end!&quot;);
+        break;
+    default:
+        break;
+}
+</code></pre><p>Plutôt cool, non ?</p>
+<p>Le pattern matching existe aussi sous une autre forme (encore expérimentale), avec un nouveau mot-clé <code>match</code> :</p>
+<pre><code>object o = GetValue();
+string description = o match
+    (
+        case string s : $&quot;{o} is a string of length {s.Length}&quot;
+        case int i : $&quot;{o} is an {(i % 2 == 0 ? &quot;even&quot; : &quot;odd&quot;)} int&quot;
+        case * : $&quot;{o} is something else&quot;
+    );
+</code></pre><p>Cela ressemble beaucoup à un <code>switch</code>, sauf que c’est une expression et non une instruction.</p>
+<p>Il y a encore beaucoup à dire sur le pattern matching, mais ça devient un peu long pour un article de blog, je vous invite donc à consulter <a href="https://github.com/dotnet/roslyn/blob/master/docs/features/patterns.md">la spec sur Github</a> pour plus de détails.</p>
+<h3 id="littraux-binaires-et-sparateurs-de-chiffres">Littéraux binaires et séparateurs de chiffres</h3>
+<p>Ces fonctionnalités n’étaient pas explicitement mentionnées dans les notes de version, mais j’ai remarqué qu’elles étaient inclues aussi. Elles étaient initialement prévues pour C# 6, mais avaient finalement été retirées avant la release ; elles sont de retour en C# 7.</p>
+<p>Il est maintenant possible d’écrire des littéraux numériques sous forme binaire, en plus du décimal et de l’hexadécimal :</p>
+<pre><code>int x = 0b11001010;
+</code></pre><p>Pratique pour définir des masques de bits !</p>
+<p>De plus, pour rendre les grands nombres plus lisibles, on peut désormais grouper les chiffres en introduisant des séparateurs. Cela fonctionne avec les littéraux décimaux, hexadécimaux, et binaires :</p>
+<pre><code>int oneBillion = 1_000_000_000;
+int foo = 0x7FFF_1234;
+int bar = 0b1001_0110_1010_0101;
+</code></pre><h3 id="conclusion">Conclusion</h3>
+<p>Visual Studio “15” Preview vous permet donc de commencer à expérimenter avec les nouvelles fonctionnalités de C# 7 ; n’hésitez pas à faire part de vos retours sur Github ! Et gardez à l’esprit que ce n’est qu’une version préliminaire, beaucoup de choses peuvent encore changer avant la version finale.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/c%23/" rel="tag">C#</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/c%23-7/" rel="tag">C# 7</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/visual-studio/" rel="tag">Visual Studio</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">À propos Thomas Levesque</span>
+	</div>
+	<div class="authorbox__description">
+		Thomas Levesque est un développeur français vivant à Paris.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Précédent</span>
+			<p class="pager__title">Injecter automatiquement des fakes dans une test fixture avec FakeItEasy</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2016/04/26/publier-un-package-sur-nuget-org-depuis-appveyor/" rel="next">
+			<span class="pager__subtitle">Suivant&thinsp;»</span>
+			<p class="pager__title">Publier un package sur NuGet.org depuis AppVeyor</p>
+		</a>
+	</div>
+</nav>
+
+<div>
+    <script src="https://utteranc.es/client.js"
+            repo="thomaslevesque/blog-fr"
+            issue-term="pathname"
+            label="post-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+	</form>
+</div>
+<div class="widget-social widget">
+    <h4 class="widget-social__title widget__title">Social</h4>
+    <div class="widget-social__content widget__content">
+        <a class="widget-social__link-custom widget__link" title="GitHub" rel="noopener noreferrer" href="https://github.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+        </a>
+        <a class="widget-social__link-custom widget__link" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+        </a>
+    </div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Articles récents</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2018/04/17/fin-de-mon-blog-en-francais/">Fin de mon blog en français</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/">Comprendre le pipeline de middleware d&#39;ASP.NET Core</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/">Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/">Meilleure gestion du timeout avec HttpClient</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/">Transformer les templates T4 pendant la build, et passer des variables du projet</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Mots-clefs</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/c%23/" title="c#">c#</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wpf/" title="wpf">wpf</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xaml/" title="xaml">xaml</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/visual-studio/" title="visual-studio">visual-studio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/async/" title="async">async</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/binding/" title="binding">binding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markup-extension/" title="markup-extension">markup-extension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="mvvm">mvvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linq/" title="linq">linq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tests-unitaires/" title="tests-unitaires">tests-unitaires</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/winrt/" title="winrt">winrt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net/" title=".net">.net</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-4.0/" title=".net-4.0">.net-4.0</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-core/" title=".net-core">.net-core</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/asynchrone/" title="asynchrone">asynchrone</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Thomas Levesque.
+			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

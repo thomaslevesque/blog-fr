@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.net core on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/.net-core/</link>
+    <description>Recent content in .net core on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 27 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/.net-core/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Comprendre le pipeline de middleware d&#39;ASP.NET Core</title>
+      <link>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</guid>
+      <description>Middlewhat? L&#39;architecture d&#39;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&#39;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&#39;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
+    </item>
+    
+    <item>
+      <title>Propriétés et éléments MSBuild partagés avec Directory.Build.props</title>
+      <link>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</guid>
+      <description>Pour être honnête, je n&#39;ai jamais vraiment aimé MSBuild jusqu&#39;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&#39;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&#39;était mal documenté&amp;hellip; Mais avec l&#39;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.
+MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&#39;est le nom officiel, mais c&#39;est celui que j&#39;utiliserai).</description>
+    </item>
+    
+    <item>
+      <title>Amélioration des performances de Linq dans .NET Core</title>
+      <link>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</guid>
+      <description>Depuis le temps qu&#39;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&#39;est déjà assez cool en soi, mais ça ne s&#39;arrête pas là : .NET Core apporte aussi beaucoup d&#39;améliorations à la Base Class Library.
+Par exemple, Linq est plus rapide dans .</description>
+    </item>
+    
+  </channel>
+</rss>

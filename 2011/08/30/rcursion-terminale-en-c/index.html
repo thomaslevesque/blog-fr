@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Récursion terminale en C# - Blog .NET de Thomas Levesque</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Récursion terminale en C#" />
+<meta property="og:description" content="Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (StackOverflowException en .NET)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/" />
+<meta property="article:published_time" content="2011-08-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2011-08-30T00:00:00+00:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Récursion terminale en C#"/>
+<meta name="twitter:description" content="Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (StackOverflowException en .NET)."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/social.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-31645024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+				<div class="logo__title">Blog .NET de Thomas Levesque</div>
+				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/a-propos/">
+				
+				<span class="menu__text">À propos</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Récursion terminale en C#</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-08-30T00:00:00Z">August 30, 2011</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (<code>StackOverflowException</code> en .NET).</p>
+<h6 id="rcursion-terminale--mais-quest-ce-que-cest-"><strong>Récursion terminale ? Mais qu’est-ce que c’est ?</strong></h6>
+<p>Certains langages, notamment les langages fonctionnels, proposent nativement une optimisation appelée “<a href="http://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale">récursion terminale</a>” (<em>tail recursion</em> en anglais). Le principe est que si l’appel récursif est la dernière instruction d’une fonction, il n’est pas nécessaire de conserver sur la pile le contexte de l’appel courant, puisqu’on aura pas à y revenir : il suffit de remplacer les paramètres par leurs nouvelles valeurs, et de reprendre l’exécution au début de la fonction. La récursion est donc transformée en itération, si bien qu’on ne risque plus de provoquer un débordement de la pile. Le concept étant assez nouveau pour moi, je ne vais pas faire un cours complet sur la récursion terminale… des personnes beaucoup plus compétentes s’en sont déjà chargées ! Je vous suggère de suivre le lien Wikipedia ci-dessus, qui est un bon point de départ pour comprendre cette notion.</p>
+<p>En C#, le compilateur n’implémente malheureusement pas la récursion terminale, ce qui est un peu dommage dans la mesure où <a href="http://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.tailcall.aspx">le CLR le supporte</a>… Pourtant, tout n’est pas perdu ! Certaines personnes ont eu une idée très astucieuse pour résoudre le problème : une technique appelée “trampoline” (parce qu’elle fait “rebondir” la fonction) qui permet de transformer très facilement un algorithme récursif en algorithme itératif. Samuel Jack explique très bien le concept <a href="http://blog.functionalfun.net/2008/04/bouncing-on-your-tail.html">sur son blog</a> (en anglais). Dans la suite de cet article, on verra comment appliquer cette technique à un algorithme simple, en utilisant la classe présentée dans l’article de Samuel Jack ; et pour finir, je présenterai une autre implémentation d’un trampoline, qui me semble un peu plus souple.</p>
+<h6 id="un-cas-dutilisation-en-c"><strong>Un cas d’utilisation en C#</strong></h6>
+<p>Voyons donc comment on peut transformer un algorithme récursif simple, comme le calcul de la factorielle d’un nombre, en un algorithme qui utilise la récursion terminale (soit dit en passant, on peut calculer la factorielle beaucoup plus efficacement avec un algorithme non récursif, mais pour l’exemple on fera comme si on ne le savait pas…). L’algorithme qui découle directement de la définition est le suivant :</p>
+<pre><code>BigInteger Factorial(int n)
+{
+    if (n &lt; 2)
+        return 1;
+    return n * Factorial(n - 1);
+}
+</code></pre><p>(Notez l’utilisation de <code>BigInteger</code> : si on veut pousser la récursion assez loin pour observer les effets de la récursion terminale, le résultat dépassera largement la capacité d’un <code>long</code>)</p>
+<p>Si on appelle cette méthode avec une grande valeur (aux alentours de 20000 sur ma machine), on obtient l’exception à laquelle on pouvait s’attendre : <code>StackOverflowException</code>. On a “empilé” tellement d’appels imbriqués à la méthode <code>Factorial</code> qu’on a épuisé la capacité de la pile. On va donc essayer de modifier le code pour pouvoir utiliser la récursion terminale.</p>
+<p>Comme mentionné plus haut, il faut que la dernière instruction de la méthode soit l’appel récursif à elle-même. Cela <em>semble</em> être le cas ici… mais en fait non : la dernière opération exécutée sera la multiplication, qui ne peut pas être effectuée avant de connaitre le résultat de <code>Factorial(n-1)</code>. Il faut donc repenser un peu la méthode, pour qu’elle se termine par un appel à elle-même avec des paramètres différents. Pour arriver à ce résultat, on va ajouter un paramètre <code>product</code>, qui va jouer le rôle d’accumulateur :</p>
+<pre><code>BigInteger Factorial(int n, BigInteger product)
+{
+    if (n &lt; 2)
+        return product;
+    return Factorial(n - 1, n * product);
+}
+</code></pre><p>Pour le premier appel, il suffira de passer 1 comme valeur initiale de l’accumulateur.</p>
+<p>On a donc maintenant une méthode qui remplit les critères pour la récursion terminale : l’appel récursif à <code>Factorial</code> est bien la dernière opération effectuée par la méthode. Une fois qu’on a mis l’algorithme sous cette forme, la transformation finale pour appliquer la récursion terminale à l’aide du trampoline de Samuel Jack est triviale :</p>
+<pre><code>Bounce&lt;int, BigInteger, BigInteger&gt; Factorial(int n, BigInteger product)
+{
+    if (n &lt; 2)
+        return Trampoline.ReturnResult&lt;int, BigInteger, BigInteger&gt;(product);
+    return Trampoline.Recurse&lt;int, BigInteger, BigInteger&gt;(n - 1, n * product);
+}
+</code></pre><ul>
+<li>Le renvoi de la valeur finale est remplacé par un appel à <code>Trampoline.ReturnResult</code>, qui indique au trampoline que le calcul est terminé avec le résultat indiqué</li>
+<li>L’appel récursif à <code>Factorial</code> est remplacé par un appel à <code>Trampoline.Recurse</code>, qui indique les paramètres à utiliser pour le prochain appel de la méthode</li>
+</ul>
+<p>Cette méthode n’est pas directement utilisable, puisqu’elle renvoie un objet <code>Bounce</code> dont on ne sait pas trop quoi faire… Pour l’exécuter, on utilise la méthode <code>Trampoline.MakeTrampoline</code>, qui renvoie une nouvelle fonction qui applique la récursion terminale. On peut ensuite exécuter cette fonction directement :</p>
+<pre><code>    Func&lt;int, BigInteger, BigInteger&gt; fact = Trampoline.MakeTrampoline&lt;int, BigInteger, BigInteger&gt;(Factorial);
+    BigInteger result = fact(50000, 1);
+</code></pre><p>On peut maintenant calculer la factorielle d’un grand nombre sans risque de “faire sauter la pile”… bien sûr, ça reste assez lent : comme mentionné plus haut, ce n’est pas du tout la façon optimale de calculer une factorielle, et de plus les opérations avec <code>BigInteger</code> sont assez lourdes.</p>
+<h6 id="peut-on-faire-mieux-"><strong>Peut-on faire mieux ?</strong></h6>
+<p>Vous vous doutez bien que si je pose la question, c’est que la réponse est oui… L’implémentation du trampoline présentée ci-dessus remplit parfaitement son rôle, mais personnellement je trouve qu’elle manque de souplesse :</p>
+<ul>
+<li>Elle ne fonctionne qu’avec 2 paramètres (on peut bien sûr l’adapter pour un nombre différent de paramètres, mais il faut à chaque fois créer de nouvelles méthodes avec les signatures adéquates)</li>
+<li>L’écriture est assez lourde : il y a 3 arguments de type, qu’il faut préciser à chaque fois parce que l’inférence de type n’a pas tous les éléments nécessaires pour les déterminer automatiquement</li>
+<li>Le fait que <code>MakeTrampoline</code> renvoie une nouvelle fonction ne me semble pas très utile, il serait plus intuitif d’avoir une méthode <code>Execute</code> qui exécute directement la fonction</li>
+</ul>
+<p>Et pour finir, je trouve que la terminologie, bien qu’amusante, n’est pas très explicite…</p>
+<p>J’ai donc cherché à améliorer ce système pour le rendre plus pratique, en utilisant des méthodes anonymes sous forme d’expressions lambda. Il n’y a plus qu’un seul argument de type (le type de retour), et on passe les paramètres par closure dans une expression lambda. Voilà ce que donne la nouvelle version de la méthode <code>Factorial</code> avec mon implémentation :</p>
+<pre><code>RecursionResult&lt;BigInteger&gt; Factorial(int n, BigInteger product)
+{
+    if (n &lt; 2)
+        return TailRecursion.Return(product);
+    return TailRecursion.Next(() =&gt; Factorial(n - 1, n * product));
+}
+</code></pre><p>Et on l’utilise comme ceci :</p>
+<pre><code>BigInteger result = TailRecursion.Execute(() =&gt; Factorial(50000, 1));
+</code></pre><p>C’est plus souple, plus concis, et plus lisible… enfin il me semble en tous cas<img src="wlemoticon-smile.png" alt="Sourire">. Le revers de la médaille, c’est que performances sont légèrement moins bonnes (environ 20% plus long pour calculer la factorielle de 50000), probablement à cause du delegate qui est créé à chaque niveau de récursion.</p>
+<p>Voici le code complet de la classe <code>TailRecursion</code> :</p>
+<pre><code>public static class TailRecursion
+{
+    public static T Execute&lt;T&gt;(Func&lt;RecursionResult&lt;T&gt;&gt; func)
+    {
+        do
+        {
+            var recursionResult = func();
+            if (recursionResult.IsFinalResult)
+                return recursionResult.Result;
+            func = recursionResult.NextStep;
+        } while (true);
+    }
+    
+    public static RecursionResult&lt;T&gt; Return&lt;T&gt;(T result)
+    {
+        return new RecursionResult&lt;T&gt;(true, result, null);
+    }
+    
+    public static RecursionResult&lt;T&gt; Next&lt;T&gt;(Func&lt;RecursionResult&lt;T&gt;&gt; nextStep)
+    {
+        return new RecursionResult&lt;T&gt;(false, default(T), nextStep);
+    }
+
+}
+
+public class RecursionResult&lt;T&gt;
+{
+    private readonly bool _isFinalResult;
+    private readonly T _result;
+    private readonly Func&lt;RecursionResult&lt;T&gt;&gt; _nextStep;
+    internal RecursionResult(bool isFinalResult, T result, Func&lt;RecursionResult&lt;T&gt;&gt; nextStep)
+    {
+        _isFinalResult = isFinalResult;
+        _result = result;
+        _nextStep = nextStep;
+    }
+    
+    public bool IsFinalResult { get { return _isFinalResult; } }
+    public T Result { get { return _result; } }
+    public Func&lt;RecursionResult&lt;T&gt;&gt; NextStep { get { return _nextStep; } }
+}
+</code></pre><h6 id="peut-on-aller-plus-loin-"><strong>Peut-on aller plus loin ?</strong></h6>
+<p>Certainement… mais ça devient de la haute voltige ! Comme je le disais plus haut, le CLR supporte la récursion terminale, via l’instruction IL <code>tail</code>. L’idéal serait que le compilateur C# sache générer cette instruction quand une méthode est éligible à la récursion terminale, mais ce n’est malheureusement pas le cas, et je ne pense pas qu’il faille s’attendre à ce que ce soit géré dans une prochaine version, car la demande pour cette fonctionnalité semble assez faible.</p>
+<p>En attendant, on peut tricher un peu, en aidant le compilateur à faire son travail : le .NET framework fournit des outils nommés <a href="http://msdn.microsoft.com/en-us/library/f7dy01k1.aspx">ildasm</a> (désassembleur IL) et <a href="http://msdn.microsoft.com/en-us/library/496e4ekx.aspx">ilasm</a> (assembleur IL), avec lesquels on peut s’amuser un peu… Reprenons notre implémentation récursive classique qui n’utilise pas encore la récursion terminale :</p>
+<pre><code>	static BigInteger Factorial(int n, BigInteger product){	if (n &lt; 2)		return product;	return Factorial(n - 1, n * product);}
+</code></pre><p>Si on compile ce code, et qu’on le désassemble avec idlasm, on obtient le code IL suivant :</p>
+<pre><code>  .method private hidebysig static valuetype [System.Numerics]System.Numerics.BigInteger 
+          Factorial(int32 n,
+                    valuetype [System.Numerics]System.Numerics.BigInteger product) cil managed
+  {
+    // Code size       41 (0x29)
+    .maxstack  3
+    .locals init (valuetype [System.Numerics]System.Numerics.BigInteger V_0,
+             bool V_1)
+    IL_0000:  nop
+    IL_0001:  ldarg.0
+    IL_0002:  ldc.i4.2
+    IL_0003:  clt
+    IL_0005:  ldc.i4.0
+    IL_0006:  ceq
+    IL_0008:  stloc.1
+    IL_0009:  ldloc.1
+    IL_000a:  brtrue.s   IL_0010
+
+    IL_000c:  ldarg.1
+    IL_000d:  stloc.0
+    IL_000e:  br.s       IL_0027
+
+    IL_0010:  ldarg.0
+    IL_0011:  ldc.i4.1
+    IL_0012:  sub
+    IL_0013:  ldarg.0
+    IL_0014:  call       valuetype [System.Numerics]System.Numerics.BigInteger [System.Numerics]System.Numerics.BigInteger::op_Implicit(int32)
+    IL_0019:  ldarg.1
+    IL_001a:  call       valuetype [System.Numerics]System.Numerics.BigInteger [System.Numerics]System.Numerics.BigInteger::op_Multiply(valuetype [System.Numerics]System.Numerics.BigInteger,
+                                                                                                                                        valuetype [System.Numerics]System.Numerics.BigInteger)
+    IL_001f:  call       valuetype [System.Numerics]System.Numerics.BigInteger Program::Factorial(int32,
+                                                                                                  valuetype [System.Numerics]System.Numerics.BigInteger)
+    IL_0024:  stloc.0
+    IL_0025:  br.s       IL_0027
+
+    IL_0027:  ldloc.0
+    IL_0028:  ret
+  } // end of method Program::Factorial
+</code></pre><p>Ca pique un peu les yeux si on a pas l’habitude de lire du code IL, mais on arrive à peu près à voir ce qui se passe… L’appel récursif se situe à l’adresse <code>IL_001f</code>, c’est à ce niveau là qu’on va pouvoir intervenir. Si on lit la documentation de l’instruction <code>tail</code>, on apprend qu’elle doit précéder immédiatement une instruction <code>call</code>, et que l’instruction suivant le <code>call</code> doit être <code>ret</code> (retour de la méthode). Pour l’instant, il y a plusieurs instructions après le <code>call</code>, parce que le compilateur a généré une variable locale pour stocker la valeur de retour. Il faut juste modifier légèrement le code pour ne plus utiliser cette variable, et ajouter l’instruction <code>tail</code> au bon endroit :</p>
+<pre><code>  .method private hidebysig static valuetype [System.Numerics]System.Numerics.BigInteger 
+          Factorial(int32 n,
+                    valuetype [System.Numerics]System.Numerics.BigInteger product) cil managed
+  {
+    // Code size       41 (0x29)
+    .maxstack  3
+    .locals init (valuetype [System.Numerics]System.Numerics.BigInteger V_0,
+             bool V_1)
+    IL_0000:  nop
+    IL_0001:  ldarg.0
+    IL_0002:  ldc.i4.2
+    IL_0003:  clt
+    IL_0005:  ldc.i4.0
+    IL_0006:  ceq
+    IL_0008:  stloc.1
+    IL_0009:  ldloc.1
+    IL_000a:  brtrue.s   IL_0010
+
+    IL_000c:  ldarg.1
+    IL_000d:  ret		// Return directly instead of storing the result in V_0
+    IL_000e:  nop
+
+    IL_0010:  ldarg.0
+    IL_0011:  ldc.i4.1
+    IL_0012:  sub
+    IL_0013:  ldarg.0
+    IL_0014:  call       valuetype [System.Numerics]System.Numerics.BigInteger [System.Numerics]System.Numerics.BigInteger::op_Implicit(int32)
+    IL_0019:  ldarg.1
+    IL_001a:  call       valuetype [System.Numerics]System.Numerics.BigInteger [System.Numerics]System.Numerics.BigInteger::op_Multiply(valuetype [System.Numerics]System.Numerics.BigInteger,
+                                                                                                                                        valuetype [System.Numerics]System.Numerics.BigInteger)
+    IL_001f:  tail.
+    IL_0020:  call       valuetype [System.Numerics]System.Numerics.BigInteger Program::Factorial(int32,
+                                                                                                  valuetype [System.Numerics]System.Numerics.BigInteger)
+    IL_0025:  ret		// Return directly instead of storing the result in V_0
+
+  } // end of method Program::Factorial
+</code></pre><p>On réassemble ce code avec ilasm, et on obtient un nouvel exécutable, qui s’exécute sans problème même avec des valeurs pour lesquelles la version classique aurait planté depuis longtemps <img src="wlemoticon-smile.png" alt="Sourire">. Les performances sont également très bonnes : environ 3 fois plus rapide qu’avec la classe Trampoline. Si on compare les performances avec des valeurs plus petites, on remarque que c’est également 3 fois plus rapide que la version classique sans récursion terminale.<br>
+Bien sûr, c’est n’est qu’une preuve de concept… il ne semble pas très réaliste d'effectuer cette opération manuellement dans un “vrai” projet. En revanche, il serait probablement possible de créer un outil qui modifie l’assembly automatiquement après la compilation pour ajouter la récursion terminale.</p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/c%23/" rel="tag">C#</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/r%C3%A9cursion-terminale/" rel="tag">récursion terminale</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/tail-recursion/" rel="tag">tail recursion</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/trampoline/" rel="tag">trampoline</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">À propos Thomas Levesque</span>
+	</div>
+	<div class="authorbox__description">
+		Thomas Levesque est un développeur français vivant à Paris.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2011/03/27/wpf-afficher-une-image-gif-animee/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Précédent</span>
+			<p class="pager__title">[WPF] Afficher une image GIF animée</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/" rel="next">
+			<span class="pager__subtitle">Suivant&thinsp;»</span>
+			<p class="pager__title">[WPF 4.5] Abonnement à un évènement à l’aide d’une markup extension</p>
+		</a>
+	</div>
+</nav>
+
+<div>
+    <script src="https://utteranc.es/client.js"
+            repo="thomaslevesque/blog-fr"
+            issue-term="pathname"
+            label="post-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+	</form>
+</div>
+<div class="widget-social widget">
+    <h4 class="widget-social__title widget__title">Social</h4>
+    <div class="widget-social__content widget__content">
+        <a class="widget-social__link-custom widget__link" title="GitHub" rel="noopener noreferrer" href="https://github.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+        </a>
+        <a class="widget-social__link-custom widget__link" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+        </a>
+    </div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Articles récents</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2018/04/17/fin-de-mon-blog-en-francais/">Fin de mon blog en français</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/">Comprendre le pipeline de middleware d&#39;ASP.NET Core</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/">Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/">Meilleure gestion du timeout avec HttpClient</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/">Transformer les templates T4 pendant la build, et passer des variables du projet</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Mots-clefs</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/c%23/" title="c#">c#</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wpf/" title="wpf">wpf</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xaml/" title="xaml">xaml</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/visual-studio/" title="visual-studio">visual-studio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/async/" title="async">async</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/binding/" title="binding">binding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markup-extension/" title="markup-extension">markup-extension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="mvvm">mvvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linq/" title="linq">linq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tests-unitaires/" title="tests-unitaires">tests-unitaires</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/winrt/" title="winrt">winrt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net/" title=".net">.net</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-4.0/" title=".net-4.0">.net-4.0</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-core/" title=".net-core">.net-core</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/asynchrone/" title="asynchrone">asynchrone</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Thomas Levesque.
+			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

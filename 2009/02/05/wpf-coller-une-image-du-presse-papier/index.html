@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage) - Blog .NET de Thomas Levesque</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)" />
+<meta property="og:description" content="Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
+Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/" />
+<meta property="article:published_time" content="2009-02-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2009-02-05T00:00:00+00:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)"/>
+<meta name="twitter:description" content="Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
+Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/social.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-31645024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+				<div class="logo__title">Blog .NET de Thomas Levesque</div>
+				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/a-propos/">
+				
+				<span class="menu__text">À propos</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-05T00:00:00Z">February 05, 2009</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j'essaie d'être un peu plus régulier à l'avenir ;-)</p>
+<p>Si vous avez déjà essayé d'utiliser la méthode <em>Clipboard.GetImage</em> avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un <em>InteropBitmap</em> qui, dans certains cas (voire tout le temps), refuse de s'afficher dans un contrôle <em>Image</em> : aucune exception n'est levée, la taille de l'image est correcte, mais&hellip; l'affichage reste désespérément vide, ou alors l'image est méconnaissable.</p>
+<p>Pourtant, si on enregistre l'image dans un stream et qu'on la relit à partir du stream, on obtient une image parfaitement utilisable. Mais bon, je trouve  cette méthode assez lourde (décodage - réencodage - redécodage de l'image). J'ai donc cherché une solution pour récupérer « manuellement » l'image dans le presse-papier.</p>
+<p>Si on regarde les formats d'image disponibles dans le presse-papier (<em>Clipboard.GetDataObject().GetFormats()</em>), on voit que ça varie selon l'origine de l'image (capture d'écran, copie dans Paint…). Le seul format qui semble être toujours présent est <em>DeviceIndependentBitmap</em> (DIB). J'ai donc cherché, à récupérer le <em>MemoryStream</em> pour ce format, et à le décoder en <em>BitmapSource</em> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> ImageSource ImageFromClipboardDib()
+        {
+            MemoryStream ms = Clipboard.GetData(<span style="color:#e6db74">&#34;DeviceIndependentBitmap&#34;</span>) <span style="color:#66d9ef">as</span> MemoryStream;
+            BitmapImage bmp = <span style="color:#66d9ef">new</span> BitmapImage();
+            bmp.BeginInit();
+            bmp.StreamSource = ms;
+            bmp.EndInit();
+            <span style="color:#66d9ef">return</span> bmp;
+        }
+</code></pre></div><p>Malheureusement, ce code renvoie une magnifique <em>NotSupportedException</em> : « Impossible de trouver un composant d'image adapté pour terminer l'opération.». En clair, il ne sait pas comment décoder ça… c'est pourtant un format assez simple a priori, et très répandu. J'ai donc un peu creusé la question et étudié la structure d'un DIB. En simplifiant un peu, un fichier bitmap « classique » (.bmp) est composé des sections suivantes :</p>
+<ul>
+<li>En-tête de fichier (structure <em>BITMAPFILEHEADER</em>)</li>
+<li>En-tête de bitmap (structure <em>BITMAPINFO</em>)</li>
+<li>Palette (tableau de RGBQUAD)</li>
+<li>Données de l'image</li>
+</ul>
+<p>En observant le contenu du DIB dans le presse-papier, on voit qu'il présente la même structure, mais sans le <em>BITMAPFILEHEADER</em>… l'astuce est donc d'ajouter cet en-tête au début du buffer, et de passer le tout à <em>BitmapImage</em> ou <em>BitmapFrame</em>. Pas bien difficile a priori… là où ça se corse, c'est qu'il faut renseigner dans cet en-tête certaines valeurs qu'on ne peut obtenir qu'en lisant le contenu de l'image. Il faut notamment indiquer à quelle position débutent les données de l'image proprement dite, et donc connaitre la taille des en-têtes et de la palette. Le code suivant effectue ce traitement, et renvoie une <em>ImageSource</em> à partir du presse-papier :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> ImageSource ImageFromClipboardDib()
+        {
+            MemoryStream ms = Clipboard.GetData(<span style="color:#e6db74">&#34;DeviceIndependentBitmap&#34;</span>) <span style="color:#66d9ef">as</span> MemoryStream;
+            <span style="color:#66d9ef">if</span> (ms != <span style="color:#66d9ef">null</span>)
+            {
+                <span style="color:#66d9ef">byte</span>[] dibBuffer = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span>[ms.Length];
+                ms.Read(dibBuffer, <span style="color:#ae81ff">0</span>, dibBuffer.Length);
+
+                BITMAPINFOHEADER infoHeader =
+                    BinaryStructConverter.FromByteArray&lt;BITMAPINFOHEADER&gt;(dibBuffer);
+
+                <span style="color:#66d9ef">int</span> fileHeaderSize = Marshal.SizeOf(<span style="color:#66d9ef">typeof</span>(BITMAPFILEHEADER));
+                <span style="color:#66d9ef">int</span> infoHeaderSize = infoHeader.biSize;
+                <span style="color:#66d9ef">int</span> fileSize = fileHeaderSize + infoHeader.biSize + infoHeader.biSizeImage;
+
+                BITMAPFILEHEADER fileHeader = <span style="color:#66d9ef">new</span> BITMAPFILEHEADER();
+                fileHeader.bfType = BITMAPFILEHEADER.BM;
+                fileHeader.bfSize = fileSize;
+                fileHeader.bfReserved1 = <span style="color:#ae81ff">0</span>;
+                fileHeader.bfReserved2 = <span style="color:#ae81ff">0</span>;
+                fileHeader.bfOffBits = fileHeaderSize + infoHeaderSize + infoHeader.biClrUsed * <span style="color:#ae81ff">4</span>;
+
+                <span style="color:#66d9ef">byte</span>[] fileHeaderBytes =
+                    BinaryStructConverter.ToByteArray&lt;BITMAPFILEHEADER&gt;(fileHeader);
+
+                MemoryStream msBitmap = <span style="color:#66d9ef">new</span> MemoryStream();
+                msBitmap.Write(fileHeaderBytes, <span style="color:#ae81ff">0</span>, fileHeaderSize);
+                msBitmap.Write(dibBuffer, <span style="color:#ae81ff">0</span>, dibBuffer.Length);
+                msBitmap.Seek(<span style="color:#ae81ff">0</span>, SeekOrigin.Begin);
+
+                <span style="color:#66d9ef">return</span> BitmapFrame.Create(msBitmap);
+            }
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+        }
+</code></pre></div><p>Définition des structures <em>BITMAPFILEHEADER</em> et <em>BITMAPINFOHEADER</em> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">        [StructLayout(LayoutKind.Sequential, Pack = 2)]</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">BITMAPFILEHEADER</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">short</span> BM = <span style="color:#ae81ff">0</span>x4d42; <span style="color:#75715e">// BM
+</span><span style="color:#75715e"></span>
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">short</span> bfType;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> bfSize;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">short</span> bfReserved1;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">short</span> bfReserved2;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> bfOffBits;
+        }
+<span style="color:#a6e22e">
+</span><span style="color:#a6e22e">        [StructLayout(LayoutKind.Sequential)]</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">BITMAPINFOHEADER</span>
+        {
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biSize;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biWidth;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biHeight;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">short</span> biPlanes;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">short</span> biBitCount;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biCompression;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biSizeImage;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biXPelsPerMeter;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biYPelsPerMeter;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biClrUsed;
+            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> biClrImportant;
+        }
+</code></pre></div><p>Classe utilitaire pour convertir des structures en binaire :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BinaryStructConverter</span>
+    {
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> T FromByteArray&lt;T&gt;(<span style="color:#66d9ef">byte</span>[] bytes) <span style="color:#66d9ef">where</span> T : <span style="color:#66d9ef">struct</span>
+        {
+            IntPtr ptr = IntPtr.Zero;
+            <span style="color:#66d9ef">try</span>
+            {
+                <span style="color:#66d9ef">int</span> size = Marshal.SizeOf(<span style="color:#66d9ef">typeof</span>(T));
+                ptr = Marshal.AllocHGlobal(size);
+                Marshal.Copy(bytes, <span style="color:#ae81ff">0</span>, ptr, size);
+                <span style="color:#66d9ef">object</span> obj = Marshal.PtrToStructure(ptr, <span style="color:#66d9ef">typeof</span>(T));
+                <span style="color:#66d9ef">return</span> (T)obj;
+            }
+            <span style="color:#66d9ef">finally</span>
+            {
+                <span style="color:#66d9ef">if</span> (ptr != IntPtr.Zero)
+                    Marshal.FreeHGlobal(ptr);
+            }
+        }
+
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">byte</span>[] ToByteArray&lt;T&gt;(T obj) <span style="color:#66d9ef">where</span> T : <span style="color:#66d9ef">struct</span>
+        {
+            IntPtr ptr = IntPtr.Zero;
+            <span style="color:#66d9ef">try</span>
+            {
+                <span style="color:#66d9ef">int</span> size = Marshal.SizeOf(<span style="color:#66d9ef">typeof</span>(T));
+                ptr = Marshal.AllocHGlobal(size);
+                Marshal.StructureToPtr(obj, ptr, <span style="color:#66d9ef">true</span>);
+                <span style="color:#66d9ef">byte</span>[] bytes = <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span>[size];
+                Marshal.Copy(ptr, bytes, <span style="color:#ae81ff">0</span>, size);
+                <span style="color:#66d9ef">return</span> bytes;
+            }
+            <span style="color:#66d9ef">finally</span>
+            {
+                <span style="color:#66d9ef">if</span> (ptr != IntPtr.Zero)
+                    Marshal.FreeHGlobal(ptr);
+            }
+        }
+    }
+</code></pre></div><p>L'image obtenue par ce code peut être utilisée sans problème dans un contrôle <em>Image</em>.</p>
+<p>Comme quoi, WPF a beau être une technologie « dernier cri », il faut encore parfois mettre les mains dans le cambouis ! Espérons que Microsoft corrigera ce bug dans la prochaine version…</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/clipboard/" rel="tag">clipboard</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/image/" rel="tag">image</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/presse-papier/" rel="tag">presse-papier</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/wpf/" rel="tag">WPF</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">À propos Thomas Levesque</span>
+	</div>
+	<div class="authorbox__description">
+		Thomas Levesque est un développeur français vivant à Paris.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Précédent</span>
+			<p class="pager__title">[WPF] Binding sur les paramètres d’application à l’aide d’une Markup extension</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2009/02/13/creer-un-lecteur-rss-en-5-minutes/" rel="next">
+			<span class="pager__subtitle">Suivant&thinsp;»</span>
+			<p class="pager__title">Créer un lecteur RSS en 5 minutes</p>
+		</a>
+	</div>
+</nav>
+
+<div>
+    <script src="https://utteranc.es/client.js"
+            repo="thomaslevesque/blog-fr"
+            issue-term="pathname"
+            label="post-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+	</form>
+</div>
+<div class="widget-social widget">
+    <h4 class="widget-social__title widget__title">Social</h4>
+    <div class="widget-social__content widget__content">
+        <a class="widget-social__link-custom widget__link" title="GitHub" rel="noopener noreferrer" href="https://github.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+        </a>
+        <a class="widget-social__link-custom widget__link" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+        </a>
+    </div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Articles récents</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2018/04/17/fin-de-mon-blog-en-francais/">Fin de mon blog en français</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/">Comprendre le pipeline de middleware d&#39;ASP.NET Core</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/">Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/">Meilleure gestion du timeout avec HttpClient</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/">Transformer les templates T4 pendant la build, et passer des variables du projet</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Mots-clefs</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/c%23/" title="c#">c#</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wpf/" title="wpf">wpf</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xaml/" title="xaml">xaml</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/visual-studio/" title="visual-studio">visual-studio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/async/" title="async">async</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/binding/" title="binding">binding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markup-extension/" title="markup-extension">markup-extension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="mvvm">mvvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linq/" title="linq">linq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tests-unitaires/" title="tests-unitaires">tests-unitaires</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/winrt/" title="winrt">winrt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net/" title=".net">.net</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-4.0/" title=".net-4.0">.net-4.0</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-core/" title=".net-core">.net-core</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/asynchrone/" title="asynchrone">asynchrone</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Thomas Levesque.
+			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

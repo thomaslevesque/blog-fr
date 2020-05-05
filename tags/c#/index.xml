@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/c#/</link>
+    <description>Recent content in C# on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 27 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Comprendre le pipeline de middleware d&#39;ASP.NET Core</title>
+      <link>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</guid>
+      <description>Middlewhat? L&#39;architecture d&#39;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&#39;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&#39;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
+    </item>
+    
+    <item>
+      <title>Meilleure gestion du timeout avec HttpClient</title>
+      <link>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</guid>
+      <description>Le problème Si vous avez l&#39;habitude d&#39;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
+ Le timeout est défini de façon globale, et s&#39;applique à toutes les requêtes, alors qu&#39;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
+    </item>
+    
+    <item>
+      <title>Tester et déboguer une bibliothèque depuis LINQPad</title>
+      <link>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</guid>
+      <description>Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&#39;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&#39;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code .</description>
+    </item>
+    
+    <item>
+      <title>Amélioration des performances de Linq dans .NET Core</title>
+      <link>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</guid>
+      <description>Depuis le temps qu&#39;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&#39;est déjà assez cool en soi, mais ça ne s&#39;arrête pas là : .NET Core apporte aussi beaucoup d&#39;améliorations à la Base Class Library.
+Par exemple, Linq est plus rapide dans .</description>
+    </item>
+    
+    <item>
+      <title>Méthodes C# dans les en-têtes de diff git</title>
+      <link>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</guid>
+      <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&#39;en-tête du bloc (la ligne qui commence par @@), comme ceci :
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&#39;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
+    </item>
+    
+    <item>
+      <title>Tout faire ou presque avec le pipeline de HttpClient</title>
+      <link>https://thomaslevesque.fr/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/</guid>
+      <description>Il y a quelques années, Microsoft a introduit la classe HttpClient comme alternative moderne à HttpWebRequest pour faire des requêtes web depuis des applications .NET. Non seulement cette nouvelle API est beaucoup plus facile à utiliser, plus propre, et asynchrone, mais elle est aussi facilement extensible.
+Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&#39;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&#39;implémentation.</description>
+    </item>
+    
+    <item>
+      <title>Déconstruction de tuples en C# 7</title>
+      <link>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</guid>
+      <description>Dans mon précedent billet, j&#39;ai parlé d&#39;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&#39;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
+ la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&#39;équipe du langage C# n&#39;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
+    </item>
+    
+    <item>
+      <title>Tuples en C# 7</title>
+      <link>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</link>
+      <pubDate>Thu, 28 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
+      <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
+.NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {int count = 0;double sum = 0.0;foreach (var value in values){ count++; sum += value;}return Tuple.</description>
+    </item>
+    
+    <item>
+      <title>Piège: utiliser var et async ensemble</title>
+      <link>https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/</guid>
+      <description>Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
+public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() { // .</description>
+    </item>
+    
+    <item>
+      <title>Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview</title>
+      <link>https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/</link>
+      <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/</guid>
+      <description>Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !</description>
+    </item>
+    
+    <item>
+      <title>Injecter automatiquement des fakes dans une test fixture avec FakeItEasy</title>
+      <link>https://thomaslevesque.fr/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/</link>
+      <pubDate>Sun, 17 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/</guid>
+      <description>Aujourd’hui j’aimerais partager avec vous une fonctionnalité sympa de FakeItEasy que j’ai découverte récemment.
+Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a généralement besoin de créer des objets factices (fakes) pour les dépendances et de les injecter manuellement dans la classe testée (SUT, System Under Test), ou d’utiliser un conteneur IoC pour enregistrer les dépendances factices et construire le SUT. C’est un peu laborieux, et il y a quelques mois j’avais créé une extension Unity pour créer automatiquement les fakes et rendre tout ça plus facile.</description>
+    </item>
+    
+    <item>
+      <title>Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource</title>
+      <link>https://thomaslevesque.fr/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/</link>
+      <pubDate>Thu, 31 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/</guid>
+      <description>La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, une approche standardisée pour gérer l’annulation a été introduite : les jetons d’annulation. L’idée générale est que vous créez un CancellationTokenSource qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Empêcher l’utilisateur de coller une image dans un RichTextBox</title>
+      <link>https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/</guid>
+      <description>Le contrôle RichTextBox de WPF est assez puissant, et très pratique quand on a besoin d’accepter une saisie en texte riche. Cependant, l’une de ses fonctionnalités peut devenir problématique : l’utilisateur peut coller une image. Selon ce qu’on veut faire du texte saisi par l’utilisateur, ce n’est pas forcément souhaitable.
+Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutions que j’ai trouvées suggéraient d’intercepter la frappe de touches Ctrl-V, et de bloquer l’événement si le presse-papiers contient une image.</description>
+    </item>
+    
+    <item>
+      <title>Casse-tête C# n°2</title>
+      <link>https://thomaslevesque.fr/2015/08/02/casse-tte-c-n2/</link>
+      <pubDate>Sun, 02 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/08/02/casse-tte-c-n2/</guid>
+      <description>Encore un petit casse-tête basé sur un problème que j’ai rencontré au boulot…
+Regardez ce morceau de code :
+Console.WriteLine($&amp;quot;x &amp;gt; y is {x &amp;gt; y}&amp;quot;); Console.WriteLine($&amp;quot;!(x &amp;lt;= y) is {!(x &amp;lt;= y)}&amp;quot;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
+x &amp;gt; y is False !(x &amp;lt;= y) is True </description>
+    </item>
+    
+    <item>
+      <title>Comment récupérer une date en UTC avec SQLite</title>
+      <link>https://thomaslevesque.fr/2015/06/28/comment-rcuprer-une-date-en-utc-avec-sqlite/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/28/comment-rcuprer-une-date-en-utc-avec-sqlite/</guid>
+      <description>SQLite est un super moteur de base de données “in-process” : il est très léger, ne nécessite aucun serveur ni configuration, et fonctionne sur toutes les plateformes. Il y a même un provider ADO.NET officiel très bien réalisé. Cependant, si vous stockez des dates en UTC avec ce provider, vous allez probablement rencontrer un sérieux problème : bien que la date soit correctement stockée en UTC (elle est stockée dans un format similaire à ISO8601, avec un ‘Z’ pour indiquer la zone UTC), quand on la relit depuis la base de données, on obtient un DateTime converti en heure locale, avec Kind = Unspecified.</description>
+    </item>
+    
+    <item>
+      <title>Créer un conteneur qui crée automatiquement des objets factices avec Unity et FakeItEasy</title>
+      <link>https://thomaslevesque.fr/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/</guid>
+      <description>L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup FakeItEasy ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici.</description>
+    </item>
+    
+    <item>
+      <title>Support de l’asynchronisme et de l’annulation pour les wait handles</title>
+      <link>https://thomaslevesque.fr/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/</guid>
+      <description>Le .NET Framework fournit un certain nombre de primitives de synchronisation bas niveau. Les plus couramment utilisées sont appelées “wait handles”, et héritent de la classe WaitHandle : Semaphore, Mutex, AutoResetEvent et ManualResetEvent. Ces classes existent depuis .NET 2.0 (voire 1.1 pour certaines), mais elles n’ont pas beaucoup évolué depuis, ce qui fait qu’elles ne supportent pas des fonctionnalités introduites plus tard et devenues très courantes. En particulier, elles ne supportent pas l’attente asynchrone, ni l’annulation de l’attente.</description>
+    </item>
+    
+    <item>
+      <title>Casse-tête C# n°1</title>
+      <link>https://thomaslevesque.fr/2015/03/10/casse-tte-c-n1/</link>
+      <pubDate>Tue, 10 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/03/10/casse-tte-c-n1/</guid>
+      <description>J’adore résoudre des casse-têtes en C#; je pense que c’est un excellent moyen d’approfondir sa connaissance du langage. Et en plus, c’est amusant !
+Je viens de penser à celui-ci :
+static void Test(out int x, out int y) { x = 42; y = 123; Console.WriteLine (x == y); } Que pensez-vous que ce code affiche ? Pouvez-vous en être sûr ? Postez votre réponse dans les commentaires !</description>
+    </item>
+    
+    <item>
+      <title>Test unitaires asynchrones avec NUnit</title>
+      <link>https://thomaslevesque.fr/2015/02/02/test-unitaires-asynchrones-avec-nunit/</link>
+      <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/02/02/test-unitaires-asynchrones-avec-nunit/</guid>
+      <description>Récemment, mon équipe et moi avons commencé à écrire des tests unitaires pour une application qui utilise beaucoup de code asynchrone. Nous avons utilisé NUnit (2.6) parce que nous le connaissions déjà bien, mais nous ne l’avions encore jamais utilisé pour tester du code asynchrone.
+Supposons que le système à tester soit cette très intéressante classe Calculator :
+ public class Calculator { public async Task&amp;lt;int&amp;gt; AddAsync(int x, int y) { // simulate long calculation await Task.</description>
+    </item>
+    
+    <item>
+      <title>Optimiser ToArray et ToList en fournissant le nombre d’éléments</title>
+      <link>https://thomaslevesque.fr/2014/12/08/optimiser-toarray-et-tolist-en-fournissant-le-nombre-dlments/</link>
+      <pubDate>Mon, 08 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/12/08/optimiser-toarray-et-tolist-en-fournissant-le-nombre-dlments/</guid>
+      <description>Les méthodes d’extension ToArray et ToList sont des moyens pratiques de matérialiser une séquence énumérable (par exemple une requête Linq). Cependant, quelque chose me chiffonne : ces deux méthodes sont très inefficaces si elles ne connaissent pas le nombre d’éléments dans la séquence (ce qui est presque toujours le cas quand on les utilise sur une requête Linq). Concentrons nous sur ToArray pour l’instant (ToList a quelques différences, mais le principe est essentiellement le même).</description>
+    </item>
+    
+    <item>
+      <title>Afficher facilement une taille de fichier sous forme lisible par un humain</title>
+      <link>https://thomaslevesque.fr/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/</guid>
+      <description>Si vous écrivez une application qui a un rapport avec la gestion de fichiers, vous aurez probablement besoin d’afficher la taille des fichiers. Mais si un fichier a une taille de 123456789 octets, ce n’est évidemment pas la valeur qu’il faudra afficher, car c’est difficile à lire, et l’utilisateur n’a généralement pas besoin de connaitre la taille à l’octet près. Vous allez plutôt afficher quelque chose comme 118 Mo.
+Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :</description>
+    </item>
+    
+    <item>
+      <title>Passage de paramètres par référence à une méthode asynchrone</title>
+      <link>https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/</guid>
+      <description>L’asynchronisme dans C# est une fonctionnalité géniale, et je l’ai beaucoup utilisé depuis son apparition. Mais il y a quelques limitations agaçantes; par exemple, on ne peut pas passer des paramètres par référence (ref ou out) à une méthode asynchrone. Il y a de bonnes raisons pour cela; la plus évidente est que si vous passez par référence une variable locale, elle est stockée sur la pile, or la pile ne va pas rester disponible pendant toute l’exécution de la méthode asynchone (seulement jusqu’au premier await), donc l’emplacement de la variable n’existera plus.</description>
+    </item>
+    
+    <item>
+      <title>Un moyen facile de tester unitairement la validation des arguments null</title>
+      <link>https://thomaslevesque.fr/2014/11/02/easy-unit-testing-of-null-argument-validation/</link>
+      <pubDate>Sun, 02 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/02/easy-unit-testing-of-null-argument-validation/</guid>
+      <description>Quand on teste unitairement une méthode, une des choses à tester est la validation des arguments : par exemple, vérifier que la méthode lève bien une ArgumentNullException quand un argument null est passé pour un paramètre qui ne doit pas être null. Ecrire ce genre de test est très facile, mais c’est une tâche fastidieuse et répétitive, surtout pour une méthode qui a beaucoup de paramètres. J’ai donc écrit une méthode qui automatise en partie cette tâche : elle essaie de passer null pour chacun des arguments spécifiés, et vérifie que la méthode lève bien une ArgumentNullException.</description>
+    </item>
+    
+    <item>
+      <title>Afficher des suggestions de résultat dans une SearchBox WinRT : bug concernant l’image</title>
+      <link>https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/</guid>
+      <description>Aujourd’hui je me suis heurté à un bug bizarre qui m’a fait perdre une heure ou deux, donc je me suis dit que ça méritait d’écrire un billet à ce sujet au cas où quelqu’un d’autre rencontrerait le même problème.
+Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scénarios de recherche directement dans une application Windows Store. L’une de ses fonctionnalités est l’affichage de suggestions basées sur la saisie de l’utilisateur.</description>
+    </item>
+    
+    <item>
+      <title>Détecter les changements d’une propriété de dépendance dans WinRT</title>
+      <link>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</link>
+      <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</guid>
+      <description>Aujourd&#39;hui j&#39;aimerais partager une astuce que j&#39;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&#39;est mon premier billet à ce sujet, donc j&#39;espère que je ne vais pas trop me ridiculiser&amp;hellip;
+Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&#39;est pas toujours le cas.</description>
+    </item>
+    
+    <item>
+      <title>Récursion terminale en C#</title>
+      <link>https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/</link>
+      <pubDate>Tue, 30 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/</guid>
+      <description>&lt;p&gt;Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (&lt;code&gt;StackOverflowException&lt;/code&gt; en .NET).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[C#] Une implémentation du pattern WeakEvent</title>
+      <link>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</link>
+      <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</guid>
+      <description>Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&#39;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&#39;exécution de l&#39;application.</description>
+    </item>
+    
+    <item>
+      <title>Automatiser la vérification des null avec les expressions Linq</title>
+      <link>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</link>
+      <pubDate>Sat, 20 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
+      <description>Le problème Je suis sûr qu&#39;il vous est déjà arrivé d&#39;écrire ce genre de code :
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&#39;il n&#39;est pas nul, ce qui peut vite s&#39;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&#39;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+    </item>
+    
+    <item>
+      <title>[C#] Relation parent/enfant et sérialisation XML</title>
+      <link>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</guid>
+      <description>Me revoilà avec un peu de retard, j&#39;ai un peu manqué de temps libre ces dernières semaines&amp;hellip; Voilà donc un petit post pour présenter une idée qui m&#39;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&#39;est de conception C# qu&#39;il s&#39;agit ! Le problème Il est assez courant, dans un programme, d&#39;avoir un objet parent qui possède une collection d&#39;enfants ayant une référence vers leur parent.</description>
+    </item>
+    
+  </channel>
+</rss>

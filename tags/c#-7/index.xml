@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# 7 on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/c#-7/</link>
+    <description>Recent content in C# 7 on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 23 Aug 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/c#-7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Déconstruction de tuples en C# 7</title>
+      <link>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</guid>
+      <description>Dans mon précedent billet, j&#39;ai parlé d&#39;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&#39;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
+ la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&#39;équipe du langage C# n&#39;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
+    </item>
+    
+    <item>
+      <title>Tuples en C# 7</title>
+      <link>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</link>
+      <pubDate>Thu, 28 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
+      <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
+.NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {int count = 0;double sum = 0.0;foreach (var value in values){ count++; sum += value;}return Tuple.</description>
+    </item>
+    
+    <item>
+      <title>Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview</title>
+      <link>https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/</link>
+      <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/</guid>
+      <description>Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !</description>
+    </item>
+    
+  </channel>
+</rss>

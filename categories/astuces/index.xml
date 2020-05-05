@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Astuces on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/categories/astuces/</link>
+    <description>Recent content in Astuces on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 26 Aug 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/categories/astuces/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tester et déboguer une bibliothèque depuis LINQPad</title>
+      <link>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</guid>
+      <description>Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&#39;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&#39;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code .</description>
+    </item>
+    
+    <item>
+      <title>Passage de paramètres par référence à une méthode asynchrone</title>
+      <link>https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/</guid>
+      <description>L’asynchronisme dans C# est une fonctionnalité géniale, et je l’ai beaucoup utilisé depuis son apparition. Mais il y a quelques limitations agaçantes; par exemple, on ne peut pas passer des paramètres par référence (ref ou out) à une méthode asynchrone. Il y a de bonnes raisons pour cela; la plus évidente est que si vous passez par référence une variable locale, elle est stockée sur la pile, or la pile ne va pas rester disponible pendant toute l’exécution de la méthode asynchone (seulement jusqu’au premier await), donc l’emplacement de la variable n’existera plus.</description>
+    </item>
+    
+    <item>
+      <title>Gérer les problèmes de timeout lors de l’upload de gros fichiers avec HttpWebRequest</title>
+      <link>https://thomaslevesque.fr/2014/01/14/gerer-problemes-timeout-upload-gros-fichiers-httpwebrequest/</link>
+      <pubDate>Tue, 14 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/01/14/gerer-problemes-timeout-upload-gros-fichiers-httpwebrequest/</guid>
+      <description>Si vous avez déjà eu à uploader de gros volumes de données en HTTP, vous avez probablement rencontré des problèmes de timeout. La valeur par défault de Timeout pour HttpWebRequest est de 100 secondes, ce qui signifie que s’il s’écoule plus que cette durée entre le moment où vous envoyez les en-têtes de la requête et celui où vous recevez les en-têtes de la réponse, votre requête échouera. Bien sûr, si vous uploadez un gros fichier, vous devez augmenter ce timeout… mais à quelle valeur ?</description>
+    </item>
+    
+    <item>
+      <title>Détecter les changements d’une propriété de dépendance dans WinRT</title>
+      <link>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</link>
+      <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</guid>
+      <description>Aujourd&#39;hui j&#39;aimerais partager une astuce que j&#39;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&#39;est mon premier billet à ce sujet, donc j&#39;espère que je ne vais pas trop me ridiculiser&amp;hellip;
+Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&#39;est pas toujours le cas.</description>
+    </item>
+    
+    <item>
+      <title>Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework</title>
+      <link>https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/</link>
+      <pubDate>Wed, 13 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/</guid>
+      <description>Les attributs d&#39;informations de l&#39;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&#39;appliquent aux paramètres optionnels d&#39;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&#39;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
+static void Log( string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0) { Console.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Créer des styles paramétrables à l&#39;aide des propriétés attachées</title>
+      <link>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</link>
+      <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</guid>
+      <description>Je voudrais aujourd&#39;hui partager avec vous une petite astuce que j&#39;utilise souvent depuis quelques mois. Supposons que pour améliorer l&#39;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards : Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&#39;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&#39;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Comment faire un binding dans les cas où on n’hérite pas du DataContext</title>
+      <link>https://thomaslevesque.fr/2011/03/21/wpf-comment-faire-un-binding-dans-les-cas-o-on-nhrite-pas-du-datacontext/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/03/21/wpf-comment-faire-un-binding-dans-les-cas-o-on-nhrite-pas-du-datacontext/</guid>
+      <description>La propriété DataContext de WPF est extrêmement pratique, car elle est automatiquement héritée par tous les enfants de l’élément où elle est définie ; il n’est donc pas nécessaire de la redéfinir pour chaque élément qu’on veut lier aux données. Cependant, il arrive que le DataContext ne soit pas accessible pour certains éléments : c’est le cas des éléments qui n’appartiennent pas à l’arbre visuel ni à l’arbre logique. Il devient alors très difficile de définir une propriété ce ces éléments par un binding&amp;hellip; Prenons un exemple simple : on veut afficher une liste de produits dans un DataGrid.</description>
+    </item>
+    
+    <item>
+      <title>[C#] Relation parent/enfant et sérialisation XML</title>
+      <link>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</guid>
+      <description>Me revoilà avec un peu de retard, j&#39;ai un peu manqué de temps libre ces dernières semaines&amp;hellip; Voilà donc un petit post pour présenter une idée qui m&#39;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&#39;est de conception C# qu&#39;il s&#39;agit ! Le problème Il est assez courant, dans un programme, d&#39;avoir un objet parent qui possède une collection d&#39;enfants ayant une référence vers leur parent.</description>
+    </item>
+    
+    <item>
+      <title>[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre</title>
+      <link>https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/</link>
+      <pubDate>Thu, 05 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/</guid>
+      <description>Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&#39;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : L&#39;astuce suivante permet d&#39;obtenir le même comportement pour vos propres fichiers. Supposons que vous souhaitiez personnaliser les classes générées par le designer d&#39;entités. Vous ne pouvez pas modifier le fichier Model1.Designer.cs, puisque vos modifications seraient écrasées par le designer.</description>
+    </item>
+    
+  </channel>
+</rss>

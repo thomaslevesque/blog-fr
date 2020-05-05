@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# 5.0 on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/c#-5.0/</link>
+    <description>Recent content in C# 5.0 on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 30 Oct 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/c#-5.0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[C# 5] Programmation asynchrone avec C# 5</title>
+      <link>https://thomaslevesque.fr/2010/10/30/c-5-programmation-asynchrone-avec-c-5/</link>
+      <pubDate>Sat, 30 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/10/30/c-5-programmation-asynchrone-avec-c-5/</guid>
+      <description>Depuis quelque temps, les spéculations allaient bon train sur les fonctionnalités de la future version 5 du langage C#… Très peu d’informations officielles avaient filtré à ce sujet, la seule chose plus ou moins certaine était l’introduction du concept de “compilateur en temps que service”, qui permettrait de tirer parti du compilateur à partir du code. A part ça, silence radio de la part de Microsoft…
+Lors de la PDC jeudi dernier, un coin du voile a enfin été levé, mais pas du tout sur ce qu’on attendait !</description>
+    </item>
+    
+  </channel>
+</rss>

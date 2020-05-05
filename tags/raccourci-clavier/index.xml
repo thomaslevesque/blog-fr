@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>raccourci clavier on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/raccourci-clavier/</link>
+    <description>Recent content in raccourci clavier on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 11 Feb 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/raccourci-clavier/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey</title>
+      <link>https://thomaslevesque.fr/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/</link>
+      <pubDate>Tue, 11 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/</guid>
+      <description>Un besoin fréquent pour les applications de bureau est de gérer des raccourcis claviers globaux, pour pouvoir réagir aux raccourcis même quand l’application n’a pas le focus. Malheureusement, il n’y aucune fonctionnalité intégrée dans le .NET Framework pour gérer ça.
+Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de librairies open-source qui se proposent d’y remédier (par exemple VirtualInput). La plupart d’entre elles sont basées sur des hooks système globaux, ce qui leur permet d’intercepter toutes les frappes de touche, même celles qui ne vous intéressent pas.</description>
+    </item>
+    
+  </channel>
+</rss>

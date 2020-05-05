@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>propriété attachée on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/propri%C3%A9t%C3%A9-attach%C3%A9e/</link>
+    <description>Recent content in propriété attachée on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 30 Sep 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/propri%C3%A9t%C3%A9-attach%C3%A9e/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WPF] Créer des styles paramétrables à l&#39;aide des propriétés attachées</title>
+      <link>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</link>
+      <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</guid>
+      <description>Je voudrais aujourd&#39;hui partager avec vous une petite astuce que j&#39;utilise souvent depuis quelques mois. Supposons que pour améliorer l&#39;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards : Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&#39;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&#39;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Tri automatique d’un GridView : suite</title>
+      <link>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</link>
+      <pubDate>Tue, 04 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</guid>
+      <description>Il y a quelques mois, j&#39;avais publié un billet où j&#39;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&#39;avais laissé un point ouvert : l&#39;ajout d&#39;un symbole dans l&#39;en-tête de colonne pour indiquer visuellement la direction du tri. C&#39;est maintenant chose faite ! Pour arriver à ce résultat, j&#39;ai utilisé un Adorner : c&#39;est un composant qui permet de dessiner &amp;ldquo;par-dessus&amp;rdquo; un élément graphique existant, sur une couche de dessin indépendante.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Tri automatique d&#39;un GridView lors du clic sur une colonne</title>
+      <link>https://thomaslevesque.fr/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/</link>
+      <pubDate>Fri, 27 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/</guid>
+      <description>Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&amp;hellip; Avec le DataGridView de Windows Forms, c&#39;était &amp;ldquo;automagique&amp;rdquo; : quand l&#39;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&amp;hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&#39;évènement Click du GridViewColumnHeader.</description>
+    </item>
+    
+  </channel>
+</rss>

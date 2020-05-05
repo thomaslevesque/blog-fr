@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>appveyor on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/appveyor/</link>
+    <description>Recent content in appveyor on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 26 Apr 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/appveyor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Publier un package sur NuGet.org depuis AppVeyor</title>
+      <link>https://thomaslevesque.fr/2016/04/26/publier-un-package-sur-nuget-org-depuis-appveyor/</link>
+      <pubDate>Tue, 26 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/04/26/publier-un-package-sur-nuget-org-depuis-appveyor/</guid>
+      <description>Depuis quelques mois, j’utilise AppVeyor CI pour certains de mes projets open-source (avec Cake pour les scripts de build). J’en suis très content, mais il y avait un point qui m’ennuyait : je ne trouvais pas comment publier des packages sur NuGet.org directement depuis AppVeyor. Il fallait que je télécharge le package en local, puis que je l’uploade manuellement depuis ma machine (soit avec nuget push en ligne de commande, soit via le formulaire web sur NuGet.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Josh Smith on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/josh-smith/</link>
+    <description>Recent content in Josh Smith on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Wed, 25 Feb 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/josh-smith/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WPF] Article de Josh Smith sur le design pattern Model-View-ViewModel</title>
+      <link>https://thomaslevesque.fr/2009/02/25/wpf-article-de-josh-smith-sur-le-design-pattern-model-view-viewmodel/</link>
+      <pubDate>Wed, 25 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/02/25/wpf-article-de-josh-smith-sur-le-design-pattern-model-view-viewmodel/</guid>
+      <description>Depuis l&#39;apparition de WPF, on entend de plus en plus souvent parler de &amp;ldquo;Model-View-ViewModel&amp;rdquo; (MVVM). Il s&#39;agit d&#39;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.</description>
+    </item>
+    
+  </channel>
+</rss>

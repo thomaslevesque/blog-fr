@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sprache on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/sprache/</link>
+    <description>Recent content in sprache on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 28 Feb 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/sprache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Parser du texte facilement en C# avec Sprache</title>
+      <link>https://thomaslevesque.fr/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/</link>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/</guid>
+      <description>Il y a quelques jours, j&#39;ai découvert un petit bijou : Sprache. Le nom signifie &amp;ldquo;langage&amp;rdquo; en allemand. C&#39;est une librairie très élégante et facile à utiliser pour créer des analyseurs de texte, à l&#39;aide de parser combinators, qui sont une technique très courante en programmation fonctionnelle. Le concept théorique peut sembler un peu effrayant, mais comme vous allez le voir dans un instant, Sprache rend ça très accessible.
+Analyse syntaxique L&#39;analyse syntaxique (parsing) est une tâche très courante, mais qui peut être laborieuse et où il est facile de faire des erreurs.</description>
+    </item>
+    
+  </channel>
+</rss>

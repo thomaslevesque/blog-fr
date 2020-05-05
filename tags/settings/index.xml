@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>settings on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/settings/</link>
+    <description>Recent content in settings on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 18 Nov 2008 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/settings/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WPF] Binding sur les paramètres d’application à l’aide d’une Markup extension</title>
+      <link>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</guid>
+      <description>Voilà, c’est fait, j&#39;ai créé mon blog sur .NET&amp;hellip; j&#39;ai mis le temps, mais j&#39;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&#39;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&#39;auto-former sur les dernières nouveautés du framework.</description>
+    </item>
+    
+  </channel>
+</rss>

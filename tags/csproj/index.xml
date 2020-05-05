@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>csproj on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/csproj/</link>
+    <description>Recent content in csproj on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/csproj/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Propriétés et éléments MSBuild partagés avec Directory.Build.props</title>
+      <link>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</guid>
+      <description>Pour être honnête, je n&#39;ai jamais vraiment aimé MSBuild jusqu&#39;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&#39;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&#39;était mal documenté&amp;hellip; Mais avec l&#39;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.
+MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&#39;est le nom officiel, mais c&#39;est celui que j&#39;utiliserai).</description>
+    </item>
+    
+  </channel>
+</rss>

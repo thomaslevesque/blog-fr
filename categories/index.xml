@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/categories/</link>
+    <description>Recent content in Categories on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 17 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Uncategorized</title>
+      <link>https://thomaslevesque.fr/categories/uncategorized/</link>
+      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/uncategorized/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Astuces</title>
+      <link>https://thomaslevesque.fr/categories/astuces/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/astuces/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tests unitaires</title>
+      <link>https://thomaslevesque.fr/categories/tests-unitaires/</link>
+      <pubDate>Sun, 17 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/tests-unitaires/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WPF</title>
+      <link>https://thomaslevesque.fr/categories/wpf/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/wpf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Librairies</title>
+      <link>https://thomaslevesque.fr/categories/librairies/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/librairies/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Casse-têtes</title>
+      <link>https://thomaslevesque.fr/categories/casse-t%C3%AAtes/</link>
+      <pubDate>Sun, 02 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/casse-t%C3%AAtes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Base de données</title>
+      <link>https://thomaslevesque.fr/categories/base-de-donn%C3%A9es/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/base-de-donn%C3%A9es/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code sample</title>
+      <link>https://thomaslevesque.fr/categories/code-sample/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/code-sample/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Outils</title>
+      <link>https://thomaslevesque.fr/categories/outils/</link>
+      <pubDate>Wed, 25 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/outils/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WinRT</title>
+      <link>https://thomaslevesque.fr/categories/winrt/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/winrt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C# 5.0</title>
+      <link>https://thomaslevesque.fr/categories/c#-5.0/</link>
+      <pubDate>Sat, 30 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/c#-5.0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C# 4.0</title>
+      <link>https://thomaslevesque.fr/categories/c#-4.0/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/c#-4.0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dvp.NET</title>
+      <link>https://thomaslevesque.fr/categories/dvp.net/</link>
+      <pubDate>Thu, 18 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/dvp.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows Forms</title>
+      <link>https://thomaslevesque.fr/categories/windows-forms/</link>
+      <pubDate>Mon, 27 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/categories/windows-forms/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

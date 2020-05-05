@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StringTemplate on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/stringtemplate/</link>
+    <description>Recent content in StringTemplate on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 17 Nov 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/stringtemplate/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>StringTemplate: une autre approche de l’interpolation de chaines</title>
+      <link>https://thomaslevesque.fr/2014/11/17/stringtemplate-une-autre-approche-de-l-interpolation-de-chaines/</link>
+      <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/17/stringtemplate-une-autre-approche-de-l-interpolation-de-chaines/</guid>
+      <description>Avec la version 6 de C# qui approche, il y a beaucoup de discussions sur CodePlex et ailleurs à propos de l’interpolation de chaines. Pas très étonnant, puisqu’il s’agit d’une des fonctionnalités majeures de cette version… Au cas où vous auriez vécu dans une grotte ces derniers mois et n’en auriez pas entendu parler, l’interpolation de chaines est un moyen d’insérer des expressions C# à l’intérieur d’une chaine de caractère, de façon à ce qu’elles soient évaluées lors de l’exécution et remplacées par leurs valeurs.</description>
+    </item>
+    
+  </channel>
+</rss>

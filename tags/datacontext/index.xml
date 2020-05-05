@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>datacontext on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/datacontext/</link>
+    <description>Recent content in datacontext on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 21 Mar 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/datacontext/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WPF] Comment faire un binding dans les cas où on n’hérite pas du DataContext</title>
+      <link>https://thomaslevesque.fr/2011/03/21/wpf-comment-faire-un-binding-dans-les-cas-o-on-nhrite-pas-du-datacontext/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/03/21/wpf-comment-faire-un-binding-dans-les-cas-o-on-nhrite-pas-du-datacontext/</guid>
+      <description>La propriété DataContext de WPF est extrêmement pratique, car elle est automatiquement héritée par tous les enfants de l’élément où elle est définie ; il n’est donc pas nécessaire de la redéfinir pour chaque élément qu’on veut lier aux données. Cependant, il arrive que le DataContext ne soit pas accessible pour certains éléments : c’est le cas des éléments qui n’appartiennent pas à l’arbre visuel ni à l’arbre logique. Il devient alors très difficile de définir une propriété ce ces éléments par un binding&amp;hellip; Prenons un exemple simple : on veut afficher une liste de produits dans un DataGrid.</description>
+    </item>
+    
+  </channel>
+</rss>

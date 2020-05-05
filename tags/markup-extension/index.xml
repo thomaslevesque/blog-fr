@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markup extension on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/markup-extension/</link>
+    <description>Recent content in markup extension on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 23 Sep 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/markup-extension/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WPF 4.5] Abonnement à un évènement à l’aide d’une markup extension</title>
+      <link>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</link>
+      <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</guid>
+      <description>Voilà un certain temps que je n&#39;avais plus parlé des markup extensions&amp;hellip; J&#39;y reviens à l&#39;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&#39;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&#39;ici, il était possible d&#39;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&#39;abonner à un évènement.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Markup extensions et templates</title>
+      <link>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</link>
+      <pubDate>Sat, 22 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</guid>
+      <description>Note : Ce billet est la suite de celui sur une markup extension qui met à jour sa cible, et réutilise le même code de départ. Vous avez peut-être remarqué que l&#39;utilisation d&#39;une markup extension personnalisée dans un template donnait parfois des résultats inattendus&amp;hellip; Nous allons voir dans ce billet comment faire une markup extension qui se comporte correctement dans un template. Illustration du problème Reprenons l&#39;exemple du précédent billet : une markup extension qui renvoie l&#39;état de la connectivité réseau, et met à jour la propriété cible quand le réseau est connecté ou déconnecté :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Une markup extension qui met à jour sa cible</title>
+      <link>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</link>
+      <pubDate>Tue, 28 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</guid>
+      <description>Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&amp;hellip; Cependant, celles-ci ont une limitation qui peut s&#39;avérer assez gênante : elles ne sont évaluées qu&#39;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&amp;hellip; Cela peut être utile dans différents cas, notamment :
+  si la valeur de la markup extension peut changer en réponse à un évènement</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding asynchrone sur une propriété du ViewModel</title>
+      <link>https://thomaslevesque.fr/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/</link>
+      <pubDate>Wed, 01 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/</guid>
+      <description>Mise à jour : Comme l&#39;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&amp;hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&amp;hellip; J&#39;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&#39;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Utiliser les InputBindings avec le pattern MVVM</title>
+      <link>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</link>
+      <pubDate>Tue, 17 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
+      <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
+&amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+ La propriété Command n&#39;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&#39;arbre logique ou visuel du contrôle, ils n&#39;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&#39;écrire du code-behind.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding sur les paramètres d’application à l’aide d’une Markup extension</title>
+      <link>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</guid>
+      <description>Voilà, c’est fait, j&#39;ai créé mon blog sur .NET&amp;hellip; j&#39;ai mis le temps, mais j&#39;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&#39;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&#39;auto-former sur les dernières nouveautés du framework.</description>
+    </item>
+    
+  </channel>
+</rss>

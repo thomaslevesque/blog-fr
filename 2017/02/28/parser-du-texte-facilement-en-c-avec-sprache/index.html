@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Parser du texte facilement en C# avec Sprache - Blog .NET de Thomas Levesque</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="Parser du texte facilement en C# avec Sprache" />
+<meta property="og:description" content="Il y a quelques jours, j&#39;ai découvert un petit bijou : Sprache. Le nom signifie &ldquo;langage&rdquo; en allemand. C&#39;est une librairie très élégante et facile à utiliser pour créer des analyseurs de texte, à l&#39;aide de parser combinators, qui sont une technique très courante en programmation fonctionnelle. Le concept théorique peut sembler un peu effrayant, mais comme vous allez le voir dans un instant, Sprache rend ça très accessible.
+Analyse syntaxique L&#39;analyse syntaxique (parsing) est une tâche très courante, mais qui peut être laborieuse et où il est facile de faire des erreurs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomaslevesque.fr/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/" />
+<meta property="article:published_time" content="2017-02-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-02-28T00:00:00+00:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Parser du texte facilement en C# avec Sprache"/>
+<meta name="twitter:description" content="Il y a quelques jours, j&#39;ai découvert un petit bijou : Sprache. Le nom signifie &ldquo;langage&rdquo; en allemand. C&#39;est une librairie très élégante et facile à utiliser pour créer des analyseurs de texte, à l&#39;aide de parser combinators, qui sont une technique très courante en programmation fonctionnelle. Le concept théorique peut sembler un peu effrayant, mais comme vous allez le voir dans un instant, Sprache rend ça très accessible.
+Analyse syntaxique L&#39;analyse syntaxique (parsing) est une tâche très courante, mais qui peut être laborieuse et où il est facile de faire des erreurs."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/social.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-31645024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+				<div class="logo__title">Blog .NET de Thomas Levesque</div>
+				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/a-propos/">
+				
+				<span class="menu__text">À propos</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Parser du texte facilement en C# avec Sprache</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-28T00:00:00Z">February 28, 2017</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>Il y a quelques jours, j'ai découvert un petit bijou : <a href="https://github.com/sprache/sprache">Sprache</a>. Le nom signifie &ldquo;langage&rdquo; en allemand. C'est une librairie très élégante et facile à utiliser pour créer des analyseurs de texte, à l'aide de <a href="https://en.wikipedia.org/wiki/Parser_combinator">parser combinators</a>, qui sont une technique très courante en programmation fonctionnelle. Le concept théorique peut sembler un peu effrayant, mais comme vous allez le voir dans un instant, Sprache rend ça très accessible.</p>
+<h2 id="analyse-syntaxique">Analyse syntaxique</h2>
+<p>L'analyse syntaxique (parsing) est une tâche très courante, mais qui peut être laborieuse et où il est facile de faire des erreurs. Il existe de nombreuses approches :</p>
+<ul>
+<li>analyse manuelle basée sur <code>Split</code>, <code>IndexOf</code>, <code>Substring</code> etc.</li>
+<li>expressions régulières</li>
+<li>parser codé à la main qui scanne les tokens dans une chaine</li>
+<li>parser généré avec ANTLR ou un outil similaire</li>
+<li>et certainement beaucoup d'autres qui m'échappent&hellip;</li>
+</ul>
+<p>Aucune de ces options n'est très séduisante. Pour les cas simples, découper la chaine ou utiliser une regex peut suffire, mais ça devient vite ingérable pour des grammaires plus complexes. Construire un vrai parser à la main pour une grammaire non-triviale est loin d'être facile. ANTLR nécessite Java, un peu de connaissance, et se base sur de la génération de code, ce qui complique le process de build.</p>
+<p>Heureusement, <a href="https://github.com/sprache/sprache">Sprache</a> offre une alternative très intéressante. Il fournit de nombreux parsers et combinateurs prédéfinis qu'on peut utiliser pour définir une grammaire. Examinons pas à pas un cas concret : analyser le challenge dans le header <code>WWW-Authenticate</code> d'une réponse HTTP (j'ai dû faire un parser à la main pour ça récemment, et j'aurais aimé connaître Sprache à ce moment-là).</p>
+<h2 id="la-grammaire">La grammaire</h2>
+<p>Le header <code>WWW-Authenticate</code> est envoyé par un serveur HTTP dans une réponse 401 (Non autorisé) pour indiquer au client comment s'authentifier :</p>
+<pre><code># Challenge Basic
+WWW-Authenticate: Basic realm=&quot;FooCorp&quot;
+
+# Challenge OAuth 2.0 après l'envoi d'un token expiré
+WWW-Authenticate: Bearer realm=&quot;FooCorp&quot;, error=invalid_token, error_description=&quot;The access token has expired&quot;
+</code></pre><p>Ce qu'on veut parser est le challenge, c'est-à-dire la valeur du header. Nous avons donc un mécanisme d'authentification ou &ldquo;scheme&rdquo; (<code>Basic</code>, <code>Bearer</code>), suivi d'un ou plusieurs paramètres (paires nom-valeur). Ça semble assez simple, on pourrait sans doute juste découper selon les <code>','</code>, puis selon les <code>'='</code> pour obtenir les valeurs&hellip; mais les guillemets compliquent les choses, car une chaine entre guillemets peut contenir les caractères <code>','</code> ou <code>'='</code>. De plus, les guillemets sont optionnels si la valeur du paramètre est un simple token, donc on ne peut pas compter sur le fait que les guillemets seront présents (ou pas). Clairement, si on veut parser ça de façon fiable, il va falloir regarder les specs de plus près&hellip;</p>
+<p>Le header <code>WWW-Authenticate</code> est décrit en détails dans la <a href="https://tools.ietf.org/html/rfc2617">RFC-2617</a>. La grammaire ressemble à ceci, sous une forme que la spec appelle &ldquo;forme Backus-Naur augmentée&rdquo; (voir <a href="https://tools.ietf.org/html/rfc2616#section-2.1">RFC 2616 §2.1</a>) :</p>
+<pre><code># from RFC-2617 (HTTP Basic and Digest authentication)
+
+challenge      = auth-scheme 1*SP 1#auth-param
+auth-scheme    = token
+auth-param     = token &quot;=&quot; ( token | quoted-string )
+
+# from RFC2616 (HTTP/1.1)
+
+token          = 1*&lt;any CHAR except CTLs or separators&gt;
+separators     = &quot;(&quot; | &quot;)&quot; | &quot;&lt;&quot; | &quot;&gt;&quot; | &quot;@&quot;
+               | &quot;,&quot; | &quot;;&quot; | &quot;:&quot; | &quot;\&quot; | &lt;&quot;&gt;
+               | &quot;/&quot; | &quot;[&quot; | &quot;]&quot; | &quot;?&quot; | &quot;=&quot;
+               | &quot;{&quot; | &quot;}&quot; | SP | HT
+quoted-string  = ( &lt;&quot;&gt; *(qdtext | quoted-pair ) &lt;&quot;&gt; )
+qdtext         = &lt;any TEXT except &lt;&quot;&gt;&gt;
+quoted-pair    = &quot;\&quot; CHAR
+</code></pre><p>Nous avons donc quelques règles de grammaire, voyons comment on peut les encoder en C# à l'aide de Sprache, et les utiliser pour analyser le challenge.</p>
+<h2 id="parser-les-tokens">Parser les tokens</h2>
+<p>Commençons par les parties les plus simples de la grammaire : les tokens (&ldquo;jetons&rdquo;). Un token est défini comme un ou plusieurs caractères qui ne sont ni des caractères de contrôle, ni des séparateurs.</p>
+<p>Nous allons définir nos règles dans une classe <code>Grammar</code>. Commençons pour définir certaines classes de caractères :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Grammar</span>
+{
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; SeparatorChar =
+        Parse.Chars(<span style="color:#e6db74">&#34;()&lt;&gt;@,;:\\\&#34;/[]?={} \t&#34;</span>);
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; ControlChar =
+        Parse.Char(Char.IsControl, <span style="color:#e6db74">&#34;Control character&#34;</span>);
+
+}
+</code></pre></div><ul>
+<li>Chaque règle est déclarée comme un <code>Parser&lt;T&gt;</code> ; puisque ces règles valident des caractères seuls, elles sont de type <code>Parser&lt;char&gt;</code>.</li>
+<li>La classe <code>Parse</code> de Sprache expose des primitives d'analyse et des combinateurs.</li>
+<li><code>Parse.Chars</code> valide n'importe quel caractère de la chaine spécifiée, on l'utilise pour spécifier la liste des caractères de séparation.</li>
+<li>La surcharge de <code>Parse.Char</code> qu'on utilise ici prend un prédicat qui sera appelé pour valider un caractère, et une description de cette classe de caractères. Ici on utilise la méthode <code>System.Char.IsControl</code> comme prédicat pour identifier les caractères de contrôle.</li>
+</ul>
+<p>Définissons maintenant une classe de caractères <code>TokenChar</code>, qui correspond aux caractères qui peuvent être inclus dans un token. Selon la RFC, il s'agit de n'importe quel caractère qui n'appartient pas aux deux classes précédemment définies :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; TokenChar =
+        Parse.AnyChar
+            .Except(SeparatorChar)
+            .Except(ControlChar);
+</code></pre></div><ul>
+<li><code>Parse.AnyChar</code>, comme son nom l'indique, valide n'importe quel caractère.</li>
+<li><code>Except</code> permet de spécifier des exceptions, c'est à dire des règles qui ne doivent <em>pas</em> valider le caractère.</li>
+</ul>
+<p>Enfin, un token est une séquence d'un ou plusieurs de ces caractères :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">string</span>&gt; Token =
+        TokenChar.AtLeastOnce().Text();
+</code></pre></div><ul>
+<li>Un token est une chaine, donc la règle pour un token est de type <code>Parser&lt;string&gt;</code>.</li>
+<li><code>AtLeastOnce()</code> signifie une ou plusieurs répétitions, et puisque <code>TokenChar</code> est un <code>Parser&lt;char&gt;</code>, <code>AtLeastOnce()</code> renvoie un <code>Parser&lt;IEnumerable&lt;char&gt;&gt;</code>.</li>
+<li><code>Text()</code> combine la séquence de caractères en une chaine, et renvoie donc un <code>Parser&lt;string&gt;</code></li>
+</ul>
+<p>Nous voilà donc capables de parser un token. Mais ce n'est qu'un premier pas, il nous reste encore pas mal de travail&hellip;</p>
+<h2 id="parser-les-chaines-entre-guillemets">Parser les chaines entre guillemets</h2>
+<p>La RFC définit une chaine entre guillemets (quoted string) comme une séquence de :</p>
+<ul>
+<li>un guillemet qui ouvre la chaine</li>
+<li>n'importe quel nombre de l'un de ces éléments :
+<ul>
+<li>un &ldquo;qdtext&rdquo;, c'est-à-dire n'importe quel caractère sauf un guillemet</li>
+<li>un &ldquo;quoted pair&rdquo;, c'est-à-dire n'importe quel caractère précédé d'un backslash (c'est utilisé pour échapper les guillemets à l'intérieur d'une chaine)</li>
+</ul>
+</li>
+<li>un guillemet qui ferme la chaine</li>
+</ul>
+<p>Écrivons donc les règles pour &ldquo;qdtext&rdquo; et &ldquo;quoted pair&rdquo; :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; DoubleQuote = Parse.Char(<span style="color:#e6db74">&#39;&#34;&#39;</span>);
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; Backslash = Parse.Char(<span style="color:#e6db74">&#39;\\&#39;</span>);
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; QdText =
+        Parse.AnyChar.Except(DoubleQuote);
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; QuotedPair =
+        <span style="color:#66d9ef">from</span> _ <span style="color:#66d9ef">in</span> Backslash
+        <span style="color:#66d9ef">from</span> c <span style="color:#66d9ef">in</span> Parse.AnyChar
+        <span style="color:#66d9ef">select</span> c;
+</code></pre></div><p>La règle <code>QdText</code> se passe d'explication, mais <code>QuotedPair</code> est plus intéressante&hellip; Comme vous pouvez le voir, ça ressemble à une requête Linq : c'est comme ça qu'on spécifie une séquence avec Sprache. Cette requête-là signifie : <em>prendre un backslash (qu'on nomme <code>_</code> parce qu'on va l'ignorer) suivi de n'importe quel caractère nommé <code>c</code>, et renvoyer juste <code>c</code></em> (les &ldquo;quoted pairs&rdquo; ne sont pas vraiment des séquences d'échappement comme en C, Java ou C#, donc <code>&quot;\n&quot;</code> n'est pas interprété comme &ldquo;nouvelle ligne&rdquo;, mais simplement comme <code>&quot;n&quot;</code>).</p>
+<p>On peut donc maintenant écrire la règle pour une chaine entre guillemets :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">string</span>&gt; QuotedString =
+        <span style="color:#66d9ef">from</span> open <span style="color:#66d9ef">in</span> DoubleQuote
+        <span style="color:#66d9ef">from</span> text <span style="color:#66d9ef">in</span> QuotedPair.Or(QdText).Many().Text()
+        <span style="color:#66d9ef">from</span> close <span style="color:#66d9ef">in</span> DoubleQuote
+        <span style="color:#66d9ef">select</span> text;
+</code></pre></div><ul>
+<li>La méthode <code>Or</code> indique un choix entre deux parsers. <code>QuotedPair.Or(QdText)</code> essaie de valider une &ldquo;quoted pair&rdquo;, et si cela échoue, il essaie de valider un &ldquo;qdtext&rdquo; à la place.</li>
+<li><code>Many()</code> indique un nombre quelconque de répétitions.</li>
+<li><code>Text()</code> combine les caractères en une chaine.</li>
+<li>on sélectionne juste <code>text</code>, car on n'a plus besoin des guillemets (ils ne servaient qu'à délimiter la chaine).</li>
+</ul>
+<p>Nous avons maintenant toutes les briques de bases, on va donc pouvoir passer à des règles de plus haut niveau.</p>
+<h3 id="parser-les-paramtres-du-challenge">Parser les paramètres du challenge</h3>
+<p>Un challenge est constitué d'un scheme d'authentification suivi d'un ou plusieurs paramètres. Le scheme est trivial (c'est juste un token), donc commençons par parser les paramètres.</p>
+<p>Bien que la RFC n'ait pas de règle nommée pour ça, définissons-nous une règle pour les valeurs des paramètres. La valeur peut être soit un token, soit une chaine entre guillemets :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">string</span>&gt; ParameterValue =
+        Token.Or(QuotedString);
+</code></pre></div><p>Puisqu'un paramètre est une élément composite (nom et valeur), déclarons une classe pour le représenter :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Parameter</span>
+{
+    <span style="color:#66d9ef">public</span> Parameter(<span style="color:#66d9ef">string</span> name, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>)
+    {
+        Name = name;
+        Value = <span style="color:#66d9ef">value</span>;
+    }
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; }
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Value { <span style="color:#66d9ef">get</span>; }
+}
+</code></pre></div><p>Le <code>T</code> de <code>Parser&lt;T&gt;</code> n'est pas limité aux caractères ou aux chaines, ça peut être n'importe quel type. La règle pour parser les paramètres sera donc de type <code>Parser&lt;Parameter&gt;</code> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; EqualSign = Parse.Char(<span style="color:#e6db74">&#39;=&#39;</span>);
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;Parameter&gt; Parameter =
+        <span style="color:#66d9ef">from</span> name <span style="color:#66d9ef">in</span> Token
+        <span style="color:#66d9ef">from</span> _ <span style="color:#66d9ef">in</span> EqualSign
+        <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">value</span> <span style="color:#66d9ef">in</span> ParameterValue
+        <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">new</span> Parameter(name, <span style="color:#66d9ef">value</span>);
+</code></pre></div><p>Ici on prend un token (le nom du paramètre), suivi du signe <code>'='</code>, suivi d'une valeur de paramètre, et on combine le nom et la valeur en une instance de <code>Parameter</code>.</p>
+<p>Analysons maintenant une séquence d'un ou plusieurs caractères. Les paramètres sont séparés par des virgules, avec des caractères d'espacement optionnels avant et après la virgule (chercher &ldquo;#rule&rdquo; dans la <a href="https://tools.ietf.org/html/rfc2616#section-2.1">RFC 2616 §2.1</a>). La grammaire pour les listes autorise plusieurs virgules successives sans éléments entre elles, par exemple <code>item1 ,, item2,item3, ,item4</code>, donc la règle pour le séparateur de liste peut être écrite comme ceci :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; Comma = Parse.Char(<span style="color:#e6db74">&#39;,&#39;</span>);
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;<span style="color:#66d9ef">char</span>&gt; ListDelimiter =
+        <span style="color:#66d9ef">from</span> leading <span style="color:#66d9ef">in</span> Parse.WhiteSpace.Many()
+        <span style="color:#66d9ef">from</span> c <span style="color:#66d9ef">in</span> Comma
+        <span style="color:#66d9ef">from</span> trailing <span style="color:#66d9ef">in</span> Parse.WhiteSpace.Or(Comma).Many()
+        <span style="color:#66d9ef">select</span> c;
+</code></pre></div><p>On valide juste la première virgule, le reste peut être n'importe quel nombre de virgules et de caractères d'espacement. On renvoie la virgule parce qu'il faut bien renvoyer quelque chose, mais on ne l'utilisera pas (dans un langage fonctionnel on aurait pu renvoyer le type <code>unit</code> à la place).</p>
+<p>On peut maintenant analyser une séquence de paramètres comme ceci :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;Parameter[]&gt; Parameters =
+        <span style="color:#66d9ef">from</span> first <span style="color:#66d9ef">in</span> Parameter.Once()
+        <span style="color:#66d9ef">from</span> others <span style="color:#66d9ef">in</span> (
+            <span style="color:#66d9ef">from</span> _ <span style="color:#66d9ef">in</span> ListDelimiter
+            <span style="color:#66d9ef">from</span> p <span style="color:#66d9ef">in</span> Parameter
+            <span style="color:#66d9ef">select</span> p).Many()
+        <span style="color:#66d9ef">select</span> first.Concat(others).ToArray();
+</code></pre></div><p>Mais c'est un peu alambiqué&hellip; heureusement Sprache fournit une approche plus facile avec la méthode <code>DelimitedBy</code> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;Parameter[]&gt; Parameters =
+        <span style="color:#66d9ef">from</span> p <span style="color:#66d9ef">in</span> Parameter.DelimitedBy(ListDelimiter)
+        <span style="color:#66d9ef">select</span> p.ToArray();
+</code></pre></div><h2 id="parser-le-challenge">Parser le challenge</h2>
+<p>On y est presque. On a maintenant tout ce qu'il nous faut pour parser le challenge complet. Déclarons d'abord une classe pour le représenter :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Challenge</span>
+{
+    <span style="color:#66d9ef">public</span> Challenge(<span style="color:#66d9ef">string</span> scheme, Parameter[] parameters)
+    {
+        Scheme = scheme;
+        Parameters = parameters;
+    }
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Scheme { <span style="color:#66d9ef">get</span>; }
+    <span style="color:#66d9ef">public</span> Parameter[] Parameters { <span style="color:#66d9ef">get</span>; }
+}
+</code></pre></div><p>Et on peut enfin écrire la règle globale :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Parser&lt;Challenge&gt; Challenge =
+        <span style="color:#66d9ef">from</span> scheme <span style="color:#66d9ef">in</span> Token
+        <span style="color:#66d9ef">from</span> _ <span style="color:#66d9ef">in</span> Parse.WhiteSpace.AtLeastOnce()
+        <span style="color:#66d9ef">from</span> parameters <span style="color:#66d9ef">in</span> Parameters
+        <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">new</span> Challenge(scheme, parameters);
+</code></pre></div><p>Remarquez que j'ai déclaré cette règle comme publique, contrairement aux autres : c'est la seule qu'on a besoin d'exposer.</p>
+<h2 id="utiliser-le-parseur">Utiliser le parseur</h2>
+<p>Notre parseur est terminé, il n'y a plus qu'à l'utiliser, ce qui est assez simple :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">void</span> ParseAndPrintChallenge(<span style="color:#66d9ef">string</span> input)
+{
+    <span style="color:#66d9ef">var</span> challenge = Grammar.Challenge.Parse(input);
+    Console.WriteLine(<span style="color:#e6db74">$&#34;Scheme: {challenge.Scheme}&#34;</span>);
+    Console.WriteLine(<span style="color:#e6db74">$&#34;Parameters:&#34;</span>);
+    <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> p <span style="color:#66d9ef">in</span> challenge.Parameters)
+    {
+        Console.WriteLine(<span style="color:#e6db74">$&#34;- {p.Name} = {p.Value}&#34;</span>);
+    }
+}
+</code></pre></div><p>Avec le challenge OAuth 2.0 de l'exemple précédent, ce code produit la sortie suivante :</p>
+<pre><code>Scheme: Bearer
+Parameters:
+- realm = FooCorp
+- error = invalid_token
+- error_description = The access token has expired
+</code></pre><p>S'il y a une erreur de syntaxe dans le texte en entrée, la méthode <code>Parse</code> lancera une <code>ParseException</code> avec un message décrivant où et pourquoi l'analyse a échoué. Par exemple, si j'enlève l'espace entre &ldquo;Bearer&rdquo; et &ldquo;realm&rdquo;, j'obtiens l'erreur suivante :</p>
+<blockquote>
+<p>Parsing failure: unexpected &lsquo;=&rsquo;; expected whitespace (Line 1, Column 12); recently consumed: earerrealm</p>
+</blockquote>
+<p>Vous trouverez le code complet de cet article <a href="https://gist.github.com/thomaslevesque/d8ee28be1cf383a3f8aaf39cee776f92">ici</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Comme vous le voyez, il est très facile avec Sprache de parser un texte complexe. Le code n'est pas particulièrement concis, mais il est complètement déclaratif ; il n'y pas de boucles, pas de conditions, pas de variables temporaires, pas d'état&hellip; Cela rend le code très facile à comprendre, et il peut facilement être comparé à la définition originale de la grammaire pour s'assurer de sa conformité. Sprache fournit aussi de bons retours en cas d'erreur, ce qui est assez difficile à implémenter dans un parseur écrit à la main.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/parser/" rel="tag">parser</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/parser-combinator/" rel="tag">parser combinator</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/parsing/" rel="tag">parsing</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/sprache/" rel="tag">sprache</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">À propos Thomas Levesque</span>
+	</div>
+	<div class="authorbox__description">
+		Thomas Levesque est un développeur français vivant à Paris.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2017/02/26/quoi-de-neuf-dans-fakeiteasy-3-0-0/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Précédent</span>
+			<p class="pager__title">Quoi de neuf dans FakeItEasy 3.0.0 ?</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/" rel="next">
+			<span class="pager__subtitle">Suivant&thinsp;»</span>
+			<p class="pager__title">Amélioration des performances de Linq dans .NET Core</p>
+		</a>
+	</div>
+</nav>
+
+<div>
+    <script src="https://utteranc.es/client.js"
+            repo="thomaslevesque/blog-fr"
+            issue-term="pathname"
+            label="post-comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+	</form>
+</div>
+<div class="widget-social widget">
+    <h4 class="widget-social__title widget__title">Social</h4>
+    <div class="widget-social__content widget__content">
+        <a class="widget-social__link-custom widget__link" title="GitHub" rel="noopener noreferrer" href="https://github.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+        </a>
+        <a class="widget-social__link-custom widget__link" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/thomaslevesque" target="_blank">
+            <svg class="widget-social__link-icon-custom icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+        </a>
+    </div>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Articles récents</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2018/04/17/fin-de-mon-blog-en-francais/">Fin de mon blog en français</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/">Comprendre le pipeline de middleware d&#39;ASP.NET Core</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/">Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/">Meilleure gestion du timeout avec HttpClient</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/">Transformer les templates T4 pendant la build, et passer des variables du projet</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Mots-clefs</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/c%23/" title="c#">c#</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wpf/" title="wpf">wpf</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xaml/" title="xaml">xaml</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/visual-studio/" title="visual-studio">visual-studio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/async/" title="async">async</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/binding/" title="binding">binding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markup-extension/" title="markup-extension">markup-extension</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mvvm/" title="mvvm">mvvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linq/" title="linq">linq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tests-unitaires/" title="tests-unitaires">tests-unitaires</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/winrt/" title="winrt">winrt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net/" title=".net">.net</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-4.0/" title=".net-4.0">.net-4.0</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/.net-core/" title=".net-core">.net-core</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/asynchrone/" title="asynchrone">asynchrone</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Thomas Levesque.
+			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

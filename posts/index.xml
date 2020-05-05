@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/posts/</link>
+    <description>Recent content in Posts on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 17 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fin de mon blog en français</title>
+      <link>https://thomaslevesque.fr/2018/04/17/fin-de-mon-blog-en-francais/</link>
+      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2018/04/17/fin-de-mon-blog-en-francais/</guid>
+      <description>Chers lecteurs, J&#39;ai créé ce blog en français il y a 10 ans environ. Quelque temps plus tard, j&#39;en ai créé une version anglaise pour toucher une plus large audience. Pendant des années, j&#39;ai publié tous mes articles dans les deux langues. Mais l&#39;audience de la version française n&#39;a jamais vraiment décollé, et le fait de devoir traduire tous mes articles nuit à ma motivation pour écrire. J&#39;ai donc décidé d&#39;arrêter pour consacrer mon énergie à la version anglaise, qui est lue par beaucoup plus de monde (environ 20 fois plus).</description>
+    </item>
+    
+    <item>
+      <title>Comprendre le pipeline de middleware d&#39;ASP.NET Core</title>
+      <link>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</guid>
+      <description>Middlewhat? L&#39;architecture d&#39;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&#39;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&#39;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
+    </item>
+    
+    <item>
+      <title>Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</title>
+      <link>https://thomaslevesque.fr/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/</link>
+      <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/</guid>
+      <description>J&#39;ai récemment eu à travailler sur un dépôt Git qui contenait des modifications à reporter sur un autre dépôt. Malheureusement, ce dépôt n&#39;avait pas de fichier .gitignore au départ, si bien que de nombreux fichiers inutiles (répertoires bin/obj/packages&amp;hellip;) avaient été archivés. Cela rendait l&#39;historique très difficile à lire, puisque chaque commit contenait des centaines de fichiers modifiés.
+Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&#39;auraient pas dû se trouver là.</description>
+    </item>
+    
+    <item>
+      <title>Meilleure gestion du timeout avec HttpClient</title>
+      <link>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</guid>
+      <description>Le problème Si vous avez l&#39;habitude d&#39;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
+ Le timeout est défini de façon globale, et s&#39;applique à toutes les requêtes, alors qu&#39;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
+    </item>
+    
+    <item>
+      <title>Transformer les templates T4 pendant la build, et passer des variables du projet</title>
+      <link>https://thomaslevesque.fr/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/</guid>
+      <description>T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&#39;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&#39;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&#39;on souhaite regénérer les sorties des templates à chaque build.</description>
+    </item>
+    
+    <item>
+      <title>Propriétés et éléments MSBuild partagés avec Directory.Build.props</title>
+      <link>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</guid>
+      <description>Pour être honnête, je n&#39;ai jamais vraiment aimé MSBuild jusqu&#39;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&#39;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&#39;était mal documenté&amp;hellip; Mais avec l&#39;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.
+MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&#39;est le nom officiel, mais c&#39;est celui que j&#39;utiliserai).</description>
+    </item>
+    
+    <item>
+      <title>Tester et déboguer une bibliothèque depuis LINQPad</title>
+      <link>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</guid>
+      <description>Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&#39;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&#39;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code .</description>
+    </item>
+    
+    <item>
+      <title>Amélioration des performances de Linq dans .NET Core</title>
+      <link>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</guid>
+      <description>Depuis le temps qu&#39;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&#39;est déjà assez cool en soi, mais ça ne s&#39;arrête pas là : .NET Core apporte aussi beaucoup d&#39;améliorations à la Base Class Library.
+Par exemple, Linq est plus rapide dans .</description>
+    </item>
+    
+    <item>
+      <title>Parser du texte facilement en C# avec Sprache</title>
+      <link>https://thomaslevesque.fr/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/</link>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/</guid>
+      <description>Il y a quelques jours, j&#39;ai découvert un petit bijou : Sprache. Le nom signifie &amp;ldquo;langage&amp;rdquo; en allemand. C&#39;est une librairie très élégante et facile à utiliser pour créer des analyseurs de texte, à l&#39;aide de parser combinators, qui sont une technique très courante en programmation fonctionnelle. Le concept théorique peut sembler un peu effrayant, mais comme vous allez le voir dans un instant, Sprache rend ça très accessible.
+Analyse syntaxique L&#39;analyse syntaxique (parsing) est une tâche très courante, mais qui peut être laborieuse et où il est facile de faire des erreurs.</description>
+    </item>
+    
+    <item>
+      <title>Quoi de neuf dans FakeItEasy 3.0.0 ?</title>
+      <link>https://thomaslevesque.fr/2017/02/26/quoi-de-neuf-dans-fakeiteasy-3-0-0/</link>
+      <pubDate>Sun, 26 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/02/26/quoi-de-neuf-dans-fakeiteasy-3-0-0/</guid>
+      <description>FakeItEasy est un framework de mocking populaire pour .NET, avec une API intuitive et facile à utiliser. Depuis environ un an, je suis un des principaux développeurs de FakeItEasy, avec Adam Ralph and Blair Conrad. Ça a été un vrai plaisir de travailler avec eux, et je me suis éclaté !
+Aujourd&#39;hui j&#39;ai le plaisir d&#39;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles.</description>
+    </item>
+    
+    <item>
+      <title>Méthodes C# dans les en-têtes de diff git</title>
+      <link>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</guid>
+      <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&#39;en-tête du bloc (la ligne qui commence par @@), comme ceci :
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&#39;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
+    </item>
+    
+    <item>
+      <title>Tout faire ou presque avec le pipeline de HttpClient</title>
+      <link>https://thomaslevesque.fr/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/</guid>
+      <description>Il y a quelques années, Microsoft a introduit la classe HttpClient comme alternative moderne à HttpWebRequest pour faire des requêtes web depuis des applications .NET. Non seulement cette nouvelle API est beaucoup plus facile à utiliser, plus propre, et asynchrone, mais elle est aussi facilement extensible.
+Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&#39;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&#39;implémentation.</description>
+    </item>
+    
+    <item>
+      <title>Déconstruction de tuples en C# 7</title>
+      <link>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</guid>
+      <description>Dans mon précedent billet, j&#39;ai parlé d&#39;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&#39;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
+ la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&#39;équipe du langage C# n&#39;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
+    </item>
+    
+    <item>
+      <title>Tuples en C# 7</title>
+      <link>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</link>
+      <pubDate>Thu, 28 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
+      <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
+.NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {int count = 0;double sum = 0.0;foreach (var value in values){ count++; sum += value;}return Tuple.</description>
+    </item>
+    
+    <item>
+      <title>Piège: utiliser var et async ensemble</title>
+      <link>https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/</guid>
+      <description>Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
+public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() { // .</description>
+    </item>
+    
+    <item>
+      <title>Publier un package sur NuGet.org depuis AppVeyor</title>
+      <link>https://thomaslevesque.fr/2016/04/26/publier-un-package-sur-nuget-org-depuis-appveyor/</link>
+      <pubDate>Tue, 26 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/04/26/publier-un-package-sur-nuget-org-depuis-appveyor/</guid>
+      <description>Depuis quelques mois, j’utilise AppVeyor CI pour certains de mes projets open-source (avec Cake pour les scripts de build). J’en suis très content, mais il y avait un point qui m’ennuyait : je ne trouvais pas comment publier des packages sur NuGet.org directement depuis AppVeyor. Il fallait que je télécharge le package en local, puis que je l’uploade manuellement depuis ma machine (soit avec nuget push en ligne de commande, soit via le formulaire web sur NuGet.</description>
+    </item>
+    
+    <item>
+      <title>Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview</title>
+      <link>https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/</link>
+      <pubDate>Sun, 17 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/</guid>
+      <description>Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !</description>
+    </item>
+    
+    <item>
+      <title>Injecter automatiquement des fakes dans une test fixture avec FakeItEasy</title>
+      <link>https://thomaslevesque.fr/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/</link>
+      <pubDate>Sun, 17 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/</guid>
+      <description>Aujourd’hui j’aimerais partager avec vous une fonctionnalité sympa de FakeItEasy que j’ai découverte récemment.
+Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a généralement besoin de créer des objets factices (fakes) pour les dépendances et de les injecter manuellement dans la classe testée (SUT, System Under Test), ou d’utiliser un conteneur IoC pour enregistrer les dépendances factices et construire le SUT. C’est un peu laborieux, et il y a quelques mois j’avais créé une extension Unity pour créer automatiquement les fakes et rendre tout ça plus facile.</description>
+    </item>
+    
+    <item>
+      <title>Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource</title>
+      <link>https://thomaslevesque.fr/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/</link>
+      <pubDate>Thu, 31 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/</guid>
+      <description>La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, une approche standardisée pour gérer l’annulation a été introduite : les jetons d’annulation. L’idée générale est que vous créez un CancellationTokenSource qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Empêcher l’utilisateur de coller une image dans un RichTextBox</title>
+      <link>https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/</guid>
+      <description>Le contrôle RichTextBox de WPF est assez puissant, et très pratique quand on a besoin d’accepter une saisie en texte riche. Cependant, l’une de ses fonctionnalités peut devenir problématique : l’utilisateur peut coller une image. Selon ce qu’on veut faire du texte saisi par l’utilisateur, ce n’est pas forcément souhaitable.
+Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutions que j’ai trouvées suggéraient d’intercepter la frappe de touches Ctrl-V, et de bloquer l’événement si le presse-papiers contient une image.</description>
+    </item>
+    
+    <item>
+      <title>Weak events en C#, suite</title>
+      <link>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</guid>
+      <description>Il y a quelques années, j’ai blogué à propos d’une implémentation générique du pattern “weak event” en C#. Le but était de pallier les problèmes de fuites mémoire liés aux évènements quand on oublie de s’en désabonner. L’implémentation était basée sur l’utilisation de références faibles sur les abonnés, de façon à éviter d’empêcher qu’ils soient libérés par le garbage collector.
+Ma solution initiale était plus une preuve de concept qu’autre chose, et avait un sérieux problème de performance, dû à l’utilisation de DynamicInvoke à chaque fois que l’évènement était déclenché.</description>
+    </item>
+    
+    <item>
+      <title>Casse-tête C# n°2</title>
+      <link>https://thomaslevesque.fr/2015/08/02/casse-tte-c-n2/</link>
+      <pubDate>Sun, 02 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/08/02/casse-tte-c-n2/</guid>
+      <description>Encore un petit casse-tête basé sur un problème que j’ai rencontré au boulot…
+Regardez ce morceau de code :
+Console.WriteLine($&amp;quot;x &amp;gt; y is {x &amp;gt; y}&amp;quot;); Console.WriteLine($&amp;quot;!(x &amp;lt;= y) is {!(x &amp;lt;= y)}&amp;quot;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
+x &amp;gt; y is False !(x &amp;lt;= y) is True </description>
+    </item>
+    
+    <item>
+      <title>Comment récupérer une date en UTC avec SQLite</title>
+      <link>https://thomaslevesque.fr/2015/06/28/comment-rcuprer-une-date-en-utc-avec-sqlite/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/28/comment-rcuprer-une-date-en-utc-avec-sqlite/</guid>
+      <description>SQLite est un super moteur de base de données “in-process” : il est très léger, ne nécessite aucun serveur ni configuration, et fonctionne sur toutes les plateformes. Il y a même un provider ADO.NET officiel très bien réalisé. Cependant, si vous stockez des dates en UTC avec ce provider, vous allez probablement rencontrer un sérieux problème : bien que la date soit correctement stockée en UTC (elle est stockée dans un format similaire à ISO8601, avec un ‘Z’ pour indiquer la zone UTC), quand on la relit depuis la base de données, on obtient un DateTime converti en heure locale, avec Kind = Unspecified.</description>
+    </item>
+    
+    <item>
+      <title>Filtres d’exception en C# 6 : leur plus grand avantage n’est pas celui qu’on croit</title>
+      <link>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</guid>
+      <description>Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc catch :
+static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&amp;quot;Error 42 occurred&amp;quot;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.</description>
+    </item>
+    
+    <item>
+      <title>Créer un conteneur qui crée automatiquement des objets factices avec Unity et FakeItEasy</title>
+      <link>https://thomaslevesque.fr/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/</guid>
+      <description>L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup FakeItEasy ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici.</description>
+    </item>
+    
+    <item>
+      <title>Support de l’asynchronisme et de l’annulation pour les wait handles</title>
+      <link>https://thomaslevesque.fr/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/</guid>
+      <description>Le .NET Framework fournit un certain nombre de primitives de synchronisation bas niveau. Les plus couramment utilisées sont appelées “wait handles”, et héritent de la classe WaitHandle : Semaphore, Mutex, AutoResetEvent et ManualResetEvent. Ces classes existent depuis .NET 2.0 (voire 1.1 pour certaines), mais elles n’ont pas beaucoup évolué depuis, ce qui fait qu’elles ne supportent pas des fonctionnalités introduites plus tard et devenues très courantes. En particulier, elles ne supportent pas l’attente asynchrone, ni l’annulation de l’attente.</description>
+    </item>
+    
+    <item>
+      <title>Tirer parti des annotations de ReSharper</title>
+      <link>https://thomaslevesque.fr/2015/03/25/tirer-parti-des-annotations-de-resharper/</link>
+      <pubDate>Wed, 25 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/03/25/tirer-parti-des-annotations-de-resharper/</guid>
+      <description>Je ne pense pas qu’il soit vraiment nécessaire de présenter ReSharper (souvent abbrégé R#), mais au cas où vous ne connaitriez pas, il s’agit d’un outil créé par JetBrains qui analyse votre code C# ou VB.NET en temps réel pour vous avertir des bugs potentiels, mauvaises pratiques, non-respect des conventions, etc. Il propose aussi de nombreux refactorings et générateurs de code bien utiles. Je l’utilise depuis quelques années maintenant, et cela a beaucoup amélioré ma productivité et la qualité de mon code.</description>
+    </item>
+    
+    <item>
+      <title>Casse-tête C# n°1</title>
+      <link>https://thomaslevesque.fr/2015/03/10/casse-tte-c-n1/</link>
+      <pubDate>Tue, 10 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/03/10/casse-tte-c-n1/</guid>
+      <description>J’adore résoudre des casse-têtes en C#; je pense que c’est un excellent moyen d’approfondir sa connaissance du langage. Et en plus, c’est amusant !
+Je viens de penser à celui-ci :
+static void Test(out int x, out int y) { x = 42; y = 123; Console.WriteLine (x == y); } Que pensez-vous que ce code affiche ? Pouvez-vous en être sûr ? Postez votre réponse dans les commentaires !</description>
+    </item>
+    
+    <item>
+      <title>Personnaliser l’interpolation de chaine avec C# 6</title>
+      <link>https://thomaslevesque.fr/2015/02/25/personnaliser-linterpolation-de-chaine-avec-c-6/</link>
+      <pubDate>Wed, 25 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/02/25/personnaliser-linterpolation-de-chaine-avec-c-6/</guid>
+      <description>L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :
+string text = $&amp;quot;{p.Name} was born on {p.DateOfBirth:D}&amp;quot;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :</description>
+    </item>
+    
+    <item>
+      <title>Test unitaires asynchrones avec NUnit</title>
+      <link>https://thomaslevesque.fr/2015/02/02/test-unitaires-asynchrones-avec-nunit/</link>
+      <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/02/02/test-unitaires-asynchrones-avec-nunit/</guid>
+      <description>Récemment, mon équipe et moi avons commencé à écrire des tests unitaires pour une application qui utilise beaucoup de code asynchrone. Nous avons utilisé NUnit (2.6) parce que nous le connaissions déjà bien, mais nous ne l’avions encore jamais utilisé pour tester du code asynchrone.
+Supposons que le système à tester soit cette très intéressante classe Calculator :
+ public class Calculator { public async Task&amp;lt;int&amp;gt; AddAsync(int x, int y) { // simulate long calculation await Task.</description>
+    </item>
+    
+    <item>
+      <title>Une nouvelle bibliothèque pour afficher des GIFs animés dans les applications XAML</title>
+      <link>https://thomaslevesque.fr/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/</guid>
+      <description>Il y a quelques années, j’avais écrit un article qui montrait comment afficher un GIF animé en WPF. L’article incluait le code complet, et avait eu un certain succès, puisque WPF n’avait pas de support intégré pour les GIFs animés. Suite aux problèmes mentionnés dans les commentaires, j’ai apporté de nombreuses modifications au code dans l’article. Au bout d’un certain temps j’ai fini par trouver que ce n’était vraiment pas pratique, j’ai donc publié le code sur CodePlex (il a depuis déménagé vers GitHub) sous le nom WpfAnimatedGif, et j’ai commencé à le maintenir en tant que projet open-source.</description>
+    </item>
+    
+    <item>
+      <title>Optimiser ToArray et ToList en fournissant le nombre d’éléments</title>
+      <link>https://thomaslevesque.fr/2014/12/08/optimiser-toarray-et-tolist-en-fournissant-le-nombre-dlments/</link>
+      <pubDate>Mon, 08 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/12/08/optimiser-toarray-et-tolist-en-fournissant-le-nombre-dlments/</guid>
+      <description>Les méthodes d’extension ToArray et ToList sont des moyens pratiques de matérialiser une séquence énumérable (par exemple une requête Linq). Cependant, quelque chose me chiffonne : ces deux méthodes sont très inefficaces si elles ne connaissent pas le nombre d’éléments dans la séquence (ce qui est presque toujours le cas quand on les utilise sur une requête Linq). Concentrons nous sur ToArray pour l’instant (ToList a quelques différences, mais le principe est essentiellement le même).</description>
+    </item>
+    
+    <item>
+      <title>Afficher facilement une taille de fichier sous forme lisible par un humain</title>
+      <link>https://thomaslevesque.fr/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/</guid>
+      <description>Si vous écrivez une application qui a un rapport avec la gestion de fichiers, vous aurez probablement besoin d’afficher la taille des fichiers. Mais si un fichier a une taille de 123456789 octets, ce n’est évidemment pas la valeur qu’il faudra afficher, car c’est difficile à lire, et l’utilisateur n’a généralement pas besoin de connaitre la taille à l’octet près. Vous allez plutôt afficher quelque chose comme 118 Mo.
+Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :</description>
+    </item>
+    
+    <item>
+      <title>StringTemplate: une autre approche de l’interpolation de chaines</title>
+      <link>https://thomaslevesque.fr/2014/11/17/stringtemplate-une-autre-approche-de-l-interpolation-de-chaines/</link>
+      <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/17/stringtemplate-une-autre-approche-de-l-interpolation-de-chaines/</guid>
+      <description>Avec la version 6 de C# qui approche, il y a beaucoup de discussions sur CodePlex et ailleurs à propos de l’interpolation de chaines. Pas très étonnant, puisqu’il s’agit d’une des fonctionnalités majeures de cette version… Au cas où vous auriez vécu dans une grotte ces derniers mois et n’en auriez pas entendu parler, l’interpolation de chaines est un moyen d’insérer des expressions C# à l’intérieur d’une chaine de caractère, de façon à ce qu’elles soient évaluées lors de l’exécution et remplacées par leurs valeurs.</description>
+    </item>
+    
+    <item>
+      <title>Passage de paramètres par référence à une méthode asynchrone</title>
+      <link>https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/</guid>
+      <description>L’asynchronisme dans C# est une fonctionnalité géniale, et je l’ai beaucoup utilisé depuis son apparition. Mais il y a quelques limitations agaçantes; par exemple, on ne peut pas passer des paramètres par référence (ref ou out) à une méthode asynchrone. Il y a de bonnes raisons pour cela; la plus évidente est que si vous passez par référence une variable locale, elle est stockée sur la pile, or la pile ne va pas rester disponible pendant toute l’exécution de la méthode asynchone (seulement jusqu’au premier await), donc l’emplacement de la variable n’existera plus.</description>
+    </item>
+    
+    <item>
+      <title>Un moyen facile de tester unitairement la validation des arguments null</title>
+      <link>https://thomaslevesque.fr/2014/11/02/easy-unit-testing-of-null-argument-validation/</link>
+      <pubDate>Sun, 02 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/02/easy-unit-testing-of-null-argument-validation/</guid>
+      <description>Quand on teste unitairement une méthode, une des choses à tester est la validation des arguments : par exemple, vérifier que la méthode lève bien une ArgumentNullException quand un argument null est passé pour un paramètre qui ne doit pas être null. Ecrire ce genre de test est très facile, mais c’est une tâche fastidieuse et répétitive, surtout pour une méthode qui a beaucoup de paramètres. J’ai donc écrit une méthode qui automatise en partie cette tâche : elle essaie de passer null pour chacun des arguments spécifiés, et vérifie que la méthode lève bien une ArgumentNullException.</description>
+    </item>
+    
+    <item>
+      <title>Intégration avec Visual Studio Online &#43; Git dans Team Explorer</title>
+      <link>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</guid>
+      <description>J’ai commencé récemment à utiliser Visual Studio Online pour des projets personnels, et je dois dire que c’est une très bonne plateforme, même si ce serait bien de pouvoir héberger des projets publics et non pas seulement privés. J’apprécie particulièrement l’intégration dans le Team Explorer de Visual Studio pour gérer les tâches et les builds.
+Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle de version : le remote pour VS Online doit s’appeler origin, sinon Team Explorer ne détecte pas qu’il s’agit d’un projet VS Online, et n’affiche pas les pages “Builds” et “Work Items”.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey</title>
+      <link>https://thomaslevesque.fr/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/</link>
+      <pubDate>Tue, 11 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/</guid>
+      <description>Un besoin fréquent pour les applications de bureau est de gérer des raccourcis claviers globaux, pour pouvoir réagir aux raccourcis même quand l’application n’a pas le focus. Malheureusement, il n’y aucune fonctionnalité intégrée dans le .NET Framework pour gérer ça.
+Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de librairies open-source qui se proposent d’y remédier (par exemple VirtualInput). La plupart d’entre elles sont basées sur des hooks système globaux, ce qui leur permet d’intercepter toutes les frappes de touche, même celles qui ne vous intéressent pas.</description>
+    </item>
+    
+    <item>
+      <title>Gérer les problèmes de timeout lors de l’upload de gros fichiers avec HttpWebRequest</title>
+      <link>https://thomaslevesque.fr/2014/01/14/gerer-problemes-timeout-upload-gros-fichiers-httpwebrequest/</link>
+      <pubDate>Tue, 14 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/01/14/gerer-problemes-timeout-upload-gros-fichiers-httpwebrequest/</guid>
+      <description>Si vous avez déjà eu à uploader de gros volumes de données en HTTP, vous avez probablement rencontré des problèmes de timeout. La valeur par défault de Timeout pour HttpWebRequest est de 100 secondes, ce qui signifie que s’il s’écoule plus que cette durée entre le moment où vous envoyez les en-têtes de la requête et celui où vous recevez les en-têtes de la réponse, votre requête échouera. Bien sûr, si vous uploadez un gros fichier, vous devez augmenter ce timeout… mais à quelle valeur ?</description>
+    </item>
+    
+    <item>
+      <title>Envoyer des données avec HttpClient selon un modèle “push”</title>
+      <link>https://thomaslevesque.fr/2013/12/01/envoyer-des-donnees-avec-httpclient-selon-un-modele-push/</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/12/01/envoyer-des-donnees-avec-httpclient-selon-un-modele-push/</guid>
+      <description>Si vous avez déjà utilisé la classe HttpWebRequest pour envoyer des données, vous savez qu’elle utilise un modèle “push”. Ce que j’entends par là, c’est que vous appelez la méthode GetRequestStream, qui ouvre la connexion si nécessaire, envoie les en-têtes, et renvoie un flux sur lequel vous pouvez écrire directement.
+.NET 4.5 a introduit la classe HttpClient comme nouveau moyen de communiquer en HTTP. Elle repose en fait sur HttpWebRequest en interne, mais offre une API plus pratique et complètement asynchrone.</description>
+    </item>
+    
+    <item>
+      <title>[WinRT] Sélectionner un élément de liste lors d’un appui long</title>
+      <link>https://thomaslevesque.fr/2013/11/22/winrt-selectionner-un-element-de-liste-lors-d-un-appui-long/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/22/winrt-selectionner-un-element-de-liste-lors-d-un-appui-long/</guid>
+      <description>Comme vous le savez probablement, la méthode standard pour sélectionner ou déselectionner un élément dans un contrôle de liste WinRT est de le faire glisser légèrement vers le haut ou vers le bas. Même si j’aime bien ce geste, il n’est pas très intuitif pour les utilisateurs qui ne sont pas habitués à Modern UI. Et ça devient encore plus déroutant, car ma déclaration précédente n’est pas tout à fait exacte : en fait, il faut faire glisser l’élément perpendiculairement à la direction de défilement de la liste.</description>
+    </item>
+    
+    <item>
+      <title>Exécuter un outil personnalisé automatiquement quand un fichier est modifié</title>
+      <link>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</link>
+      <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</guid>
+      <description>Aussi loin que je me souvienne, il y a toujours eu dans Visual Studio quelque chose appelé “outils personnalisés” (custom tools), également connus sous le nom de single-file generators. Quand vous appliquez un tel outil à un fichier de votre projet, il génère quelque chose (généralement du code, mais pas forcément) en fonction du contenu du fichier. Par exemple, l’outil personnalisé par défaut pour les fichiers de ressource s’appelle ResXFileCodeGenerator, et génère une classe qui permet d’accéder facilement aux ressources définies dans le fichier resx.</description>
+    </item>
+    
+    <item>
+      <title>Helper fortement typé pour les notifications toast</title>
+      <link>https://thomaslevesque.fr/2013/11/10/helper-fortement-type-pour-les-notifications-toast/</link>
+      <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/10/helper-fortement-type-pour-les-notifications-toast/</guid>
+      <description>Windows 8 fournit une API pour afficher des notifications toast. Malheureusement, elle est très peu pratique à utiliser : pour définir le contenu d’une notification, il faut utiliser un modèle prédéfini qui est fourni sous la forme d’un XmlDocument, et fixer la valeur de chaque champ dans le XML. Il n’y a rien dans l’API pour indiquer quels champs sont définis dans le modèle et à quoi ils correspondent, il faut consulter le catalogue de modèles de toast dans la documentation.</description>
+    </item>
+    
+    <item>
+      <title>Afficher des suggestions de résultat dans une SearchBox WinRT : bug concernant l’image</title>
+      <link>https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/</guid>
+      <description>Aujourd’hui je me suis heurté à un bug bizarre qui m’a fait perdre une heure ou deux, donc je me suis dit que ça méritait d’écrire un billet à ce sujet au cas où quelqu’un d’autre rencontrerait le même problème.
+Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scénarios de recherche directement dans une application Windows Store. L’une de ses fonctionnalités est l’affichage de suggestions basées sur la saisie de l’utilisateur.</description>
+    </item>
+    
+    <item>
+      <title>Une façon simple et sécurisée de stocker un mot de passe à l&#39;aide de Data Protection API</title>
+      <link>https://thomaslevesque.fr/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/</link>
+      <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/</guid>
+      <description>Si vous écrivez une application cliente qui a besoin de stocker des identifiants d&#39;utilisateur, ce n&#39;est généralement pas une bonne idée de stocker le mot de passe en clair, pour des raisons évidentes de sécurité. Il faut donc le chiffrer, mais dès qu&#39;on commence à envisager le chiffrement, cela soulève toutes sortes de problèmes&amp;hellip; Quel algorithme utiliser ? Quelle clé de chiffrement ? Clairement on va avoir besoin de cette clé pour déchiffrer le mot de passe, il faut donc qu&#39;elle se trouve dans l&#39;exécutable ou dans la configuration.</description>
+    </item>
+    
+    <item>
+      <title>Détecter les changements d’une propriété de dépendance dans WinRT</title>
+      <link>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</link>
+      <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</guid>
+      <description>Aujourd&#39;hui j&#39;aimerais partager une astuce que j&#39;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&#39;est mon premier billet à ce sujet, donc j&#39;espère que je ne vais pas trop me ridiculiser&amp;hellip;
+Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&#39;est pas toujours le cas.</description>
+    </item>
+    
+    <item>
+      <title>Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework</title>
+      <link>https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/</link>
+      <pubDate>Wed, 13 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/</guid>
+      <description>Les attributs d&#39;informations de l&#39;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&#39;appliquent aux paramètres optionnels d&#39;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&#39;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
+static void Log( string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0) { Console.</description>
+    </item>
+    
+    <item>
+      <title>Les autres nouveautés de Visual Studio 2012</title>
+      <link>https://thomaslevesque.fr/2012/06/11/les-autres-nouveautes-de-visual-studio-2012/</link>
+      <pubDate>Mon, 11 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2012/06/11/les-autres-nouveautes-de-visual-studio-2012/</guid>
+      <description>Visual Studio 2012 RC est sorti il y a 10 jours, et bien que je n’ai pas encore eu beaucoup de temps pour jouer avec, j’en suis assez satisfait pour l’instant. Beaucoup de choses ont déjà été dites sur le design, ainsi que sur les nouvelles fonctionnalités les plus importantes, mais il y a aussi beaucoup de petites améliorations moins remarquables qui vont nous faciliter la vie. Comme je n’ai pas vu grand chose d’écrit à ce sujet, je me suis dit qu’il serait utile de faire une petite liste de ce que j’ai remarqué jusqu’ici.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Utiliser Linq pour filtrer, trier et grouper les données dans une CollectionView</title>
+      <link>https://thomaslevesque.fr/2011/11/29/wpf-utiliser-linq-pour-filtrer-trier-et-grouper-les-donnes-dans-une-collectionview/</link>
+      <pubDate>Tue, 29 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/11/29/wpf-utiliser-linq-pour-filtrer-trier-et-grouper-les-donnes-dans-une-collectionview/</guid>
+      <description>WPF offre un mécanisme assez simple pour la mise en forme de collections de données, via l’interface ICollectionView et ses propriétés Filter, SortDescriptions et GroupDescriptions :
+// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ... // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People); // Uniquement les adultes view.Filter = o =&amp;gt; ((Person)o).Age &amp;gt;= 18; // Tri par nom et prénom view.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Créer des styles paramétrables à l&#39;aide des propriétés attachées</title>
+      <link>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</link>
+      <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</guid>
+      <description>Je voudrais aujourd&#39;hui partager avec vous une petite astuce que j&#39;utilise souvent depuis quelques mois. Supposons que pour améliorer l&#39;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards : Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&#39;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&#39;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
+    </item>
+    
+    <item>
+      <title>[WPF 4.5] Abonnement à un évènement à l’aide d’une markup extension</title>
+      <link>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</link>
+      <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</guid>
+      <description>Voilà un certain temps que je n&#39;avais plus parlé des markup extensions&amp;hellip; J&#39;y reviens à l&#39;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&#39;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&#39;ici, il était possible d&#39;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&#39;abonner à un évènement.</description>
+    </item>
+    
+    <item>
+      <title>Récursion terminale en C#</title>
+      <link>https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/</link>
+      <pubDate>Tue, 30 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/</guid>
+      <description>&lt;p&gt;Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (&lt;code&gt;StackOverflowException&lt;/code&gt; en .NET).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Afficher une image GIF animée</title>
+      <link>https://thomaslevesque.fr/2011/03/27/wpf-afficher-une-image-gif-animee/</link>
+      <pubDate>Sun, 27 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/03/27/wpf-afficher-une-image-gif-animee/</guid>
+      <description>WPF est une technologie géniale, mais parfois on a l&#39;impression qu&#39;il lui manque certaines fonctionnalités assez basiques&amp;hellip; Un exemple souvent cité est l&#39;absence de support pour les images GIF animées. En fait, le format GIF proprement dit est supporté, mais le contrôle Image n&#39;affiche que la première image de l&#39;animation. De nombreuses solutions à ce problème ont été proposées sur les forums et blogs techniques, généralement des variantes autour des approches suivantes :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Comment faire un binding dans les cas où on n’hérite pas du DataContext</title>
+      <link>https://thomaslevesque.fr/2011/03/21/wpf-comment-faire-un-binding-dans-les-cas-o-on-nhrite-pas-du-datacontext/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2011/03/21/wpf-comment-faire-un-binding-dans-les-cas-o-on-nhrite-pas-du-datacontext/</guid>
+      <description>La propriété DataContext de WPF est extrêmement pratique, car elle est automatiquement héritée par tous les enfants de l’élément où elle est définie ; il n’est donc pas nécessaire de la redéfinir pour chaque élément qu’on veut lier aux données. Cependant, il arrive que le DataContext ne soit pas accessible pour certains éléments : c’est le cas des éléments qui n’appartiennent pas à l’arbre visuel ni à l’arbre logique. Il devient alors très difficile de définir une propriété ce ces éléments par un binding&amp;hellip; Prenons un exemple simple : on veut afficher une liste de produits dans un DataGrid.</description>
+    </item>
+    
+    <item>
+      <title>[C# 5] Programmation asynchrone avec C# 5</title>
+      <link>https://thomaslevesque.fr/2010/10/30/c-5-programmation-asynchrone-avec-c-5/</link>
+      <pubDate>Sat, 30 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/10/30/c-5-programmation-asynchrone-avec-c-5/</guid>
+      <description>Depuis quelque temps, les spéculations allaient bon train sur les fonctionnalités de la future version 5 du langage C#… Très peu d’informations officielles avaient filtré à ce sujet, la seule chose plus ou moins certaine était l’introduction du concept de “compilateur en temps que service”, qui permettrait de tirer parti du compilateur à partir du code. A part ça, silence radio de la part de Microsoft…
+Lors de la PDC jeudi dernier, un coin du voile a enfin été levé, mais pas du tout sur ce qu’on attendait !</description>
+    </item>
+    
+    <item>
+      <title>[Entity Framework] Utiliser Include avec des expressions lambda</title>
+      <link>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</guid>
+      <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&#39;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&#39;accès à ces entités :
+var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where ord.Date &amp;gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Une grille simplifiée utilisant des attributs XAML</title>
+      <link>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</link>
+      <pubDate>Tue, 20 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</guid>
+      <description>Le composant Grid est l&#39;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&#39;utiliser, bien que simple à écrire, est relativement lourd :
+&amp;lt;Grid&amp;gt; &amp;lt;Grid.RowDefinitions&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt; &amp;lt;/Grid.RowDefinitions&amp;gt; &amp;lt;Grid.ColumnDefinitions&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt; &amp;lt;/Grid.ColumnDefinitions&amp;gt; &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;0&amp;#34; /&amp;gt; &amp;lt;TextBox Text=&amp;#34;Hello world&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;1&amp;#34;/&amp;gt; &amp;lt;Rectangle Fill=&amp;#34;Black&amp;#34; Grid.Row=&amp;#34;1&amp;#34; Grid.ColumnSpan=&amp;#34;2&amp;#34;/&amp;gt; &amp;lt;Label Content=&amp;#34;Image&amp;#34; Grid.</description>
+    </item>
+    
+    <item>
+      <title>[C#] Une implémentation du pattern WeakEvent</title>
+      <link>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</link>
+      <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</guid>
+      <description>Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&#39;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&#39;exécution de l&#39;application.</description>
+    </item>
+    
+    <item>
+      <title>[Dvp.NET] Première version de la librairie Dvp.NET !</title>
+      <link>https://thomaslevesque.fr/2010/03/18/dvp-net-premiere-version-de-la-librairie-dvp-net/</link>
+      <pubDate>Thu, 18 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/03/18/dvp-net-premiere-version-de-la-librairie-dvp-net/</guid>
+      <description>Depuis quelques mois, je travaille avec d&#39;autres membres de l&#39;équipe .NET de Developpez.com sur un petit projet open-source nommé Dvp.NET. Il s&#39;agit d&#39;une librairie de classes issues des contributions des membres de Developpez.com. Les fonctionnalités de cette librairie sont très diverses :
+  Des méthodes d&#39;extension pour faciliter les tâches courantes concernant :
+ Les chaines de caractères Les collections L&#39;accès aux données Les dates Les énumérations &amp;hellip;    Des algorithmes métier fréquemment utilisés (vérification de numéros Siret, Siren, IBAN, RIB, carte de crédit&amp;hellip;)</description>
+    </item>
+    
+    <item>
+      <title>Automatiser la vérification des null avec les expressions Linq</title>
+      <link>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</link>
+      <pubDate>Sat, 20 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
+      <description>Le problème Je suis sûr qu&#39;il vous est déjà arrivé d&#39;écrire ce genre de code :
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&#39;il n&#39;est pas nul, ce qui peut vite s&#39;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&#39;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+    </item>
+    
+    <item>
+      <title>[VS 2010] Support du binding dans les InputBindings</title>
+      <link>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</guid>
+      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&#39;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&#39;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&#39;ailleurs, les InputBindings n&#39;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&#39;ici, pour lier la commande d&#39;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&#39;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
+    </item>
+    
+    <item>
+      <title>[C# 4.0] Implémenter un objet dynamique personnalisé</title>
+      <link>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</link>
+      <pubDate>Tue, 06 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</guid>
+      <description>Comme vous le savez sans doute déjà si vous vous intéressez à l’actualité de .NET, la future version 4.0 de C#, actuellement en beta, introduit un nouveau type appelé dynamic. Celui ci permet d’accéder à des propriétés ou méthodes d’un objet qui ne sont pas connus statiquement (à la compilation). Ils seront résolus dynamiquement à l’exécution grâce au DLR (Dynamic Language Runtime), qui est l’une des grandes nouveautés de .NET 4.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Markup extensions et templates</title>
+      <link>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</link>
+      <pubDate>Sat, 22 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</guid>
+      <description>Note : Ce billet est la suite de celui sur une markup extension qui met à jour sa cible, et réutilise le même code de départ. Vous avez peut-être remarqué que l&#39;utilisation d&#39;une markup extension personnalisée dans un template donnait parfois des résultats inattendus&amp;hellip; Nous allons voir dans ce billet comment faire une markup extension qui se comporte correctement dans un template. Illustration du problème Reprenons l&#39;exemple du précédent billet : une markup extension qui renvoie l&#39;état de la connectivité réseau, et met à jour la propriété cible quand le réseau est connecté ou déconnecté :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Tri automatique d’un GridView : suite</title>
+      <link>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</link>
+      <pubDate>Tue, 04 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</guid>
+      <description>Il y a quelques mois, j&#39;avais publié un billet où j&#39;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&#39;avais laissé un point ouvert : l&#39;ajout d&#39;un symbole dans l&#39;en-tête de colonne pour indiquer visuellement la direction du tri. C&#39;est maintenant chose faite ! Pour arriver à ce résultat, j&#39;ai utilisé un Adorner : c&#39;est un composant qui permet de dessiner &amp;ldquo;par-dessus&amp;rdquo; un élément graphique existant, sur une couche de dessin indépendante.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Une markup extension qui met à jour sa cible</title>
+      <link>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</link>
+      <pubDate>Tue, 28 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</guid>
+      <description>Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&amp;hellip; Cependant, celles-ci ont une limitation qui peut s&#39;avérer assez gênante : elles ne sont évaluées qu&#39;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&amp;hellip; Cela peut être utile dans différents cas, notamment :
+  si la valeur de la markup extension peut changer en réponse à un évènement</description>
+    </item>
+    
+    <item>
+      <title>[C#] Relation parent/enfant et sérialisation XML</title>
+      <link>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</guid>
+      <description>Me revoilà avec un peu de retard, j&#39;ai un peu manqué de temps libre ces dernières semaines&amp;hellip; Voilà donc un petit post pour présenter une idée qui m&#39;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&#39;est de conception C# qu&#39;il s&#39;agit ! Le problème Il est assez courant, dans un programme, d&#39;avoir un objet parent qui possède une collection d&#39;enfants ayant une référence vers leur parent.</description>
+    </item>
+    
+    <item>
+      <title>[Windows Forms] Glisser-déplacer automatique de contrôles (DragMove)</title>
+      <link>https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/</link>
+      <pubDate>Mon, 27 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/</guid>
+      <description>Je ressors de mes tiroirs un code que j&#39;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&amp;hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&#39;utilise comme ceci :
+private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&#39;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&#39;à ce que le bouton soit relâché.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding sur une collection asynchrone</title>
+      <link>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</link>
+      <pubDate>Fri, 17 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</guid>
+      <description>Comme je l&#39;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&#39;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&#39;exemple d&#39;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
+private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;(); public ObservableCollection&amp;lt;string&amp;gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&amp;#34;Strings&amp;#34;); } } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&#39;exception citée plus haut.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding asynchrone sur une propriété du ViewModel</title>
+      <link>https://thomaslevesque.fr/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/</link>
+      <pubDate>Wed, 01 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/</guid>
+      <description>Mise à jour : Comme l&#39;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&amp;hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&amp;hellip; J&#39;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&#39;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Tri automatique d&#39;un GridView lors du clic sur une colonne</title>
+      <link>https://thomaslevesque.fr/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/</link>
+      <pubDate>Fri, 27 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/</guid>
+      <description>Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&amp;hellip; Avec le DataGridView de Windows Forms, c&#39;était &amp;ldquo;automagique&amp;rdquo; : quand l&#39;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&amp;hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&#39;évènement Click du GridViewColumnHeader.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Utiliser les InputBindings avec le pattern MVVM</title>
+      <link>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</link>
+      <pubDate>Tue, 17 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
+      <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
+&amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+ La propriété Command n&#39;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&#39;arbre logique ou visuel du contrôle, ils n&#39;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&#39;écrire du code-behind.</description>
+    </item>
+    
+    <item>
+      <title>[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre</title>
+      <link>https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/</link>
+      <pubDate>Thu, 05 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/</guid>
+      <description>Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&#39;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : L&#39;astuce suivante permet d&#39;obtenir le même comportement pour vos propres fichiers. Supposons que vous souhaitiez personnaliser les classes générées par le designer d&#39;entités. Vous ne pouvez pas modifier le fichier Model1.Designer.cs, puisque vos modifications seraient écrasées par le designer.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Article de Josh Smith sur le design pattern Model-View-ViewModel</title>
+      <link>https://thomaslevesque.fr/2009/02/25/wpf-article-de-josh-smith-sur-le-design-pattern-model-view-viewmodel/</link>
+      <pubDate>Wed, 25 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/02/25/wpf-article-de-josh-smith-sur-le-design-pattern-model-view-viewmodel/</guid>
+      <description>Depuis l&#39;apparition de WPF, on entend de plus en plus souvent parler de &amp;ldquo;Model-View-ViewModel&amp;rdquo; (MVVM). Il s&#39;agit d&#39;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.</description>
+    </item>
+    
+    <item>
+      <title>Créer un lecteur RSS en 5 minutes</title>
+      <link>https://thomaslevesque.fr/2009/02/13/creer-un-lecteur-rss-en-5-minutes/</link>
+      <pubDate>Fri, 13 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/02/13/creer-un-lecteur-rss-en-5-minutes/</guid>
+      <description>Aujourd&#39;hui, je suis tombé par hasard sur une petite classe bien pratique : SyndicationFeed. Cette classe, apparue dans le framework 3.5, permet de manipuler des flux de syndication (comme RSS 2.0 ou Atom 1.0) avec un minimum de code. On peut l&#39;utiliser pour créer et diffuser des flux, ou pour lire des flux existants. Par exemple, voilà comment récupérer le fil d&#39;actualité de Google News et afficher son titre, son lien d&#39;origine et les titres de ses articles :</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)</title>
+      <link>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</link>
+      <pubDate>Thu, 05 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</guid>
+      <description>Hum&amp;hellip; 2 mois depuis mon précédent (et premier) post&amp;hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
+Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&amp;hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&amp;hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable.</description>
+    </item>
+    
+    <item>
+      <title>[WPF] Binding sur les paramètres d’application à l’aide d’une Markup extension</title>
+      <link>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</guid>
+      <description>Voilà, c’est fait, j&#39;ai créé mon blog sur .NET&amp;hellip; j&#39;ai mis le temps, mais j&#39;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&#39;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&#39;auto-former sur les dernières nouveautés du framework.</description>
+    </item>
+    
+  </channel>
+</rss>

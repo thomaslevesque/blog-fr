@@ -1,0 +1,1662 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/</link>
+    <description>Recent content in Tags on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 17 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>meta</title>
+      <link>https://thomaslevesque.fr/tags/meta/</link>
+      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/meta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.net core</title>
+      <link>https://thomaslevesque.fr/tags/.net-core/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/.net-core/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>asp.net</title>
+      <link>https://thomaslevesque.fr/tags/asp.net/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/asp.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>asp.net core</title>
+      <link>https://thomaslevesque.fr/tags/asp.net-core/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/asp.net-core/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C#</title>
+      <link>https://thomaslevesque.fr/tags/c#/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>middleware</title>
+      <link>https://thomaslevesque.fr/tags/middleware/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/middleware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipeline</title>
+      <link>https://thomaslevesque.fr/tags/pipeline/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/pipeline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>contrôle de version</title>
+      <link>https://thomaslevesque.fr/tags/contr%C3%B4le-de-version/</link>
+      <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/contr%C3%B4le-de-version/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://thomaslevesque.fr/tags/git/</link>
+      <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.NET</title>
+      <link>https://thomaslevesque.fr/tags/.net/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>handler</title>
+      <link>https://thomaslevesque.fr/tags/handler/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/handler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTTP</title>
+      <link>https://thomaslevesque.fr/tags/http/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HttpClient</title>
+      <link>https://thomaslevesque.fr/tags/httpclient/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/httpclient/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>timeout</title>
+      <link>https://thomaslevesque.fr/tags/timeout/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/timeout/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>build</title>
+      <link>https://thomaslevesque.fr/tags/build/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/build/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>code generation</title>
+      <link>https://thomaslevesque.fr/tags/code-generation/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/code-generation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>msbuild</title>
+      <link>https://thomaslevesque.fr/tags/msbuild/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/msbuild/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>T4</title>
+      <link>https://thomaslevesque.fr/tags/t4/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/t4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Studio</title>
+      <link>https://thomaslevesque.fr/tags/visual-studio/</link>
+      <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/visual-studio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>csproj</title>
+      <link>https://thomaslevesque.fr/tags/csproj/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/csproj/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debug</title>
+      <link>https://thomaslevesque.fr/tags/debug/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/debug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linqpad</title>
+      <link>https://thomaslevesque.fr/tags/linqpad/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/linqpad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linq</title>
+      <link>https://thomaslevesque.fr/tags/linq/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/linq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>performance</title>
+      <link>https://thomaslevesque.fr/tags/performance/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/performance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>parser</title>
+      <link>https://thomaslevesque.fr/tags/parser/</link>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/parser/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>parser combinator</title>
+      <link>https://thomaslevesque.fr/tags/parser-combinator/</link>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/parser-combinator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>parsing</title>
+      <link>https://thomaslevesque.fr/tags/parsing/</link>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/parsing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sprache</title>
+      <link>https://thomaslevesque.fr/tags/sprache/</link>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/sprache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FakeItEasy</title>
+      <link>https://thomaslevesque.fr/tags/fakeiteasy/</link>
+      <pubDate>Sun, 26 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/fakeiteasy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mocking</title>
+      <link>https://thomaslevesque.fr/tags/mocking/</link>
+      <pubDate>Sun, 26 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/mocking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tests unitaires</title>
+      <link>https://thomaslevesque.fr/tags/tests-unitaires/</link>
+      <pubDate>Sun, 26 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/tests-unitaires/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>async</title>
+      <link>https://thomaslevesque.fr/tags/async/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/async/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>csharp</title>
+      <link>https://thomaslevesque.fr/tags/csharp/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/csharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diff</title>
+      <link>https://thomaslevesque.fr/tags/diff/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/diff/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitattributes</title>
+      <link>https://thomaslevesque.fr/tags/gitattributes/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/gitattributes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>xfuncname</title>
+      <link>https://thomaslevesque.fr/tags/xfuncname/</link>
+      <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/xfuncname/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HttpMessageHandler</title>
+      <link>https://thomaslevesque.fr/tags/httpmessagehandler/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/httpmessagehandler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C# 7</title>
+      <link>https://thomaslevesque.fr/tags/c#-7/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/c#-7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deconstruction</title>
+      <link>https://thomaslevesque.fr/tags/deconstruction/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/deconstruction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tuple</title>
+      <link>https://thomaslevesque.fr/tags/tuple/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/tuple/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Studio 15</title>
+      <link>https://thomaslevesque.fr/tags/visual-studio-15/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/visual-studio-15/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bug</title>
+      <link>https://thomaslevesque.fr/tags/bug/</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/bug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ReSharper</title>
+      <link>https://thomaslevesque.fr/tags/resharper/</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/resharper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://thomaslevesque.fr/tags/testing/</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unit</title>
+      <link>https://thomaslevesque.fr/tags/unit/</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/unit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>appveyor</title>
+      <link>https://thomaslevesque.fr/tags/appveyor/</link>
+      <pubDate>Tue, 26 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/appveyor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>déploiement</title>
+      <link>https://thomaslevesque.fr/tags/d%C3%A9ploiement/</link>
+      <pubDate>Tue, 26 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/d%C3%A9ploiement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>intégration continue</title>
+      <link>https://thomaslevesque.fr/tags/int%C3%A9gration-continue/</link>
+      <pubDate>Tue, 26 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/int%C3%A9gration-continue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nuget</title>
+      <link>https://thomaslevesque.fr/tags/nuget/</link>
+      <pubDate>Tue, 26 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/nuget/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>injection de dépendances</title>
+      <link>https://thomaslevesque.fr/tags/injection-de-d%C3%A9pendances/</link>
+      <pubDate>Sun, 17 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/injection-de-d%C3%A9pendances/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>annulation</title>
+      <link>https://thomaslevesque.fr/tags/annulation/</link>
+      <pubDate>Thu, 31 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/annulation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CancellationTokenSource</title>
+      <link>https://thomaslevesque.fr/tags/cancellationtokensource/</link>
+      <pubDate>Thu, 31 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/cancellationtokensource/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>image</title>
+      <link>https://thomaslevesque.fr/tags/image/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/image/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>presse-papier</title>
+      <link>https://thomaslevesque.fr/tags/presse-papier/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/presse-papier/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>richtextbox</title>
+      <link>https://thomaslevesque.fr/tags/richtextbox/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/richtextbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WPF</title>
+      <link>https://thomaslevesque.fr/tags/wpf/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/wpf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fuite mémoire</title>
+      <link>https://thomaslevesque.fr/tags/fuite-m%C3%A9moire/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/fuite-m%C3%A9moire/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open-instance delegate</title>
+      <link>https://thomaslevesque.fr/tags/open-instance-delegate/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/open-instance-delegate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>weak event</title>
+      <link>https://thomaslevesque.fr/tags/weak-event/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/weak-event/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>évènements</title>
+      <link>https://thomaslevesque.fr/tags/%C3%A9v%C3%A8nements/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/%C3%A9v%C3%A8nements/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>casse-tête</title>
+      <link>https://thomaslevesque.fr/tags/casse-t%C3%AAte/</link>
+      <pubDate>Sun, 02 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/casse-t%C3%AAte/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ado.net</title>
+      <link>https://thomaslevesque.fr/tags/ado.net/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/ado.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>datetime</title>
+      <link>https://thomaslevesque.fr/tags/datetime/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/datetime/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sqlite</title>
+      <link>https://thomaslevesque.fr/tags/sqlite/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/sqlite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>system.data.sqlite</title>
+      <link>https://thomaslevesque.fr/tags/system.data.sqlite/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/system.data.sqlite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>utc</title>
+      <link>https://thomaslevesque.fr/tags/utc/</link>
+      <pubDate>Sun, 28 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/utc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C# 6</title>
+      <link>https://thomaslevesque.fr/tags/c#-6/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/c#-6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>filtres d&#39;exception</title>
+      <link>https://thomaslevesque.fr/tags/filtres-dexception/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/filtres-dexception/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pile</title>
+      <link>https://thomaslevesque.fr/tags/pile/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/pile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unity</title>
+      <link>https://thomaslevesque.fr/tags/unity/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/unity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>waithandle</title>
+      <link>https://thomaslevesque.fr/tags/waithandle/</link>
+      <pubDate>Sun, 07 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/waithandle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>analyse de code</title>
+      <link>https://thomaslevesque.fr/tags/analyse-de-code/</link>
+      <pubDate>Wed, 25 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/analyse-de-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>annotations</title>
+      <link>https://thomaslevesque.fr/tags/annotations/</link>
+      <pubDate>Wed, 25 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/annotations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iformattable</title>
+      <link>https://thomaslevesque.fr/tags/iformattable/</link>
+      <pubDate>Wed, 25 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/iformattable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>roslyn</title>
+      <link>https://thomaslevesque.fr/tags/roslyn/</link>
+      <pubDate>Wed, 25 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/roslyn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>string interpolation</title>
+      <link>https://thomaslevesque.fr/tags/string-interpolation/</link>
+      <pubDate>Wed, 25 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/string-interpolation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nunit</title>
+      <link>https://thomaslevesque.fr/tags/nunit/</link>
+      <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/nunit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>animé</title>
+      <link>https://thomaslevesque.fr/tags/anim%C3%A9/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/anim%C3%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gif</title>
+      <link>https://thomaslevesque.fr/tags/gif/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/gif/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XAML</title>
+      <link>https://thomaslevesque.fr/tags/xaml/</link>
+      <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/xaml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimisation</title>
+      <link>https://thomaslevesque.fr/tags/optimisation/</link>
+      <pubDate>Mon, 08 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/optimisation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ToArray</title>
+      <link>https://thomaslevesque.fr/tags/toarray/</link>
+      <pubDate>Mon, 08 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/toarray/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ToList</title>
+      <link>https://thomaslevesque.fr/tags/tolist/</link>
+      <pubDate>Mon, 08 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/tolist/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>byte</title>
+      <link>https://thomaslevesque.fr/tags/byte/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/byte/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>octet</title>
+      <link>https://thomaslevesque.fr/tags/octet/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/octet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>size</title>
+      <link>https://thomaslevesque.fr/tags/size/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/size/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>taille</title>
+      <link>https://thomaslevesque.fr/tags/taille/</link>
+      <pubDate>Mon, 24 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/taille/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>interpolation de chaines</title>
+      <link>https://thomaslevesque.fr/tags/interpolation-de-chaines/</link>
+      <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/interpolation-de-chaines/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>localisation</title>
+      <link>https://thomaslevesque.fr/tags/localisation/</link>
+      <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/localisation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NString</title>
+      <link>https://thomaslevesque.fr/tags/nstring/</link>
+      <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/nstring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StringTemplate</title>
+      <link>https://thomaslevesque.fr/tags/stringtemplate/</link>
+      <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/stringtemplate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>asynchrone</title>
+      <link>https://thomaslevesque.fr/tags/asynchrone/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/asynchrone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>await</title>
+      <link>https://thomaslevesque.fr/tags/await/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/await/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>byref</title>
+      <link>https://thomaslevesque.fr/tags/byref/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/byref/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>out</title>
+      <link>https://thomaslevesque.fr/tags/out/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/out/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ref</title>
+      <link>https://thomaslevesque.fr/tags/ref/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/ref/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reference</title>
+      <link>https://thomaslevesque.fr/tags/reference/</link>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/reference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>validation d&#39;argument</title>
+      <link>https://thomaslevesque.fr/tags/validation-dargument/</link>
+      <pubDate>Sun, 02 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/validation-dargument/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Studio Online</title>
+      <link>https://thomaslevesque.fr/tags/visual-studio-online/</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/visual-studio-online/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>global</title>
+      <link>https://thomaslevesque.fr/tags/global/</link>
+      <pubDate>Tue, 11 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/global/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hotkey</title>
+      <link>https://thomaslevesque.fr/tags/hotkey/</link>
+      <pubDate>Tue, 11 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/hotkey/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raccourci clavier</title>
+      <link>https://thomaslevesque.fr/tags/raccourci-clavier/</link>
+      <pubDate>Tue, 11 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/raccourci-clavier/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows Forms</title>
+      <link>https://thomaslevesque.fr/tags/windows-forms/</link>
+      <pubDate>Tue, 11 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/windows-forms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HttpWebRequest</title>
+      <link>https://thomaslevesque.fr/tags/httpwebrequest/</link>
+      <pubDate>Tue, 14 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/httpwebrequest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>upload</title>
+      <link>https://thomaslevesque.fr/tags/upload/</link>
+      <pubDate>Tue, 14 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/upload/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HttpContent</title>
+      <link>https://thomaslevesque.fr/tags/httpcontent/</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/httpcontent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JSON</title>
+      <link>https://thomaslevesque.fr/tags/json/</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/json/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ObjectContent</title>
+      <link>https://thomaslevesque.fr/tags/objectcontent/</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/objectcontent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>push</title>
+      <link>https://thomaslevesque.fr/tags/push/</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/push/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PushStreamContent</title>
+      <link>https://thomaslevesque.fr/tags/pushstreamcontent/</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/pushstreamcontent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>appui long</title>
+      <link>https://thomaslevesque.fr/tags/appui-long/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/appui-long/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>geste</title>
+      <link>https://thomaslevesque.fr/tags/geste/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/geste/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GridView</title>
+      <link>https://thomaslevesque.fr/tags/gridview/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/gridview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hold</title>
+      <link>https://thomaslevesque.fr/tags/hold/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/hold/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ListView</title>
+      <link>https://thomaslevesque.fr/tags/listview/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/listview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>selection</title>
+      <link>https://thomaslevesque.fr/tags/selection/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/selection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>winrt</title>
+      <link>https://thomaslevesque.fr/tags/winrt/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/winrt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AutoRunCustomTool</title>
+      <link>https://thomaslevesque.fr/tags/autoruncustomtool/</link>
+      <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/autoruncustomtool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>custom tool</title>
+      <link>https://thomaslevesque.fr/tags/custom-tool/</link>
+      <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/custom-tool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>extension</title>
+      <link>https://thomaslevesque.fr/tags/extension/</link>
+      <pubDate>Fri, 15 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/extension/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>notification</title>
+      <link>https://thomaslevesque.fr/tags/notification/</link>
+      <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/notification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>toast</title>
+      <link>https://thomaslevesque.fr/tags/toast/</link>
+      <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/toast/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows store</title>
+      <link>https://thomaslevesque.fr/tags/windows-store/</link>
+      <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/windows-store/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>searchbox</title>
+      <link>https://thomaslevesque.fr/tags/searchbox/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/searchbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>suggestion</title>
+      <link>https://thomaslevesque.fr/tags/suggestion/</link>
+      <pubDate>Mon, 04 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/suggestion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cryptographie</title>
+      <link>https://thomaslevesque.fr/tags/cryptographie/</link>
+      <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/cryptographie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dpapi</title>
+      <link>https://thomaslevesque.fr/tags/dpapi/</link>
+      <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/dpapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mot de passe</title>
+      <link>https://thomaslevesque.fr/tags/mot-de-passe/</link>
+      <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/mot-de-passe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sécurité</title>
+      <link>https://thomaslevesque.fr/tags/s%C3%A9curit%C3%A9/</link>
+      <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/s%C3%A9curit%C3%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>binding</title>
+      <link>https://thomaslevesque.fr/tags/binding/</link>
+      <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/binding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dependency property</title>
+      <link>https://thomaslevesque.fr/tags/dependency-property/</link>
+      <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/dependency-property/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c# 5</title>
+      <link>https://thomaslevesque.fr/tags/c#-5/</link>
+      <pubDate>Wed, 13 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/c#-5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>caller info</title>
+      <link>https://thomaslevesque.fr/tags/caller-info/</link>
+      <pubDate>Wed, 13 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/caller-info/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fonctionnalités</title>
+      <link>https://thomaslevesque.fr/tags/fonctionnalit%C3%A9s/</link>
+      <pubDate>Mon, 11 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/fonctionnalit%C3%A9s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lambda</title>
+      <link>https://thomaslevesque.fr/tags/lambda/</link>
+      <pubDate>Mon, 11 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>modifier et continuer</title>
+      <link>https://thomaslevesque.fr/tags/modifier-et-continuer/</link>
+      <pubDate>Mon, 11 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/modifier-et-continuer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Studio 2012</title>
+      <link>https://thomaslevesque.fr/tags/visual-studio-2012/</link>
+      <pubDate>Mon, 11 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/visual-studio-2012/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>collectionview</title>
+      <link>https://thomaslevesque.fr/tags/collectionview/</link>
+      <pubDate>Tue, 29 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/collectionview/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>propriété attachée</title>
+      <link>https://thomaslevesque.fr/tags/propri%C3%A9t%C3%A9-attach%C3%A9e/</link>
+      <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/propri%C3%A9t%C3%A9-attach%C3%A9e/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>style</title>
+      <link>https://thomaslevesque.fr/tags/style/</link>
+      <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/style/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>template</title>
+      <link>https://thomaslevesque.fr/tags/template/</link>
+      <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/template/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.NET 4.5</title>
+      <link>https://thomaslevesque.fr/tags/.net-4.5/</link>
+      <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/.net-4.5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markup extension</title>
+      <link>https://thomaslevesque.fr/tags/markup-extension/</link>
+      <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/markup-extension/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>récursion terminale</title>
+      <link>https://thomaslevesque.fr/tags/r%C3%A9cursion-terminale/</link>
+      <pubDate>Tue, 30 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/r%C3%A9cursion-terminale/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tail recursion</title>
+      <link>https://thomaslevesque.fr/tags/tail-recursion/</link>
+      <pubDate>Tue, 30 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/tail-recursion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>trampoline</title>
+      <link>https://thomaslevesque.fr/tags/trampoline/</link>
+      <pubDate>Tue, 30 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/trampoline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>datacontext</title>
+      <link>https://thomaslevesque.fr/tags/datacontext/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/datacontext/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>freezable</title>
+      <link>https://thomaslevesque.fr/tags/freezable/</link>
+      <pubDate>Mon, 21 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/freezable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C# 5.0</title>
+      <link>https://thomaslevesque.fr/tags/c#-5.0/</link>
+      <pubDate>Sat, 30 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/c#-5.0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>.NET 4.0</title>
+      <link>https://thomaslevesque.fr/tags/.net-4.0/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/.net-4.0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Entity Framework</title>
+      <link>https://thomaslevesque.fr/tags/entity-framework/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/entity-framework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>expression</title>
+      <link>https://thomaslevesque.fr/tags/expression/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/expression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>include</title>
+      <link>https://thomaslevesque.fr/tags/include/</link>
+      <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/include/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grid</title>
+      <link>https://thomaslevesque.fr/tags/grid/</link>
+      <pubDate>Tue, 20 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/grid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>code snippet</title>
+      <link>https://thomaslevesque.fr/tags/code-snippet/</link>
+      <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/code-snippet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dvp.NET</title>
+      <link>https://thomaslevesque.fr/tags/dvp.net/</link>
+      <pubDate>Thu, 18 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/dvp.net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>librairie</title>
+      <link>https://thomaslevesque.fr/tags/librairie/</link>
+      <pubDate>Thu, 18 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/librairie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open-source</title>
+      <link>https://thomaslevesque.fr/tags/open-source/</link>
+      <pubDate>Thu, 18 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>null check</title>
+      <link>https://thomaslevesque.fr/tags/null-check/</link>
+      <pubDate>Sat, 20 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/null-check/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>proof of concept</title>
+      <link>https://thomaslevesque.fr/tags/proof-of-concept/</link>
+      <pubDate>Sat, 20 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/proof-of-concept/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>InputBinding</title>
+      <link>https://thomaslevesque.fr/tags/inputbinding/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/inputbinding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MVVM</title>
+      <link>https://thomaslevesque.fr/tags/mvvm/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/mvvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Studio 2010</title>
+      <link>https://thomaslevesque.fr/tags/visual-studio-2010/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/visual-studio-2010/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wpf 4.0</title>
+      <link>https://thomaslevesque.fr/tags/wpf-4.0/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/wpf-4.0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C# 4.0</title>
+      <link>https://thomaslevesque.fr/tags/c#-4.0/</link>
+      <pubDate>Tue, 06 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/c#-4.0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DLR</title>
+      <link>https://thomaslevesque.fr/tags/dlr/</link>
+      <pubDate>Tue, 06 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/dlr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dynamic</title>
+      <link>https://thomaslevesque.fr/tags/dynamic/</link>
+      <pubDate>Tue, 06 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/dynamic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tri</title>
+      <link>https://thomaslevesque.fr/tags/tri/</link>
+      <pubDate>Tue, 04 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/tri/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>collection</title>
+      <link>https://thomaslevesque.fr/tags/collection/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/collection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>parent/enfant</title>
+      <link>https://thomaslevesque.fr/tags/parent/enfant/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/parent/enfant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sérialisation XML</title>
+      <link>https://thomaslevesque.fr/tags/s%C3%A9rialisation-xml/</link>
+      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/s%C3%A9rialisation-xml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DragMove</title>
+      <link>https://thomaslevesque.fr/tags/dragmove/</link>
+      <pubDate>Mon, 27 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/dragmove/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IExtenderProvider</title>
+      <link>https://thomaslevesque.fr/tags/iextenderprovider/</link>
+      <pubDate>Mon, 27 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/iextenderprovider/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KeyBinding</title>
+      <link>https://thomaslevesque.fr/tags/keybinding/</link>
+      <pubDate>Tue, 17 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/keybinding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>astuce</title>
+      <link>https://thomaslevesque.fr/tags/astuce/</link>
+      <pubDate>Thu, 05 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/astuce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>article</title>
+      <link>https://thomaslevesque.fr/tags/article/</link>
+      <pubDate>Wed, 25 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/article/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>design pattern</title>
+      <link>https://thomaslevesque.fr/tags/design-pattern/</link>
+      <pubDate>Wed, 25 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/design-pattern/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Josh Smith</title>
+      <link>https://thomaslevesque.fr/tags/josh-smith/</link>
+      <pubDate>Wed, 25 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/josh-smith/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RSS</title>
+      <link>https://thomaslevesque.fr/tags/rss/</link>
+      <pubDate>Fri, 13 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/rss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>syndication</title>
+      <link>https://thomaslevesque.fr/tags/syndication/</link>
+      <pubDate>Fri, 13 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/syndication/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>clipboard</title>
+      <link>https://thomaslevesque.fr/tags/clipboard/</link>
+      <pubDate>Thu, 05 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/clipboard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>paramètres</title>
+      <link>https://thomaslevesque.fr/tags/param%C3%A8tres/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/param%C3%A8tres/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>settings</title>
+      <link>https://thomaslevesque.fr/tags/settings/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/settings/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

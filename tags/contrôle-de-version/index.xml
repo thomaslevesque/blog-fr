@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>contrôle de version on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/contr%C3%B4le-de-version/</link>
+    <description>Recent content in contrôle de version on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 06 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/contr%C3%B4le-de-version/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables</title>
+      <link>https://thomaslevesque.fr/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/</link>
+      <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/</guid>
+      <description>J&#39;ai récemment eu à travailler sur un dépôt Git qui contenait des modifications à reporter sur un autre dépôt. Malheureusement, ce dépôt n&#39;avait pas de fichier .gitignore au départ, si bien que de nombreux fichiers inutiles (répertoires bin/obj/packages&amp;hellip;) avaient été archivés. Cela rendait l&#39;historique très difficile à lire, puisque chaque commit contenait des centaines de fichiers modifiés.
+Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&#39;auraient pas dû se trouver là.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nunit on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/nunit/</link>
+    <description>Recent content in nunit on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 02 Feb 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/nunit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test unitaires asynchrones avec NUnit</title>
+      <link>https://thomaslevesque.fr/2015/02/02/test-unitaires-asynchrones-avec-nunit/</link>
+      <pubDate>Mon, 02 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2015/02/02/test-unitaires-asynchrones-avec-nunit/</guid>
+      <description>Récemment, mon équipe et moi avons commencé à écrire des tests unitaires pour une application qui utilise beaucoup de code asynchrone. Nous avons utilisé NUnit (2.6) parce que nous le connaissions déjà bien, mais nous ne l’avions encore jamais utilisé pour tester du code asynchrone.
+Supposons que le système à tester soit cette très intéressante classe Calculator :
+ public class Calculator { public async Task&amp;lt;int&amp;gt; AddAsync(int x, int y) { // simulate long calculation await Task.</description>
+    </item>
+    
+    <item>
+      <title>Un moyen facile de tester unitairement la validation des arguments null</title>
+      <link>https://thomaslevesque.fr/2014/11/02/easy-unit-testing-of-null-argument-validation/</link>
+      <pubDate>Sun, 02 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2014/11/02/easy-unit-testing-of-null-argument-validation/</guid>
+      <description>Quand on teste unitairement une méthode, une des choses à tester est la validation des arguments : par exemple, vérifier que la méthode lève bien une ArgumentNullException quand un argument null est passé pour un paramètre qui ne doit pas être null. Ecrire ce genre de test est très facile, mais c’est une tâche fastidieuse et répétitive, surtout pour une méthode qui a beaucoup de paramètres. J’ai donc écrit une méthode qui automatise en partie cette tâche : elle essaie de passer null pour chacun des arguments spécifiés, et vérifie que la méthode lève bien une ArgumentNullException.</description>
+    </item>
+    
+  </channel>
+</rss>

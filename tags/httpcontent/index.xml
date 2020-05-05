@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HttpContent on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/httpcontent/</link>
+    <description>Recent content in HttpContent on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 01 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/httpcontent/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Envoyer des données avec HttpClient selon un modèle “push”</title>
+      <link>https://thomaslevesque.fr/2013/12/01/envoyer-des-donnees-avec-httpclient-selon-un-modele-push/</link>
+      <pubDate>Sun, 01 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/12/01/envoyer-des-donnees-avec-httpclient-selon-un-modele-push/</guid>
+      <description>Si vous avez déjà utilisé la classe HttpWebRequest pour envoyer des données, vous savez qu’elle utilise un modèle “push”. Ce que j’entends par là, c’est que vous appelez la méthode GetRequestStream, qui ouvre la connexion si nécessaire, envoie les en-têtes, et renvoie un flux sur lequel vous pouvez écrire directement.
+.NET 4.5 a introduit la classe HttpClient comme nouveau moyen de communiquer en HTTP. Elle repose en fait sur HttpWebRequest en interne, mais offre une API plus pratique et complètement asynchrone.</description>
+    </item>
+    
+  </channel>
+</rss>

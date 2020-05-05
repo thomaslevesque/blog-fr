@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ListView on Blog .NET de Thomas Levesque</title>
+    <link>https://thomaslevesque.fr/tags/listview/</link>
+    <description>Recent content in ListView on Blog .NET de Thomas Levesque</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 22 Nov 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thomaslevesque.fr/tags/listview/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[WinRT] Sélectionner un élément de liste lors d’un appui long</title>
+      <link>https://thomaslevesque.fr/2013/11/22/winrt-selectionner-un-element-de-liste-lors-d-un-appui-long/</link>
+      <pubDate>Fri, 22 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/2013/11/22/winrt-selectionner-un-element-de-liste-lors-d-un-appui-long/</guid>
+      <description>Comme vous le savez probablement, la méthode standard pour sélectionner ou déselectionner un élément dans un contrôle de liste WinRT est de le faire glisser légèrement vers le haut ou vers le bas. Même si j’aime bien ce geste, il n’est pas très intuitif pour les utilisateurs qui ne sont pas habitués à Modern UI. Et ça devient encore plus déroutant, car ma déclaration précédente n’est pas tout à fait exacte : en fait, il faut faire glisser l’élément perpendiculairement à la direction de défilement de la liste.</description>
+    </item>
+    
+  </channel>
+</rss>
