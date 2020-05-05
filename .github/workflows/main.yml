@@ -3,6 +3,9 @@ name: Deploy to GitHub pages
 on:
   push:
     branches: [ master ]
+  schedule:
+    # run every day at 6am (UTC) to publish scheduled posts
+    - cron:  '0 6 * * *'
 
 jobs:
   build:
@@ -32,9 +35,6 @@ jobs:
         cd $GITHUB_WORKSPACE/out
         git config user.name "Hugo Bot"
         git config user.email "hugobot@thomaslevesque.net"
-        #echo "machine github.com" >> ~/.netrc
-        #echo "login thomaslevesque" >> ~/.netrc
-        #echo "password $GITHUB_TOKEN" >> ~/.netrc
         git add .
-        git commit -m "Publish site for $GITHUB_SHA"
+        git commit -m "Publish site for $GITHUB_SHA" || echo "No changes to commit"
         git push
