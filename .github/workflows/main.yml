@@ -23,7 +23,7 @@ jobs:
     - name: Build website with Hugo
       uses: srt32/hugo-action@v0.0.3
       with:
-        args: --environment production --destination $GITHUB_WORKSPACE/out
+        args: --source $GITHUB_WORKSPACE/src --destination $GITHUB_WORKSPACE/out --environment production
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
