@@ -31,6 +31,8 @@ jobs:
     - name: Commit and push result
       run: |
         cd $GITHUB_WORKSPACE/out
+        git config user.name "Hugo Bot"
+        git config user.email "hugobot@thomaslevesque.net"
         git add .
         git commit -m "Publish site for $GITHUB_SHA"
         git push
