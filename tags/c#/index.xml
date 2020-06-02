@@ -87,7 +87,7 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
       <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
       <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
 .NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
-private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {int count = 0;double sum = 0.0;foreach (var value in values){ count++; sum += value;}return Tuple.</description>
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) { int count = 0; double sum = 0.0; foreach (var value in values) { count++; sum += value; } return Tuple.</description>
     </item>
     
     <item>
