@@ -23,22 +23,23 @@ Si votre projet est un csproj ou vbproj "classique" (c'est-à-dire *pas* un proj
 Déchargez votre projet, et ouvrez le dans l'éditeur. Ajoutez le `PropertyGroup` suivant vers le début du fichier :
 
 ```xml
-
-    
-    15.0
-    $(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)
-    
-    true
-    
-    true
-    
-    false
+<PropertyGroup>
+    <!-- 15.0 is for VS2017, adjust if necessary -->
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <!-- This is what will cause the templates to be transformed when the project is built (default is false) -->
+    <TransformOnBuild>true</TransformOnBuild>
+    <!-- Set to true to force overwriting of read-only output files, e.g. if they're not checked out (default is false) -->
+    <OverwriteReadOnlyOutputFiles>true</OverwriteReadOnlyOutputFiles>
+    <!-- Set to false to transform files even if the output appears to be up-to-date (default is true)  -->
+    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+</PropertyGroup>
 ```
 
 Et ajoutez l'`Import` suivant à la fin, après l'import de `Microsoft.CSharp.targets` ou `Microsoft.VisualBasic.targets` :
 
 ```xml
-
+<Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
 ```
 
 Rechargez votre projet, et le tour est joué. Générer le projet devrait maintenant transformer les templates et regénérer leur sortie.
@@ -50,7 +51,8 @@ Si vous utilisez le nouveau format de projet du SDK .NET Core (souvent appelé d
 Heureusement, il y a un workaround : vous pouvez importer les cibles par défaut explicitement, et importer les cibles T4 après celles-ci :
 
 ```xml
-
+<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+<Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
 ```
 
 Notez que cela causera un avertissement MSBuild dans la sortie de la build (MSB4011), parce que `Sdk.targets` est importé deux fois ; cet avertissement peut être ignoré sans risque.
@@ -82,15 +84,16 @@ Vous avez remarqué les variables `$(SolutionDir)` et `$(Configuration)` dans le
 Cependant tout n'est pas perdu. Il suffit de spécifier explicitement les variables que vous voulez passer en temps que paramètres T4. Éditez à nouveau votre fichier projet, et créez un nouveau `ItemGroup` avec les éléments suivants :
 
 ```xml
-
-    
-        $(SolutionDir)
-        False
-    
-    
-        $(Configuration)
-        False
-    
+<ItemGroup>
+    <T4ParameterValues Include="SolutionDir">
+        <Value>$(SolutionDir)</Value>
+        <Visible>False</Visible>
+    </T4ParameterValues>
+    <T4ParameterValues Include="Configuration">
+        <Value>$(Configuration)</Value>
+        <Visible>False</Visible>
+    </T4ParameterValues>
+</ItemGroup>
 ```
 
 L'attribut `Include` est le nom du paramètre tel qu'il sera passé au moteur de transformation de texte. L'élément `Value`, comme son nom l'indique, est la valeur du paramètre. Et l'élément `Visible` permet d'éviter que l'élément `T4ParameterValues` n'apparaisse comme élément du projet dans l'explorateur de solution.
