@@ -19,7 +19,15 @@ Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types d
 
 ```csharp
 private static Tuple<int, double> Tally(IEnumerable<double> values)
-{int count = 0;double sum = 0.0;foreach (var value in values){    count++;    sum += value;}return Tuple.Create(count, sum);
+{
+    int count = 0;
+    double sum = 0.0;
+    foreach (var value in values)
+    {
+        count++;
+        sum += value;
+    }
+    return Tuple.Create(count, sum);
 }
 
 ...
@@ -39,7 +47,15 @@ En C# 7, une nouvelle fonctionnalité sera introduite pour améliorer le support
 
 ```csharp
 static (int count, double sum) Tally(IEnumerable<double> values)
-{int count = 0;double sum = 0.0;foreach (var value in values){    count++;    sum += value;}return (count, sum);
+{
+    int count = 0;
+    double sum = 0.0;
+    foreach (var value in values)
+    {
+        count++;
+        sum += value;
+    }
+    return (count, sum);
 }
 
 ...
