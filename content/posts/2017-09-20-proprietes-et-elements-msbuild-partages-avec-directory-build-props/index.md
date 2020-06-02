@@ -22,31 +22,35 @@ MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports im
 Par exemple, si vous voulez partager certaines métadonnées entre plusieurs projets, créer simplement un fichier `Directory.Build.props` dans le dossier parent de vos projets :
 
 ```xml
+<Project>
 
+  <PropertyGroup>
+    <Version>1.2.3</Version>
+    <Authors>John Doe</Authors>
+  </PropertyGroup>
 
-  
-    1.2.3
-    John Doe
-  
+</Project>
 ```
 
 On peut aussi faire des choses plus intéressantes, comme activer et configurer StyleCop pour tous les projets :
 
 ```xml
+<Project>
 
+  <PropertyGroup>
+    <!-- Common ruleset shared by all projects -->
+    <CodeAnalysisRuleset>$(MSBuildThisFileDirectory)MyRules.ruleset</CodeAnalysisRuleset>
+  </PropertyGroup>
 
-  
+  <ItemGroup>
+    <!-- Add reference to StyleCop analyzers to all projects  -->
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
     
-    $(MSBuildThisFileDirectory)MyRules.ruleset
-  
+    <!-- Common StyleCop configuration -->
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" />
+  </ItemGroup>
 
-  
-    
-    
-    
-    
-    
-  
+</Project>
 ```
 
 *Notez que la variable `$(MSBuildThisFileDirectory)` fait référence au répertoire contenant le fichier MSBuild courant. Une autre variable utile est `$(MSBuildProjectDirectory)`, qui fait référence au répertoire du projet en cours de génération.*
@@ -57,25 +61,27 @@ MSBuild cherche le fichier `Directory.Build.props` en partant du répertoire du 
 
 
 ```xml
+<Project>
 
-
+  <!-- Properties common to all projects -->
+  <!-- ... -->
   
-  
-  
+</Project>
 ```
 
 - (rootDir)/tests/Directory.build.props:
 
 
 ```xml
+<Project>
 
+  <!-- Import parent Directory.build.props -->
+  <Import Project="../Directory.Build.props" />
 
+  <!-- Properties common to all test projects -->
+  <!-- ... -->
   
-  
-
-  
-  
-  
+</Project>
 ```
 
 La documentation mentionne une autre approche, utilisant la fonction `GetPathOfFileAbove`, mais cela ne semblait pas fonctionner quand j'ai essayé... De toute façon, je pense qu'il est plus simple d'utiliser un chemin relatif, on risque moins de se tromper.
