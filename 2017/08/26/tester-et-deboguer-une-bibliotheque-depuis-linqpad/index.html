@@ -80,15 +80,15 @@ if (!doNotTrack) {
 <p>J&rsquo;utilise fréquemment LINQPad pour tester rapidement une bibliothèque sur laquelle je travaille. C&rsquo;est très facile, il suffit de référencer l&rsquo;assembly à tester et de l&rsquo;utiliser normalement. Mais quand la bibliothèque ne se comporte pas comme prévu, il est souvent utile de pouvoir la déboguer pas à pas&hellip; Il s&rsquo;avère que c&rsquo;est assez simple à faire à partir de LINQPad !</p>
 <p>La version premium de LINQPad a un débogueur intégré, qui n&rsquo;est pas aussi puissant que celui de Visual Studio, mais quand même utile pour déboguer les scripts LINQPad. Cependant, il ne permet pas de rentrer dans le code de la bibliothèque&hellip; Heureusement, il y a une astuce qui permet d&rsquo;utiliser le débogueur de Visual Studio pour déboguer le script qui s&rsquo;exécuter dans LINQPad.</p>
 <p>Tout d&rsquo;abord, ouvrez dans Visual Studio la bibliothèque à déboguer, si ce n&rsquo;est pas déjà fait. Compilez le projet, et ajoutez une référence à l&rsquo;assembly dans votre script LINQPad:</p>
-<p><img src="Tester-et-d%C3%A9boguer-une-biblioth%C3%A8que-depuis-LINQPadlinqpad-add-reference-1.png" alt="Add reference to the library"></p>
+<p><img src="linqpad-add-reference.png" alt="Add reference to the library"></p>
 <p>Ecrivez du code qui utilise votre bibliothèque:</p>
-<p><img src="Tester-et-d%C3%A9boguer-une-biblioth%C3%A8que-depuis-LINQPadlinqpad-use-library-1.png" alt="Use your library from LINQPad"></p>
+<p><img src="linqpad-use-library.png" alt="Use your library from LINQPad"></p>
 <p>Et ajoutez cette ligne au début du script LINQPad:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Debugger.Launch();
 </code></pre></div><p>Quand vous exécutez le script, un dialogue va s&rsquo;affichez pour vous demander de choisir un débogueur:</p>
-<p><img src="Tester-et-d%C3%A9boguer-une-biblioth%C3%A8que-depuis-LINQPadchoose-debugger-1.png" alt="Choose a debugger"></p>
+<p><img src="choose-debugger.png" alt="Choose a debugger"></p>
 <p>Sélectionnez l&rsquo;instance de Visual Studio dans laquelle votre solution est ouverte et cliquez OK. Cela va attacher le débogueur de Visual Studio au processus qui exécute le script LINQPad, et suspendre l&rsquo;exécution au niveau de l&rsquo;appel à <code>Debugger.Launch()</code>:</p>
-<p><img src="Tester-et-d%C3%A9boguer-une-biblioth%C3%A8que-depuis-LINQPaddebugging-in-vs-1.png" alt="Debugging in Visual Studio"></p>
+<p><img src="debugging-in-vs.png" alt="Debugging in Visual Studio"></p>
 <p>Vous pouvez maintenant déboguer votre script LINQPad <em>et</em> votre bibliothèque. Vous pouvez mettre des points d&rsquo;arrêt, rentrer dans les méthodes, ajouter des espions, etc, exactement comme quand vous déboguez une application normale !</p>
 
 		</div>
