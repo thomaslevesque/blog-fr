@@ -81,48 +81,54 @@ if (!doNotTrack) {
 			<p>Pour être honnête, je n&rsquo;ai jamais vraiment aimé MSBuild jusqu&rsquo;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&rsquo;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&rsquo;était mal documenté&hellip; Mais avec l&rsquo;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.</p>
 <p>MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&rsquo;est le nom officiel, mais c&rsquo;est celui que j&rsquo;utiliserai). En gros, vous pouvez créer un fichier nommmé <code>Directory.Build.props</code> n&rsquo;importe où dans votre solution, et il sera automatiquement importé par tous les projets sous le répertoire qui contient ce fichier. Cela permet de partager très facilement des propriétés et éléments communs entre les projets. Cette fonctionnalité est décrite en détail sur <a href="https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build">cette page</a>.</p>
 <p>Par exemple, si vous voulez partager certaines métadonnées entre plusieurs projets, créer simplement un fichier <code>Directory.Build.props</code> dans le dossier parent de vos projets :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Project&gt;</span>
 
-  
-    1.2.3
-    John Doe
-  
+  <span style="color:#f92672">&lt;PropertyGroup&gt;</span>
+    <span style="color:#f92672">&lt;Version&gt;</span>1.2.3<span style="color:#f92672">&lt;/Version&gt;</span>
+    <span style="color:#f92672">&lt;Authors&gt;</span>John Doe<span style="color:#f92672">&lt;/Authors&gt;</span>
+  <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
+
+<span style="color:#f92672">&lt;/Project&gt;</span>
 </code></pre></div><p>On peut aussi faire des choses plus intéressantes, comme activer et configurer StyleCop pour tous les projets :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Project&gt;</span>
 
-  
-    
-    $(MSBuildThisFileDirectory)MyRules.ruleset
-  
+  <span style="color:#f92672">&lt;PropertyGroup&gt;</span>
+    <span style="color:#75715e">&lt;!-- Common ruleset shared by all projects --&gt;</span>
+    <span style="color:#f92672">&lt;CodeAnalysisRuleset&gt;</span>$(MSBuildThisFileDirectory)MyRules.ruleset<span style="color:#f92672">&lt;/CodeAnalysisRuleset&gt;</span>
+  <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
 
-  
+  <span style="color:#f92672">&lt;ItemGroup&gt;</span>
+    <span style="color:#75715e">&lt;!-- Add reference to StyleCop analyzers to all projects  --&gt;</span>
+    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;StyleCop.Analyzers&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;1.0.2&#34;</span> <span style="color:#f92672">/&gt;</span>
     
-    
-    
-    
-    
-  
+    <span style="color:#75715e">&lt;!-- Common StyleCop configuration --&gt;</span>
+    <span style="color:#f92672">&lt;AdditionalFiles</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;$(MSBuildThisFileDirectory)stylecop.json&#34;</span> <span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/ItemGroup&gt;</span>
+
+<span style="color:#f92672">&lt;/Project&gt;</span>
 </code></pre></div><p><em>Notez que la variable <code>$(MSBuildThisFileDirectory)</code> fait référence au répertoire contenant le fichier MSBuild courant. Une autre variable utile est <code>$(MSBuildProjectDirectory)</code>, qui fait référence au répertoire du projet en cours de génération.</em></p>
 <p>MSBuild cherche le fichier <code>Directory.Build.props</code> en partant du répertoire du projet et en remontant les dossiers jusqu&rsquo;à ce qu&rsquo;il trouve un fichier correspondant, puis s&rsquo;arrête de chercher. Dans certains cas, il peut être utile de définir des propriétés communes à tous les projets, et d&rsquo;en ajouter d&rsquo;autres qui ne s&rsquo;appliquent qu&rsquo;à un sous-répertoire. Pour faire cela, il faut que le fichier <code>Directory.Build.props</code> le plus &ldquo;profond&rdquo; importe explicitement celui du répertoire parent :</p>
 <ul>
 <li>(rootDir)/Directory.build.props:</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Project&gt;</span>
 
+  <span style="color:#75715e">&lt;!-- Properties common to all projects --&gt;</span>
+  <span style="color:#75715e">&lt;!-- ... --&gt;</span>
   
-  
-  
+<span style="color:#f92672">&lt;/Project&gt;</span>
 </code></pre></div><ul>
 <li>(rootDir)/tests/Directory.build.props:</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Project&gt;</span>
 
-  
-  
+  <span style="color:#75715e">&lt;!-- Import parent Directory.build.props --&gt;</span>
+  <span style="color:#f92672">&lt;Import</span> <span style="color:#a6e22e">Project=</span><span style="color:#e6db74">&#34;../Directory.Build.props&#34;</span> <span style="color:#f92672">/&gt;</span>
 
+  <span style="color:#75715e">&lt;!-- Properties common to all test projects --&gt;</span>
+  <span style="color:#75715e">&lt;!-- ... --&gt;</span>
   
-  
-  
+<span style="color:#f92672">&lt;/Project&gt;</span>
 </code></pre></div><p>La documentation mentionne une autre approche, utilisant la fonction <code>GetPathOfFileAbove</code>, mais cela ne semblait pas fonctionner quand j&rsquo;ai essayé&hellip; De toute façon, je pense qu&rsquo;il est plus simple d&rsquo;utiliser un chemin relatif, on risque moins de se tromper.</p>
 <p>Utiliser les imports implicites apporte quelques avantages :</p>
 <ul>
