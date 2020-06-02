@@ -17,7 +17,7 @@
       <pubDate>Sun, 26 May 2013 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/</guid>
-      <description>Si vous écrivez une application cliente qui a besoin de stocker des identifiants d&#39;utilisateur, ce n&#39;est généralement pas une bonne idée de stocker le mot de passe en clair, pour des raisons évidentes de sécurité. Il faut donc le chiffrer, mais dès qu&#39;on commence à envisager le chiffrement, cela soulève toutes sortes de problèmes&amp;hellip; Quel algorithme utiliser ? Quelle clé de chiffrement ? Clairement on va avoir besoin de cette clé pour déchiffrer le mot de passe, il faut donc qu&#39;elle se trouve dans l&#39;exécutable ou dans la configuration.</description>
+      <description>Si vous écrivez une application cliente qui a besoin de stocker des identifiants d&amp;rsquo;utilisateur, ce n&amp;rsquo;est généralement pas une bonne idée de stocker le mot de passe en clair, pour des raisons évidentes de sécurité. Il faut donc le chiffrer, mais dès qu&amp;rsquo;on commence à envisager le chiffrement, cela soulève toutes sortes de problèmes&amp;hellip; Quel algorithme utiliser ? Quelle clé de chiffrement ? Clairement on va avoir besoin de cette clé pour déchiffrer le mot de passe, il faut donc qu&amp;rsquo;elle se trouve dans l&amp;rsquo;exécutable ou dans la configuration.</description>
     </item>
     
   </channel>

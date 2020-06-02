@@ -17,7 +17,7 @@
       <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</guid>
-      <description>Middlewhat? L&#39;architecture d&#39;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&#39;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&#39;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
+      <description>Middlewhat? L&amp;rsquo;architecture d&amp;rsquo;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&amp;rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&amp;rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       
       <guid>https://thomaslevesque.fr/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/</guid>
       <description>Il y a quelques années, Microsoft a introduit la classe HttpClient comme alternative moderne à HttpWebRequest pour faire des requêtes web depuis des applications .NET. Non seulement cette nouvelle API est beaucoup plus facile à utiliser, plus propre, et asynchrone, mais elle est aussi facilement extensible.
-Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&#39;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&#39;implémentation.</description>
+Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&amp;rsquo;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&amp;rsquo;implémentation.</description>
     </item>
     
   </channel>

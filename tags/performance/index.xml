@@ -17,7 +17,7 @@
       <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</guid>
-      <description>Depuis le temps qu&#39;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&#39;est déjà assez cool en soi, mais ça ne s&#39;arrête pas là : .NET Core apporte aussi beaucoup d&#39;améliorations à la Base Class Library.
+      <description>Depuis le temps qu&amp;rsquo;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&amp;rsquo;est déjà assez cool en soi, mais ça ne s&amp;rsquo;arrête pas là : .NET Core apporte aussi beaucoup d&amp;rsquo;améliorations à la Base Class Library.
 Par exemple, Linq est plus rapide dans .</description>
     </item>
     

@@ -26,7 +26,7 @@
       <pubDate>Tue, 04 Aug 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</guid>
-      <description>Il y a quelques mois, j&#39;avais publié un billet où j&#39;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&#39;avais laissé un point ouvert : l&#39;ajout d&#39;un symbole dans l&#39;en-tête de colonne pour indiquer visuellement la direction du tri. C&#39;est maintenant chose faite ! Pour arriver à ce résultat, j&#39;ai utilisé un Adorner : c&#39;est un composant qui permet de dessiner &amp;ldquo;par-dessus&amp;rdquo; un élément graphique existant, sur une couche de dessin indépendante.</description>
+      <description>Il y a quelques mois, j&amp;rsquo;avais publié un billet où j&amp;rsquo;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&amp;rsquo;avais laissé un point ouvert : l&amp;rsquo;ajout d&amp;rsquo;un symbole dans l&amp;rsquo;en-tête de colonne pour indiquer visuellement la direction du tri. C&amp;rsquo;est maintenant chose faite ! Pour arriver à ce résultat, j&amp;rsquo;ai utilisé un Adorner : c&amp;rsquo;est un composant qui permet de dessiner &amp;ldquo;par-dessus&amp;rdquo; un élément graphique existant, sur une couche de dessin indépendante.</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Fri, 27 Mar 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/</guid>
-      <description>Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&amp;hellip; Avec le DataGridView de Windows Forms, c&#39;était &amp;ldquo;automagique&amp;rdquo; : quand l&#39;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&amp;hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&#39;évènement Click du GridViewColumnHeader.</description>
+      <description>Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&amp;hellip; Avec le DataGridView de Windows Forms, c&amp;rsquo;était &amp;ldquo;automagique&amp;rdquo; : quand l&amp;rsquo;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&amp;hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&amp;rsquo;évènement Click du GridViewColumnHeader.</description>
     </item>
     
   </channel>

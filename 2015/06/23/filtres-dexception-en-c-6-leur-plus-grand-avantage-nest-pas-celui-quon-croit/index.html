@@ -108,7 +108,7 @@ if (!doNotTrack) {
 }
 </code></pre><p>Puisque ce bout de code est équivalent au précédent, les filtres d’exception sont juste du sucre syntaxique… enfin, ils <em>sont</em> équivalents, non ?</p>
 <p>NON !</p>
-<h3 id="droulement-de-pile">Déroulement de pile</h3>
+<h3 id="déroulement-de-pile">Déroulement de pile</h3>
 <p>Il y a en fait une différence subtile mais importante : <strong>les filtres d’exception ne déroulent pas la pile</strong>. OK, mais qu’est-ce que ça veut dire ?</p>
 <p>Quand on entre dans un bloc catch, la pile est déroulée : cela signifie que toutes les frames pour les appels de méthode plus “profonds” que la méthode courante sont dépilées. Cela implique que toutes les informations concernant l’état d’exécution de ces méthodes sont perdues, ce qui rend plus difficile de trouver la cause première de l’exception.</p>
 <p>Supposons que la méthode <code>DoSomethingThatMightFail</code> lance une <code>MyException</code> avec le code 123, et que le débogueur soit configuré pour ne s’arrêter que sur les exceptions non gérées.</p>

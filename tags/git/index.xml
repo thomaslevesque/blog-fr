@@ -17,8 +17,8 @@
       <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/</guid>
-      <description>J&#39;ai récemment eu à travailler sur un dépôt Git qui contenait des modifications à reporter sur un autre dépôt. Malheureusement, ce dépôt n&#39;avait pas de fichier .gitignore au départ, si bien que de nombreux fichiers inutiles (répertoires bin/obj/packages&amp;hellip;) avaient été archivés. Cela rendait l&#39;historique très difficile à lire, puisque chaque commit contenait des centaines de fichiers modifiés.
-Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&#39;auraient pas dû se trouver là.</description>
+      <description>J&amp;rsquo;ai récemment eu à travailler sur un dépôt Git qui contenait des modifications à reporter sur un autre dépôt. Malheureusement, ce dépôt n&amp;rsquo;avait pas de fichier .gitignore au départ, si bien que de nombreux fichiers inutiles (répertoires bin/obj/packages&amp;hellip;) avaient été archivés. Cela rendait l&amp;rsquo;historique très difficile à lire, puisque chaque commit contenait des centaines de fichiers modifiés.
+Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&amp;rsquo;auraient pas dû se trouver là.</description>
     </item>
     
     <item>
@@ -27,8 +27,8 @@ Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une 
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</guid>
-      <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&#39;en-tête du bloc (la ligne qui commence par @@), comme ceci :
-diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&#39;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
+      <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&amp;rsquo;en-tête du bloc (la ligne qui commence par @@), comme ceci :
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
     </item>
     
     <item>

@@ -8,8 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="[Windows Forms] Glisser-déplacer automatique de contrôles (DragMove)" />
-<meta property="og:description" content="Je ressors de mes tiroirs un code que j&#39;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&#39;utilise comme ceci :
-private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&#39;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&#39;à ce que le bouton soit relâché." />
+<meta property="og:description" content="Je ressors de mes tiroirs un code que j&rsquo;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&rsquo;utilise comme ceci :
+private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/" />
 <meta property="article:published_time" content="2009-04-27T00:00:00+00:00" />
@@ -17,8 +17,8 @@ private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.Drag
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[Windows Forms] Glisser-déplacer automatique de contrôles (DragMove)"/>
-<meta name="twitter:description" content="Je ressors de mes tiroirs un code que j&#39;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&#39;utilise comme ceci :
-private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&#39;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&#39;à ce que le bouton soit relâché."/>
+<meta name="twitter:description" content="Je ressors de mes tiroirs un code que j&rsquo;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&rsquo;utilise comme ceci :
+private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -78,39 +78,39 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-27T00:00:00Z">April 27, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>Je ressors de mes tiroirs un code que j'avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip;  Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : <code>Window.DragMove</code>. Elle s'utilise comme ceci :</p>
+			<p>Je ressors de mes tiroirs un code que j&rsquo;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip;  Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : <code>Window.DragMove</code>. Elle s&rsquo;utilise comme ceci :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> Window_MouseDown(<span style="color:#66d9ef">object</span> sender, MouseButtonEventArgs e)
         {
             <span style="color:#66d9ef">this</span>.DragMove();
         }
-</code></pre></div><p>A partir de l'appel de cette méthode, la fenêtre est déplacée avec la souris jusqu'à ce que le bouton soit relâché. Difficile de faire plus simple ;)  Malheureusement, cette méthode n'existe qu'en WPF, et une majorité de développeurs travaillent encore avec Windows Forms. Je vous propose donc un code qui permet d'utiliser en Windows Forms la technique décrite ci-dessus, en y apportant les améliorations suivantes :</p>
+</code></pre></div><p>A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché. Difficile de faire plus simple ;)  Malheureusement, cette méthode n&rsquo;existe qu&rsquo;en WPF, et une majorité de développeurs travaillent encore avec Windows Forms. Je vous propose donc un code qui permet d&rsquo;utiliser en Windows Forms la technique décrite ci-dessus, en y apportant les améliorations suivantes :</p>
 <ul>
-<li>Utilisable sur n'importe quel contrôle, pas seulement sur une fenêtre</li>
-<li>Pas d'obligation de gérer l'évènement <code>MouseDown</code></li>
+<li>Utilisable sur n&rsquo;importe quel contrôle, pas seulement sur une fenêtre</li>
+<li>Pas d&rsquo;obligation de gérer l&rsquo;évènement <code>MouseDown</code></li>
 <li>Intégration au designer par un <code>IExtenderProvider</code></li>
 </ul>
 <p>Ma solution se compose des 2 éléments suivants :</p>
 <ul>
-<li>une classe statique <code>DragMoveExtensions</code> qui fournit des méthodes d'extensions pour la classe <code>Control</code> (facilement transformables en simples méthodes statiques pour l'utilisation en C# 2)</li>
+<li>une classe statique <code>DragMoveExtensions</code> qui fournit des méthodes d&rsquo;extensions pour la classe <code>Control</code> (facilement transformables en simples méthodes statiques pour l&rsquo;utilisation en C# 2)</li>
 <li>un composant <code>DragMoveProvider</code>, qui implémente <code>IExtenderProvider</code> pour ajouter une propriété <code>EnableDragMove</code> aux contrôles de la Form</li>
 </ul>
-<p>Pour l'utiliser, il y en a pour tous les goûts ;)</p>
+<p>Pour l&rsquo;utiliser, il y en a pour tous les goûts ;)</p>
 <ul>
 <li>La méthode la plus simple, sans écrire une seule ligne de code : en mode design, poser un <code>DragMoveProvider</code> sur la Form, et positionner à <code>true</code> la propriété <code>EnableDragMove</code> sur la Form ou le contrôle
-<img src="dragmoveprovider1.png" alt="DragMoveProvider">- La méthode la plus proche de WPF : dans le handler de l'évènement <code>MouseDown</code>, appeler la méthode d'extension <code>DragMove</code> sur la Form ou le contrôle à déplacer</li>
+<img src="dragmoveprovider1.png" alt="DragMoveProvider">- La méthode la plus proche de WPF : dans le handler de l&rsquo;évènement <code>MouseDown</code>, appeler la méthode d&rsquo;extension <code>DragMove</code> sur la Form ou le contrôle à déplacer</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> label2_MouseDown(<span style="color:#66d9ef">object</span> sender, MouseEventArgs e)
         {
             label2.DragMove();
         }
 </code></pre></div><ul>
-<li>La méthode la plus souple : appeler, au cas par cas, la méthode d'extension <code>EnableDragMove</code> sur la Form ou le contrôle à déplacer (aucun évènement à gérer).</li>
+<li>La méthode la plus souple : appeler, au cas par cas, la méthode d&rsquo;extension <code>EnableDragMove</code> sur la Form ou le contrôle à déplacer (aucun évènement à gérer).</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> checkBox1_CheckedChanged(<span style="color:#66d9ef">object</span> sender, EventArgs e)
         {
             <span style="color:#66d9ef">this</span>.EnableDragMove(checkBox1.Checked);
         }
-</code></pre></div><p>La solution en pièce jointe contient la librairie réutilisable WinFormsDragMove, ainsi qu'un projet de test qui illustre les différentes manières d'utiliser cette librairie. Une version compatible C# 2 des ces projets est également inclue.  <a href="DragMove.zip">Télécharger les sources</a></p>
+</code></pre></div><p>La solution en pièce jointe contient la librairie réutilisable WinFormsDragMove, ainsi qu&rsquo;un projet de test qui illustre les différentes manières d&rsquo;utiliser cette librairie. Une version compatible C# 2 des ces projets est également inclue.  <a href="DragMove.zip">Télécharger les sources</a></p>
 
 		</div>
 		<footer class="post__footer">

@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="[WPF 4.5] Abonnement à un évènement à l’aide d’une markup extension" />
-<meta property="og:description" content="Voilà un certain temps que je n&#39;avais plus parlé des markup extensions&hellip; J&#39;y reviens à l&#39;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&#39;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&#39;ici, il était possible d&#39;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&#39;abonner à un évènement." />
+<meta property="og:description" content="Voilà un certain temps que je n&rsquo;avais plus parlé des markup extensions&hellip; J&rsquo;y reviens à l&rsquo;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&rsquo;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&rsquo;ici, il était possible d&rsquo;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&rsquo;abonner à un évènement." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/" />
 <meta property="article:published_time" content="2011-09-23T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[WPF 4.5] Abonnement à un évènement à l’aide d’une markup extension"/>
-<meta name="twitter:description" content="Voilà un certain temps que je n&#39;avais plus parlé des markup extensions&hellip; J&#39;y reviens à l&#39;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&#39;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&#39;ici, il était possible d&#39;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&#39;abonner à un évènement."/>
+<meta name="twitter:description" content="Voilà un certain temps que je n&rsquo;avais plus parlé des markup extensions&hellip; J&rsquo;y reviens à l&rsquo;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&rsquo;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&rsquo;ici, il était possible d&rsquo;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&rsquo;abonner à un évènement."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -76,14 +76,14 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-09-23T00:00:00Z">September 23, 2011</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>Voilà un certain temps que je n'avais plus parlé des markup extensions&hellip; J'y reviens à l'occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de <a href="http://msdn.microsoft.com/en-us/library/bb613588%28v=VS.110%29.aspx">nouveautés</a> dans WPF. La nouveauté dont je vais parler n'est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements.  Jusqu'ici, il était possible d'utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s'abonner à un évènement. Dans WPF 4.5, c'est désormais possible. Voilà donc un petit exemple de ce que cela permet de faire&hellip;  Quand on utilise le pattern MVVM, on associe souvent des commandes du ViewModel à des contrôles de la vue, via le mécanisme de binding. Cette approche fonctionne généralement assez bien, mais elle présente certains inconvénients :</p>
+			<p>Voilà un certain temps que je n&rsquo;avais plus parlé des markup extensions&hellip; J&rsquo;y reviens à l&rsquo;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de <a href="http://msdn.microsoft.com/en-us/library/bb613588%28v=VS.110%29.aspx">nouveautés</a> dans WPF. La nouveauté dont je vais parler n&rsquo;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements.  Jusqu&rsquo;ici, il était possible d&rsquo;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&rsquo;abonner à un évènement. Dans WPF 4.5, c&rsquo;est désormais possible. Voilà donc un petit exemple de ce que cela permet de faire&hellip;  Quand on utilise le pattern MVVM, on associe souvent des commandes du ViewModel à des contrôles de la vue, via le mécanisme de binding. Cette approche fonctionne généralement assez bien, mais elle présente certains inconvénients :</p>
 <ul>
 <li>
 <p>cela introduit beaucoup de code de &ldquo;plomberie&rdquo; dans le ViewModel</p>
 </li>
 <li>
-<p>tous les contrôles n'ont pas une propriété <code>Command</code> (en fait, la plupart ne l'ont pas), et quand cette propriété existe, elle ne correspond qu'à un seul évènement du contrôle (par exemple le clic sur un bouton). Il n'y a pas de moyen vraiment simple de relier les autres évènements à des commandes du ViewModel.</p>
-<p>Il serait plus pratique de pouvoir lier directement l'évènement à une méthode du ViewModel de la façon suivante:</p>
+<p>tous les contrôles n&rsquo;ont pas une propriété <code>Command</code> (en fait, la plupart ne l&rsquo;ont pas), et quand cette propriété existe, elle ne correspond qu&rsquo;à un seul évènement du contrôle (par exemple le clic sur un bouton). Il n&rsquo;y a pas de moyen vraiment simple de relier les autres évènements à des commandes du ViewModel.</p>
+<p>Il serait plus pratique de pouvoir lier directement l&rsquo;évènement à une méthode du ViewModel de la façon suivante:</p>
 </li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">        <span style="color:#f92672">&lt;Button</span> <span style="color:#a6e22e">Content=</span><span style="color:#e6db74">&#34;Click me&#34;</span>
@@ -93,7 +93,7 @@ if (!doNotTrack) {
         {
             MessageBox.Show(<span style="color:#e6db74">&#34;Hello world!&#34;</span>);
         }
-</code></pre></div><p>Eh bien cela est désormais possible ! Voilà donc une petite preuve de concept&hellip; La classe <code>EventBindingExtension</code> présentée ci-dessous obtient d'abord le <code>DataContext</code> du contrôle, puis recherche la méthode spécifiée dans le <code>DataContext</code>, et renvoie un delegate pour cette méthode:</p>
+</code></pre></div><p>Eh bien cela est désormais possible ! Voilà donc une petite preuve de concept&hellip; La classe <code>EventBindingExtension</code> présentée ci-dessous obtient d&rsquo;abord le <code>DataContext</code> du contrôle, puis recherche la méthode spécifiée dans le <code>DataContext</code>, et renvoie un delegate pour cette méthode:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System;
 <span style="color:#66d9ef">using</span> System.Collections.Generic;
 <span style="color:#66d9ef">using</span> System.ComponentModel;
@@ -176,7 +176,7 @@ if (!doNotTrack) {
 
         <span style="color:#75715e">#endregion
 </span><span style="color:#75715e"></span>    }
-</code></pre></div><p>Cette classe est utilisable comme dans l'exemple présenté plus haut.  En l'état, cette markup extension présente une limitation un peu gênante : le <code>DataContext</code> doit être défini avant l'appel à <code>ProvideValue</code>, sinon il n'est pas possible de trouver la méthode qui gère l'évènement. Une solution pourrait être de s'abonner à l'évènement <code>DataContextChanged</code> pour s'abonner à l'évènement plus tard, mais en attendant il faut quand même renvoyer une valeur&hellip; et si on renvoie <code>null</code>, on obtient une exception car on ne peut pas s'abonner à un évènement avec un handler <code>null</code>. Il faudrait donc renvoyer un handler &ldquo;bidon&rdquo; généré dynamiquement en fonction de la signature de l'évènement. Voilà qui complique un peu les choses&hellip; mais ça reste faisable.  Voici une deuxième version qui implémente cette amélioration :</p>
+</code></pre></div><p>Cette classe est utilisable comme dans l&rsquo;exemple présenté plus haut.  En l&rsquo;état, cette markup extension présente une limitation un peu gênante : le <code>DataContext</code> doit être défini avant l&rsquo;appel à <code>ProvideValue</code>, sinon il n&rsquo;est pas possible de trouver la méthode qui gère l&rsquo;évènement. Une solution pourrait être de s&rsquo;abonner à l&rsquo;évènement <code>DataContextChanged</code> pour s&rsquo;abonner à l&rsquo;évènement plus tard, mais en attendant il faut quand même renvoyer une valeur&hellip; et si on renvoie <code>null</code>, on obtient une exception car on ne peut pas s&rsquo;abonner à un évènement avec un handler <code>null</code>. Il faudrait donc renvoyer un handler &ldquo;bidon&rdquo; généré dynamiquement en fonction de la signature de l&rsquo;évènement. Voilà qui complique un peu les choses&hellip; mais ça reste faisable.  Voici une deuxième version qui implémente cette amélioration :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System;
 <span style="color:#66d9ef">using</span> System.Collections.Generic;
 <span style="color:#66d9ef">using</span> System.ComponentModel;
@@ -341,7 +341,7 @@ if (!doNotTrack) {
 
         <span style="color:#75715e">#endregion
 </span><span style="color:#75715e"></span>    }
-</code></pre></div><p>Voilà donc un exemple du genre de choses qu'on peut faire grâce à cette nouvelle fonctionnalité de WPF. On pourrait aussi imaginer un système de &ldquo;behavior&rdquo; similaire à ce qu'on peut faire avec des propriétés attachées, par exemple pour réaliser une action standard lorsqu'un évènement se produit. Les possiblités sont sans doute nombreuses, je vous laisse le soin de les trouver ;)</p>
+</code></pre></div><p>Voilà donc un exemple du genre de choses qu&rsquo;on peut faire grâce à cette nouvelle fonctionnalité de WPF. On pourrait aussi imaginer un système de &ldquo;behavior&rdquo; similaire à ce qu&rsquo;on peut faire avec des propriétés attachées, par exemple pour réaliser une action standard lorsqu&rsquo;un évènement se produit. Les possiblités sont sans doute nombreuses, je vous laisse le soin de les trouver ;)</p>
 
 		</div>
 		<footer class="post__footer">

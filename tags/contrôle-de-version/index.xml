@@ -17,8 +17,8 @@
       <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/</guid>
-      <description>J&#39;ai récemment eu à travailler sur un dépôt Git qui contenait des modifications à reporter sur un autre dépôt. Malheureusement, ce dépôt n&#39;avait pas de fichier .gitignore au départ, si bien que de nombreux fichiers inutiles (répertoires bin/obj/packages&amp;hellip;) avaient été archivés. Cela rendait l&#39;historique très difficile à lire, puisque chaque commit contenait des centaines de fichiers modifiés.
-Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&#39;auraient pas dû se trouver là.</description>
+      <description>J&amp;rsquo;ai récemment eu à travailler sur un dépôt Git qui contenait des modifications à reporter sur un autre dépôt. Malheureusement, ce dépôt n&amp;rsquo;avait pas de fichier .gitignore au départ, si bien que de nombreux fichiers inutiles (répertoires bin/obj/packages&amp;hellip;) avaient été archivés. Cela rendait l&amp;rsquo;historique très difficile à lire, puisque chaque commit contenait des centaines de fichiers modifiés.
+Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&amp;rsquo;auraient pas dû se trouver là.</description>
     </item>
     
   </channel>

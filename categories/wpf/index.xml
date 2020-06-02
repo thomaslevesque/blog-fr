@@ -37,7 +37,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</guid>
-      <description>Je voudrais aujourd&#39;hui partager avec vous une petite astuce que j&#39;utilise souvent depuis quelques mois. Supposons que pour améliorer l&#39;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards : Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&#39;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&#39;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
+      <description>Je voudrais aujourd&amp;rsquo;hui partager avec vous une petite astuce que j&amp;rsquo;utilise souvent depuis quelques mois. Supposons que pour améliorer l&amp;rsquo;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards : Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&amp;rsquo;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&amp;rsquo;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</guid>
-      <description>Voilà un certain temps que je n&#39;avais plus parlé des markup extensions&amp;hellip; J&#39;y reviens à l&#39;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&#39;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&#39;ici, il était possible d&#39;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&#39;abonner à un évènement.</description>
+      <description>Voilà un certain temps que je n&amp;rsquo;avais plus parlé des markup extensions&amp;hellip; J&amp;rsquo;y reviens à l&amp;rsquo;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&amp;rsquo;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&amp;rsquo;ici, il était possible d&amp;rsquo;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&amp;rsquo;abonner à un évènement.</description>
     </item>
     
     <item>
@@ -55,7 +55,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Sun, 27 Mar 2011 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2011/03/27/wpf-afficher-une-image-gif-animee/</guid>
-      <description>WPF est une technologie géniale, mais parfois on a l&#39;impression qu&#39;il lui manque certaines fonctionnalités assez basiques&amp;hellip; Un exemple souvent cité est l&#39;absence de support pour les images GIF animées. En fait, le format GIF proprement dit est supporté, mais le contrôle Image n&#39;affiche que la première image de l&#39;animation. De nombreuses solutions à ce problème ont été proposées sur les forums et blogs techniques, généralement des variantes autour des approches suivantes :</description>
+      <description>WPF est une technologie géniale, mais parfois on a l&amp;rsquo;impression qu&amp;rsquo;il lui manque certaines fonctionnalités assez basiques&amp;hellip; Un exemple souvent cité est l&amp;rsquo;absence de support pour les images GIF animées. En fait, le format GIF proprement dit est supporté, mais le contrôle Image n&amp;rsquo;affiche que la première image de l&amp;rsquo;animation. De nombreuses solutions à ce problème ont été proposées sur les forums et blogs techniques, généralement des variantes autour des approches suivantes :</description>
     </item>
     
     <item>
@@ -73,7 +73,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Tue, 20 Jul 2010 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</guid>
-      <description>Le composant Grid est l&#39;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&#39;utiliser, bien que simple à écrire, est relativement lourd :
+      <description>Le composant Grid est l&amp;rsquo;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&amp;rsquo;utiliser, bien que simple à écrire, est relativement lourd :
 &amp;lt;Grid&amp;gt; &amp;lt;Grid.RowDefinitions&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt; &amp;lt;/Grid.RowDefinitions&amp;gt; &amp;lt;Grid.ColumnDefinitions&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt; &amp;lt;/Grid.ColumnDefinitions&amp;gt; &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;0&amp;#34; /&amp;gt; &amp;lt;TextBox Text=&amp;#34;Hello world&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;1&amp;#34;/&amp;gt; &amp;lt;Rectangle Fill=&amp;#34;Black&amp;#34; Grid.Row=&amp;#34;1&amp;#34; Grid.ColumnSpan=&amp;#34;2&amp;#34;/&amp;gt; &amp;lt;Label Content=&amp;#34;Image&amp;#34; Grid.</description>
     </item>
     
@@ -83,7 +83,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</guid>
-      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&#39;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&#39;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&#39;ailleurs, les InputBindings n&#39;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&#39;ici, pour lier la commande d&#39;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&#39;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
+      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&amp;rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&amp;rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&amp;rsquo;ailleurs, les InputBindings n&amp;rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&amp;rsquo;ici, pour lier la commande d&amp;rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&amp;rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
     </item>
     
     <item>
@@ -92,7 +92,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Sat, 22 Aug 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/08/22/wpf-markup-extensions-et-templates/</guid>
-      <description>Note : Ce billet est la suite de celui sur une markup extension qui met à jour sa cible, et réutilise le même code de départ. Vous avez peut-être remarqué que l&#39;utilisation d&#39;une markup extension personnalisée dans un template donnait parfois des résultats inattendus&amp;hellip; Nous allons voir dans ce billet comment faire une markup extension qui se comporte correctement dans un template. Illustration du problème Reprenons l&#39;exemple du précédent billet : une markup extension qui renvoie l&#39;état de la connectivité réseau, et met à jour la propriété cible quand le réseau est connecté ou déconnecté :</description>
+      <description>Note : Ce billet est la suite de celui sur une markup extension qui met à jour sa cible, et réutilise le même code de départ. Vous avez peut-être remarqué que l&amp;rsquo;utilisation d&amp;rsquo;une markup extension personnalisée dans un template donnait parfois des résultats inattendus&amp;hellip; Nous allons voir dans ce billet comment faire une markup extension qui se comporte correctement dans un template. Illustration du problème Reprenons l&amp;rsquo;exemple du précédent billet : une markup extension qui renvoie l&amp;rsquo;état de la connectivité réseau, et met à jour la propriété cible quand le réseau est connecté ou déconnecté :</description>
     </item>
     
     <item>
@@ -101,7 +101,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Tue, 04 Aug 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/08/04/wpf-tri-automatique-dun-gridview-suite/</guid>
-      <description>Il y a quelques mois, j&#39;avais publié un billet où j&#39;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&#39;avais laissé un point ouvert : l&#39;ajout d&#39;un symbole dans l&#39;en-tête de colonne pour indiquer visuellement la direction du tri. C&#39;est maintenant chose faite ! Pour arriver à ce résultat, j&#39;ai utilisé un Adorner : c&#39;est un composant qui permet de dessiner &amp;ldquo;par-dessus&amp;rdquo; un élément graphique existant, sur une couche de dessin indépendante.</description>
+      <description>Il y a quelques mois, j&amp;rsquo;avais publié un billet où j&amp;rsquo;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&amp;rsquo;avais laissé un point ouvert : l&amp;rsquo;ajout d&amp;rsquo;un symbole dans l&amp;rsquo;en-tête de colonne pour indiquer visuellement la direction du tri. C&amp;rsquo;est maintenant chose faite ! Pour arriver à ce résultat, j&amp;rsquo;ai utilisé un Adorner : c&amp;rsquo;est un composant qui permet de dessiner &amp;ldquo;par-dessus&amp;rdquo; un élément graphique existant, sur une couche de dessin indépendante.</description>
     </item>
     
     <item>
@@ -110,7 +110,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Tue, 28 Jul 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</guid>
-      <description>Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&amp;hellip; Cependant, celles-ci ont une limitation qui peut s&#39;avérer assez gênante : elles ne sont évaluées qu&#39;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&amp;hellip; Cela peut être utile dans différents cas, notamment :
+      <description>Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&amp;hellip; Cependant, celles-ci ont une limitation qui peut s&amp;rsquo;avérer assez gênante : elles ne sont évaluées qu&amp;rsquo;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&amp;hellip; Cela peut être utile dans différents cas, notamment :
   si la valeur de la markup extension peut changer en réponse à un évènement</description>
     </item>
     
@@ -120,8 +120,8 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Fri, 17 Apr 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</guid>
-      <description>Comme je l&#39;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&#39;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&#39;exemple d&#39;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
-private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;(); public ObservableCollection&amp;lt;string&amp;gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&amp;#34;Strings&amp;#34;); } } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&#39;exception citée plus haut.</description>
+      <description>Comme je l&amp;rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&amp;rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&amp;rsquo;exemple d&amp;rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
+private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;(); public ObservableCollection&amp;lt;string&amp;gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&amp;#34;Strings&amp;#34;); } } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&amp;rsquo;exception citée plus haut.</description>
     </item>
     
     <item>
@@ -130,7 +130,7 @@ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableColl
       <pubDate>Wed, 01 Apr 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/</guid>
-      <description>Mise à jour : Comme l&#39;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&amp;hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&amp;hellip; J&#39;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&#39;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).</description>
+      <description>Mise à jour : Comme l&amp;rsquo;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&amp;hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&amp;hellip; J&amp;rsquo;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&amp;rsquo;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).</description>
     </item>
     
     <item>
@@ -139,7 +139,7 @@ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableColl
       <pubDate>Fri, 27 Mar 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/</guid>
-      <description>Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&amp;hellip; Avec le DataGridView de Windows Forms, c&#39;était &amp;ldquo;automagique&amp;rdquo; : quand l&#39;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&amp;hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&#39;évènement Click du GridViewColumnHeader.</description>
+      <description>Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&amp;hellip; Avec le DataGridView de Windows Forms, c&amp;rsquo;était &amp;ldquo;automagique&amp;rdquo; : quand l&amp;rsquo;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&amp;hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&amp;rsquo;évènement Click du GridViewColumnHeader.</description>
     </item>
     
     <item>
@@ -150,7 +150,7 @@ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableColl
       <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
       <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
 &amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
- La propriété Command n&#39;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&#39;arbre logique ou visuel du contrôle, ils n&#39;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&#39;écrire du code-behind.</description>
+ La propriété Command n&amp;rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&amp;rsquo;arbre logique ou visuel du contrôle, ils n&amp;rsquo;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&amp;rsquo;écrire du code-behind.</description>
     </item>
     
     <item>
@@ -159,7 +159,7 @@ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableColl
       <pubDate>Wed, 25 Feb 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/02/25/wpf-article-de-josh-smith-sur-le-design-pattern-model-view-viewmodel/</guid>
-      <description>Depuis l&#39;apparition de WPF, on entend de plus en plus souvent parler de &amp;ldquo;Model-View-ViewModel&amp;rdquo; (MVVM). Il s&#39;agit d&#39;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.</description>
+      <description>Depuis l&amp;rsquo;apparition de WPF, on entend de plus en plus souvent parler de &amp;ldquo;Model-View-ViewModel&amp;rdquo; (MVVM). Il s&amp;rsquo;agit d&amp;rsquo;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.</description>
     </item>
     
     <item>
@@ -168,7 +168,7 @@ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableColl
       <pubDate>Fri, 13 Feb 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/02/13/creer-un-lecteur-rss-en-5-minutes/</guid>
-      <description>Aujourd&#39;hui, je suis tombé par hasard sur une petite classe bien pratique : SyndicationFeed. Cette classe, apparue dans le framework 3.5, permet de manipuler des flux de syndication (comme RSS 2.0 ou Atom 1.0) avec un minimum de code. On peut l&#39;utiliser pour créer et diffuser des flux, ou pour lire des flux existants. Par exemple, voilà comment récupérer le fil d&#39;actualité de Google News et afficher son titre, son lien d&#39;origine et les titres de ses articles :</description>
+      <description>Aujourd&amp;rsquo;hui, je suis tombé par hasard sur une petite classe bien pratique : SyndicationFeed. Cette classe, apparue dans le framework 3.5, permet de manipuler des flux de syndication (comme RSS 2.0 ou Atom 1.0) avec un minimum de code. On peut l&amp;rsquo;utiliser pour créer et diffuser des flux, ou pour lire des flux existants. Par exemple, voilà comment récupérer le fil d&amp;rsquo;actualité de Google News et afficher son titre, son lien d&amp;rsquo;origine et les titres de ses articles :</description>
     </item>
     
     <item>
@@ -177,8 +177,8 @@ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableColl
       <pubDate>Thu, 05 Feb 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</guid>
-      <description>Hum&amp;hellip; 2 mois depuis mon précédent (et premier) post&amp;hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
-Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&amp;hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&amp;hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable.</description>
+      <description>Hum&amp;hellip; 2 mois depuis mon précédent (et premier) post&amp;hellip; il faudra que j&amp;rsquo;essaie d&amp;rsquo;être un peu plus régulier à l&amp;rsquo;avenir ;-)
+Si vous avez déjà essayé d&amp;rsquo;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&amp;hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&amp;rsquo;afficher dans un contrôle Image : aucune exception n&amp;rsquo;est levée, la taille de l&amp;rsquo;image est correcte, mais&amp;hellip; l&amp;rsquo;affichage reste désespérément vide, ou alors l&amp;rsquo;image est méconnaissable.</description>
     </item>
     
     <item>
@@ -187,7 +187,7 @@ Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec W
       <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/</guid>
-      <description>Voilà, c’est fait, j&#39;ai créé mon blog sur .NET&amp;hellip; j&#39;ai mis le temps, mais j&#39;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&#39;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&#39;auto-former sur les dernières nouveautés du framework.</description>
+      <description>Voilà, c’est fait, j&amp;rsquo;ai créé mon blog sur .NET&amp;hellip; j&amp;rsquo;ai mis le temps, mais j&amp;rsquo;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&amp;rsquo;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&amp;rsquo;auto-former sur les dernières nouveautés du framework.</description>
     </item>
     
   </channel>

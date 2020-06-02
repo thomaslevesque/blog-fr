@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Tester et déboguer une bibliothèque depuis LINQPad" />
-<meta property="og:description" content="Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&#39;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&#39;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code ." />
+<meta property="og:description" content="Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&rsquo;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&rsquo;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/" />
 <meta property="article:published_time" content="2017-08-26T00:00:00+00:00" />
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tester et déboguer une bibliothèque depuis LINQPad"/>
-<meta name="twitter:description" content="Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&#39;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&#39;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code ."/>
+<meta name="twitter:description" content="Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&rsquo;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&rsquo;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code ."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -76,20 +76,20 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-26T00:00:00Z">August 26, 2017</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>Cela faisait bien longtemps que je voulais bloguer à propos de <a href="http://www.linqpad.net/">LINQPad</a>. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d'écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l'avait développé pour accompagner son livre <em>C# in a Nutshell</em>), mais il est aussi extrêmement utile comme outil générique pour tester du code .NET.</p>
-<p>J'utilise fréquemment LINQPad pour tester rapidement une bibliothèque sur laquelle je travaille. C'est très facile, il suffit de référencer l'assembly à tester et de l'utiliser normalement. Mais quand la bibliothèque ne se comporte pas comme prévu, il est souvent utile de pouvoir la déboguer pas à pas&hellip; Il s'avère que c'est assez simple à faire à partir de LINQPad !</p>
-<p>La version premium de LINQPad a un débogueur intégré, qui n'est pas aussi puissant que celui de Visual Studio, mais quand même utile pour déboguer les scripts LINQPad. Cependant, il ne permet pas de rentrer dans le code de la bibliothèque&hellip; Heureusement, il y a une astuce qui permet d'utiliser le débogueur de Visual Studio pour déboguer le script qui s'exécuter dans LINQPad.</p>
-<p>Tout d'abord, ouvrez dans Visual Studio la bibliothèque à déboguer, si ce n'est pas déjà fait. Compilez le projet, et ajoutez une référence à l'assembly dans votre script LINQPad:</p>
+			<p>Cela faisait bien longtemps que je voulais bloguer à propos de <a href="http://www.linqpad.net/">LINQPad</a>. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&rsquo;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&rsquo;avait développé pour accompagner son livre <em>C# in a Nutshell</em>), mais il est aussi extrêmement utile comme outil générique pour tester du code .NET.</p>
+<p>J&rsquo;utilise fréquemment LINQPad pour tester rapidement une bibliothèque sur laquelle je travaille. C&rsquo;est très facile, il suffit de référencer l&rsquo;assembly à tester et de l&rsquo;utiliser normalement. Mais quand la bibliothèque ne se comporte pas comme prévu, il est souvent utile de pouvoir la déboguer pas à pas&hellip; Il s&rsquo;avère que c&rsquo;est assez simple à faire à partir de LINQPad !</p>
+<p>La version premium de LINQPad a un débogueur intégré, qui n&rsquo;est pas aussi puissant que celui de Visual Studio, mais quand même utile pour déboguer les scripts LINQPad. Cependant, il ne permet pas de rentrer dans le code de la bibliothèque&hellip; Heureusement, il y a une astuce qui permet d&rsquo;utiliser le débogueur de Visual Studio pour déboguer le script qui s&rsquo;exécuter dans LINQPad.</p>
+<p>Tout d&rsquo;abord, ouvrez dans Visual Studio la bibliothèque à déboguer, si ce n&rsquo;est pas déjà fait. Compilez le projet, et ajoutez une référence à l&rsquo;assembly dans votre script LINQPad:</p>
 <p><img src="Tester-et-d%C3%A9boguer-une-biblioth%C3%A8que-depuis-LINQPadlinqpad-add-reference-1.png" alt="Add reference to the library"></p>
 <p>Ecrivez du code qui utilise votre bibliothèque:</p>
 <p><img src="Tester-et-d%C3%A9boguer-une-biblioth%C3%A8que-depuis-LINQPadlinqpad-use-library-1.png" alt="Use your library from LINQPad"></p>
 <p>Et ajoutez cette ligne au début du script LINQPad:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Debugger.Launch();
-</code></pre></div><p>Quand vous exécutez le script, un dialogue va s'affichez pour vous demander de choisir un débogueur:</p>
+</code></pre></div><p>Quand vous exécutez le script, un dialogue va s&rsquo;affichez pour vous demander de choisir un débogueur:</p>
 <p><img src="Tester-et-d%C3%A9boguer-une-biblioth%C3%A8que-depuis-LINQPadchoose-debugger-1.png" alt="Choose a debugger"></p>
-<p>Sélectionnez l'instance de Visual Studio dans laquelle votre solution est ouverte et cliquez OK. Cela va attacher le débogueur de Visual Studio au processus qui exécute le script LINQPad, et suspendre l'exécution au niveau de l'appel à <code>Debugger.Launch()</code>:</p>
+<p>Sélectionnez l&rsquo;instance de Visual Studio dans laquelle votre solution est ouverte et cliquez OK. Cela va attacher le débogueur de Visual Studio au processus qui exécute le script LINQPad, et suspendre l&rsquo;exécution au niveau de l&rsquo;appel à <code>Debugger.Launch()</code>:</p>
 <p><img src="Tester-et-d%C3%A9boguer-une-biblioth%C3%A8que-depuis-LINQPaddebugging-in-vs-1.png" alt="Debugging in Visual Studio"></p>
-<p>Vous pouvez maintenant déboguer votre script LINQPad <em>et</em> votre bibliothèque. Vous pouvez mettre des points d'arrêt, rentrer dans les méthodes, ajouter des espions, etc, exactement comme quand vous déboguez une application normale !</p>
+<p>Vous pouvez maintenant déboguer votre script LINQPad <em>et</em> votre bibliothèque. Vous pouvez mettre des points d&rsquo;arrêt, rentrer dans les méthodes, ajouter des espions, etc, exactement comme quand vous déboguez une application normale !</p>
 
 		</div>
 		<footer class="post__footer">

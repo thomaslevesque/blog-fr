@@ -17,7 +17,7 @@
       <pubDate>Sun, 03 Oct 2010 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</guid>
-      <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&#39;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&#39;accès à ces entités :
+      <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&amp;rsquo;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&amp;rsquo;accès à ces entités :
 var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where ord.Date &amp;gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :</description>
     </item>
     
@@ -27,7 +27,7 @@ var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where 
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</guid>
-      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&#39;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&#39;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&#39;ailleurs, les InputBindings n&#39;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&#39;ici, pour lier la commande d&#39;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&#39;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
+      <description>LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&amp;rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&amp;rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&amp;rsquo;ailleurs, les InputBindings n&amp;rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&amp;hellip; Jusqu&amp;rsquo;ici, pour lier la commande d&amp;rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&amp;hellip; J&amp;rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&amp;hellip;).</description>
     </item>
     
     <item>

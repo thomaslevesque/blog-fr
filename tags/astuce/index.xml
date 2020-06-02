@@ -17,7 +17,7 @@
       <pubDate>Thu, 05 Mar 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/</guid>
-      <description>Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&#39;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : L&#39;astuce suivante permet d&#39;obtenir le même comportement pour vos propres fichiers. Supposons que vous souhaitiez personnaliser les classes générées par le designer d&#39;entités. Vous ne pouvez pas modifier le fichier Model1.Designer.cs, puisque vos modifications seraient écrasées par le designer.</description>
+      <description>Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&amp;rsquo;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : L&amp;rsquo;astuce suivante permet d&amp;rsquo;obtenir le même comportement pour vos propres fichiers. Supposons que vous souhaitiez personnaliser les classes générées par le designer d&amp;rsquo;entités. Vous ne pouvez pas modifier le fichier Model1.Designer.cs, puisque vos modifications seraient écrasées par le designer.</description>
     </item>
     
   </channel>

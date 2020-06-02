@@ -17,7 +17,7 @@
       <pubDate>Wed, 25 Feb 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/02/25/wpf-article-de-josh-smith-sur-le-design-pattern-model-view-viewmodel/</guid>
-      <description>Depuis l&#39;apparition de WPF, on entend de plus en plus souvent parler de &amp;ldquo;Model-View-ViewModel&amp;rdquo; (MVVM). Il s&#39;agit d&#39;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.</description>
+      <description>Depuis l&amp;rsquo;apparition de WPF, on entend de plus en plus souvent parler de &amp;ldquo;Model-View-ViewModel&amp;rdquo; (MVVM). Il s&amp;rsquo;agit d&amp;rsquo;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.</description>
     </item>
     
   </channel>

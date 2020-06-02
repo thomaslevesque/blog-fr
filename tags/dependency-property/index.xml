@@ -17,8 +17,8 @@
       <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</guid>
-      <description>Aujourd&#39;hui j&#39;aimerais partager une astuce que j&#39;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&#39;est mon premier billet à ce sujet, donc j&#39;espère que je ne vais pas trop me ridiculiser&amp;hellip;
-Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&#39;est pas toujours le cas.</description>
+      <description>Aujourd&amp;rsquo;hui j&amp;rsquo;aimerais partager une astuce que j&amp;rsquo;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&amp;rsquo;est mon premier billet à ce sujet, donc j&amp;rsquo;espère que je ne vais pas trop me ridiculiser&amp;hellip;
+Il est souvent utile d&amp;rsquo;être notifié quand la valeur d&amp;rsquo;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&amp;rsquo;est pas toujours le cas.</description>
     </item>
     
   </channel>

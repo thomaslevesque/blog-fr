@@ -27,7 +27,7 @@ Ma solution initiale était plus une preuve de concept qu’autre chose, et avai
       <pubDate>Fri, 23 Sep 2011 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2011/09/23/wpf-4-5-abonnement-a-un-evenement-a-laide-dune-markup-extension/</guid>
-      <description>Voilà un certain temps que je n&#39;avais plus parlé des markup extensions&amp;hellip; J&#39;y reviens à l&#39;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&#39;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&#39;ici, il était possible d&#39;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&#39;abonner à un évènement.</description>
+      <description>Voilà un certain temps que je n&amp;rsquo;avais plus parlé des markup extensions&amp;hellip; J&amp;rsquo;y reviens à l&amp;rsquo;occasion de la sortie de Visual Studio 11 Developer Preview, qui introduit un certain nombre de nouveautés dans WPF. La nouveauté dont je vais parler n&amp;rsquo;est sans doute pas la plus spectaculaire, mais elle vient combler un manque des versions précédentes : le support des markup extensions pour les évènements. Jusqu&amp;rsquo;ici, il était possible d&amp;rsquo;utiliser une markup extension en XAML pour affecter une valeur à une propriété, mais on ne pouvait pas faire la même chose pour s&amp;rsquo;abonner à un évènement.</description>
     </item>
     
   </channel>

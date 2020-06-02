@@ -83,7 +83,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-08-04T00:00:00Z">August 04, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Il y a quelques mois, j'avais publié un billet où j'expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J'avais laissé un point ouvert : l'ajout d'un symbole dans l'en-tête de colonne pour indiquer visuellement la direction du tri. C'est maintenant chose faite ! Pour arriver à ce résultat, j'ai utilisé un Adorner : c'est un composant qui permet de dessiner &ldquo;par-dessus&rdquo; un élément graphique existant, sur une couche de dessin indépendante.
+		Il y a quelques mois, j&rsquo;avais publié un billet où j&rsquo;expliquais comment trier automatiquement un GridView lors du clic sur un en-tête de colonne. J&rsquo;avais laissé un point ouvert : l&rsquo;ajout d&rsquo;un symbole dans l&rsquo;en-tête de colonne pour indiquer visuellement la direction du tri. C&rsquo;est maintenant chose faite ! Pour arriver à ce résultat, j&rsquo;ai utilisé un Adorner : c&rsquo;est un composant qui permet de dessiner &ldquo;par-dessus&rdquo; un élément graphique existant, sur une couche de dessin indépendante.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -97,7 +97,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-07-28T00:00:00Z">July 28, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&hellip; Cependant, celles-ci ont une limitation qui peut s'avérer assez gênante : elles ne sont évaluées qu'une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&hellip; Cela peut être utile dans différents cas, notamment :
+		Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&hellip; Cependant, celles-ci ont une limitation qui peut s&rsquo;avérer assez gênante : elles ne sont évaluées qu&rsquo;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&hellip; Cela peut être utile dans différents cas, notamment :
   si la valeur de la markup extension peut changer en réponse à un évènement
 	</div>
 </article><article class="list__item post">
@@ -112,8 +112,8 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-17T00:00:00Z">April 17, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Comme je l'avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d'un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l'exemple d'une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
-private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;(); public ObservableCollection&lt;string&gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&#34;Strings&#34;); } } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l'exception citée plus haut.
+		Comme je l&rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&rsquo;exemple d&rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
+private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;(); public ObservableCollection&lt;string&gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&#34;Strings&#34;); } } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&rsquo;exception citée plus haut.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -127,7 +127,7 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-01T00:00:00Z">April 01, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mise à jour : Comme l'a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&hellip; J'ai eu récemment besoin, dans une application basée sur le pattern MVVM, d'afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).
+		Mise à jour : Comme l&rsquo;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&hellip; J&rsquo;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&rsquo;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -141,7 +141,7 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-03-27T00:00:00Z">March 27, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&hellip; Avec le DataGridView de Windows Forms, c'était &ldquo;automagique&rdquo; : quand l'utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l'évènement Click du GridViewColumnHeader.
+		Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&hellip; Avec le DataGridView de Windows Forms, c&rsquo;était &ldquo;automagique&rdquo; : quand l&rsquo;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&rsquo;évènement Click du GridViewColumnHeader.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -157,7 +157,7 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<div class="content list__excerpt post__content clearfix">
 		Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
 &lt;UserControl.InputBindings&gt; &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt; &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
- La propriété Command n'est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l'arbre logique ou visuel du contrôle, ils n'héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d'écrire du code-behind.
+ La propriété Command n&rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&rsquo;arbre logique ou visuel du contrôle, ils n&rsquo;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&rsquo;écrire du code-behind.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -171,7 +171,7 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-25T00:00:00Z">February 25, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Depuis l'apparition de WPF, on entend de plus en plus souvent parler de &ldquo;Model-View-ViewModel&rdquo; (MVVM). Il s'agit d'un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.
+		Depuis l&rsquo;apparition de WPF, on entend de plus en plus souvent parler de &ldquo;Model-View-ViewModel&rdquo; (MVVM). Il s&rsquo;agit d&rsquo;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -185,7 +185,7 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-13T00:00:00Z">February 13, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Aujourd'hui, je suis tombé par hasard sur une petite classe bien pratique : SyndicationFeed. Cette classe, apparue dans le framework 3.5, permet de manipuler des flux de syndication (comme RSS 2.0 ou Atom 1.0) avec un minimum de code. On peut l'utiliser pour créer et diffuser des flux, ou pour lire des flux existants. Par exemple, voilà comment récupérer le fil d'actualité de Google News et afficher son titre, son lien d'origine et les titres de ses articles :
+		Aujourd&rsquo;hui, je suis tombé par hasard sur une petite classe bien pratique : SyndicationFeed. Cette classe, apparue dans le framework 3.5, permet de manipuler des flux de syndication (comme RSS 2.0 ou Atom 1.0) avec un minimum de code. On peut l&rsquo;utiliser pour créer et diffuser des flux, ou pour lire des flux existants. Par exemple, voilà comment récupérer le fil d&rsquo;actualité de Google News et afficher son titre, son lien d&rsquo;origine et les titres de ses articles :
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -199,8 +199,8 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-05T00:00:00Z">February 05, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j'essaie d'être un peu plus régulier à l'avenir ;-)
-Si vous avez déjà essayé d'utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s'afficher dans un contrôle Image : aucune exception n'est levée, la taille de l'image est correcte, mais&hellip; l'affichage reste désespérément vide, ou alors l'image est méconnaissable.
+		Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j&rsquo;essaie d&rsquo;être un peu plus régulier à l&rsquo;avenir ;-)
+Si vous avez déjà essayé d&rsquo;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&rsquo;afficher dans un contrôle Image : aucune exception n&rsquo;est levée, la taille de l&rsquo;image est correcte, mais&hellip; l&rsquo;affichage reste désespérément vide, ou alors l&rsquo;image est méconnaissable.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -214,7 +214,7 @@ Si vous avez déjà essayé d'utiliser la méthode Clipboard.GetImage avec WPF, 
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2008-11-18T00:00:00Z">November 18, 2008</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Voilà, c’est fait, j'ai créé mon blog sur .NET&hellip; j'ai mis le temps, mais j'ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l'informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m'auto-former sur les dernières nouveautés du framework.
+		Voilà, c’est fait, j&rsquo;ai créé mon blog sur .NET&hellip; j&rsquo;ai mis le temps, mais j&rsquo;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&rsquo;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&rsquo;auto-former sur les dernières nouveautés du framework.
 	</div>
 </article>
 </main>

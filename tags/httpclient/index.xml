@@ -17,8 +17,8 @@
       <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</guid>
-      <description>Le problème Si vous avez l&#39;habitude d&#39;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
- Le timeout est défini de façon globale, et s&#39;applique à toutes les requêtes, alors qu&#39;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
+      <description>Le problème Si vous avez l&amp;rsquo;habitude d&amp;rsquo;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
+ Le timeout est défini de façon globale, et s&amp;rsquo;applique à toutes les requêtes, alors qu&amp;rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       
       <guid>https://thomaslevesque.fr/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/</guid>
       <description>Il y a quelques années, Microsoft a introduit la classe HttpClient comme alternative moderne à HttpWebRequest pour faire des requêtes web depuis des applications .NET. Non seulement cette nouvelle API est beaucoup plus facile à utiliser, plus propre, et asynchrone, mais elle est aussi facilement extensible.
-Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&#39;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&#39;implémentation.</description>
+Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&amp;rsquo;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&amp;rsquo;implémentation.</description>
     </item>
     
     <item>

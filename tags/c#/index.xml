@@ -17,7 +17,7 @@
       <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</guid>
-      <description>Middlewhat? L&#39;architecture d&#39;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&#39;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&#39;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
+      <description>Middlewhat? L&amp;rsquo;architecture d&amp;rsquo;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&amp;rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&amp;rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
     </item>
     
     <item>
@@ -26,8 +26,8 @@
       <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</guid>
-      <description>Le problème Si vous avez l&#39;habitude d&#39;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
- Le timeout est défini de façon globale, et s&#39;applique à toutes les requêtes, alors qu&#39;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
+      <description>Le problème Si vous avez l&amp;rsquo;habitude d&amp;rsquo;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
+ Le timeout est défini de façon globale, et s&amp;rsquo;applique à toutes les requêtes, alors qu&amp;rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
     </item>
     
     <item>
@@ -36,7 +36,7 @@
       <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/</guid>
-      <description>Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&#39;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&#39;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code .</description>
+      <description>Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&amp;rsquo;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&amp;rsquo;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code .</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@
       <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</guid>
-      <description>Depuis le temps qu&#39;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&#39;est déjà assez cool en soi, mais ça ne s&#39;arrête pas là : .NET Core apporte aussi beaucoup d&#39;améliorations à la Base Class Library.
+      <description>Depuis le temps qu&amp;rsquo;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&amp;rsquo;est déjà assez cool en soi, mais ça ne s&amp;rsquo;arrête pas là : .NET Core apporte aussi beaucoup d&amp;rsquo;améliorations à la Base Class Library.
 Par exemple, Linq est plus rapide dans .</description>
     </item>
     
@@ -55,8 +55,8 @@ Par exemple, Linq est plus rapide dans .</description>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</guid>
-      <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&#39;en-tête du bloc (la ligne qui commence par @@), comme ceci :
-diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&#39;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
+      <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&amp;rsquo;en-tête du bloc (la ligne qui commence par @@), comme ceci :
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
     </item>
     
     <item>
@@ -66,7 +66,7 @@ diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program
       
       <guid>https://thomaslevesque.fr/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/</guid>
       <description>Il y a quelques années, Microsoft a introduit la classe HttpClient comme alternative moderne à HttpWebRequest pour faire des requêtes web depuis des applications .NET. Non seulement cette nouvelle API est beaucoup plus facile à utiliser, plus propre, et asynchrone, mais elle est aussi facilement extensible.
-Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&#39;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&#39;implémentation.</description>
+Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&amp;rsquo;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&amp;rsquo;implémentation.</description>
     </item>
     
     <item>
@@ -75,8 +75,8 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
       <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</guid>
-      <description>Dans mon précedent billet, j&#39;ai parlé d&#39;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&#39;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
- la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&#39;équipe du langage C# n&#39;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
+      <description>Dans mon précedent billet, j&amp;rsquo;ai parlé d&amp;rsquo;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&amp;rsquo;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
+ la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&amp;rsquo;équipe du langage C# n&amp;rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
     </item>
     
     <item>
@@ -252,8 +252,8 @@ Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scén
       <pubDate>Sun, 21 Apr 2013 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/</guid>
-      <description>Aujourd&#39;hui j&#39;aimerais partager une astuce que j&#39;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&#39;est mon premier billet à ce sujet, donc j&#39;espère que je ne vais pas trop me ridiculiser&amp;hellip;
-Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&#39;est pas toujours le cas.</description>
+      <description>Aujourd&amp;rsquo;hui j&amp;rsquo;aimerais partager une astuce que j&amp;rsquo;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&amp;rsquo;est mon premier billet à ce sujet, donc j&amp;rsquo;espère que je ne vais pas trop me ridiculiser&amp;hellip;
+Il est souvent utile d&amp;rsquo;être notifié quand la valeur d&amp;rsquo;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&amp;rsquo;est pas toujours le cas.</description>
     </item>
     
     <item>
@@ -271,7 +271,7 @@ Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété 
       <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</guid>
-      <description>Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&#39;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&#39;exécution de l&#39;application.</description>
+      <description>Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&amp;rsquo;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&amp;rsquo;exécution de l&amp;rsquo;application.</description>
     </item>
     
     <item>
@@ -280,8 +280,8 @@ Il est souvent utile d&#39;être notifié quand la valeur d&#39;une propriété 
       <pubDate>Sat, 20 Feb 2010 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
-      <description>Le problème Je suis sûr qu&#39;il vous est déjà arrivé d&#39;écrire ce genre de code :
-X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&#39;il n&#39;est pas nul, ce qui peut vite s&#39;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&#39;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+      <description>Le problème Je suis sûr qu&amp;rsquo;il vous est déjà arrivé d&amp;rsquo;écrire ce genre de code :
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
     </item>
     
     <item>
@@ -290,7 +290,7 @@ X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&
       <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</guid>
-      <description>Me revoilà avec un peu de retard, j&#39;ai un peu manqué de temps libre ces dernières semaines&amp;hellip; Voilà donc un petit post pour présenter une idée qui m&#39;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&#39;est de conception C# qu&#39;il s&#39;agit ! Le problème Il est assez courant, dans un programme, d&#39;avoir un objet parent qui possède une collection d&#39;enfants ayant une référence vers leur parent.</description>
+      <description>Me revoilà avec un peu de retard, j&amp;rsquo;ai un peu manqué de temps libre ces dernières semaines&amp;hellip; Voilà donc un petit post pour présenter une idée qui m&amp;rsquo;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&amp;rsquo;est de conception C# qu&amp;rsquo;il s&amp;rsquo;agit ! Le problème Il est assez courant, dans un programme, d&amp;rsquo;avoir un objet parent qui possède une collection d&amp;rsquo;enfants ayant une référence vers leur parent.</description>
     </item>
     
   </channel>

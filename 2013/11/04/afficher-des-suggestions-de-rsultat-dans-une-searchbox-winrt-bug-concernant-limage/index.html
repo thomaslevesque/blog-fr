@@ -106,7 +106,7 @@ if (!doNotTrack) {
     }
 }
 </code></pre><p>Ce code s’exécute sans aucune erreur, et les suggestions sont affichées… mais l’image n’apparait pas !</p>
-<p><img src="BiF0g.png" alt=""></p>
+<p><img src="BiF0g.png" alt="http://i.stack.imgur.com/BiF0g.png"></p>
 <p>J’ai passé un long moment à tout revérifier, à faire plein de petits changements pour essayer de trouver l’origine du problème, j’ai même fait ma propre implémentation de <code>IRandomAccessStreamReference</code>… en vain.</p>
 <p>J’ai finalement <a href="http://stackoverflow.com/questions/19769689/image-not-shown-for-result-suggestions-in-searchbox">posté mon problème sur Stack Overflow</a>, et quelqu’un m’a gentiment fourni la solution, qui était très simple : au lieu d’utiliser <code>StorageFile</code>, il faut utiliser <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.storage.streams.randomaccessstreamreference"><code>RandomAccessStreamReference</code></a> (ça semble assez évident une fois qu’on sait que ça existe). Le code devient donc :</p>
 <pre><code>private void SearchBox_SuggestionsRequested(SearchBox sender, SearchBoxSuggestionsRequestedEventArgs args)
@@ -121,7 +121,7 @@ if (!doNotTrack) {
 }
 </code></pre><p>(Notez que la méthode n’est plus asynchrone, il n’y a donc plus besoin d’utiliser l’objet deferral).</p>
 <p>Les suggestions sont maintenant affichées comme je le voulais, avec l’image :</p>
-<p><img src="cjmogKp.png" alt=""></p>
+<p><img src="cjmogKp.png" alt="http://i.imgur.com/cjmogKp.png"></p>
 <p>La leçon à tirer de cette histoire est que, bien que le paramètre <code>image</code> soit de type <code>IRandomAccessStreamReference</code>, <strong>il ne semble pas accepter autre chose qu’une instance de la classe <code>RandomAccessStreamReference</code></strong>. Si vous passez n’importe quelle autre implémentation de l’interface, cela échoue silencieusement et l’image n’est pas affichée. C’est clairement un bug : si le type déclaré du paramètre dans la signature de la méthode et une interface, la méthode devrait accepter n’importe quelle implémentation de cette interface ; sinon, la signature devrait déclarer le type concret. J’ai signalé le <a href="https://connect.microsoft.com/VisualStudio/feedback/details/807704/searchbox-windows-8-1-doesnt-show-the-image-if-it-is-not-an-instance-of-randomaccessstreamreference">bug</a> sur Connect, avec un peu de chance ce sera corrigé dans une future version.</p>
 <p>En espérant que ce soit utile à quelqu’un !</p>
 

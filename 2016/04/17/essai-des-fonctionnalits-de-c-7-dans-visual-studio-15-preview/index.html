@@ -77,7 +77,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-04-17T00:00:00Z">April 17, 2016</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les <a href="https://www.visualstudio.com/en-us/news/vs15-preview-vs.aspx">notes de version</a>. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !</p>
-<h3 id="activer-les-nouvelles-fonctionnalits">Activer les nouvelles fonctionnalités</h3>
+<h3 id="activer-les-nouvelles-fonctionnalités">Activer les nouvelles fonctionnalités</h3>
 <p>Les nouvelles fonctionnalités ne sont pas activées par défaut. On peut les activer individuellement avec l’option <code>/feature:</code> en ligne de commande, mais le plus simple est de toutes les activer en ajoutant <code>__DEMO__</code> et <code>__DEMO_EXPERIMENTAL__</code> dans les symboles de compilation conditionnelle (Propriétés du projet, onglet <em>Build</em>).</p>
 <h3 id="fonctions-locales">Fonctions locales</h3>
 <p>La plupart des langages fonctionnels permettent de déclarer des fonctions dans le corps d’autres fonctions. Il est maintenant possible de faire la même chose en C# 7 ! La syntaxe pour déclarer une méthode dans une autre est sans grande surprise :</p>
@@ -103,7 +103,7 @@ if (!doNotTrack) {
 <li>les fonctions locales supportent la récursion comme n’importe quelle autre méthode</li>
 </ul>
 <p>Pour en savoir plus sur les fonctions locales, allez voir <a href="https://github.com/dotnet/roslyn/issues/2930">sur le dépôt Github de Roslyn</a>.</p>
-<h3 id="valeurs-de-retour-et-variables-locales-par-rfrence">Valeurs de retour et variables locales par référence</h3>
+<h3 id="valeurs-de-retour-et-variables-locales-par-référence">Valeurs de retour et variables locales par référence</h3>
 <p>Il est possible, depuis la première version de C#, de passer des paramètres par référence, ce qui est conceptuellement similaire au fait de passer un pointeur dans un langage comme C. Jusqu’ici, cette possibilité était limitée aux paramètres, mais C# 7 l’étend aux valeurs de retour et aux variables locales. Voici un exemple :</p>
 <pre><code>static void TestRefReturn()
 {
@@ -207,7 +207,7 @@ string description = o match
     );
 </code></pre><p>Cela ressemble beaucoup à un <code>switch</code>, sauf que c’est une expression et non une instruction.</p>
 <p>Il y a encore beaucoup à dire sur le pattern matching, mais ça devient un peu long pour un article de blog, je vous invite donc à consulter <a href="https://github.com/dotnet/roslyn/blob/master/docs/features/patterns.md">la spec sur Github</a> pour plus de détails.</p>
-<h3 id="littraux-binaires-et-sparateurs-de-chiffres">Littéraux binaires et séparateurs de chiffres</h3>
+<h3 id="littéraux-binaires-et-séparateurs-de-chiffres">Littéraux binaires et séparateurs de chiffres</h3>
 <p>Ces fonctionnalités n’étaient pas explicitement mentionnées dans les notes de version, mais j’ai remarqué qu’elles étaient inclues aussi. Elles étaient initialement prévues pour C# 6, mais avaient finalement été retirées avant la release ; elles sont de retour en C# 7.</p>
 <p>Il est maintenant possible d’écrire des littéraux numériques sous forme binaire, en plus du décimal et de l’hexadécimal :</p>
 <pre><code>int x = 0b11001010;

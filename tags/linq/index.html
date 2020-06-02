@@ -83,7 +83,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-01T00:00:00Z">April 01, 2017</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Depuis le temps qu'on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C'est déjà assez cool en soi, mais ça ne s'arrête pas là : .NET Core apporte aussi beaucoup d'améliorations à la Base Class Library.
+		Depuis le temps qu&rsquo;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&rsquo;est déjà assez cool en soi, mais ça ne s&rsquo;arrête pas là : .NET Core apporte aussi beaucoup d&rsquo;améliorations à la Base Class Library.
 Par exemple, Linq est plus rapide dans .
 	</div>
 </article><article class="list__item post">
@@ -127,7 +127,7 @@ Par exemple, Linq est plus rapide dans .
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-10-03T00:00:00Z">October 03, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j'utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l'accès à ces entités :
+		Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&rsquo;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&rsquo;accès à ces entités :
 var query = from ord in db.Orders.Include(&#34;OrderDetails&#34;) where ord.Date &gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :
 	</div>
 </article><article class="list__item post">
@@ -142,8 +142,8 @@ var query = from ord in db.Orders.Include(&#34;OrderDetails&#34;) where ord.Date
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-02-20T00:00:00Z">February 20, 2010</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Le problème Je suis sûr qu'il vous est déjà arrivé d'écrire ce genre de code :
-X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu'il n'est pas nul, ce qui peut vite s'avérer pénible si la propriété voulue est profondément enfouie dans un graphe d'objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.
+		Le problème Je suis sûr qu&rsquo;il vous est déjà arrivé d&rsquo;écrire ce genre de code :
+X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&rsquo;il n&rsquo;est pas nul, ce qui peut vite s&rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&rsquo;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.
 	</div>
 </article>
 </main>

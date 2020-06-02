@@ -83,8 +83,8 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-04-21T00:00:00Z">April 21, 2013</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Aujourd'hui j'aimerais partager une astuce que j'ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c'est mon premier billet à ce sujet, donc j'espère que je ne vais pas trop me ridiculiser&hellip;
-Il est souvent utile d'être notifié quand la valeur d'une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n'est pas toujours le cas.
+		Aujourd&rsquo;hui j&rsquo;aimerais partager une astuce que j&rsquo;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&rsquo;est mon premier billet à ce sujet, donc j&rsquo;espère que je ne vais pas trop me ridiculiser&hellip;
+Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&rsquo;est pas toujours le cas.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -112,7 +112,7 @@ Il est souvent utile d'être notifié quand la valeur d'une propriété de dépe
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-10-25T00:00:00Z">October 25, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j'attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n'était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D'ailleurs, les InputBindings n'héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip; Jusqu'ici, pour lier la commande d'un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&hellip; J'avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;).
+		LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les InputBindings n&rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip; Jusqu&rsquo;ici, pour lier la commande d&rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -126,8 +126,8 @@ Il est souvent utile d'être notifié quand la valeur d'une propriété de dépe
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-17T00:00:00Z">April 17, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Comme je l'avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d'un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l'exemple d'une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
-private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;(); public ObservableCollection&lt;string&gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&#34;Strings&#34;); } } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l'exception citée plus haut.
+		Comme je l&rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&rsquo;exemple d&rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
+private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;(); public ObservableCollection&lt;string&gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&#34;Strings&#34;); } } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&rsquo;exception citée plus haut.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -141,7 +141,7 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-01T00:00:00Z">April 01, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Mise à jour : Comme l'a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&hellip; J'ai eu récemment besoin, dans une application basée sur le pattern MVVM, d'afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).
+		Mise à jour : Comme l&rsquo;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&hellip; J&rsquo;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&rsquo;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -155,7 +155,7 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2008-11-18T00:00:00Z">November 18, 2008</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Voilà, c’est fait, j'ai créé mon blog sur .NET&hellip; j'ai mis le temps, mais j'ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l'informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m'auto-former sur les dernières nouveautés du framework.
+		Voilà, c’est fait, j&rsquo;ai créé mon blog sur .NET&hellip; j&rsquo;ai mis le temps, mais j&rsquo;ai fini par y venir ;-) Je me présente rapidement : Thomas Levesque, 27 ans, ingénieur de formation. Je suis passionné depuis toujours par l&rsquo;informatique, et plus particulièrement par la technologie .NET, que je suis de très près depuis ses débuts. Comme je suis du genre curieux, je passe pas mal de temps à fouiner dans les docs MSDN et sur le net pour m&rsquo;auto-former sur les dernières nouveautés du framework.
 	</div>
 </article>
 </main>

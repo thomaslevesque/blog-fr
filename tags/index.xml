@@ -1533,15 +1533,6 @@
     </item>
     
     <item>
-      <title>parent/enfant</title>
-      <link>https://thomaslevesque.fr/tags/parent/enfant/</link>
-      <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
-      
-      <guid>https://thomaslevesque.fr/tags/parent/enfant/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>sérialisation XML</title>
       <link>https://thomaslevesque.fr/tags/s%C3%A9rialisation-xml/</link>
       <pubDate>Thu, 11 Jun 2009 00:00:00 +0000</pubDate>
@@ -1655,6 +1646,15 @@
       <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/tags/settings/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>parent/enfant</title>
+      <link>https://thomaslevesque.fr/tags/parent/enfant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://thomaslevesque.fr/tags/parent/enfant/</guid>
       <description></description>
     </item>
     

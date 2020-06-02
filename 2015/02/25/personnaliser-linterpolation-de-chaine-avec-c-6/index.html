@@ -86,7 +86,7 @@ if (!doNotTrack) {
 <li>les valeurs pour les marqueurs</li>
 </ul>
 <p>La méthode <code>ToString()</code> de cet objet appelle simplement <code>String.Format(format, values)</code>. Mais il y a aussi une surcharge qui accepte un <code>IFormatProvider</code>, et c’est là que ça devient intéressant, parce que cela permet de personnaliser la façon dont les valeurs sont formatées. Il n’est peut-être pas évident de voir en quoi c’est utile, donc laissez moi vous montrer quelques exemples…</p>
-<h3 id="spcifier-la-culture">Spécifier la culture</h3>
+<h3 id="spécifier-la-culture">Spécifier la culture</h3>
 <p>Pendant la conception de la fonctionnalité d’interpolation de chaines, il y a eu un débat assez vif pour décider s’il fallait utiliser la culture courante ou la culture neutre (“invariant”) pour formater les valeurs; il y avait de bons arguments des deux côtés, mais au final il a été décidé d’utiliser la culture courante, par souci de cohérence avec <code>String.Format</code> et des APIs similaires qui utilisent la <a href="https://msdn.microsoft.com/fr-fr/library/txafckwd.aspx">mise en forme composite</a>. Utiliser la culture courante est pertinent quand on utilise l’interpolation de chaines pour construire des chaines qui seront affichée dans l’interface utilisateur ; mais il y a aussi des scénarios où on veut construire des chaines qui seront utilisées dans des APIs ou protocoles (URLs, requêtes SQL…), et dans ces cas là il faut généralement utiliser la culture neutre.</p>
 <p>C# 6 fournit un moyen facile de faire cela, en tirant parti de la conversion en <code>IFormattable</code>. Il suffit de créer une méthode comme celle-ci :</p>
 <pre><code>static string Invariant(FormattableString formattable)
@@ -132,7 +132,7 @@ if (!doNotTrack) {
 string url = Url($&quot;http://foobar/item/{id}/{name}&quot;);
 </code></pre><p>Cela va correctement encoder les valeurs de <code>id</code> et <code>name</code> de façon à ce que l’’URL générée ne contienne que des caractères valides.</p>
 <p><em>Aparté: Avez-vous remarqué le if <code>(format == &quot;r&quot;)</code>? C’est un spécificateur de format personnalisé qui indique que la valeur ne doit pas être encodé (“r” pour “raw”). Pour l’utiliser, il suffit de l’inclure dans la chaine de format comme ceci : <code>{id:r}</code>. Cela empêchera l’encodage de <code>id</code>.</em></p>
-<h3 id="construire-des-requtes-sql">Construire des requêtes SQL</h3>
+<h3 id="construire-des-requêtes-sql">Construire des requêtes SQL</h3>
 <p>On peut faire quelque chose de similaire pour les requêtes SQL. Bien sûr, intégrer des valeurs directement dans une requête est une mauvaise pratique bien connue, pour des raison de sécurité et de performance (il faut utiliser des requêtes paramétrées); mais pour un développement “à l’arrache”, ça peut parfois être utile. Et puis c’est une bonne illustration de cette fonctionnalité. Pour intégrer des valeurs dans une requête SQL, il faut :</p>
 <ul>
 <li>encadrer les chaines entre des apostrophes, et échapper les apostrophes à l’intérieur des chaines en les doublant</li>

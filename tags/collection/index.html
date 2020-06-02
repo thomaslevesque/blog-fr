@@ -83,7 +83,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-06-11T00:00:00Z">June 11, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Me revoilà avec un peu de retard, j'ai un peu manqué de temps libre ces dernières semaines&hellip; Voilà donc un petit post pour présenter une idée qui m'est venue récemment. Pour une fois, il ne sera pas question de WPF, c'est de conception C# qu'il s'agit ! Le problème Il est assez courant, dans un programme, d'avoir un objet parent qui possède une collection d'enfants ayant une référence vers leur parent.
+		Me revoilà avec un peu de retard, j&rsquo;ai un peu manqué de temps libre ces dernières semaines&hellip; Voilà donc un petit post pour présenter une idée qui m&rsquo;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&rsquo;est de conception C# qu&rsquo;il s&rsquo;agit ! Le problème Il est assez courant, dans un programme, d&rsquo;avoir un objet parent qui possède une collection d&rsquo;enfants ayant une référence vers leur parent.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -97,8 +97,8 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-17T00:00:00Z">April 17, 2009</time></div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Comme je l'avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d'un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l'exemple d'une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
-private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;(); public ObservableCollection&lt;string&gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&#34;Strings&#34;); } } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l'exception citée plus haut.
+		Comme je l&rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&rsquo;exemple d&rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
+private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;(); public ObservableCollection&lt;string&gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&#34;Strings&#34;); } } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&rsquo;exception citée plus haut.
 	</div>
 </article>
 </main>

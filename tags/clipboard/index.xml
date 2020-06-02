@@ -17,8 +17,8 @@
       <pubDate>Thu, 05 Feb 2009 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</guid>
-      <description>Hum&amp;hellip; 2 mois depuis mon précédent (et premier) post&amp;hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
-Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&amp;hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&amp;hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable.</description>
+      <description>Hum&amp;hellip; 2 mois depuis mon précédent (et premier) post&amp;hellip; il faudra que j&amp;rsquo;essaie d&amp;rsquo;être un peu plus régulier à l&amp;rsquo;avenir ;-)
+Si vous avez déjà essayé d&amp;rsquo;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&amp;hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&amp;rsquo;afficher dans un contrôle Image : aucune exception n&amp;rsquo;est levée, la taille de l&amp;rsquo;image est correcte, mais&amp;hellip; l&amp;rsquo;affichage reste désespérément vide, ou alors l&amp;rsquo;image est méconnaissable.</description>
     </item>
     
   </channel>

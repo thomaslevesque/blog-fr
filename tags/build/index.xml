@@ -17,7 +17,7 @@
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/</guid>
-      <description>T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&#39;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&#39;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&#39;on souhaite regénérer les sorties des templates à chaque build.</description>
+      <description>T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&amp;rsquo;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&amp;rsquo;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&amp;rsquo;on souhaite regénérer les sorties des templates à chaque build.</description>
     </item>
     
     <item>
@@ -26,8 +26,8 @@
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</guid>
-      <description>Pour être honnête, je n&#39;ai jamais vraiment aimé MSBuild jusqu&#39;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&#39;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&#39;était mal documenté&amp;hellip; Mais avec l&#39;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.
-MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&#39;est le nom officiel, mais c&#39;est celui que j&#39;utiliserai).</description>
+      <description>Pour être honnête, je n&amp;rsquo;ai jamais vraiment aimé MSBuild jusqu&amp;rsquo;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&amp;rsquo;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&amp;rsquo;était mal documenté&amp;hellip; Mais avec l&amp;rsquo;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.
+MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&amp;rsquo;est le nom officiel, mais c&amp;rsquo;est celui que j&amp;rsquo;utiliserai).</description>
     </item>
     
   </channel>

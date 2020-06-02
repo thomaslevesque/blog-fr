@@ -26,7 +26,7 @@
       <pubDate>Sun, 27 Mar 2011 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2011/03/27/wpf-afficher-une-image-gif-animee/</guid>
-      <description>WPF est une technologie géniale, mais parfois on a l&#39;impression qu&#39;il lui manque certaines fonctionnalités assez basiques&amp;hellip; Un exemple souvent cité est l&#39;absence de support pour les images GIF animées. En fait, le format GIF proprement dit est supporté, mais le contrôle Image n&#39;affiche que la première image de l&#39;animation. De nombreuses solutions à ce problème ont été proposées sur les forums et blogs techniques, généralement des variantes autour des approches suivantes :</description>
+      <description>WPF est une technologie géniale, mais parfois on a l&amp;rsquo;impression qu&amp;rsquo;il lui manque certaines fonctionnalités assez basiques&amp;hellip; Un exemple souvent cité est l&amp;rsquo;absence de support pour les images GIF animées. En fait, le format GIF proprement dit est supporté, mais le contrôle Image n&amp;rsquo;affiche que la première image de l&amp;rsquo;animation. De nombreuses solutions à ce problème ont été proposées sur les forums et blogs techniques, généralement des variantes autour des approches suivantes :</description>
     </item>
     
   </channel>

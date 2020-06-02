@@ -95,7 +95,7 @@ if (!doNotTrack) {
 <li>Comment faut-il formater la valeur ?</li>
 <li>Pour les valeurs inférieures à 1 Ko, voulez vous utiliser le mot “octets”, ou juste le symbole “o” ?</li>
 </ul>
-<h3 id="bon-a-suffit-o-veux-tu-en-venir">Bon, ça suffit! Où veux-tu en venir?</h3>
+<h3 id="bon-ça-suffit-où-veux-tu-en-venir">Bon, ça suffit! Où veux-tu en venir?</h3>
 <p>Comme vous pouvez le voir, afficher une taille en octets sous forme lisible par des humains n’est pas aussi évident qu’on aurait pu s’y attendre… J’ai eu à écrire du code pour le faire dans plusieurs applications, et j’ai fini par en avoir assez de refaire à chaque fois, donc j’ai créé une librairie qui s’efforce de couvrir tous les cas d’utilisation. Je l’ai appelée <a href="https://github.com/thomaslevesque/HumanBytes">HumanBytes</a>, pour des raisons qui devraient être évidentes… Elle est également disponible sous forme de <a href="https://www.nuget.org/packages/HumanBytes">package NuGet</a>.</p>
 <p>Son utilisation est assez simple. Elle est basée sur la classe <code>ByteSizeFormatter</code>, qui expose des propriétés pour contrôler la façon dont la valeur est formatée :</p>
 <pre><code>var formatter = new ByteSizeFormatter

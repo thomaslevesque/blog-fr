@@ -8,8 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)" />
-<meta property="og:description" content="Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
-Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable." />
+<meta property="og:description" content="Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j&rsquo;essaie d&rsquo;être un peu plus régulier à l&rsquo;avenir ;-)
+Si vous avez déjà essayé d&rsquo;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&rsquo;afficher dans un contrôle Image : aucune exception n&rsquo;est levée, la taille de l&rsquo;image est correcte, mais&hellip; l&rsquo;affichage reste désespérément vide, ou alors l&rsquo;image est méconnaissable." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/" />
 <meta property="article:published_time" content="2009-02-05T00:00:00+00:00" />
@@ -17,8 +17,8 @@ Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec W
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)"/>
-<meta name="twitter:description" content="Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j&#39;essaie d&#39;être un peu plus régulier à l&#39;avenir ;-)
-Si vous avez déjà essayé d&#39;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&#39;afficher dans un contrôle Image : aucune exception n&#39;est levée, la taille de l&#39;image est correcte, mais&hellip; l&#39;affichage reste désespérément vide, ou alors l&#39;image est méconnaissable."/>
+<meta name="twitter:description" content="Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j&rsquo;essaie d&rsquo;être un peu plus régulier à l&rsquo;avenir ;-)
+Si vous avez déjà essayé d&rsquo;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&rsquo;afficher dans un contrôle Image : aucune exception n&rsquo;est levée, la taille de l&rsquo;image est correcte, mais&hellip; l&rsquo;affichage reste désespérément vide, ou alors l&rsquo;image est méconnaissable."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -78,10 +78,10 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-05T00:00:00Z">February 05, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j'essaie d'être un peu plus régulier à l'avenir ;-)</p>
-<p>Si vous avez déjà essayé d'utiliser la méthode <em>Clipboard.GetImage</em> avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un <em>InteropBitmap</em> qui, dans certains cas (voire tout le temps), refuse de s'afficher dans un contrôle <em>Image</em> : aucune exception n'est levée, la taille de l'image est correcte, mais&hellip; l'affichage reste désespérément vide, ou alors l'image est méconnaissable.</p>
-<p>Pourtant, si on enregistre l'image dans un stream et qu'on la relit à partir du stream, on obtient une image parfaitement utilisable. Mais bon, je trouve  cette méthode assez lourde (décodage - réencodage - redécodage de l'image). J'ai donc cherché une solution pour récupérer « manuellement » l'image dans le presse-papier.</p>
-<p>Si on regarde les formats d'image disponibles dans le presse-papier (<em>Clipboard.GetDataObject().GetFormats()</em>), on voit que ça varie selon l'origine de l'image (capture d'écran, copie dans Paint…). Le seul format qui semble être toujours présent est <em>DeviceIndependentBitmap</em> (DIB). J'ai donc cherché, à récupérer le <em>MemoryStream</em> pour ce format, et à le décoder en <em>BitmapSource</em> :</p>
+			<p>Hum&hellip; 2 mois depuis mon précédent (et premier) post&hellip; il faudra que j&rsquo;essaie d&rsquo;être un peu plus régulier à l&rsquo;avenir ;-)</p>
+<p>Si vous avez déjà essayé d&rsquo;utiliser la méthode <em>Clipboard.GetImage</em> avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un <em>InteropBitmap</em> qui, dans certains cas (voire tout le temps), refuse de s&rsquo;afficher dans un contrôle <em>Image</em> : aucune exception n&rsquo;est levée, la taille de l&rsquo;image est correcte, mais&hellip; l&rsquo;affichage reste désespérément vide, ou alors l&rsquo;image est méconnaissable.</p>
+<p>Pourtant, si on enregistre l&rsquo;image dans un stream et qu&rsquo;on la relit à partir du stream, on obtient une image parfaitement utilisable. Mais bon, je trouve  cette méthode assez lourde (décodage - réencodage - redécodage de l&rsquo;image). J&rsquo;ai donc cherché une solution pour récupérer « manuellement » l&rsquo;image dans le presse-papier.</p>
+<p>Si on regarde les formats d&rsquo;image disponibles dans le presse-papier (<em>Clipboard.GetDataObject().GetFormats()</em>), on voit que ça varie selon l&rsquo;origine de l&rsquo;image (capture d&rsquo;écran, copie dans Paint…). Le seul format qui semble être toujours présent est <em>DeviceIndependentBitmap</em> (DIB). J&rsquo;ai donc cherché, à récupérer le <em>MemoryStream</em> pour ce format, et à le décoder en <em>BitmapSource</em> :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> ImageSource ImageFromClipboardDib()
         {
             MemoryStream ms = Clipboard.GetData(<span style="color:#e6db74">&#34;DeviceIndependentBitmap&#34;</span>) <span style="color:#66d9ef">as</span> MemoryStream;
@@ -91,14 +91,14 @@ if (!doNotTrack) {
             bmp.EndInit();
             <span style="color:#66d9ef">return</span> bmp;
         }
-</code></pre></div><p>Malheureusement, ce code renvoie une magnifique <em>NotSupportedException</em> : « Impossible de trouver un composant d'image adapté pour terminer l'opération.». En clair, il ne sait pas comment décoder ça… c'est pourtant un format assez simple a priori, et très répandu. J'ai donc un peu creusé la question et étudié la structure d'un DIB. En simplifiant un peu, un fichier bitmap « classique » (.bmp) est composé des sections suivantes :</p>
+</code></pre></div><p>Malheureusement, ce code renvoie une magnifique <em>NotSupportedException</em> : « Impossible de trouver un composant d&rsquo;image adapté pour terminer l&rsquo;opération.». En clair, il ne sait pas comment décoder ça… c&rsquo;est pourtant un format assez simple a priori, et très répandu. J&rsquo;ai donc un peu creusé la question et étudié la structure d&rsquo;un DIB. En simplifiant un peu, un fichier bitmap « classique » (.bmp) est composé des sections suivantes :</p>
 <ul>
 <li>En-tête de fichier (structure <em>BITMAPFILEHEADER</em>)</li>
 <li>En-tête de bitmap (structure <em>BITMAPINFO</em>)</li>
 <li>Palette (tableau de RGBQUAD)</li>
-<li>Données de l'image</li>
+<li>Données de l&rsquo;image</li>
 </ul>
-<p>En observant le contenu du DIB dans le presse-papier, on voit qu'il présente la même structure, mais sans le <em>BITMAPFILEHEADER</em>… l'astuce est donc d'ajouter cet en-tête au début du buffer, et de passer le tout à <em>BitmapImage</em> ou <em>BitmapFrame</em>. Pas bien difficile a priori… là où ça se corse, c'est qu'il faut renseigner dans cet en-tête certaines valeurs qu'on ne peut obtenir qu'en lisant le contenu de l'image. Il faut notamment indiquer à quelle position débutent les données de l'image proprement dite, et donc connaitre la taille des en-têtes et de la palette. Le code suivant effectue ce traitement, et renvoie une <em>ImageSource</em> à partir du presse-papier :</p>
+<p>En observant le contenu du DIB dans le presse-papier, on voit qu&rsquo;il présente la même structure, mais sans le <em>BITMAPFILEHEADER</em>… l&rsquo;astuce est donc d&rsquo;ajouter cet en-tête au début du buffer, et de passer le tout à <em>BitmapImage</em> ou <em>BitmapFrame</em>. Pas bien difficile a priori… là où ça se corse, c&rsquo;est qu&rsquo;il faut renseigner dans cet en-tête certaines valeurs qu&rsquo;on ne peut obtenir qu&rsquo;en lisant le contenu de l&rsquo;image. Il faut notamment indiquer à quelle position débutent les données de l&rsquo;image proprement dite, et donc connaitre la taille des en-têtes et de la palette. Le code suivant effectue ce traitement, et renvoie une <em>ImageSource</em> à partir du presse-papier :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> ImageSource ImageFromClipboardDib()
         {
             MemoryStream ms = Clipboard.GetData(<span style="color:#e6db74">&#34;DeviceIndependentBitmap&#34;</span>) <span style="color:#66d9ef">as</span> MemoryStream;
@@ -201,7 +201,7 @@ if (!doNotTrack) {
             }
         }
     }
-</code></pre></div><p>L'image obtenue par ce code peut être utilisée sans problème dans un contrôle <em>Image</em>.</p>
+</code></pre></div><p>L&rsquo;image obtenue par ce code peut être utilisée sans problème dans un contrôle <em>Image</em>.</p>
 <p>Comme quoi, WPF a beau être une technologie « dernier cri », il faut encore parfois mettre les mains dans le cambouis ! Espérons que Microsoft corrigera ce bug dans la prochaine version…</p>
 
 		</div>

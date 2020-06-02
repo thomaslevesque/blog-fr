@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="Quoi de neuf dans FakeItEasy 3.0.0 ?" />
 <meta property="og:description" content="FakeItEasy est un framework de mocking populaire pour .NET, avec une API intuitive et facile à utiliser. Depuis environ un an, je suis un des principaux développeurs de FakeItEasy, avec Adam Ralph and Blair Conrad. Ça a été un vrai plaisir de travailler avec eux, et je me suis éclaté !
-Aujourd&#39;hui j&#39;ai le plaisir d&#39;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles." />
+Aujourd&rsquo;hui j&rsquo;ai le plaisir d&rsquo;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2017/02/26/quoi-de-neuf-dans-fakeiteasy-3-0-0/" />
 <meta property="article:published_time" content="2017-02-26T00:00:00+00:00" />
@@ -18,7 +18,7 @@ Aujourd&#39;hui j&#39;ai le plaisir d&#39;annoncer la sortie de FakeItEasy 3.0.0
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Quoi de neuf dans FakeItEasy 3.0.0 ?"/>
 <meta name="twitter:description" content="FakeItEasy est un framework de mocking populaire pour .NET, avec une API intuitive et facile à utiliser. Depuis environ un an, je suis un des principaux développeurs de FakeItEasy, avec Adam Ralph and Blair Conrad. Ça a été un vrai plaisir de travailler avec eux, et je me suis éclaté !
-Aujourd&#39;hui j&#39;ai le plaisir d&#39;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles."/>
+Aujourd&rsquo;hui j&rsquo;ai le plaisir d&rsquo;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -79,58 +79,58 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-26T00:00:00Z">February 26, 2017</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p><a href="https://fakeiteasy.github.io/">FakeItEasy</a> est un framework de mocking populaire pour .NET, avec une API intuitive et facile à utiliser. Depuis environ un an, je suis un des principaux développeurs de FakeItEasy, avec <a href="https://github.com/adamralph/">Adam Ralph</a> and <a href="https://github.com/blairconrad/">Blair Conrad</a>. Ça a été un vrai plaisir de travailler avec eux, et je me suis éclaté !</p>
-<p><strong>Aujourd'hui j'ai le plaisir d'annoncer la sortie de <a href="https://github.com/FakeItEasy/FakeItEasy/releases/tag/3.0.0">FakeItEasy 3.0.0</a>, avec le support de .NET Core et quelques fonctionnalités utiles.</strong></p>
+<p><strong>Aujourd&rsquo;hui j&rsquo;ai le plaisir d&rsquo;annoncer la sortie de <a href="https://github.com/FakeItEasy/FakeItEasy/releases/tag/3.0.0">FakeItEasy 3.0.0</a>, avec le support de .NET Core et quelques fonctionnalités utiles.</strong></p>
 <p>Voyons ce que cette nouvelle version apporte !</p>
 <h2 id="support-de-net-core">Support de .NET Core</h2>
-<p>En plus de .NET 4+, FakeItEasy supporte maintenant .NET Standard 1.6, vous pouvez donc l'utiliser dans vos projets .NET Core.</p>
-<p>Notez qu'en raison de certaines limitations de .NET Standard 1.x, il y a quelques différences mineures avec la version .NET 4 de FakeItEasy :</p>
+<p>En plus de .NET 4+, FakeItEasy supporte maintenant .NET Standard 1.6, vous pouvez donc l&rsquo;utiliser dans vos projets .NET Core.</p>
+<p>Notez qu&rsquo;en raison de certaines limitations de .NET Standard 1.x, il y a quelques différences mineures avec la version .NET 4 de FakeItEasy :</p>
 <ul>
 <li>Les fakes ne sont pas sérialisables avec la sérialisation binaire</li>
-<li>Les fakes &ldquo;auto-initialisés&rdquo; (self-initializing fakes) ne sont pas supportés (c'est-à-dire <code>fakeService = A.Fake&lt;IService&gt;(options =&gt; options.Wrapping(realService).RecordedBy(recorder))</code>).</li>
+<li>Les fakes &ldquo;auto-initialisés&rdquo; (self-initializing fakes) ne sont pas supportés (c&rsquo;est-à-dire <code>fakeService = A.Fake&lt;IService&gt;(options =&gt; options.Wrapping(realService).RecordedBy(recorder))</code>).</li>
 </ul>
 <p>Un immense merci aux personnes qui ont rendu possible le support de .NET Core :</p>
 <ul>
-<li><a href="https://github.com/jonorossi">Jonathon Rossi</a>, qui maintient le projet <a href="https://github.com/castleproject/Core">Castle.Core</a>. FakeItEasy s'appuie beaucoup sur Castle.Core, il n'aurait donc pas été possible de supporter .NET Core sans que Castle.Core le supporte aussi.</li>
-<li><a href="https://github.com/jeremymeng">Jeremy Meng</a> de Microsoft, qui a fait l'essentiel du gros-œuvre pour porter FakeItEasy et Castle.Core vers .NET Core.</li>
+<li><a href="https://github.com/jonorossi">Jonathon Rossi</a>, qui maintient le projet <a href="https://github.com/castleproject/Core">Castle.Core</a>. FakeItEasy s&rsquo;appuie beaucoup sur Castle.Core, il n&rsquo;aurait donc pas été possible de supporter .NET Core sans que Castle.Core le supporte aussi.</li>
+<li><a href="https://github.com/jeremymeng">Jeremy Meng</a> de Microsoft, qui a fait l&rsquo;essentiel du gros-œuvre pour porter FakeItEasy et Castle.Core vers .NET Core.</li>
 </ul>
 <h2 id="analyseur">Analyseur</h2>
 <h3 id="support-de-vbnet">Support de VB.NET</h3>
-<p>L&rsquo;<a href="http://fakeiteasy.readthedocs.io/en/stable/analyzer/">analyseur FakeItEasy</a>, qui avertit en cas d'usage incorrect de la librairie, supporte maintenant VB.NET en plus de C#.</p>
-<h2 id="nouvelles-fonctionnalits-et-amliorations">Nouvelles fonctionnalités et améliorations</h2>
-<h3 id="syntaxe-amliore-pour-configurer-des-appels-successifs-au-mme-membre">Syntaxe améliorée pour configurer des appels successifs au même membre</h3>
-<p>Quand on configure les appels vers un fake, cela crée des règles qui sont &ldquo;empilées&rdquo; les unes sur les autres, ce qui fait qu'on peut écraser une règle précédemment configurée. Combiné avec la possibilité de spécifier le nombre de fois qu'une règle doit s'appliquer, cela permet de configurer des choses comme &ldquo;renvoie 42 deux fois, puis lance une exception&rdquo;. Jusqu'ici, pour faire cela il fallait configurer les appels dans l'ordre inverse, ce qui n'était pas très intuitif et obligeait à répéter la spécification de l'appel :</p>
+<p>L&rsquo;<a href="http://fakeiteasy.readthedocs.io/en/stable/analyzer/">analyseur FakeItEasy</a>, qui avertit en cas d&rsquo;usage incorrect de la librairie, supporte maintenant VB.NET en plus de C#.</p>
+<h2 id="nouvelles-fonctionnalités-et-améliorations">Nouvelles fonctionnalités et améliorations</h2>
+<h3 id="syntaxe-améliorée-pour-configurer-des-appels-successifs-au-même-membre">Syntaxe améliorée pour configurer des appels successifs au même membre</h3>
+<p>Quand on configure les appels vers un fake, cela crée des règles qui sont &ldquo;empilées&rdquo; les unes sur les autres, ce qui fait qu&rsquo;on peut écraser une règle précédemment configurée. Combiné avec la possibilité de spécifier le nombre de fois qu&rsquo;une règle doit s&rsquo;appliquer, cela permet de configurer des choses comme &ldquo;renvoie 42 deux fois, puis lance une exception&rdquo;. Jusqu&rsquo;ici, pour faire cela il fallait configurer les appels dans l&rsquo;ordre inverse, ce qui n&rsquo;était pas très intuitif et obligeait à répéter la spécification de l&rsquo;appel :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">A.CallTo(() =&gt; foo.Bar()).Throws(<span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;oops&#34;</span>));
-A.CallTo(() =&gt; foo.Bar()).Returns(<span style="color:#ae81ff">4</span><span style="color:#ae81ff">2</span>).Twice();
+A.CallTo(() =&gt; foo.Bar()).Returns(<span style="color:#ae81ff">42</span>).Twice();
 </code></pre></div><p>FakeItEasy 3.0.0 introduit une nouvelle syntaxe pour rendre cela plus simple :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">A.CallTo(() =&gt; foo.Bar()).Returns(<span style="color:#ae81ff">4</span><span style="color:#ae81ff">2</span>).Twice()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">A.CallTo(() =&gt; foo.Bar()).Returns(<span style="color:#ae81ff">42</span>).Twice()
     .Then.Throws(<span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;oops&#34;</span>));
-</code></pre></div><p>Notez que si vous ne spécifiez pas le nombre de fois que la règle doit s'appliquer, elle s'appliquera indéfiniment jusqu'à ce qu'elle soit écrasée. Par conséquent, on ne peut utiliser <code>Then</code> qu'après <code>Once()</code>, <code>Twice()</code> ou <code>NumberOfTimes(...)</code>.</p>
-<p>C'est un breaking change au niveau de l'API, dans la mesure où la forme des interfaces de configuration a changé, mais à moins que vous ne manipuliez explicitement ces interfaces, vous ne devriez pas être affecté.</p>
-<h3 id="support-automatique-pour-lannulation">Support automatique pour l'annulation</h3>
-<p>Quand une méthode accepte un paramètre de type <code>CancellationToken</code>, elle doit généralement lancer une exception si on lui passe un token qui est déjà annulé. Jusqu'à maintenant, ce comportement devait être configuré manuellement. Dans FakeItEasy 3.0.0, les méthodes d'un fake lanceront une <code>OperationCanceledException</code> par défaut si on les appelle avec un token déjà annulé. Les méthodes asynchrones renverront une tâche annulée.</p>
-<p>Techniquement, c'est également un breaking change, mais la plupart des utilisateurs ne devraient pas être affectés.</p>
-<h3 id="lancer-une-exceptionde-faon-asynchrone">Lancer une exceptionde façon asynchrone</h3>
-<p>FakeItEasy permet de configurer une méthode pour qu'elle lance une exception grâce à la méthode <code>Throws</code>. Mais pour les méthodes asynchrones, il y a en fait deux façons de signaler une erreur :</p>
+</code></pre></div><p>Notez que si vous ne spécifiez pas le nombre de fois que la règle doit s&rsquo;appliquer, elle s&rsquo;appliquera indéfiniment jusqu&rsquo;à ce qu&rsquo;elle soit écrasée. Par conséquent, on ne peut utiliser <code>Then</code> qu&rsquo;après <code>Once()</code>, <code>Twice()</code> ou <code>NumberOfTimes(...)</code>.</p>
+<p>C&rsquo;est un breaking change au niveau de l&rsquo;API, dans la mesure où la forme des interfaces de configuration a changé, mais à moins que vous ne manipuliez explicitement ces interfaces, vous ne devriez pas être affecté.</p>
+<h3 id="support-automatique-pour-lannulation">Support automatique pour l&rsquo;annulation</h3>
+<p>Quand une méthode accepte un paramètre de type <code>CancellationToken</code>, elle doit généralement lancer une exception si on lui passe un token qui est déjà annulé. Jusqu&rsquo;à maintenant, ce comportement devait être configuré manuellement. Dans FakeItEasy 3.0.0, les méthodes d&rsquo;un fake lanceront une <code>OperationCanceledException</code> par défaut si on les appelle avec un token déjà annulé. Les méthodes asynchrones renverront une tâche annulée.</p>
+<p>Techniquement, c&rsquo;est également un breaking change, mais la plupart des utilisateurs ne devraient pas être affectés.</p>
+<h3 id="lancer-une-exceptionde-façon-asynchrone">Lancer une exceptionde façon asynchrone</h3>
+<p>FakeItEasy permet de configurer une méthode pour qu&rsquo;elle lance une exception grâce à la méthode <code>Throws</code>. Mais pour les méthodes asynchrones, il y a en fait deux façons de signaler une erreur :</p>
 <ul>
-<li>lancer une exception de façon synchrone, avant même de renvoyer une tâche (c'est ce que fait <code>Throws</code>)</li>
-<li>renvoyer une tâche échouée (cela devait être fait manuellement jusqu'à maintenant)</li>
+<li>lancer une exception de façon synchrone, avant même de renvoyer une tâche (c&rsquo;est ce que fait <code>Throws</code>)</li>
+<li>renvoyer une tâche échouée (cela devait être fait manuellement jusqu&rsquo;à maintenant)</li>
 </ul>
-<p>Dans certains cas la différence peut être importante pour l'appelant, s'il n'<code>await</code> pas directement la méthode asynchrone. FakeItEasy introduit une méthode <code>ThrowsAsync</code> pour configurer une méthode pour qu'elle renvoie une tâche échouée :</p>
+<p>Dans certains cas la différence peut être importante pour l&rsquo;appelant, s&rsquo;il n'<code>await</code> pas directement la méthode asynchrone. FakeItEasy introduit une méthode <code>ThrowsAsync</code> pour configurer une méthode pour qu&rsquo;elle renvoie une tâche échouée :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">A.CallTo(() =&gt; foo.BarAsync()).ThrowsAsync(<span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;foo&#34;</span>));
-</code></pre></div><h3 id="configuration-des-setters-de-proprits-sur-les-fakes-non-naturels">Configuration des setters de propriétés sur les fakes non-naturels</h3>
-<p>Les fakes non-naturels (c'est-à-dire <code>Fake&lt;T&gt;</code>) ont maintenant une méthode <code>CallsToSet</code>, qui fait la même chose que <code>A.CallToSet</code> sur les fakes naturels :</p>
+</code></pre></div><h3 id="configuration-des-setters-de-propriétés-sur-les-fakes-non-naturels">Configuration des setters de propriétés sur les fakes non-naturels</h3>
+<p>Les fakes non-naturels (c&rsquo;est-à-dire <code>Fake&lt;T&gt;</code>) ont maintenant une méthode <code>CallsToSet</code>, qui fait la même chose que <code>A.CallToSet</code> sur les fakes naturels :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> fake = <span style="color:#66d9ef">new</span> Fake&lt;IFoo&gt;();
 fake.CallsToSet(foo =&gt; foo.Bar).To(<span style="color:#ae81ff">0</span>).Throws(<span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;The value of Bar can&#39;t be 0&#34;</span>));
-</code></pre></div><h3 id="api-amliore-pour-spcifier-des-attributs-supplmentaires">API améliorée pour spécifier des attributs supplémentaires</h3>
-<p>L'API pour spécifier des attributs supplémentaires sur les fakes n'était pas très pratique; il fallait créer une collection de <code>CustomAttributeBuilder</code>s, qui eux-mêmes devaient être créés en spécifiant le constructeur et les valeurs des arguments. La méthode <code>WithAdditionalAttributes</code> a été supprimée dans FakeItEasy 3.0.0 et remplacée par une méthode plus simple <code>WithAttributes</code> qui accepte des expressions :</p>
+</code></pre></div><h3 id="api-améliorée-pour-spécifier-des-attributs-supplémentaires">API améliorée pour spécifier des attributs supplémentaires</h3>
+<p>L&rsquo;API pour spécifier des attributs supplémentaires sur les fakes n&rsquo;était pas très pratique; il fallait créer une collection de <code>CustomAttributeBuilder</code>s, qui eux-mêmes devaient être créés en spécifiant le constructeur et les valeurs des arguments. La méthode <code>WithAdditionalAttributes</code> a été supprimée dans FakeItEasy 3.0.0 et remplacée par une méthode plus simple <code>WithAttributes</code> qui accepte des expressions :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> foo = A.Fake&lt;IFoo&gt;(x =&gt; x.WithAttributes(() =&gt; <span style="color:#66d9ef">new</span> FooAttribute()));
-</code></pre></div><p>C'est un breaking change.</p>
+</code></pre></div><p>C&rsquo;est un breaking change.</p>
 <h2 id="autres-changements-notables">Autres changements notables</h2>
-<h3 id="dprciation-des-fakes-auto-initialiss-self-initializing-fakes">Dépréciation des fakes auto-initialisés (self-initializing fakes)</h3>
-<p>Les fakes &ldquo;auto-initialisés&rdquo; permettent d'enregistrer les appels faits sur un vrai objet, et de faire rejouer les résultats obtenus par un fake (voir <a href="https://martinfowler.com/bliki/SelfInitializingFake.html">l'article de Martin Fowler</a> à ce sujet). Cette fonctionnalité était utilisée par <em>très</em> peu de gens, et n'avait pas vraiment sa place dans la librairie principale de FakeItEasy. Elle est donc dépréciée et sera retirée dans une version future. Nous envisageons de fournir une fonctionnalité équivalente en tant que package distinct.</p>
+<h3 id="dépréciation-des-fakes-auto-initialisés-self-initializing-fakes">Dépréciation des fakes auto-initialisés (self-initializing fakes)</h3>
+<p>Les fakes &ldquo;auto-initialisés&rdquo; permettent d&rsquo;enregistrer les appels faits sur un vrai objet, et de faire rejouer les résultats obtenus par un fake (voir <a href="https://martinfowler.com/bliki/SelfInitializingFake.html">l&rsquo;article de Martin Fowler</a> à ce sujet). Cette fonctionnalité était utilisée par <em>très</em> peu de gens, et n&rsquo;avait pas vraiment sa place dans la librairie principale de FakeItEasy. Elle est donc dépréciée et sera retirée dans une version future. Nous envisageons de fournir une fonctionnalité équivalente en tant que package distinct.</p>
 <h3 id="corrections-de-bugs">Corrections de bugs</h3>
 <ul>
-<li>Créer plusieurs fakes d'un même type avec des attributs supplémentaires différents génère maintenant plusieurs types de fake distincts. (<a href="https://github.com/FakeItEasy/FakeItEasy/issues/436">#436</a>)</li>
+<li>Créer plusieurs fakes d&rsquo;un même type avec des attributs supplémentaires différents génère maintenant plusieurs types de fake distincts. (<a href="https://github.com/FakeItEasy/FakeItEasy/issues/436">#436</a>)</li>
 <li>Tous les appels non-void tentent maintenant de renvoyer un Dummy par défaut, même après avoir été reconfigurés par <code>Invokes</code> ou <code>DoesNothing</code> (<a href="https://github.com/FakeItEasy/FakeItEasy/issues/830">#830</a>)</li>
 </ul>
 <hr>

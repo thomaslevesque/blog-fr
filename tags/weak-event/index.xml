@@ -27,7 +27,7 @@ Ma solution initiale était plus une preuve de concept qu’autre chose, et avai
       <pubDate>Sun, 16 May 2010 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</guid>
-      <description>Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&#39;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&#39;exécution de l&#39;application.</description>
+      <description>Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&amp;rsquo;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&amp;rsquo;exécution de l&amp;rsquo;application.</description>
     </item>
     
   </channel>

@@ -3,13 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://thomaslevesque.fr/</loc>
+    <loc>https://thomaslevesque.fr/a-propos/</loc>
     <lastmod>2020-05-01T23:42:43+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://thomaslevesque.fr/a-propos/</loc>
-    <lastmod>2020-05-01T23:42:43+02:00</lastmod>
+    <loc>https://thomaslevesque.fr/</loc>
+    <lastmod>2018-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -418,12 +418,12 @@
   </url>
   
   <url>
-    <loc>https://thomaslevesque.fr/categories/wpf/</loc>
+    <loc>https://thomaslevesque.fr/tags/wpf/</loc>
     <lastmod>2015-09-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://thomaslevesque.fr/tags/wpf/</loc>
+    <loc>https://thomaslevesque.fr/categories/wpf/</loc>
     <lastmod>2015-09-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -1158,12 +1158,12 @@
   </url>
   
   <url>
-    <loc>https://thomaslevesque.fr/categories/dvp.net/</loc>
+    <loc>https://thomaslevesque.fr/tags/dvp.net/</loc>
     <lastmod>2010-03-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://thomaslevesque.fr/tags/dvp.net/</loc>
+    <loc>https://thomaslevesque.fr/categories/dvp.net/</loc>
     <lastmod>2010-03-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -1264,11 +1264,6 @@
   
   <url>
     <loc>https://thomaslevesque.fr/tags/collection/</loc>
-    <lastmod>2009-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomaslevesque.fr/tags/parent/enfant/</loc>
     <lastmod>2009-06-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -1390,6 +1385,10 @@
   <url>
     <loc>https://thomaslevesque.fr/tags/settings/</loc>
     <lastmod>2008-11-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomaslevesque.fr/tags/parent/enfant/</loc>
   </url>
   
 </urlset>

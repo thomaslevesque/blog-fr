@@ -87,7 +87,7 @@ if (!doNotTrack) {
 </span><span style="color:#75715e"></span>ICollectionView view = CollectionViewSource.GetDefaultView(People);
 
 <span style="color:#75715e">// Uniquement les adultes
-</span><span style="color:#75715e"></span>view.Filter = o =&gt; ((Person)o).Age &gt;= <span style="color:#ae81ff">1</span><span style="color:#ae81ff">8</span>;
+</span><span style="color:#75715e"></span>view.Filter = o =&gt; ((Person)o).Age &gt;= <span style="color:#ae81ff">18</span>;
 
 <span style="color:#75715e">// Tri par nom et prénom
 </span><span style="color:#75715e"></span>view.SortDescriptions.Add(<span style="color:#66d9ef">new</span> SortDescription(<span style="color:#e6db74">&#34;LastName&#34;</span>, ListSortDirection.Ascending));
@@ -100,20 +100,20 @@ view.SortDescriptions.Add(<span style="color:#66d9ef">new</span> SortDescription
 <li>La syntaxe un peu lourde et pas très naturelle : le fait que le paramètre du filtre soit un <code>object</code> alors qu’on sait que les éléments sont de type <code>Person</code> réduit la lisibilité, et l’ajout des tris et descriptions comporte beaucoup de répétitions</li>
 <li>Le fait de spécifier les noms des propriétés sous forme de chaine introduit des risques d’erreur, puisqu’ils ne sont pas vérifiés par le compilateur.</li>
 </ul>
-<p>Depuis quelques années, on a pris l'habitude d'utiliser Linq pour faire ce genre de choses… il serait donc pratique de pouvoir le faire aussi pour définir le filtre, le tri et le groupement d'une <code>ICollectionView</code>.  Voyons donc quelle syntaxe on pourrait utiliser pour faire ça avec Linq… quelque chose comme ça, par exemple ?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">People.Where(p =&gt; p.Age &gt;= <span style="color:#ae81ff">1</span><span style="color:#ae81ff">8</span>)
+<p>Depuis quelques années, on a pris l&rsquo;habitude d&rsquo;utiliser Linq pour faire ce genre de choses… il serait donc pratique de pouvoir le faire aussi pour définir le filtre, le tri et le groupement d&rsquo;une <code>ICollectionView</code>.  Voyons donc quelle syntaxe on pourrait utiliser pour faire ça avec Linq… quelque chose comme ça, par exemple ?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">People.Where(p =&gt; p.Age &gt;= <span style="color:#ae81ff">18</span>)
       .OrderBy(p =&gt; p.LastName)
       .ThenBy(p =&gt; p.FirstName)
       .GroupBy(p =&gt; p.Country);
 </code></pre></div><p>Ou encore, en utilisant la syntaxe de requête Linq :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">from</span> p <span style="color:#66d9ef">in</span> People
-<span style="color:#66d9ef">where</span> p.Age &gt;= <span style="color:#ae81ff">1</span><span style="color:#ae81ff">8</span>
+<span style="color:#66d9ef">where</span> p.Age &gt;= <span style="color:#ae81ff">18</span>
 <span style="color:#66d9ef">orderby</span> p.LastName, p.FirstName
 <span style="color:#66d9ef">group</span> p <span style="color:#66d9ef">by</span> p.Country;
 </code></pre></div><p>Bon, évidemment ça ne suffit pas : ce code ne fait rien d’autre que créer une requête Linq sur la collection, il ne modifie pas la <code>CollectionView</code>… mais avec un tout petit peu de travail supplémentaire on peut obtenir le résultat voulu :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> query =
     <span style="color:#66d9ef">from</span> p <span style="color:#66d9ef">in</span> People.ShapeView()
-    <span style="color:#66d9ef">where</span> p.Age &gt;= <span style="color:#ae81ff">1</span><span style="color:#ae81ff">8</span>
+    <span style="color:#66d9ef">where</span> p.Age &gt;= <span style="color:#ae81ff">18</span>
     <span style="color:#66d9ef">orderby</span> p.LastName, p.FirstName
     <span style="color:#66d9ef">group</span> p <span style="color:#66d9ef">by</span> p.Country;
 

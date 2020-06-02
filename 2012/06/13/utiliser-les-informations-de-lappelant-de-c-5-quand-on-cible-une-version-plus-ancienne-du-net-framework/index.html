@@ -8,7 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework" />
-<meta property="og:description" content="Les attributs d&#39;informations de l&#39;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&#39;appliquent aux paramètres optionnels d&#39;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&#39;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
+<meta property="og:description" content="Les attributs d&rsquo;informations de l&rsquo;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&rsquo;appliquent aux paramètres optionnels d&rsquo;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&rsquo;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
 static void Log( string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0) { Console." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/" />
@@ -17,7 +17,7 @@ static void Log( string message, [CallerMemberName] string memberName = null, [C
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework"/>
-<meta name="twitter:description" content="Les attributs d&#39;informations de l&#39;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&#39;appliquent aux paramètres optionnels d&#39;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&#39;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
+<meta name="twitter:description" content="Les attributs d&rsquo;informations de l&rsquo;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&rsquo;appliquent aux paramètres optionnels d&rsquo;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&rsquo;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
 static void Log( string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0) { Console."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -78,7 +78,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-06-13T00:00:00Z">June 13, 2012</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>Les <a href="http://msdn.microsoft.com/fr-fr/library/hh534540%28v=vs.110%29.aspx">attributs d'informations de l'appelant</a> (<em>caller info attributes</em>) sont une des nouveautés de C# 5. Ce sont des attributs qui s'appliquent aux paramètres optionnels d'une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l'appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :</p>
+			<p>Les <a href="http://msdn.microsoft.com/fr-fr/library/hh534540%28v=vs.110%29.aspx">attributs d&rsquo;informations de l&rsquo;appelant</a> (<em>caller info attributes</em>) sont une des nouveautés de C# 5. Ce sont des attributs qui s&rsquo;appliquent aux paramètres optionnels d&rsquo;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&rsquo;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Log(
             <span style="color:#66d9ef">string</span> message,
 <span style="color:#a6e22e">            [CallerMemberName]</span> <span style="color:#66d9ef">string</span> memberName = <span style="color:#66d9ef">null</span>,
@@ -93,14 +93,14 @@ if (!doNotTrack) {
                 lineNumber,
                 message);
         }
-</code></pre></div><p>La méthode ci-dessous prend plusieurs paramètres destinés à passer des informations sur l'appelant : nom du membre (méthode, propriété&hellip;) appelant, chemin du fichier source et numéro de ligne. Les attributs <code>Caller*</code> font que le compilateur va automatiquement passer les valeurs appropriées, vous n'avez donc pas besoin de les spécifier vous-même :</p>
+</code></pre></div><p>La méthode ci-dessous prend plusieurs paramètres destinés à passer des informations sur l&rsquo;appelant : nom du membre (méthode, propriété&hellip;) appelant, chemin du fichier source et numéro de ligne. Les attributs <code>Caller*</code> font que le compilateur va automatiquement passer les valeurs appropriées, vous n&rsquo;avez donc pas besoin de les spécifier vous-même :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Foo()
         {
             Log(<span style="color:#e6db74">&#34;Hello world&#34;</span>);
             <span style="color:#75715e">// Equivalent à:
 </span><span style="color:#75715e"></span>            <span style="color:#75715e">// Log(&#34;Hello world&#34;, &#34;Foo&#34;, @&#34;C:\x\y\z\Program.cs&#34;, 18);
 </span><span style="color:#75715e"></span>        }
-</code></pre></div><p>Cela est bien sûr particulièrement utile pour les méthodes de log&hellip;  Remarquez que les attributs <code>Caller*</code> attributes sont définis dans le .NET Framework 4.5. Maintenant, supposons que l'on utilise Visual Studio 2012 pour cibler une version plus ancienne du framework (par exemple 4.0) : les attributs d'informations de l'appelant n'existent pas en 4.5, on ne peut donc pas les utiliser&hellip; Mais attendez ! Et si on pouvait faire croire au compilateur que ces attributs sont bien présents ? Définissons nos propres attributs, en prenant soin de les placer dans le namespace où le compilateur s'attend à les trouver :</p>
+</code></pre></div><p>Cela est bien sûr particulièrement utile pour les méthodes de log&hellip;  Remarquez que les attributs <code>Caller*</code> attributes sont définis dans le .NET Framework 4.5. Maintenant, supposons que l&rsquo;on utilise Visual Studio 2012 pour cibler une version plus ancienne du framework (par exemple 4.0) : les attributs d&rsquo;informations de l&rsquo;appelant n&rsquo;existent pas en 4.5, on ne peut donc pas les utiliser&hellip; Mais attendez ! Et si on pouvait faire croire au compilateur que ces attributs sont bien présents ? Définissons nos propres attributs, en prenant soin de les placer dans le namespace où le compilateur s&rsquo;attend à les trouver :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">namespace</span> System.Runtime.CompilerServices
 {
 <span style="color:#a6e22e">    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]</span>
@@ -118,7 +118,7 @@ if (!doNotTrack) {
     {
     }
 }
-</code></pre></div><p>Si on compile et qu'on exécute le programme, on voit que nos attributs personnalisés on bien été pris en compte par le compilateur. Il n'est donc pas nécessaire qu'ils se trouvent dans mscorlib.dll comme les &ldquo;vrais&rdquo; attributs d'informations de l'appelant, il suffit qu'ils soient dans le bon namespace, et le compilateur les accepte. Cela nous permet d'utiliser cette fonctionnalité quand on cible .NET 4.0, 3.5 ou même 2.0 !  Remarquez qu'une astuce similaire permet la création de méthodes d'extension quand on cible .NET 2.0 : il suffit de créer une classe <code>ExtensionAttribute</code> dans le namespace <code>System.Runtime.CompilerServices</code>. C'est d'ailleurs ce qui permet à <a href="http://www.albahari.com/nutshell/linqbridge.aspx">LinqBridge</a> de fonctionner.</p>
+</code></pre></div><p>Si on compile et qu&rsquo;on exécute le programme, on voit que nos attributs personnalisés on bien été pris en compte par le compilateur. Il n&rsquo;est donc pas nécessaire qu&rsquo;ils se trouvent dans mscorlib.dll comme les &ldquo;vrais&rdquo; attributs d&rsquo;informations de l&rsquo;appelant, il suffit qu&rsquo;ils soient dans le bon namespace, et le compilateur les accepte. Cela nous permet d&rsquo;utiliser cette fonctionnalité quand on cible .NET 4.0, 3.5 ou même 2.0 !  Remarquez qu&rsquo;une astuce similaire permet la création de méthodes d&rsquo;extension quand on cible .NET 2.0 : il suffit de créer une classe <code>ExtensionAttribute</code> dans le namespace <code>System.Runtime.CompilerServices</code>. C&rsquo;est d&rsquo;ailleurs ce qui permet à <a href="http://www.albahari.com/nutshell/linqbridge.aspx">LinqBridge</a> de fonctionner.</p>
 
 		</div>
 		<footer class="post__footer">

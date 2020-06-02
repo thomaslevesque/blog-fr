@@ -77,7 +77,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-06-11T00:00:00Z">June 11, 2012</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Visual Studio 2012 RC est sorti il y a 10 jours, et bien que je n’ai pas encore eu beaucoup de temps pour jouer avec, j’en suis assez satisfait pour l’instant. Beaucoup de choses ont déjà été dites sur le design, ainsi que sur les nouvelles fonctionnalités les plus importantes, mais il y a aussi beaucoup de petites améliorations moins remarquables qui vont nous faciliter la vie. Comme je n’ai pas vu grand chose d’écrit à ce sujet, je me suis dit qu’il serait utile de faire une petite liste de ce que j’ai remarqué jusqu’ici.</p>
-<h3 id="amlioration-de-modifier-et-continuer-meilleure-exprience-de-dbogage-avec-les-mthodes-anonymes">Amélioration de <em>Modifier et Continuer</em>: meilleure expérience de débogage avec les méthodes anonymes</h3>
+<h3 id="amélioration-de-modifier-et-continuer-meilleure-expérience-de-débogage-avec-les-méthodes-anonymes">Amélioration de <em>Modifier et Continuer</em>: meilleure expérience de débogage avec les méthodes anonymes</h3>
 <p><em>Modifier et continuer</em> est une fonctionnalité très utile qui est disponible dans Visual Studio depuis longtemps. C’est génial quand vous devez corriger du code en plein milieu d’une session de débogage pas-à-pas, sans avoir à redémarrer toute l’application. Cette fonctionnalité a toujours eu une limitation : elle n’était pas utilisable dans une méthode contenant une méthode anonyme ou une expression lambda, comme indiqué par ce message d’erreur :</p>
 <blockquote>
 <p>Modifying a ’method’ which contains a lambda expression will prevent the debug session from continuing while Edit and Continue is enabled.</p>
@@ -88,13 +88,13 @@ if (!doNotTrack) {
 <p>Modifying a statement which contains a lambda expression will prevent the debug session from continuing while Edit and Continue is enabled.</p>
 </blockquote>
 <p>Mais vous pouvez modifier tout le reste du corps de la méthode, ce qui est une grosse amélioration. Notez que la modification d’une méthode qui contient des types anonymes est également supportée, tant que vous ne modifiez pas le type anonyme lui-même.</p>
-<h3 id="optimisation-de-lauto-compltion-pour-les-gestionnaires-dvnements">Optimisation de l’auto-complétion pour les gestionnaires d’évènements.</h3>
+<h3 id="optimisation-de-lauto-complétion-pour-les-gestionnaires-dévènements">Optimisation de l’auto-complétion pour les gestionnaires d’évènements.</h3>
 <p>Visual Studio a une fonctionnalité d’auto-complétion très utile qui permet de générer un gestionnaire d’évènement automatiquement quand vous tapez <code>+=</code> et <kbd>Tab</kbd> après un nom d’évènement :</p>
 <p><img src="image_thumb9.png" alt="image_thumb9" title="image_thumb9"></p>
 <p>Mais la partie <code>new EventHandler(…)</code> est redondante, car depuis C# 2, un groupe de méthode est implicitement convertible en un delegate de type compatible. Visual Studio 2012 corrige cela et génère la forme courte :</p>
 <p><img src="image3_thumb.png" alt="image3_thumb" title="image3_thumb"></p>
 <p>OK, c’est un tout petit changement, mais l’ancien comportement m’agaçait beaucoup… J’avais d’ailleurs <a href="http://connect.microsoft.com/VisualStudio/feedback/details/632300/auto-generated-event-handlers-should-use-implicit-conversion-of-method-group-to-delegate">suggéré cette amélioration sur Connect</a>, donc je suis content de voir qu’elle a été implémentée.</p>
-<h3 id="amlioration-de-rechercherremplacer">Amélioration de <em>Rechercher/Remplacer</em></h3>
+<h3 id="amélioration-de-rechercherremplacer">Amélioration de <em>Rechercher/Remplacer</em></h3>
 <p>Le dialogue de recherche de Visual Studio n’avait reçu aucune amélioration depuis une éternité (probablement depuis VS2003 ou VS2005), il était donc temps que ça change… Dans VS2012, il a été remplacé par la fonction <em>Quick Find</em> de l’extension <a href="http://visualstudiogallery.msdn.microsoft.com/d0d33361-18e2-46c0-8ff2-4adea1e34fef">Productivity Power Tools</a>. Cela se présente sous forme d’un petit panneau dans le coin en haut à droite de l’éditeur, beaucoup plus discret que l’ancien dialogue :</p>
 <p><img src="image_thumb8.png" alt="image_thumb8" title="image_thumb8"></p>
 <p>Ce panneau offre les fonctionnalités suivantes :</p>

@@ -10,7 +10,7 @@
 	<meta property="og:title" content="[WPF] Utiliser les InputBindings avec le pattern MVVM" />
 <meta property="og:description" content="Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
 &lt;UserControl.InputBindings&gt; &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt; &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
- La propriété Command n&#39;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&#39;arbre logique ou visuel du contrôle, ils n&#39;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&#39;écrire du code-behind." />
+ La propriété Command n&rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&rsquo;arbre logique ou visuel du contrôle, ils n&rsquo;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&rsquo;écrire du code-behind." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/" />
 <meta property="article:published_time" content="2009-03-17T00:00:00+00:00" />
@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="[WPF] Utiliser les InputBindings avec le pattern MVVM"/>
 <meta name="twitter:description" content="Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
 &lt;UserControl.InputBindings&gt; &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt; &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
- La propriété Command n&#39;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&#39;arbre logique ou visuel du contrôle, ils n&#39;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&#39;écrire du code-behind."/>
+ La propriété Command n&rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&rsquo;arbre logique ou visuel du contrôle, ils n&rsquo;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&rsquo;écrire du code-behind."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -81,19 +81,19 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-03-17T00:00:00Z">March 17, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;UserControl.InputBindings</span><span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;UserControl.InputBindings&gt;</span>
         <span style="color:#f92672">&lt;KeyBinding</span> <span style="color:#a6e22e">Modifiers=</span><span style="color:#e6db74">&#34;Control&#34;</span> <span style="color:#a6e22e">Key=</span><span style="color:#e6db74">&#34;E&#34;</span> <span style="color:#a6e22e">Command=</span><span style="color:#e6db74">&#34;{Binding EditCommand}&#34;</span><span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;/UserControl.InputBindings&gt;</span>
 </code></pre></div><p>Malheureusement, ce code ne fonctionne pas, pour deux raisons :</p>
 <ol>
-<li>La propriété Command n'est pas une DependencyProperty, on ne peut donc pas faire de binding dessus</li>
-<li>Les InputBindings ne font pas partie de l'arbre logique ou visuel du contrôle, ils n'héritent donc pas du DataContext</li>
+<li>La propriété Command n&rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus</li>
+<li>Les InputBindings ne font pas partie de l&rsquo;arbre logique ou visuel du contrôle, ils n&rsquo;héritent donc pas du DataContext</li>
 </ol>
-<p>Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d'écrire du code-behind. J'ai longuement cherché des solutions alternatives pour pouvoir le faire en XAML, mais la plupart sont relativement complexes et peu intuitives. J'ai donc finalement créé une markup extension qui permet de se binder à une commande du DataContext, à n'importe quel endroit du code XAML, même si l'élément n'hérite pas du DataContext.  Cette extension s'utilise comme un simple binding :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;UserControl.InputBindings</span><span style="color:#f92672">&gt;</span>
+<p>Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&rsquo;écrire du code-behind. J&rsquo;ai longuement cherché des solutions alternatives pour pouvoir le faire en XAML, mais la plupart sont relativement complexes et peu intuitives. J&rsquo;ai donc finalement créé une markup extension qui permet de se binder à une commande du DataContext, à n&rsquo;importe quel endroit du code XAML, même si l&rsquo;élément n&rsquo;hérite pas du DataContext.  Cette extension s&rsquo;utilise comme un simple binding :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;UserControl.InputBindings&gt;</span>
         <span style="color:#f92672">&lt;KeyBinding</span> <span style="color:#a6e22e">Modifiers=</span><span style="color:#e6db74">&#34;Control&#34;</span> <span style="color:#a6e22e">Key=</span><span style="color:#e6db74">&#34;E&#34;</span> <span style="color:#a6e22e">Command=</span><span style="color:#e6db74">&#34;{input:CommandBinding EditCommand}&#34;</span><span style="color:#f92672">/&gt;</span>
     <span style="color:#f92672">&lt;/UserControl.InputBindings&gt;</span>
-</code></pre></div><p>(Le namespace XML <em>input</em> étant mappé sur le namespace CLR où est déclarée la markup extension)  Pour réaliser cette extension, j'avoue que j'ai un peu triché&hellip; j'ai fouillé avec Reflector le code des classes de WPF, afin de trouver des champs privés qui permettraient de récupérer le DataContext de l'élément racine. J'accède ensuite à ces champs par réflexion.  Voici le code :</p>
+</code></pre></div><p>(Le namespace XML <em>input</em> étant mappé sur le namespace CLR où est déclarée la markup extension)  Pour réaliser cette extension, j&rsquo;avoue que j&rsquo;ai un peu triché&hellip; j&rsquo;ai fouillé avec Reflector le code des classes de WPF, afin de trouver des champs privés qui permettraient de récupérer le DataContext de l&rsquo;élément racine. J&rsquo;accède ensuite à ces champs par réflexion.  Voici le code :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">using</span> System;
 <span style="color:#66d9ef">using</span> System.Reflection;
 <span style="color:#66d9ef">using</span> System.Windows;
@@ -263,7 +263,7 @@ if (!doNotTrack) {
             <span style="color:#75715e">#endregion
 </span><span style="color:#75715e"></span>        }
     }
-</code></pre></div><p>Cette solution a cependant une limitation : elle ne fonctionne que pour le DataContext de la racine du XAML. On ne peut donc pas l'utiliser, par exemple, pour définir des InputBindings sur un contrôle dont on redéfinit aussi le DataContext, car la markup extension renverra le DataContext de l'élément racine.</p>
+</code></pre></div><p>Cette solution a cependant une limitation : elle ne fonctionne que pour le DataContext de la racine du XAML. On ne peut donc pas l&rsquo;utiliser, par exemple, pour définir des InputBindings sur un contrôle dont on redéfinit aussi le DataContext, car la markup extension renverra le DataContext de l&rsquo;élément racine.</p>
 
 		</div>
 		<footer class="post__footer">

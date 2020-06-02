@@ -17,7 +17,7 @@
       <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/04/17/fin-de-mon-blog-en-francais/</guid>
-      <description>Chers lecteurs, J&#39;ai créé ce blog en français il y a 10 ans environ. Quelque temps plus tard, j&#39;en ai créé une version anglaise pour toucher une plus large audience. Pendant des années, j&#39;ai publié tous mes articles dans les deux langues. Mais l&#39;audience de la version française n&#39;a jamais vraiment décollé, et le fait de devoir traduire tous mes articles nuit à ma motivation pour écrire. J&#39;ai donc décidé d&#39;arrêter pour consacrer mon énergie à la version anglaise, qui est lue par beaucoup plus de monde (environ 20 fois plus).</description>
+      <description>Chers lecteurs, J&amp;rsquo;ai créé ce blog en français il y a 10 ans environ. Quelque temps plus tard, j&amp;rsquo;en ai créé une version anglaise pour toucher une plus large audience. Pendant des années, j&amp;rsquo;ai publié tous mes articles dans les deux langues. Mais l&amp;rsquo;audience de la version française n&amp;rsquo;a jamais vraiment décollé, et le fait de devoir traduire tous mes articles nuit à ma motivation pour écrire. J&amp;rsquo;ai donc décidé d&amp;rsquo;arrêter pour consacrer mon énergie à la version anglaise, qui est lue par beaucoup plus de monde (environ 20 fois plus).</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/</guid>
-      <description>Middlewhat? L&#39;architecture d&#39;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&#39;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&#39;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
+      <description>Middlewhat? L&amp;rsquo;architecture d&amp;rsquo;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&amp;rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&amp;rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.</description>
     </item>
     
     <item>
@@ -35,8 +35,8 @@
       <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/</guid>
-      <description>J&#39;ai récemment eu à travailler sur un dépôt Git qui contenait des modifications à reporter sur un autre dépôt. Malheureusement, ce dépôt n&#39;avait pas de fichier .gitignore au départ, si bien que de nombreux fichiers inutiles (répertoires bin/obj/packages&amp;hellip;) avaient été archivés. Cela rendait l&#39;historique très difficile à lire, puisque chaque commit contenait des centaines de fichiers modifiés.
-Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&#39;auraient pas dû se trouver là.</description>
+      <description>J&amp;rsquo;ai récemment eu à travailler sur un dépôt Git qui contenait des modifications à reporter sur un autre dépôt. Malheureusement, ce dépôt n&amp;rsquo;avait pas de fichier .gitignore au départ, si bien que de nombreux fichiers inutiles (répertoires bin/obj/packages&amp;hellip;) avaient été archivés. Cela rendait l&amp;rsquo;historique très difficile à lire, puisque chaque commit contenait des centaines de fichiers modifiés.
+Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&amp;rsquo;auraient pas dû se trouver là.</description>
     </item>
     
     <item>
@@ -45,8 +45,8 @@ Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une 
       <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</guid>
-      <description>Le problème Si vous avez l&#39;habitude d&#39;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
- Le timeout est défini de façon globale, et s&#39;applique à toutes les requêtes, alors qu&#39;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
+      <description>Le problème Si vous avez l&amp;rsquo;habitude d&amp;rsquo;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
+ Le timeout est défini de façon globale, et s&amp;rsquo;applique à toutes les requêtes, alors qu&amp;rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
     </item>
     
     <item>
@@ -55,7 +55,7 @@ Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une 
       <pubDate>Tue, 14 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/</guid>
-      <description>T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&#39;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&#39;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&#39;on souhaite regénérer les sorties des templates à chaque build.</description>
+      <description>T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&amp;rsquo;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&amp;rsquo;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&amp;rsquo;on souhaite regénérer les sorties des templates à chaque build.</description>
     </item>
     
     <item>
@@ -64,8 +64,8 @@ Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une 
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</guid>
-      <description>Pour être honnête, je n&#39;ai jamais vraiment aimé MSBuild jusqu&#39;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&#39;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&#39;était mal documenté&amp;hellip; Mais avec l&#39;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.
-MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&#39;est le nom officiel, mais c&#39;est celui que j&#39;utiliserai).</description>
+      <description>Pour être honnête, je n&amp;rsquo;ai jamais vraiment aimé MSBuild jusqu&amp;rsquo;à récemment. Les fichiers de projet générés par Visual Studio étaient immondes, l&amp;rsquo;essentiel de leur contenu était redondant, il fallait décharger les projets pour les éditer, c&amp;rsquo;était mal documenté&amp;hellip; Mais avec l&amp;rsquo;avènement de .NET Core et du nouveau format de projet, plus léger, MSBuild est devenu un bien meilleur outil.
+MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&amp;rsquo;est le nom officiel, mais c&amp;rsquo;est celui que j&amp;rsquo;utiliserai).</description>
     </item>
     
     <item>
@@ -74,7 +74,7 @@ MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports im
       <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/</guid>
-      <description>Depuis le temps qu&#39;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&#39;est déjà assez cool en soi, mais ça ne s&#39;arrête pas là : .NET Core apporte aussi beaucoup d&#39;améliorations à la Base Class Library.
+      <description>Depuis le temps qu&amp;rsquo;on en parle, vous êtes sans doute au courant que Microsoft a publié une version open-source et multiplateforme de .NET : .NET Core. Cela signifie que vous pouvez maintenant créer et exécuter des applications .NET sous Linux ou macOS. C&amp;rsquo;est déjà assez cool en soi, mais ça ne s&amp;rsquo;arrête pas là : .NET Core apporte aussi beaucoup d&amp;rsquo;améliorations à la Base Class Library.
 Par exemple, Linq est plus rapide dans .</description>
     </item>
     
@@ -84,8 +84,8 @@ Par exemple, Linq est plus rapide dans .</description>
       <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/</guid>
-      <description>Il y a quelques jours, j&#39;ai découvert un petit bijou : Sprache. Le nom signifie &amp;ldquo;langage&amp;rdquo; en allemand. C&#39;est une librairie très élégante et facile à utiliser pour créer des analyseurs de texte, à l&#39;aide de parser combinators, qui sont une technique très courante en programmation fonctionnelle. Le concept théorique peut sembler un peu effrayant, mais comme vous allez le voir dans un instant, Sprache rend ça très accessible.
-Analyse syntaxique L&#39;analyse syntaxique (parsing) est une tâche très courante, mais qui peut être laborieuse et où il est facile de faire des erreurs.</description>
+      <description>Il y a quelques jours, j&amp;rsquo;ai découvert un petit bijou : Sprache. Le nom signifie &amp;ldquo;langage&amp;rdquo; en allemand. C&amp;rsquo;est une librairie très élégante et facile à utiliser pour créer des analyseurs de texte, à l&amp;rsquo;aide de parser combinators, qui sont une technique très courante en programmation fonctionnelle. Le concept théorique peut sembler un peu effrayant, mais comme vous allez le voir dans un instant, Sprache rend ça très accessible.
+Analyse syntaxique L&amp;rsquo;analyse syntaxique (parsing) est une tâche très courante, mais qui peut être laborieuse et où il est facile de faire des erreurs.</description>
     </item>
     
     <item>
@@ -95,7 +95,7 @@ Analyse syntaxique L&#39;analyse syntaxique (parsing) est une tâche très coura
       
       <guid>https://thomaslevesque.fr/2017/02/26/quoi-de-neuf-dans-fakeiteasy-3-0-0/</guid>
       <description>FakeItEasy est un framework de mocking populaire pour .NET, avec une API intuitive et facile à utiliser. Depuis environ un an, je suis un des principaux développeurs de FakeItEasy, avec Adam Ralph and Blair Conrad. Ça a été un vrai plaisir de travailler avec eux, et je me suis éclaté !
-Aujourd&#39;hui j&#39;ai le plaisir d&#39;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles.</description>
+Aujourd&amp;rsquo;hui j&amp;rsquo;ai le plaisir d&amp;rsquo;annoncer la sortie de FakeItEasy 3.0.0, avec le support de .NET Core et quelques fonctionnalités utiles.</description>
     </item>
     
     <item>
@@ -104,8 +104,8 @@ Aujourd&#39;hui j&#39;ai le plaisir d&#39;annoncer la sortie de FakeItEasy 3.0.0
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</guid>
-      <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&#39;en-tête du bloc (la ligne qui commence par @@), comme ceci :
-diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&#39;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
+      <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&amp;rsquo;en-tête du bloc (la ligne qui commence par @@), comme ceci :
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
     </item>
     
     <item>
@@ -115,7 +115,7 @@ diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program
       
       <guid>https://thomaslevesque.fr/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/</guid>
       <description>Il y a quelques années, Microsoft a introduit la classe HttpClient comme alternative moderne à HttpWebRequest pour faire des requêtes web depuis des applications .NET. Non seulement cette nouvelle API est beaucoup plus facile à utiliser, plus propre, et asynchrone, mais elle est aussi facilement extensible.
-Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&#39;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&#39;implémentation.</description>
+Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&amp;rsquo;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&amp;rsquo;implémentation.</description>
     </item>
     
     <item>
@@ -124,8 +124,8 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
       <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</guid>
-      <description>Dans mon précedent billet, j&#39;ai parlé d&#39;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&#39;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
- la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&#39;équipe du langage C# n&#39;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
+      <description>Dans mon précedent billet, j&amp;rsquo;ai parlé d&amp;rsquo;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&amp;rsquo;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
+ la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&amp;rsquo;équipe du langage C# n&amp;rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
     </item>
     
     <item>

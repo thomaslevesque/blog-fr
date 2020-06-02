@@ -8,8 +8,8 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="Méthodes C# dans les en-têtes de diff git" />
-<meta property="og:description" content="Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&#39;en-tête du bloc (la ligne qui commence par @@), comme ceci :
-diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs &#43;&#43;&#43; b/Program.cs @@ -13,6 &#43;13,7 @@ static void Main(string[] args)  Console.WriteLine(&#34;Hello World!&#34;); Console.WriteLine(&#34;Hello World!&#34;); Console.WriteLine(&#34;Hello World!&#34;); &#43; Console.WriteLine(&#34;blah&#34;);  } C&#39;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff." />
+<meta property="og:description" content="Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&rsquo;en-tête du bloc (la ligne qui commence par @@), comme ceci :
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs &#43;&#43;&#43; b/Program.cs @@ -13,6 &#43;13,7 @@ static void Main(string[] args)  Console.WriteLine(&#34;Hello World!&#34;); Console.WriteLine(&#34;Hello World!&#34;); Console.WriteLine(&#34;Hello World!&#34;); &#43; Console.WriteLine(&#34;blah&#34;);  } C&rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/" />
 <meta property="article:published_time" content="2017-02-10T00:00:00+00:00" />
@@ -17,8 +17,8 @@ diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Méthodes C# dans les en-têtes de diff git"/>
-<meta name="twitter:description" content="Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&#39;en-tête du bloc (la ligne qui commence par @@), comme ceci :
-diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs &#43;&#43;&#43; b/Program.cs @@ -13,6 &#43;13,7 @@ static void Main(string[] args)  Console.WriteLine(&#34;Hello World!&#34;); Console.WriteLine(&#34;Hello World!&#34;); Console.WriteLine(&#34;Hello World!&#34;); &#43; Console.WriteLine(&#34;blah&#34;);  } C&#39;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff."/>
+<meta name="twitter:description" content="Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&rsquo;en-tête du bloc (la ligne qui commence par @@), comme ceci :
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs &#43;&#43;&#43; b/Program.cs @@ -13,6 &#43;13,7 @@ static void Main(string[] args)  Console.WriteLine(&#34;Hello World!&#34;); Console.WriteLine(&#34;Hello World!&#34;); Console.WriteLine(&#34;Hello World!&#34;); &#43; Console.WriteLine(&#34;blah&#34;);  } C&rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -78,7 +78,7 @@ if (!doNotTrack) {
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-10T00:00:00Z">February 10, 2017</time></div></div>
 		</header><div class="content post__content clearfix">
-			<p>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l'en-tête du bloc (la ligne qui commence par <code>@@</code>), comme ceci :</p>
+			<p>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&rsquo;en-tête du bloc (la ligne qui commence par <code>@@</code>), comme ceci :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git a/Program.cs b/Program.cs
 index 655a213..5ae1016 100644
 <span style="color:#f92672">--- a/Program.cs
@@ -89,16 +89,16 @@ index 655a213..5ae1016 100644
          Console.WriteLine(&#34;Hello World!&#34;);
 <span style="color:#a6e22e">+        Console.WriteLine(&#34;blah&#34;);
 </span><span style="color:#a6e22e"></span>     }
-</code></pre></div><p>C'est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</p>
-<p>Git a quelques patterns d'expressions régulières prédéfinis pour détecter les méthodes dans quelques langages, y compris C#; ils sont définis dans <a href="https://github.com/git/git/blob/d7dffce1cebde29a0c4b309a79e4345450bf352a/userdiff.c#L140"><code>userdiff.c</code></a>. Mais par défaut, ces patterns ne sont pas utilisés&hellip; il faut dire à git quelles extensions de fichier sont associées à quel langage. Cela peut être spécifié dans un fichier <code>.gitattributes</code> à la racine de votre repo :</p>
+</code></pre></div><p>C&rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</p>
+<p>Git a quelques patterns d&rsquo;expressions régulières prédéfinis pour détecter les méthodes dans quelques langages, y compris C#; ils sont définis dans <a href="https://github.com/git/git/blob/d7dffce1cebde29a0c4b309a79e4345450bf352a/userdiff.c#L140"><code>userdiff.c</code></a>. Mais par défaut, ces patterns ne sont pas utilisés&hellip; il faut dire à git quelles extensions de fichier sont associées à quel langage. Cela peut être spécifié dans un fichier <code>.gitattributes</code> à la racine de votre repo :</p>
 <pre><code>*.cs    diff=csharp
-</code></pre><p>Cela fait, <code>git diff</code> devrait afficher une sortie similaire à l'exemple ci-dessus.</p>
-<p>Est-ce que ça suffit ? Presque. En fait, les patterns pour C# ont été ajoutés à git il y a longtemps, et C# a pas mal évolué depuis. Certains nouveaux mots-clés qui peuvent maintenant apparaître dans une signature de méthode ne sont pas reconnus par le pattern prédéfini, par exemple <code>async</code> ou <code>partial</code>. C'est assez agaçant, parce que quand du code a changé dans une méthode asynchrone, l'en-tête du bloc dans le diff indique la signature de la précédente méthode non-asynchrone, ou la ligne où la classe est déclarée, ce qui prête à confusion.</p>
-<p>Mon premier réflexe a été de soumettre une pull request sur Github pour ajouter les mots-clés manquants ; cependant j'ai vite réalisé que le <a href="https://github.com/git/git">repo de git sur Github</a> est juste un miroir et n'accepte pas de pull requests&hellip; Le <a href="https://github.com/git/git/blob/master/Documentation/SubmittingPatches">processus de contribution</a> consiste à envoyer un patch à la mailing list de git, avec une longue et ennuyeuse liste de règles à respecter. Ce processus m'a semblé si laborieux que j'ai abandonné l'idée. Franchement, je ne sais pas pourquoi git utilise un processus de contribution aussi obsolète et compliqué, ça ne fait que décourager les contributeurs occasionnels. Mais c'est un peu hors-sujet, alors passons et voyons si on peut résoudre le problème autrement.</p>
+</code></pre><p>Cela fait, <code>git diff</code> devrait afficher une sortie similaire à l&rsquo;exemple ci-dessus.</p>
+<p>Est-ce que ça suffit ? Presque. En fait, les patterns pour C# ont été ajoutés à git il y a longtemps, et C# a pas mal évolué depuis. Certains nouveaux mots-clés qui peuvent maintenant apparaître dans une signature de méthode ne sont pas reconnus par le pattern prédéfini, par exemple <code>async</code> ou <code>partial</code>. C&rsquo;est assez agaçant, parce que quand du code a changé dans une méthode asynchrone, l&rsquo;en-tête du bloc dans le diff indique la signature de la précédente méthode non-asynchrone, ou la ligne où la classe est déclarée, ce qui prête à confusion.</p>
+<p>Mon premier réflexe a été de soumettre une pull request sur Github pour ajouter les mots-clés manquants ; cependant j&rsquo;ai vite réalisé que le <a href="https://github.com/git/git">repo de git sur Github</a> est juste un miroir et n&rsquo;accepte pas de pull requests&hellip; Le <a href="https://github.com/git/git/blob/master/Documentation/SubmittingPatches">processus de contribution</a> consiste à envoyer un patch à la mailing list de git, avec une longue et ennuyeuse liste de règles à respecter. Ce processus m&rsquo;a semblé si laborieux que j&rsquo;ai abandonné l&rsquo;idée. Franchement, je ne sais pas pourquoi git utilise un processus de contribution aussi obsolète et compliqué, ça ne fait que décourager les contributeurs occasionnels. Mais c&rsquo;est un peu hors-sujet, alors passons et voyons si on peut résoudre le problème autrement.</p>
 <p>Heureusement, les patterns prédéfinis peuvent être redéfinis dans la configuration de git. Pour définir le pattern de signature de fonction pour C#, il faut définir le paramètre <code>diff.csharp.xfuncname</code> dans votre fichier de configuration git :</p>
 <pre><code>[[diff &quot;csharp&quot;]]
   xfuncname = ^[ \\t]*(((static|public|internal|private|protected|new|virtual|sealed|override|unsafe|async|partial)[ \\t]+)*[][&lt;&gt;@.~_[:alnum:]]+[ \\t]+[&lt;&gt;@._[:alnum:]]+[ \\t]*\\(.*\\))[ \\t]*$
-</code></pre><p>Comme vous pouvez le voir, c'est le même pattern que dans <code>userdiff.c</code>, avec les backslashes échappés et les mots-clés manquants ajoutés. Avec ce pattern, <code>git diff</code> affiche maintenant la signature correcte pour les méthodes asynchrones :</p>
+</code></pre><p>Comme vous pouvez le voir, c&rsquo;est le même pattern que dans <code>userdiff.c</code>, avec les backslashes échappés et les mots-clés manquants ajoutés. Avec ce pattern, <code>git diff</code> affiche maintenant la signature correcte pour les méthodes asynchrones :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git a/Program.cs b/Program.cs
 index 655a213..5ae1016 100644
 <span style="color:#f92672">--- a/Program.cs
@@ -110,7 +110,7 @@ index 655a213..5ae1016 100644
 <span style="color:#a6e22e">+        await Task.Delay(100);
 </span><span style="color:#a6e22e"></span>     }
  }
-</code></pre></div><p>Ça m'a pris un moment de trouver comment le faire marcher, alors j'espère que ça vous sera utile !</p>
+</code></pre></div><p>Ça m&rsquo;a pris un moment de trouver comment le faire marcher, alors j&rsquo;espère que ça vous sera utile !</p>
 
 		</div>
 		<footer class="post__footer">
