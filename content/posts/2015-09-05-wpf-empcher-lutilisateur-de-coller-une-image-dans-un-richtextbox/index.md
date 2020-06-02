@@ -34,13 +34,13 @@ Dans mon cas, je voulais juste empêcher le collage ou le glisser-déposer d’u
 
 XAML:
 
-```
-
+```xml
+<RichTextBox DataObject.Pasting="RichTextBox1_Pasting" ... />
 ```
 
 Code-behind:
 
-```
+```csharp
 private void RichTextBox1_Pasting(object sender, DataObjectPastingEventArgs e)
 {
     if (e.FormatToApply == "Bitmap")
