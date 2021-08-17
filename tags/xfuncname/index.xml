@@ -6,11 +6,7 @@
     <description>Recent content in xfuncname on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Fri, 10 Feb 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/xfuncname/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 10 Feb 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/xfuncname/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Méthodes C# dans les en-têtes de diff git</title>
       <link>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</link>

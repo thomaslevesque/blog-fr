@@ -6,11 +6,7 @@
     <description>Recent content in DLR on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 06 Oct 2009 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/dlr/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 06 Oct 2009 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/dlr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[C# 4.0] Implémenter un objet dynamique personnalisé</title>
       <link>https://thomaslevesque.fr/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/</link>

@@ -6,11 +6,7 @@
     <description>Recent content in RSS on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Fri, 13 Feb 2009 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/rss/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 13 Feb 2009 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/rss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Créer un lecteur RSS en 5 minutes</title>
       <link>https://thomaslevesque.fr/2009/02/13/creer-un-lecteur-rss-en-5-minutes/</link>

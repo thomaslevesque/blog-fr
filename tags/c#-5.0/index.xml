@@ -6,11 +6,7 @@
     <description>Recent content in C# 5.0 on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 30 Oct 2010 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/c#-5.0/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 30 Oct 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/c#-5.0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[C# 5] Programmation asynchrone avec C# 5</title>
       <link>https://thomaslevesque.fr/2010/10/30/c-5-programmation-asynchrone-avec-c-5/</link>

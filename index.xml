@@ -6,11 +6,7 @@
     <description>Recent content on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 17 Apr 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 17 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>À propos</title>
       <link>https://thomaslevesque.fr/a-propos/</link>
@@ -500,7 +496,8 @@ static void Log( string message, [CallerMemberName] string memberName = null, [C
       <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</guid>
-      <description>Je voudrais aujourd&amp;rsquo;hui partager avec vous une petite astuce que j&amp;rsquo;utilise souvent depuis quelques mois. Supposons que pour améliorer l&amp;rsquo;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards : Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&amp;rsquo;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&amp;rsquo;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
+      <description>Je voudrais aujourd&amp;rsquo;hui partager avec vous une petite astuce que j&amp;rsquo;utilise souvent depuis quelques mois. Supposons que pour améliorer l&amp;rsquo;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards :
+Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&amp;rsquo;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&amp;rsquo;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
     </item>
     
     <item>

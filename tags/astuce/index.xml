@@ -6,11 +6,7 @@
     <description>Recent content in astuce on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Thu, 05 Mar 2009 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/astuce/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 05 Mar 2009 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/astuce/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre</title>
       <link>https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/</link>

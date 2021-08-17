@@ -10,9 +10,10 @@
 	<meta property="og:title" content="[VS 2010] Support du binding dans les InputBindings" />
 <meta property="og:description" content="LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les InputBindings n&rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip; Jusqu&rsquo;ici, pour lier la commande d&rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/" />
-<meta property="article:published_time" content="2009-10-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2009-10-25T00:00:00+00:00" />
+<meta property="og:url" content="https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2009-10-25T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2009-10-25T00:00:00&#43;00:00" />
+
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[VS 2010] Support du binding dans les InputBindings"/>
@@ -126,7 +127,7 @@ if (!doNotTrack) {
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name">À propos Thomas Levesque</span>
+		<span class="authorbox__name"></span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -219,7 +220,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2020 Thomas Levesque.
+			&copy; 2021 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

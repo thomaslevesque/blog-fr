@@ -6,11 +6,7 @@
     <description>Recent content in image on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 05 Sep 2015 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/image/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 05 Sep 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/image/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[WPF] Empêcher l’utilisateur de coller une image dans un RichTextBox</title>
       <link>https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/</link>

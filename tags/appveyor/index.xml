@@ -6,11 +6,7 @@
     <description>Recent content in appveyor on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 26 Apr 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/appveyor/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 26 Apr 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/appveyor/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Publier un package sur NuGet.org depuis AppVeyor</title>
       <link>https://thomaslevesque.fr/2016/04/26/publier-un-package-sur-nuget-org-depuis-appveyor/</link>

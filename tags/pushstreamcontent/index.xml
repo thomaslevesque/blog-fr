@@ -6,11 +6,7 @@
     <description>Recent content in PushStreamContent on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sun, 01 Dec 2013 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/pushstreamcontent/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 01 Dec 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/pushstreamcontent/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Envoyer des données avec HttpClient selon un modèle “push”</title>
       <link>https://thomaslevesque.fr/2013/12/01/envoyer-des-donnees-avec-httpclient-selon-un-modele-push/</link>

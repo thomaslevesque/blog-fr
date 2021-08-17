@@ -6,11 +6,7 @@
     <description>Recent content in parser on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 28 Feb 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/parser/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 28 Feb 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/parser/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Parser du texte facilement en C# avec Sprache</title>
       <link>https://thomaslevesque.fr/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/</link>

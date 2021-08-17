@@ -6,11 +6,7 @@
     <description>Recent content in freezable on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Mon, 21 Mar 2011 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/freezable/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 21 Mar 2011 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/freezable/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[WPF] Comment faire un binding dans les cas où on n’hérite pas du DataContext</title>
       <link>https://thomaslevesque.fr/2011/03/21/wpf-comment-faire-un-binding-dans-les-cas-o-on-nhrite-pas-du-datacontext/</link>

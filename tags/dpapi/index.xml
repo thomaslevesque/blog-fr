@@ -6,11 +6,7 @@
     <description>Recent content in dpapi on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sun, 26 May 2013 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/dpapi/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 26 May 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/dpapi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Une façon simple et sécurisée de stocker un mot de passe à l&#39;aide de Data Protection API</title>
       <link>https://thomaslevesque.fr/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/</link>

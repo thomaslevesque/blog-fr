@@ -6,11 +6,7 @@
     <description>Recent content in caller info on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Wed, 13 Jun 2012 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/caller-info/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 13 Jun 2012 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/caller-info/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework</title>
       <link>https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/</link>

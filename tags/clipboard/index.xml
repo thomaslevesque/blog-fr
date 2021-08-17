@@ -6,11 +6,7 @@
     <description>Recent content in clipboard on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Thu, 05 Feb 2009 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/clipboard/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 05 Feb 2009 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/clipboard/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)</title>
       <link>https://thomaslevesque.fr/2009/02/05/wpf-coller-une-image-du-presse-papier/</link>

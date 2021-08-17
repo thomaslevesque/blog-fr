@@ -6,11 +6,7 @@
     <description>Recent content in WPF on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 05 Sep 2015 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/categories/wpf/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 05 Sep 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/categories/wpf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[WPF] Empêcher l’utilisateur de coller une image dans un RichTextBox</title>
       <link>https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/</link>
@@ -37,7 +33,8 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <pubDate>Fri, 30 Sep 2011 00:00:00 +0000</pubDate>
       
       <guid>https://thomaslevesque.fr/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/</guid>
-      <description>Je voudrais aujourd&amp;rsquo;hui partager avec vous une petite astuce que j&amp;rsquo;utilise souvent depuis quelques mois. Supposons que pour améliorer l&amp;rsquo;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards : Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&amp;rsquo;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&amp;rsquo;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
+      <description>Je voudrais aujourd&amp;rsquo;hui partager avec vous une petite astuce que j&amp;rsquo;utilise souvent depuis quelques mois. Supposons que pour améliorer l&amp;rsquo;apparence de votre application, vous ayez créé des styles personnalisés pour les contrôles standards :
+Bon, je ne suis pas designer, hein&amp;hellip; mais ça fera parfaitement l&amp;rsquo;affaire pour illustrer mon propos ;). Ces styles sont très simples, ce sont les styles par défaut des CheckBox et RadioButton dans lesquels j&amp;rsquo;ai seulement modifié les templates pour remplacer les BulletChrome par ces superbes marques bleues.</description>
     </item>
     
     <item>

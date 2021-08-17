@@ -6,11 +6,7 @@
     <description>Recent content in MVVM on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sun, 25 Oct 2009 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/mvvm/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 25 Oct 2009 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/mvvm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[VS 2010] Support du binding dans les InputBindings</title>
       <link>https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/</link>

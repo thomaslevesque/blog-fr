@@ -6,11 +6,7 @@
     <description>Recent content in csproj on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/csproj/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/csproj/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Propriétés et éléments MSBuild partagés avec Directory.Build.props</title>
       <link>https://thomaslevesque.fr/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/</link>

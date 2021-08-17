@@ -6,11 +6,7 @@
     <description>Recent content in code snippet on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sun, 16 May 2010 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/code-snippet/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 16 May 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/code-snippet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[C#] Une implémentation du pattern WeakEvent</title>
       <link>https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/</link>

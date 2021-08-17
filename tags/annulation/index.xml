@@ -6,11 +6,7 @@
     <description>Recent content in annulation on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Thu, 31 Dec 2015 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/annulation/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 31 Dec 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/annulation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource</title>
       <link>https://thomaslevesque.fr/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/</link>

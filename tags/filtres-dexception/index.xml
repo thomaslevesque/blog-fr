@@ -6,11 +6,7 @@
     <description>Recent content in filtres d&#39;exception on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Tue, 23 Jun 2015 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/filtres-dexception/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 23 Jun 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/filtres-dexception/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Filtres d’exception en C# 6 : leur plus grand avantage n’est pas celui qu’on croit</title>
       <link>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</link>

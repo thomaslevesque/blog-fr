@@ -6,11 +6,7 @@
     <description>Recent content in Dvp.NET on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Thu, 18 Mar 2010 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/dvp.net/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 18 Mar 2010 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/dvp.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Dvp.NET] Première version de la librairie Dvp.NET !</title>
       <link>https://thomaslevesque.fr/2010/03/18/dvp-net-premiere-version-de-la-librairie-dvp-net/</link>

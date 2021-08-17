@@ -5,11 +5,7 @@
     <link>https://thomaslevesque.fr/tags/parent/enfant/</link>
     <description>Recent content in parent/enfant on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>fr-fr</language>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/parent/enfant/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>fr-fr</language><atom:link href="https://thomaslevesque.fr/tags/parent/enfant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[C#] Relation parent/enfant et sérialisation XML</title>
       <link>https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/</link>

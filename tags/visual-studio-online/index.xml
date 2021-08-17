@@ -6,11 +6,7 @@
     <description>Recent content in Visual Studio Online on Blog .NET de Thomas Levesque</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sun, 12 Oct 2014 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://thomaslevesque.fr/tags/visual-studio-online/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 12 Oct 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://thomaslevesque.fr/tags/visual-studio-online/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Intégration avec Visual Studio Online &#43; Git dans Team Explorer</title>
       <link>https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/</link>
