@@ -3,7 +3,7 @@ languageCode = "fr-fr"
 defaultContentLanguage = "fr"
 title = "Blog .NET de Thomas Levesque"
 theme = "mainroad"
-googleAnalytics = "UA-31645024-1"
+googleAnalytics = "G-1BQPR1D5F6"
 
 [menu]
   [[menu.main]]
