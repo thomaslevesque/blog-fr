@@ -257,6 +257,9 @@
     <loc>https://thomaslevesque.fr/categories/wpf/</loc>
     <lastmod>2015-09-05T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://thomaslevesque.fr/tags/%C3%A9v%C3%A8nements/</loc>
+    <lastmod>2015-08-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://thomaslevesque.fr/tags/fuite-m%C3%A9moire/</loc>
     <lastmod>2015-08-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -270,9 +273,6 @@
     <lastmod>2015-08-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/</loc>
-    <lastmod>2015-08-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://thomaslevesque.fr/tags/%C3%A9v%C3%A8nements/</loc>
     <lastmod>2015-08-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thomaslevesque.fr/tags/casse-t%C3%AAte/</loc>
@@ -515,10 +515,10 @@
     <loc>https://thomaslevesque.fr/tags/selection/</loc>
     <lastmod>2013-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thomaslevesque.fr/categories/winrt/</loc>
+    <loc>https://thomaslevesque.fr/tags/winrt/</loc>
     <lastmod>2013-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thomaslevesque.fr/tags/winrt/</loc>
+    <loc>https://thomaslevesque.fr/categories/winrt/</loc>
     <lastmod>2013-11-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thomaslevesque.fr/tags/autoruncustomtool/</loc>
@@ -527,10 +527,10 @@
     <loc>https://thomaslevesque.fr/tags/custom-tool/</loc>
     <lastmod>2013-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thomaslevesque.fr/tags/extension/</loc>
+    <loc>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</loc>
     <lastmod>2013-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://thomaslevesque.fr/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/</loc>
+    <loc>https://thomaslevesque.fr/tags/extension/</loc>
     <lastmod>2013-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://thomaslevesque.fr/2013/11/10/helper-fortement-type-pour-les-notifications-toast/</loc>

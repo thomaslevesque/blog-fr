@@ -12,8 +12,8 @@
 Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2014-11-24T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2014-11-24T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2014-11-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-11-24T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -99,22 +100,22 @@ if (!doNotTrack) {
 <h3 id="bon-ça-suffit-où-veux-tu-en-venir">Bon, ça suffit! Où veux-tu en venir?</h3>
 <p>Comme vous pouvez le voir, afficher une taille en octets sous forme lisible par des humains n’est pas aussi évident qu’on aurait pu s’y attendre… J’ai eu à écrire du code pour le faire dans plusieurs applications, et j’ai fini par en avoir assez de refaire à chaque fois, donc j’ai créé une librairie qui s’efforce de couvrir tous les cas d’utilisation. Je l’ai appelée <a href="https://github.com/thomaslevesque/HumanBytes">HumanBytes</a>, pour des raisons qui devraient être évidentes… Elle est également disponible sous forme de <a href="https://www.nuget.org/packages/HumanBytes">package NuGet</a>.</p>
 <p>Son utilisation est assez simple. Elle est basée sur la classe <code>ByteSizeFormatter</code>, qui expose des propriétés pour contrôler la façon dont la valeur est formatée :</p>
-<pre><code>var formatter = new ByteSizeFormatter
+<pre tabindex="0"><code>var formatter = new ByteSizeFormatter
 {
     Convention = ByteSizeConvention.Binary,
     DecimalPlaces = 1,
-    NumberFormat = &quot;#,##0.###&quot;,
+    NumberFormat = &#34;#,##0.###&#34;,
     MinUnit = ByteSizeUnit.Kilobyte,
     MaxUnit = ByteSizeUnit.Gigabyte,
     RoundingRule = ByteSizeRounding.Closest,
     UseFullWordForBytes = true,
 };
 
-var f = new FileInfo(&quot;TheFile.jpg&quot;);
-Console.WriteLine(&quot;The size of '{0}' is {1}&quot;, f, formatter.Format(f.Length));
+var f = new FileInfo(&#34;TheFile.jpg&#34;);
+Console.WriteLine(&#34;The size of &#39;{0}&#39; is {1}&#34;, f, formatter.Format(f.Length));
 </code></pre><p>Cependant, dans la plupart des cas, vous voudrez simplement utiliser les paramètres par défaut. Vous pouvez le faire facilement grâce à la méthode d’extension <code>Bytes</code> :</p>
-<pre><code>var f = new FileInfo(&quot;TheFile.jpg&quot;);
-Console.WriteLine(&quot;The size of '{0}' is {1}&quot;, f, f.Length.Bytes());
+<pre tabindex="0"><code>var f = new FileInfo(&#34;TheFile.jpg&#34;);
+Console.WriteLine(&#34;The size of &#39;{0}&#39; is {1}&#34;, f, f.Length.Bytes());
 </code></pre><p>Cette méthode renvoie une instance de la structure <code>ByteSize</code>, dont la méthode <code>ToString</code> formate la valeur avec le formateur par défaut. Vous pouvez changer les paramètres du formateur par défaut via la propriété statique <code>ByteSizeFormatter.Default</code>.</p>
 <h3 id="a-propos-de-la-localisation">A propos de la localisation</h3>
 <p>Toutes les langues n’utilisent pas le même symbole pour “octet”, et bien sûr le mot “octet” lui-même est différent d’une langue à l’autre. Pour l’instant, HumanBytes ne supporte que l’anglais et le français ; si vous voulez ajouter le support d’une autre langue, n’hésitez pas à forker le projet, ajouter votre traduction, et faire une pull request. Il n’y a que 3 termes à traduire, donc ça ne devrait pas prendre trop longtemps <img src="wlEmoticon-winkingsmile.png" alt="Winking smile">.</p>
@@ -244,7 +245,7 @@ Console.WriteLine(&quot;The size of '{0}' is {1}&quot;, f, f.Length.Bytes());
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

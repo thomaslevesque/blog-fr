@@ -11,8 +11,8 @@
 <meta property="og:description" content="Il y a quelques années, j’avais écrit un article qui montrait comment afficher un GIF animé en WPF. L’article incluait le code complet, et avait eu un certain succès, puisque WPF n’avait pas de support intégré pour les GIFs animés. Suite aux problèmes mentionnés dans les commentaires, j’ai apporté de nombreuses modifications au code dans l’article. Au bout d’un certain temps j’ai fini par trouver que ce n’était vraiment pas pratique, j’ai donc publié le code sur CodePlex (il a depuis déménagé vers GitHub) sous le nom WpfAnimatedGif, et j’ai commencé à le maintenir en tant que projet open-source." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-01-18T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-01-18T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-01-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-01-18T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -84,13 +85,13 @@ if (!doNotTrack) {
 <p>J’ai donc décidé de recommencer de zéro pour traiter ces problèmes, et j’ai créé un nouveau projet : <a href="https://github.com/thomaslevesque/XamlAnimatedGif">XamlAnimatedGif</a> (comme vous le voyez, je manque un peu d’imagination pour les noms).</p>
 <p>A première vue, cette nouvelle bibliothèque semble très similaire à WpfAnimatedGif, mais utilise en fait une approche complètement différente. Au lieu de préparer toutes les frames à l’avance, le rendu de chaque frame est fait à la volée à l’aide d’un <a href="http://msdn.microsoft.com/fr-fr/library/system.windows.media.imaging.writeablebitmap.aspx">WriteableBitmap</a>. Cette approche sollicite plus le CPU, mais utilise beaucoup moins de mémoire. De plus, afin de permettre la portabilité, je ne pouvais pas utiliser les fonctions de décodage de WPF, j’ai donc dû implémenter un décodeur GIF complet, y compris la décompression LZW des données de pixels. L’article de Matthew Flickinger <a href="http://www.matthewflickinger.com/lab/whatsinagif/index.html">“What’s In A GIF”</a> a été une aide précieuse sur ce point.</p>
 <p>L’utilisation basique est à peu près le même que pour WpfAnimatedGif : il suffit d’assigner une propriété attachée sur un contrôle <code>Image</code> pour spécifier la source de l’animation GIF :</p>
-<pre><code>&lt;Image gif:AnimationBehavior.SourceUri=&quot;/images/working.gif&quot; /&gt;
+<pre tabindex="0"><code>&lt;Image gif:AnimationBehavior.SourceUri=&#34;/images/working.gif&#34; /&gt;
 </code></pre><p>Voilà le résultat dans l’émulateur Windows Phone (oui, c’est un GIF animé qui représente un GIF animé… je suppose qu’on peut appeler ça un méta-GIF <img src="wlEmoticon-winkingsmile.png" alt="Winking smile">) :</p>
 <p><img src="XamlAnimatedGif-WP_thumb.gif" alt="XamlAnimatedGif-WP_thumb" title="XamlAnimatedGif-WP_thumb"></p>
 <p>Contrairement à WpfAnimatedGif, la source est spécifiée comme une URI ou un <code>Stream</code>, plutôt qu’une <code>ImageSource</code>. Cela rend l’implémentation interne beaucoup plus simple et robuste.</p>
 <p>XamlAnimatedGif fonctionne actuellement sur WPF 4.5, les applications Windows Store 8.1, et Windows Phone 8.1. Le support d’autres plateformes (WPF 4.0, Windows 8.0, Windows Phone 8.0, Windows Phone Silverlight 8.1, peut-être Silverlight 5) pourrait être ajouté, mais pour l’instant je me suis simplement concentré sur le faire fonctionner sur les plateformes XAML les plus récentes. Je ne sais pas très bien s’il serait possible de supporter iOS et Android, vu que je n’ai pas encore mis le nez dans Xamarin. Si vous voulez essayer, je serai ravi d’accepter des contributions.</p>
 <p>La bibliothèque est encore en alpha parce qu’elle est nouvelle, mais pour l’instant elle semble raisonnablement stable. Vous pouvez l’installer <a href="http://www.nuget.org/packages/XamlAnimatedGif/">depuis NuGet</a> :</p>
-<pre><code>PM&gt; Install-Package XamlAnimatedGif -Pre 
+<pre tabindex="0"><code>PM&gt; Install-Package XamlAnimatedGif -Pre 
 </code></pre>
 		</div>
 		<footer class="post__footer">
@@ -211,7 +212,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

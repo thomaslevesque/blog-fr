@@ -9,17 +9,17 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="Personnaliser l’interpolation de chaine avec C# 6" />
 <meta property="og:description" content="L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :
-string text = $&quot;{p.Name} was born on {p.DateOfBirth:D}&quot;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :" />
+string text = $&#34;{p.Name} was born on {p.DateOfBirth:D}&#34;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/02/25/personnaliser-linterpolation-de-chaine-avec-c-6/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-02-25T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-02-25T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-02-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-02-25T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Personnaliser l’interpolation de chaine avec C# 6"/>
 <meta name="twitter:description" content="L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :
-string text = $&quot;{p.Name} was born on {p.DateOfBirth:D}&quot;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :"/>
+string text = $&#34;{p.Name} was born on {p.DateOfBirth:D}&#34;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -28,17 +28,18 @@ string text = $&quot;{p.Name} was born on {p.DateOfBirth:D}&quot;; Un aspect peu
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -80,7 +81,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-02-25T00:00:00Z">February 25, 2015</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :</p>
-<pre><code>string text = $&quot;{p.Name} was born on {p.DateOfBirth:D}&quot;;
+<pre tabindex="0"><code>string text = $&#34;{p.Name} was born on {p.DateOfBirth:D}&#34;;
 </code></pre><p>Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un <code>String</code>, soit comme un <code>IFormattable</code>, selon le contexte. Quand elle est convertie en <code>IFormattable</code>, cela crée un objet <code>FormattableString</code> qui implémente l’interface et expose :</p>
 <ul>
 <li>la chaine de format, avec les valeurs remplacées par des marqueurs numériques (compatible avec <code>String.Format</code>)</li>
@@ -90,16 +91,16 @@ if (!doNotTrack) {
 <h3 id="spécifier-la-culture">Spécifier la culture</h3>
 <p>Pendant la conception de la fonctionnalité d’interpolation de chaines, il y a eu un débat assez vif pour décider s’il fallait utiliser la culture courante ou la culture neutre (“invariant”) pour formater les valeurs; il y avait de bons arguments des deux côtés, mais au final il a été décidé d’utiliser la culture courante, par souci de cohérence avec <code>String.Format</code> et des APIs similaires qui utilisent la <a href="https://msdn.microsoft.com/fr-fr/library/txafckwd.aspx">mise en forme composite</a>. Utiliser la culture courante est pertinent quand on utilise l’interpolation de chaines pour construire des chaines qui seront affichée dans l’interface utilisateur ; mais il y a aussi des scénarios où on veut construire des chaines qui seront utilisées dans des APIs ou protocoles (URLs, requêtes SQL…), et dans ces cas là il faut généralement utiliser la culture neutre.</p>
 <p>C# 6 fournit un moyen facile de faire cela, en tirant parti de la conversion en <code>IFormattable</code>. Il suffit de créer une méthode comme celle-ci :</p>
-<pre><code>static string Invariant(FormattableString formattable)
+<pre tabindex="0"><code>static string Invariant(FormattableString formattable)
 {
     return formattable.ToString(CultureInfo.InvariantCulture);
 }
 </code></pre><p>Et vous pouvez ensuite l’utiliser comme suit:</p>
-<pre><code>string text = Invariant($&quot;{p.Name} was born on {p.DateOfBirth:D}&quot;);
+<pre tabindex="0"><code>string text = Invariant($&#34;{p.Name} was born on {p.DateOfBirth:D}&#34;);
 </code></pre><p>Les valeurs dans la chaine interpolée seront formatées avec la culture neutre, et non plus avec la culture courante.</p>
 <h3 id="construire-des-urls">Construire des URLs</h3>
 <p>Voici un exemple plus avancé. L’interpolation de chaines est un moyen pratique de construire des URLs, mais si on inclut des chaines arbitraires dans l’URL, il faut prendre soin de les encoder pour ne pas avoir de caractères invalides dans l’URL. Un interpolateur de chaine personnalisé peut le faire pour nous; il faut juste créer un <code>IFormatProvider</code> personnalisé qui s’occupera d’encoder les valeurs. L’implémentation n’était pas évidente au premier abord, mais après quelques tâtonnements je suis arrivé à ceci :</p>
-<pre><code>class UrlFormatProvider : IFormatProvider
+<pre tabindex="0"><code>class UrlFormatProvider : IFormatProvider
 {
     private readonly UrlFormatter _formatter = new UrlFormatter();
 
@@ -116,21 +117,21 @@ if (!doNotTrack) {
         {
             if (arg == null)
                 return string.Empty;
-            if (format == &quot;r&quot;)
+            if (format == &#34;r&#34;)
                 return arg.ToString();
             return Uri.EscapeDataString(arg.ToString());
         }
     }
 }
 </code></pre><p>Ce formateur peut être utiliser comme ceci :</p>
-<pre><code>static string Url(FormattableString formattable)
+<pre tabindex="0"><code>static string Url(FormattableString formattable)
 {
     return formattable.ToString(new UrlFormatProvider());
 }
 
 ...
 
-string url = Url($&quot;http://foobar/item/{id}/{name}&quot;);
+string url = Url($&#34;http://foobar/item/{id}/{name}&#34;);
 </code></pre><p>Cela va correctement encoder les valeurs de <code>id</code> et <code>name</code> de façon à ce que l’’URL générée ne contienne que des caractères valides.</p>
 <p><em>Aparté: Avez-vous remarqué le if <code>(format == &quot;r&quot;)</code>? C’est un spécificateur de format personnalisé qui indique que la valeur ne doit pas être encodé (“r” pour “raw”). Pour l’utiliser, il suffit de l’inclure dans la chaine de format comme ceci : <code>{id:r}</code>. Cela empêchera l’encodage de <code>id</code>.</em></p>
 <h3 id="construire-des-requêtes-sql">Construire des requêtes SQL</h3>
@@ -143,7 +144,7 @@ string url = Url($&quot;http://foobar/item/{id}/{name}&quot;);
 </ul>
 <p>(il y a probablement d’autres choses à prendre en compte, mais ce sont les plus évidentes).</p>
 <p>On peut utiliser la même approche que pour les URLs, et créer un <code>SqlFormatProvider</code> :</p>
-<pre><code>class SqlFormatProvider : IFormatProvider
+<pre tabindex="0"><code>class SqlFormatProvider : IFormatProvider
 {
     private readonly SqlFormatter _formatter = new SqlFormatter();
 
@@ -159,11 +160,11 @@ string url = Url($&quot;http://foobar/item/{id}/{name}&quot;);
         public string Format(string format, object arg, IFormatProvider formatProvider)
         {
             if (arg == null)
-                return &quot;NULL&quot;;
+                return &#34;NULL&#34;;
             if (arg is string)
-                return &quot;'&quot; + ((string)arg).Replace(&quot;'&quot;, &quot;''&quot;) + &quot;'&quot;;
+                return &#34;&#39;&#34; + ((string)arg).Replace(&#34;&#39;&#34;, &#34;&#39;&#39;&#34;) + &#34;&#39;&#34;;
             if (arg is DateTime)
-                return &quot;'&quot; + ((DateTime)arg).ToString(&quot;MM/dd/yyyy&quot;) + &quot;'&quot;;
+                return &#34;&#39;&#34; + ((DateTime)arg).ToString(&#34;MM/dd/yyyy&#34;) + &#34;&#39;&#34;;
             if (arg is IFormattable)
                 return ((IFormattable)arg).ToString(format, CultureInfo.InvariantCulture);
             return arg.ToString();
@@ -171,18 +172,18 @@ string url = Url($&quot;http://foobar/item/{id}/{name}&quot;);
     }
 }
 </code></pre><p>On peut ensuite utiliser ce formateur comme ceci :</p>
-<pre><code>static string Sql(FormattableString formattable)
+<pre tabindex="0"><code>static string Sql(FormattableString formattable)
 {
     return formattable.ToString(new SqlFormatProvider());
 }
 
 ...
 
-string sql = Sql($&quot;insert into items(id, name, creationDate) values({id}, {name}, {DateTime.Now})&quot;);
+string sql = Sql($&#34;insert into items(id, name, creationDate) values({id}, {name}, {DateTime.Now})&#34;);
 </code></pre><p>De cette façon les valeurs seront correctement formatées pour générer une requête SQL valide.</p>
 <h3 id="utiliser-linterpolation-de-chaines-quand-on-cible-des-versions-plus-anciennes-de-net">Utiliser l’interpolation de chaines quand on cible des versions plus anciennes de .NET</h3>
 <p>Comme c’est souvent le cas avec les fonctionnalités du langage qui exploitent des types du .NET Framework, il est possible d’utiliser cette fonctionnalité avec des versions plus anciennes de .NET qui n’ont pas la classe <code>FormattableString</code> ; il suffit de créer la classe soi-même dans le namespace approprié. En fait, il y a en l’occurrence deux classes à implémenter : <code>FormattableString</code> et <code>FormattableStringFactory</code>. <a href="https://twitter.com/jonskeet/status/569973023064887296">Jon Skeet était apparemment très pressé d’essayer</a>, et il a déjà <a href="https://gist.github.com/jskeet/9d297d0dc013d7a557ee">donné un exemple</a> avec le code pour ces classes :</p>
-<pre><code>using System;
+<pre tabindex="0"><code>using System;
 
 namespace System.Runtime.CompilerServices
 {
@@ -196,7 +197,7 @@ namespace System.Runtime.CompilerServices
         public static FormattableString Create(string messageFormat, DateTime bad, params object[] args)
         {
             var realArgs = new object[args.Length + 1];
-            realArgs[0] = &quot;Please don't use DateTime&quot;;
+            realArgs[0] = &#34;Please don&#39;t use DateTime&#34;;
             Array.Copy(args, 0, realArgs, 1, args.Length);
             return new FormattableString(messageFormat, realArgs);
         }
@@ -348,7 +349,7 @@ namespace System
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

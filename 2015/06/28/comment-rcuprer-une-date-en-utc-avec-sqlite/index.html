@@ -11,8 +11,8 @@
 <meta property="og:description" content="SQLite est un super moteur de base de données “in-process” : il est très léger, ne nécessite aucun serveur ni configuration, et fonctionne sur toutes les plateformes. Il y a même un provider ADO.NET officiel très bien réalisé. Cependant, si vous stockez des dates en UTC avec ce provider, vous allez probablement rencontrer un sérieux problème : bien que la date soit correctement stockée en UTC (elle est stockée dans un format similaire à ISO8601, avec un ‘Z’ pour indiquer la zone UTC), quand on la relit depuis la base de données, on obtient un DateTime converti en heure locale, avec Kind = Unspecified." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/06/28/comment-rcuprer-une-date-en-utc-avec-sqlite/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-06-28T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-06-28T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-06-28T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -78,19 +79,19 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-06-28T00:00:00Z">June 28, 2015</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p><a href="http://www.sqlite.org/">SQLite</a> est un super moteur de base de données “in-process” : il est très léger, ne nécessite aucun serveur ni configuration, et fonctionne sur toutes les plateformes. Il y a même un <a href="http://system.data.sqlite.org/">provider ADO.NET officiel</a> très bien réalisé. Cependant, si vous stockez des dates en UTC avec ce provider, vous allez probablement rencontrer un sérieux problème : bien que la date soit correctement stockée en UTC (elle est stockée dans un format similaire à ISO8601, avec un ‘Z’ pour indiquer la zone UTC), quand on la relit depuis la base de données, on obtient un <code>DateTime</code> converti en heure locale, avec <code>Kind</code> = <code>Unspecified</code>. Voici un exemple qui illustre le problème (en utilisant <a href="https://github.com/StackExchange/dapper-dot-net">Dapper</a> dans <a href="http://www.linqpad.net/">LINQPad</a>) :</p>
-<pre><code>void Main()
+<pre tabindex="0"><code>void Main()
 {
-    string connectionString = @&quot;Data Source=D:\tmp\testSQLiteDate.db&quot;;
+    string connectionString = @&#34;Data Source=D:\tmp\testSQLiteDate.db&#34;;
     using (var connection = new SQLiteConnection(connectionString))
     {
         connection.Open();
-        connection.Execute(&quot;create table Foo(Id integer not null primary key, CreationDateUtc datetime not null)&quot;);
+        connection.Execute(&#34;create table Foo(Id integer not null primary key, CreationDateUtc datetime not null)&#34;);
         
         var foo = new Foo{Id = 42, CreationDateUtc = DateTime.UtcNow};
-        foo.Dump(&quot;Original object&quot;);
-        connection.Execute(&quot;insert into Foo(Id, CreationDateUtc) values (@Id, @CreationDateUtc)&quot;, foo);
-        var foo2 = connection.Query&lt;Foo&gt;(&quot;select * from Foo where Id = @Id&quot;, new{ Id = 42 }).SingleOrDefault();
-        foo2.Dump(&quot;After reading from DB&quot;);
+        foo.Dump(&#34;Original object&#34;);
+        connection.Execute(&#34;insert into Foo(Id, CreationDateUtc) values (@Id, @CreationDateUtc)&#34;, foo);
+        var foo2 = connection.Query&lt;Foo&gt;(&#34;select * from Foo where Id = @Id&#34;, new{ Id = 42 }).SingleOrDefault();
+        foo2.Dump(&#34;After reading from DB&#34;);
     }
 }
 
@@ -104,7 +105,7 @@ class Foo
 <p><img src="image_thumb1.png" alt="image_thumb\[1\]" title="image_thumb[1]"></p>
 <p>Comme vous pouvez le voir, après avoir relu les données depuis la BDD, la date n’est plus en UTC, et il n’y rien qui indique qu’il s’agit d’une date locale. Cela peut causer toutes sortes de bugs si votre code compare des dates qui sont supposées être en UTC.</p>
 <p>J’ai d’abord essayé de résoudre le problème dans mon code, en convertissant explicitement la date en UTC, avant de réaliser que la solution était beaucoup plus simple (quoique <a href="http://www.nudoq.org/#!/Packages/System.Data.SQLite/System.Data.SQLite/SQLiteConnectionStringBuilder/P/DateTimeKind">pas très bien documentée</a>) : il existe un paramètre de la chaine de connexion pour contrôler comment les dates sont gérées. Il suffit de spécifier <code>DateTimeKind=Utc</code> dans la chaine de connexion :</p>
-<pre><code>string connectionString = @&quot;Data Source=D:\tmp\testSQLiteDate.db;DateTimeKind=Utc&quot;;
+<pre tabindex="0"><code>string connectionString = @&#34;Data Source=D:\tmp\testSQLiteDate.db;DateTimeKind=Utc&#34;;
 </code></pre><p>Si vous utilisez <code>SqliteConnectionStringBuilder</code> pour construire la chaine de connexion, il faut définir la propriété <code>DateTimeKind</code> à <code>DateTimeKind.Utc</code>.</p>
 <p>Le type de date est maintenant préservé :</p>
 <p><img src="image_thumb2.png" alt="image_thumb\[2\]" title="image_thumb[2]"></p>
@@ -238,7 +239,7 @@ class Foo
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

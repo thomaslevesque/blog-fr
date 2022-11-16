@@ -11,8 +11,8 @@
 <meta property="og:description" content="L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup FakeItEasy ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-06-16T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-06-16T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-06-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-06-16T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -79,7 +80,7 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup <a href="https://github.com/FakeItEasy/FakeItEasy">FakeItEasy</a> ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici.</p>
 <p>Mais malgré toutes les qualités de FakeItEasy, l’enregistrement des fakes (objets factices) pour les dépendances de la classe testée est encore un peu laborieuse. Ce serait bien si le conteneur IoC pouvait nous créer automatiquement des fakes à la volée, non ? Le code suivant :</p>
-<pre><code>var container = new UnityContainer();
+<pre tabindex="0"><code>var container = new UnityContainer();
  
 // Setup dependencies
 var fooProvider = A.Fake&lt;IFooProvider&gt;();
@@ -91,14 +92,14 @@ container.RegisterInstance(bazManager);
  
 var sut = container.Resolve&lt;SystemUnderTest&gt;();
 </code></pre><p>Pourrait être réduit à ceci :</p>
-<pre><code>var container = new UnityContainer();
+<pre tabindex="0"><code>var container = new UnityContainer();
  
 // This will cause the container to provide fakes for all dependencies
 container.AddNewExtension&lt;AutoFakeExtension&gt;();
  
 var sut = container.Resolve&lt;SystemUnderTest&gt;();
 </code></pre><p>Eh bien, c’est en fait assez facile à faire avec Unity. Unity n’est pas vraiment le conteneur IoC le plus à la mode, mais il est bien supporté, facile à utiliser, et extensible. J’ai créé l’extension suivante pour permettre le scénario décrit plus haut :</p>
-<pre><code>public class AutoFakeExtension : UnityContainerExtension
+<pre tabindex="0"><code>public class AutoFakeExtension : UnityContainerExtension
 {
     protected override void Initialize()
     {
@@ -111,7 +112,7 @@ var sut = container.Resolve&lt;SystemUnderTest&gt;();
      
         static AutoFakeBuilderStrategy()
         {
-            _fakeGenericDefinition = typeof(A).GetMethod(&quot;Fake&quot;, Type.EmptyTypes);
+            _fakeGenericDefinition = typeof(A).GetMethod(&#34;Fake&#34;, Type.EmptyTypes);
         }
          
         public override void PreBuildUp(IBuilderContext context)
@@ -138,10 +139,10 @@ var sut = container.Resolve&lt;SystemUnderTest&gt;();
 <li>Le vilain hack de réflexion est dû au fait que FakeItEasy n’a pas de surcharge non générique pour la méthode <code>A.Fake</code> qui accepte un <code>Type</code> en paramètre. Nul n’est parfait…</li>
 <li>La durée de vie du fake est définie à “container controlled” (c’est-à-dire qu’elle a la durée de vie du conteneur), parce que si on a besoin de configurer les appels sur le fake, il faut qu’on puisse accéder à la même instance que celle qui est injectée dans la classe testée :</li>
 </ul>
-<pre><code>var fooProvider = container.Resolve&lt;IFooProvider&gt;();
+<pre tabindex="0"><code>var fooProvider = container.Resolve&lt;IFooProvider&gt;();
 A.CallTo(() =&gt; fooProvider.GetFoo(42)).Returns(new Foo { Id = 42, Name = “test” });
 </code></pre><p>Remarquez que si on enregistre explicitement une dépendance dans le conteneur, elle sera utilisée en priorité et aucun fake ne sera créé. On peut donc utiliser cette extension tout en gardant la possibilité de spécifier certaines dépendances manuellement :</p>
-<pre><code>var container = new UnityContainer();
+<pre tabindex="0"><code>var container = new UnityContainer();
 container.AddNewExtension&lt;AutoFakeExtension&gt;();
 container.RegisterType&lt;IFooProvider, TestFooProvider&gt;();
 var sut = container.Resolve&lt;SystemUnderTest&gt;();
@@ -274,7 +275,7 @@ var sut = container.Resolve&lt;SystemUnderTest&gt;();
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

@@ -12,8 +12,8 @@
 .NET 4.5 a introduit la classe HttpClient comme nouveau moyen de communiquer en HTTP. Elle repose en fait sur HttpWebRequest en interne, mais offre une API plus pratique et complètement asynchrone." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2013/12/01/envoyer-des-donnees-avec-httpclient-selon-un-modele-push/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2013-12-01T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2013-12-01T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2013-12-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2013-12-01T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -88,7 +89,7 @@ if (!doNotTrack) {
 <li><code>StreamContent</code>: représente des données binaires brutes sous forme d’un flux</li>
 </ul>
 <p>Par exemple, voilà comment on peut uploader le contenu d’un fichier :</p>
-<pre><code>async Task UploadFileAsync(Uri uri, string filename)
+<pre tabindex="0"><code>async Task UploadFileAsync(Uri uri, string filename)
 {
     using (var stream = File.OpenRead(filename))
     {
@@ -99,7 +100,7 @@ if (!doNotTrack) {
 }
 </code></pre><p>Comme vous l’aurez peut-être remarqué, ce code n’écrit jamais explicitement sur le flux de la requête : le contenu est automatiquement lu depuis le flux source et copié vers le flux de la requête.</p>
 <p>Ce modèle “pull” convient à la plupart des usages, mais il a un inconvénient : il nécessite que les données à envoyer existent déjà sous une forme qui peut être directement envoyée au serveur. Ce n’est pas toujours souhaitable, parce que parfois on veut générer “à la volée” le contenu de la requête. Par exemple, si on veut envoyer un objet sérialisé en JSON, avec l’approche “pull”, il faut d’abord le sérialiser en mémoire dans une <code>String</code> ou un <code>MemoryStream</code>, puis affecter cela au contenu de la requête :</p>
-<pre><code>async Task UploadJsonObjectAsync&lt;T&gt;(Uri uri, T data)
+<pre tabindex="0"><code>async Task UploadJsonObjectAsync&lt;T&gt;(Uri uri, T data)
 {
     var client = new HttpClient();
     string json = JsonConvert.SerializeObject(data);
@@ -108,7 +109,7 @@ if (!doNotTrack) {
 }
 </code></pre><p>Ce n’est pas vraiment un problème pour des petits objets, mais ce n’est clairement pas optimal pour des graphes d’objets plus importants…</p>
 <p>Alors, comment pourrait-on inverser ce modèle pull en un modèle push ? Eh bien c’est en fait assez simple : il suffit de créer une classe qui hérite de <code>HttpContent</code>, et de redéfinir sa méthode <code>SerializeToStreamAsync</code> pour écrire directement sur le flux de la requête. En fait, j’avais l’intention de bloguer sur ma propre implémentation, mais j’ai fait quelques recherches, et il s’avère que Microsoft a déjà fait le travail : la librairie <a href="https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client">Web API 2 Client</a> fournit une classe <code>PushStreamContent</code> qui fait exactement ça. En gros, il faut juste lui passer un délégué qui définit quoi faire avec le flux de la requête. Voilà comment ça fonctionne :</p>
-<pre><code>async Task UploadJsonObjectAsync&lt;T&gt;(Uri uri, T data)
+<pre tabindex="0"><code>async Task UploadJsonObjectAsync&lt;T&gt;(Uri uri, T data)
 {
     var client = new HttpClient();
     var content = new PushStreamContent((stream, httpContent, transportContext) =&gt;
@@ -124,7 +125,7 @@ if (!doNotTrack) {
 }
 </code></pre><p>Notez que la classe <code>PushStreamContent</code> fournit aussi une surcharge du constructeur qui accepte un délégué asynchrone, si vous voulez écrire sur le flux de façon asynchrone.</p>
 <p>En fait, pour ce cas d’utilisation spécifique, la librairie Web API 2 Client propose une approche moins alambiquée : la classe <code>ObjectContent</code>. Il faut juste lui passer l’objet à envoyer ainsi qu’un <code>MediaTypeFormatter</code>, et elle se charge de sérialiser l’objet sur le flux de la requête :</p>
-<pre><code>async Task UploadJsonObjectAsync&lt;T&gt;(Uri uri, T data)
+<pre tabindex="0"><code>async Task UploadJsonObjectAsync&lt;T&gt;(Uri uri, T data)
 {
     var client = new HttpClient();
     var content = new ObjectContent&lt;T&gt;(data, new JsonMediaTypeFormatter());
@@ -262,7 +263,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

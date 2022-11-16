@@ -52,7 +52,7 @@ Par exemple, Linq est plus rapide dans .</description>
       
       <guid>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</guid>
       <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&amp;rsquo;en-tête du bloc (la ligne qui commence par @@), comme ceci :
-diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;);  Console.WriteLine(&amp;#34;Hello World!&amp;#34;);  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
     </item>
     
     <item>
@@ -83,7 +83,7 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
       <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
       <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
 .NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
-private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) { int count = 0; double sum = 0.0; foreach (var value in values) { count++; sum += value; } return Tuple.</description>
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {  int count = 0;  double sum = 0.0;  foreach (var value in values)  {  count++;  sum += value;  }  return Tuple.</description>
     </item>
     
     <item>
@@ -93,7 +93,7 @@ private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&
       
       <guid>https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/</guid>
       <description>Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
-public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() { // .</description>
+public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) {  var store = await GetBookStoreAsync();  var book = store.GetBookByIdAsync(id);  return book != null; }  // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() {  // .</description>
     </item>
     
     <item>
@@ -142,7 +142,7 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
       <guid>https://thomaslevesque.fr/2015/08/02/casse-tte-c-n2/</guid>
       <description>Encore un petit casse-tête basé sur un problème que j’ai rencontré au boulot…
 Regardez ce morceau de code :
-Console.WriteLine($&amp;quot;x &amp;gt; y is {x &amp;gt; y}&amp;quot;); Console.WriteLine($&amp;quot;!(x &amp;lt;= y) is {!(x &amp;lt;= y)}&amp;quot;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
+Console.WriteLine($&amp;#34;x &amp;gt; y is {x &amp;gt; y}&amp;#34;); Console.WriteLine($&amp;#34;!(x &amp;lt;= y) is {!(x &amp;lt;= y)}&amp;#34;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
 x &amp;gt; y is False !(x &amp;lt;= y) is True </description>
     </item>
     
@@ -277,7 +277,7 @@ Il est souvent utile d&amp;rsquo;être notifié quand la valeur d&amp;rsquo;une 
       
       <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
       <description>Le problème Je suis sûr qu&amp;rsquo;il vous est déjà arrivé d&amp;rsquo;écrire ce genre de code :
-X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
     </item>
     
     <item>

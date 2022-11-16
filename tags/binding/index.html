@@ -25,17 +25,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -127,7 +128,7 @@ Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une proprié
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Comme je l&rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&rsquo;exemple d&rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
-private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;(); public ObservableCollection&lt;string&gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&#34;Strings&#34;); } } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&rsquo;exception citée plus haut.
+ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;();  public ObservableCollection&lt;string&gt; Strings  {  get { return _strings; }  set  {  _strings = value;  OnPropertyChanged(&#34;Strings&#34;);  }  } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&rsquo;exception citée plus haut.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -221,7 +222,7 @@ private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&l
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

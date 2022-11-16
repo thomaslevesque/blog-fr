@@ -50,7 +50,7 @@
       
       <guid>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</guid>
       <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&amp;rsquo;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&amp;rsquo;accès à ces entités :
-var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where ord.Date &amp;gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :</description>
+var query =  from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;)  where ord.Date &amp;gt;= DateTime.Today  select ord; Ou encore, pour inclure aussi le produit :</description>
     </item>
     
     <item>
@@ -60,7 +60,7 @@ var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where 
       
       <guid>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</guid>
       <description>Le composant Grid est l&amp;rsquo;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&amp;rsquo;utiliser, bien que simple à écrire, est relativement lourd :
-&amp;lt;Grid&amp;gt; &amp;lt;Grid.RowDefinitions&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt; &amp;lt;/Grid.RowDefinitions&amp;gt; &amp;lt;Grid.ColumnDefinitions&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt; &amp;lt;/Grid.ColumnDefinitions&amp;gt; &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;0&amp;#34; /&amp;gt; &amp;lt;TextBox Text=&amp;#34;Hello world&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;1&amp;#34;/&amp;gt; &amp;lt;Rectangle Fill=&amp;#34;Black&amp;#34; Grid.Row=&amp;#34;1&amp;#34; Grid.ColumnSpan=&amp;#34;2&amp;#34;/&amp;gt; &amp;lt;Label Content=&amp;#34;Image&amp;#34; Grid.</description>
+&amp;lt;Grid&amp;gt;  &amp;lt;Grid.RowDefinitions&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt;  &amp;lt;/Grid.RowDefinitions&amp;gt;  &amp;lt;Grid.ColumnDefinitions&amp;gt;  &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt;  &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt;  &amp;lt;/Grid.ColumnDefinitions&amp;gt;   &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.</description>
     </item>
     
     <item>
@@ -79,7 +79,7 @@ var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where 
       
       <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
       <description>Le problème Je suis sûr qu&amp;rsquo;il vous est déjà arrivé d&amp;rsquo;écrire ce genre de code :
-X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
     </item>
     
     <item>
@@ -135,7 +135,7 @@ X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&
       
       <guid>https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/</guid>
       <description>Je ressors de mes tiroirs un code que j&amp;rsquo;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&amp;hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&amp;rsquo;utilise comme ceci :
-private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&amp;rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&amp;rsquo;à ce que le bouton soit relâché.</description>
+ private void Window_MouseDown(object sender, MouseButtonEventArgs e)  {  this.DragMove();  } A partir de l&amp;rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&amp;rsquo;à ce que le bouton soit relâché.</description>
     </item>
     
     <item>
@@ -145,7 +145,7 @@ private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.Drag
       
       <guid>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</guid>
       <description>Comme je l&amp;rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&amp;rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&amp;rsquo;exemple d&amp;rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
-private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;(); public ObservableCollection&amp;lt;string&amp;gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&amp;#34;Strings&amp;#34;); } } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&amp;rsquo;exception citée plus haut.</description>
+ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;();  public ObservableCollection&amp;lt;string&amp;gt; Strings  {  get { return _strings; }  set  {  _strings = value;  OnPropertyChanged(&amp;#34;Strings&amp;#34;);  }  } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&amp;rsquo;exception citée plus haut.</description>
     </item>
     
     <item>
@@ -173,8 +173,7 @@ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableColl
       
       <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
       <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
-&amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
- La propriété Command n&amp;rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&amp;rsquo;arbre logique ou visuel du contrôle, ils n&amp;rsquo;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&amp;rsquo;écrire du code-behind.</description>
+ &amp;lt;UserControl.InputBindings&amp;gt;  &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt;  &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :</description>
     </item>
     
     <item>

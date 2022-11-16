@@ -11,8 +11,8 @@
 <meta property="og:description" content="Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (StackOverflowException en .NET)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2011/08/30/rcursion-terminale-en-c/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2011-08-30T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2011-08-30T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2011-08-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2011-08-30T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -83,7 +84,7 @@ if (!doNotTrack) {
 <p>En C#, le compilateur n’implémente malheureusement pas la récursion terminale, ce qui est un peu dommage dans la mesure où <a href="http://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes.tailcall.aspx">le CLR le supporte</a>… Pourtant, tout n’est pas perdu ! Certaines personnes ont eu une idée très astucieuse pour résoudre le problème : une technique appelée “trampoline” (parce qu’elle fait “rebondir” la fonction) qui permet de transformer très facilement un algorithme récursif en algorithme itératif. Samuel Jack explique très bien le concept <a href="http://blog.functionalfun.net/2008/04/bouncing-on-your-tail.html">sur son blog</a> (en anglais). Dans la suite de cet article, on verra comment appliquer cette technique à un algorithme simple, en utilisant la classe présentée dans l’article de Samuel Jack ; et pour finir, je présenterai une autre implémentation d’un trampoline, qui me semble un peu plus souple.</p>
 <h6 id="un-cas-dutilisation-en-c"><strong>Un cas d’utilisation en C#</strong></h6>
 <p>Voyons donc comment on peut transformer un algorithme récursif simple, comme le calcul de la factorielle d’un nombre, en un algorithme qui utilise la récursion terminale (soit dit en passant, on peut calculer la factorielle beaucoup plus efficacement avec un algorithme non récursif, mais pour l’exemple on fera comme si on ne le savait pas…). L’algorithme qui découle directement de la définition est le suivant :</p>
-<pre><code>BigInteger Factorial(int n)
+<pre tabindex="0"><code>BigInteger Factorial(int n)
 {
     if (n &lt; 2)
         return 1;
@@ -92,7 +93,7 @@ if (!doNotTrack) {
 </code></pre><p>(Notez l’utilisation de <code>BigInteger</code> : si on veut pousser la récursion assez loin pour observer les effets de la récursion terminale, le résultat dépassera largement la capacité d’un <code>long</code>)</p>
 <p>Si on appelle cette méthode avec une grande valeur (aux alentours de 20000 sur ma machine), on obtient l’exception à laquelle on pouvait s’attendre : <code>StackOverflowException</code>. On a “empilé” tellement d’appels imbriqués à la méthode <code>Factorial</code> qu’on a épuisé la capacité de la pile. On va donc essayer de modifier le code pour pouvoir utiliser la récursion terminale.</p>
 <p>Comme mentionné plus haut, il faut que la dernière instruction de la méthode soit l’appel récursif à elle-même. Cela <em>semble</em> être le cas ici… mais en fait non : la dernière opération exécutée sera la multiplication, qui ne peut pas être effectuée avant de connaitre le résultat de <code>Factorial(n-1)</code>. Il faut donc repenser un peu la méthode, pour qu’elle se termine par un appel à elle-même avec des paramètres différents. Pour arriver à ce résultat, on va ajouter un paramètre <code>product</code>, qui va jouer le rôle d’accumulateur :</p>
-<pre><code>BigInteger Factorial(int n, BigInteger product)
+<pre tabindex="0"><code>BigInteger Factorial(int n, BigInteger product)
 {
     if (n &lt; 2)
         return product;
@@ -100,7 +101,7 @@ if (!doNotTrack) {
 }
 </code></pre><p>Pour le premier appel, il suffira de passer 1 comme valeur initiale de l’accumulateur.</p>
 <p>On a donc maintenant une méthode qui remplit les critères pour la récursion terminale : l’appel récursif à <code>Factorial</code> est bien la dernière opération effectuée par la méthode. Une fois qu’on a mis l’algorithme sous cette forme, la transformation finale pour appliquer la récursion terminale à l’aide du trampoline de Samuel Jack est triviale :</p>
-<pre><code>Bounce&lt;int, BigInteger, BigInteger&gt; Factorial(int n, BigInteger product)
+<pre tabindex="0"><code>Bounce&lt;int, BigInteger, BigInteger&gt; Factorial(int n, BigInteger product)
 {
     if (n &lt; 2)
         return Trampoline.ReturnResult&lt;int, BigInteger, BigInteger&gt;(product);
@@ -111,7 +112,7 @@ if (!doNotTrack) {
 <li>L’appel récursif à <code>Factorial</code> est remplacé par un appel à <code>Trampoline.Recurse</code>, qui indique les paramètres à utiliser pour le prochain appel de la méthode</li>
 </ul>
 <p>Cette méthode n’est pas directement utilisable, puisqu’elle renvoie un objet <code>Bounce</code> dont on ne sait pas trop quoi faire… Pour l’exécuter, on utilise la méthode <code>Trampoline.MakeTrampoline</code>, qui renvoie une nouvelle fonction qui applique la récursion terminale. On peut ensuite exécuter cette fonction directement :</p>
-<pre><code>    Func&lt;int, BigInteger, BigInteger&gt; fact = Trampoline.MakeTrampoline&lt;int, BigInteger, BigInteger&gt;(Factorial);
+<pre tabindex="0"><code>    Func&lt;int, BigInteger, BigInteger&gt; fact = Trampoline.MakeTrampoline&lt;int, BigInteger, BigInteger&gt;(Factorial);
     BigInteger result = fact(50000, 1);
 </code></pre><p>On peut maintenant calculer la factorielle d’un grand nombre sans risque de “faire sauter la pile”… bien sûr, ça reste assez lent : comme mentionné plus haut, ce n’est pas du tout la façon optimale de calculer une factorielle, et de plus les opérations avec <code>BigInteger</code> sont assez lourdes.</p>
 <h6 id="peut-on-faire-mieux-"><strong>Peut-on faire mieux ?</strong></h6>
@@ -123,17 +124,17 @@ if (!doNotTrack) {
 </ul>
 <p>Et pour finir, je trouve que la terminologie, bien qu’amusante, n’est pas très explicite…</p>
 <p>J’ai donc cherché à améliorer ce système pour le rendre plus pratique, en utilisant des méthodes anonymes sous forme d’expressions lambda. Il n’y a plus qu’un seul argument de type (le type de retour), et on passe les paramètres par closure dans une expression lambda. Voilà ce que donne la nouvelle version de la méthode <code>Factorial</code> avec mon implémentation :</p>
-<pre><code>RecursionResult&lt;BigInteger&gt; Factorial(int n, BigInteger product)
+<pre tabindex="0"><code>RecursionResult&lt;BigInteger&gt; Factorial(int n, BigInteger product)
 {
     if (n &lt; 2)
         return TailRecursion.Return(product);
     return TailRecursion.Next(() =&gt; Factorial(n - 1, n * product));
 }
 </code></pre><p>Et on l’utilise comme ceci :</p>
-<pre><code>BigInteger result = TailRecursion.Execute(() =&gt; Factorial(50000, 1));
+<pre tabindex="0"><code>BigInteger result = TailRecursion.Execute(() =&gt; Factorial(50000, 1));
 </code></pre><p>C’est plus souple, plus concis, et plus lisible… enfin il me semble en tous cas<img src="wlemoticon-smile.png" alt="Sourire">. Le revers de la médaille, c’est que performances sont légèrement moins bonnes (environ 20% plus long pour calculer la factorielle de 50000), probablement à cause du delegate qui est créé à chaque niveau de récursion.</p>
 <p>Voici le code complet de la classe <code>TailRecursion</code> :</p>
-<pre><code>public static class TailRecursion
+<pre tabindex="0"><code>public static class TailRecursion
 {
     public static T Execute&lt;T&gt;(Func&lt;RecursionResult&lt;T&gt;&gt; func)
     {
@@ -177,9 +178,9 @@ public class RecursionResult&lt;T&gt;
 </code></pre><h6 id="peut-on-aller-plus-loin-"><strong>Peut-on aller plus loin ?</strong></h6>
 <p>Certainement… mais ça devient de la haute voltige ! Comme je le disais plus haut, le CLR supporte la récursion terminale, via l’instruction IL <code>tail</code>. L’idéal serait que le compilateur C# sache générer cette instruction quand une méthode est éligible à la récursion terminale, mais ce n’est malheureusement pas le cas, et je ne pense pas qu’il faille s’attendre à ce que ce soit géré dans une prochaine version, car la demande pour cette fonctionnalité semble assez faible.</p>
 <p>En attendant, on peut tricher un peu, en aidant le compilateur à faire son travail : le .NET framework fournit des outils nommés <a href="http://msdn.microsoft.com/en-us/library/f7dy01k1.aspx">ildasm</a> (désassembleur IL) et <a href="http://msdn.microsoft.com/en-us/library/496e4ekx.aspx">ilasm</a> (assembleur IL), avec lesquels on peut s’amuser un peu… Reprenons notre implémentation récursive classique qui n’utilise pas encore la récursion terminale :</p>
-<pre><code>	static BigInteger Factorial(int n, BigInteger product){	if (n &lt; 2)		return product;	return Factorial(n - 1, n * product);}
+<pre tabindex="0"><code>	static BigInteger Factorial(int n, BigInteger product){	if (n &lt; 2)		return product;	return Factorial(n - 1, n * product);}
 </code></pre><p>Si on compile ce code, et qu’on le désassemble avec idlasm, on obtient le code IL suivant :</p>
-<pre><code>  .method private hidebysig static valuetype [System.Numerics]System.Numerics.BigInteger 
+<pre tabindex="0"><code>  .method private hidebysig static valuetype [System.Numerics]System.Numerics.BigInteger 
           Factorial(int32 n,
                     valuetype [System.Numerics]System.Numerics.BigInteger product) cil managed
   {
@@ -218,7 +219,7 @@ public class RecursionResult&lt;T&gt;
     IL_0028:  ret
   } // end of method Program::Factorial
 </code></pre><p>Ca pique un peu les yeux si on a pas l’habitude de lire du code IL, mais on arrive à peu près à voir ce qui se passe… L’appel récursif se situe à l’adresse <code>IL_001f</code>, c’est à ce niveau là qu’on va pouvoir intervenir. Si on lit la documentation de l’instruction <code>tail</code>, on apprend qu’elle doit précéder immédiatement une instruction <code>call</code>, et que l’instruction suivant le <code>call</code> doit être <code>ret</code> (retour de la méthode). Pour l’instant, il y a plusieurs instructions après le <code>call</code>, parce que le compilateur a généré une variable locale pour stocker la valeur de retour. Il faut juste modifier légèrement le code pour ne plus utiliser cette variable, et ajouter l’instruction <code>tail</code> au bon endroit :</p>
-<pre><code>  .method private hidebysig static valuetype [System.Numerics]System.Numerics.BigInteger 
+<pre tabindex="0"><code>  .method private hidebysig static valuetype [System.Numerics]System.Numerics.BigInteger 
           Factorial(int32 n,
                     valuetype [System.Numerics]System.Numerics.BigInteger product) cil managed
   {
@@ -378,7 +379,7 @@ Bien sûr, c’est n’est qu’une preuve de concept… il ne semble pas très 
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

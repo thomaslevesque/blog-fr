@@ -12,8 +12,8 @@
 Heureusement, Git permet assez facilement de &ldquo;nettoyer&rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&rsquo;auraient pas dû se trouver là." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2018-03-06T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2018-03-06T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2018-03-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-03-06T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Heureusement, Git permet assez facilement de &ldquo;nettoyer&rdquo; une branche,
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -86,8 +87,8 @@ if (!doNotTrack) {
 <p>Dans mon cas, je n&rsquo;avais pas besoin de publier la branche réécrite mais seulement de l&rsquo;examiner en local, donc le problème ne se posait pas. Mais n&rsquo;appliquez pas cette solution à une branche sur laquelle vos collègues travaillent, si vous tenez à conserver de bonnes relations avec eux 😉.</p>
 <h2 id="créer-une-branche-de-travail">Créer une branche de travail</h2>
 <p>On va faire des modifications assez lourdes et potentiellement risquées sur le dépôt, il convient donc de prendre quelques précautions. Le plus simple dans ce genre de situation est tout bêtement de travailler sur une autre branche, pour ne pas risquer de faire des dégâts sur la branche originale. Par exemple, si la branche à nettoyer est <code>master</code>, on va créer une nouvelle branche <code>master2</code> à partir de <code>master</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout -b master2 master
-</code></pre></div><h2 id="identifier-les-fichiers-à-supprimer">Identifier les fichiers à supprimer</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout -b master2 master
+</span></span></code></pre></div><h2 id="identifier-les-fichiers-à-supprimer">Identifier les fichiers à supprimer</h2>
 <p>Avant de lancer le nettoyage, il faut d&rsquo;abord identifier les fichiers à supprimer. Dans le cas d&rsquo;un projet .NET, il s&rsquo;agit bien souvent du contenu des répertoires <code>bin</code> et <code>obj</code> (où qu&rsquo;ils se trouvent) et <code>packages</code> (généralement à la racine de la solution), on va donc partir sur cette hypothèse pour l&rsquo;instant. Les patterns des fichiers à supprimer sont donc les suivants :</p>
 <ul>
 <li><code>**/bin/**</code></li>
@@ -103,17 +104,17 @@ if (!doNotTrack) {
 <li><code>--index-filter</code> : permet de filtrer les fichiers au niveau de l&rsquo;index (ne nécessite pas un checkout de chaque commit, donc plus rapide).</li>
 </ul>
 <p>Dans notre scénario, <code>--index-filter</code> est parfaitement indiqué, vu qu&rsquo;on souhaite simplement filtrer les fichiers par rapport à leur chemin. La commande <code>filter-branch</code> avec ce type de filtre s&rsquo;utilise comme ceci :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git filter-branch --index-filter <span style="color:#e6db74">&#39;&lt;command&gt;&#39;</span>
-</code></pre></div><p><code>&lt;command&gt;</code> désigne une commande bash qui sera exécutée pour chaque commit de la branche à réécrire. Dans le cas qui nous intéresse, ce sera simplement un appel à <code>git rm</code> pour supprimer de l&rsquo;index les fichiers indésirables :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git filter-branch --index-filter <span style="color:#e6db74">&#39;git rm --cached --ignore-unmatch **/bin/** **/obj/** packages/**&#39;</span>
-</code></pre></div><p>Le paramètre <code>--cached</code> indique qu&rsquo;on travaille sur l&rsquo;index et non sur la copie de travail; <code>--ignore-unmatch</code> permet d&rsquo;ignorer les cas où aucun fichier ne correspond au pattern spécifié. Par défaut, la commande s&rsquo;applique uniquement à la branche courante.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git filter-branch --index-filter <span style="color:#e6db74">&#39;&lt;command&gt;&#39;</span>
+</span></span></code></pre></div><p><code>&lt;command&gt;</code> désigne une commande bash qui sera exécutée pour chaque commit de la branche à réécrire. Dans le cas qui nous intéresse, ce sera simplement un appel à <code>git rm</code> pour supprimer de l&rsquo;index les fichiers indésirables :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git filter-branch --index-filter <span style="color:#e6db74">&#39;git rm --cached --ignore-unmatch **/bin/** **/obj/** packages/**&#39;</span>
+</span></span></code></pre></div><p>Le paramètre <code>--cached</code> indique qu&rsquo;on travaille sur l&rsquo;index et non sur la copie de travail; <code>--ignore-unmatch</code> permet d&rsquo;ignorer les cas où aucun fichier ne correspond au pattern spécifié. Par défaut, la commande s&rsquo;applique uniquement à la branche courante.</p>
 <p>Pour peu que la branche ait beaucoup d&rsquo;historique, la commande peut prendre assez longtemps à s&rsquo;exécuter, il faudra donc s&rsquo;armer de patience&hellip; Une fois terminé, vous devriez avoir une branche contenant des commits identiques à ceux de la branche d&rsquo;origine, mais sans les fichiers indésirables.</p>
 <h2 id="cas-plus-complexes">Cas plus complexes</h2>
 <p>Dans l&rsquo;exemple ci-dessus, il n&rsquo;y avait que 3 patterns de fichiers à supprimer, donc la commande était assez courte pour être écrite &ldquo;inline&rdquo;. Mais s&rsquo;il y en a beaucoup plus, ou si la logique à appliquer pour supprimer les fichiers est plus complexe, ça ne tient plus vraiment la route&hellip; le plus simple est donc d&rsquo;écrire un script (bash) qui contient toutes les commandes nécessaires, et de passer ce script en paramètre de <code>git filter-branch --index-filter</code>.</p>
 <h2 id="nettoyer-uniquement-à-partir-dun-commit-spécifique">Nettoyer uniquement à partir d&rsquo;un commit spécifique</h2>
 <p>Dans l&rsquo;exemple précédent, on applique <code>filter-branch</code> à la totalité de la branche. Mais il est également possible de ne l&rsquo;appliquer qu&rsquo;à partir d&rsquo;un commit spécifique, en spécifiant une plage de commits :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git filter-branch --index-filter <span style="color:#e6db74">&#39;&lt;command&gt;&#39;</span> &lt;ref&gt;..HEAD
-</code></pre></div><p>Ici, <code>&lt;ref&gt;</code> désigne une référence de commit (SHA1, branche ou tag). Notez que la fin de la plage de commits doit forcément être <code>HEAD</code> : on ne peut pas réécrire le début ou le milieu d&rsquo;une branche sans toucher aux commits suivants, puisque le SHA1 de chaque commit dépend du commit précédent.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git filter-branch --index-filter <span style="color:#e6db74">&#39;&lt;command&gt;&#39;</span> &lt;ref&gt;..HEAD
+</span></span></code></pre></div><p>Ici, <code>&lt;ref&gt;</code> désigne une référence de commit (SHA1, branche ou tag). Notez que la fin de la plage de commits doit forcément être <code>HEAD</code> : on ne peut pas réécrire le début ou le milieu d&rsquo;une branche sans toucher aux commits suivants, puisque le SHA1 de chaque commit dépend du commit précédent.</p>
 
 		</div>
 		<footer class="post__footer">
@@ -231,7 +232,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

@@ -12,8 +12,8 @@
 Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scénarios de recherche directement dans une application Windows Store. L’une de ses fonctionnalités est l’affichage de suggestions basées sur la saisie de l’utilisateur." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2013-11-04T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2013-11-04T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2013-11-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2013-11-04T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scén
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -88,18 +89,18 @@ if (!doNotTrack) {
 </ul>
 <p>Pour fournir des suggestions, il faut gérer l’évènement <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.controls.searchbox.suggestionsrequested"><code>SuggestionsRequested</code></a> de la <code>SearchBox</code>, et ajouter des suggestions à l’aide des méthodes <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.applicationmodel.search.searchsuggestioncollection.appendquerysuggestion"><code>AppendQuerySuggestion</code></a> et <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh700542"><code>AppendResultSuggestion</code></a>. Concentrons-nous sur les suggestions de résultat.</p>
 <p>La méthode <code>AppendResultSuggestion</code> prend plusieurs paramètres, dont l’un représente l’image à afficher pour la suggestion. Il est obligatoire (passer null lèvera une exception), et il est de type <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.storage.streams.irandomaccessstreamreference"><code>IRandomAccessStreamReference</code></a>, c’est-à-dire quelque chose qui peut fournir un flux. Je trouve ça un peu étrange, vu qu’il aurait été plus naturel de passer une <code>ImageSource</code>, mais c’est comme ça… J’ai donc cherché une classe qui implémente l’interface <code>IRandomAccessStreamReference</code>, et le premier candidat évident que j’ai trouvé était la classe <code>StorageFile</code>, qui représente un fichier. J’ai donc écrit le code suivant :</p>
-<pre><code>private async void SearchBox_SuggestionsRequested(SearchBox sender, SearchBoxSuggestionsRequestedEventArgs args)
+<pre tabindex="0"><code>private async void SearchBox_SuggestionsRequested(SearchBox sender, SearchBoxSuggestionsRequestedEventArgs args)
 {
     var deferral = args.Request.GetDeferral();
     try
     {
-        var imageUri = new Uri(&quot;ms-appx:///test.png&quot;);
+        var imageUri = new Uri(&#34;ms-appx:///test.png&#34;);
         var imageRef = await StorageFile.GetFileFromApplicationUriAsync(imageUri);
-        args.Request.SearchSuggestionCollection.AppendQuerySuggestion(&quot;test&quot;);
-        args.Request.SearchSuggestionCollection.AppendSearchSeparator(&quot;Foo Bar&quot;);
-        args.Request.SearchSuggestionCollection.AppendResultSuggestion(&quot;foo&quot;, &quot;Details&quot;, &quot;foo&quot;, imageRef, &quot;Result&quot;);
-        args.Request.SearchSuggestionCollection.AppendResultSuggestion(&quot;bar&quot;, &quot;Details&quot;, &quot;bar&quot;, imageRef, &quot;Result&quot;);
-        args.Request.SearchSuggestionCollection.AppendResultSuggestion(&quot;baz&quot;, &quot;Details&quot;, &quot;baz&quot;, imageRef, &quot;Result&quot;);
+        args.Request.SearchSuggestionCollection.AppendQuerySuggestion(&#34;test&#34;);
+        args.Request.SearchSuggestionCollection.AppendSearchSeparator(&#34;Foo Bar&#34;);
+        args.Request.SearchSuggestionCollection.AppendResultSuggestion(&#34;foo&#34;, &#34;Details&#34;, &#34;foo&#34;, imageRef, &#34;Result&#34;);
+        args.Request.SearchSuggestionCollection.AppendResultSuggestion(&#34;bar&#34;, &#34;Details&#34;, &#34;bar&#34;, imageRef, &#34;Result&#34;);
+        args.Request.SearchSuggestionCollection.AppendResultSuggestion(&#34;baz&#34;, &#34;Details&#34;, &#34;baz&#34;, imageRef, &#34;Result&#34;);
     }
     finally
     {
@@ -110,15 +111,15 @@ if (!doNotTrack) {
 <p><img src="BiF0g.png" alt="http://i.stack.imgur.com/BiF0g.png"></p>
 <p>J’ai passé un long moment à tout revérifier, à faire plein de petits changements pour essayer de trouver l’origine du problème, j’ai même fait ma propre implémentation de <code>IRandomAccessStreamReference</code>… en vain.</p>
 <p>J’ai finalement <a href="http://stackoverflow.com/questions/19769689/image-not-shown-for-result-suggestions-in-searchbox">posté mon problème sur Stack Overflow</a>, et quelqu’un m’a gentiment fourni la solution, qui était très simple : au lieu d’utiliser <code>StorageFile</code>, il faut utiliser <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.storage.streams.randomaccessstreamreference"><code>RandomAccessStreamReference</code></a> (ça semble assez évident une fois qu’on sait que ça existe). Le code devient donc :</p>
-<pre><code>private void SearchBox_SuggestionsRequested(SearchBox sender, SearchBoxSuggestionsRequestedEventArgs args)
+<pre tabindex="0"><code>private void SearchBox_SuggestionsRequested(SearchBox sender, SearchBoxSuggestionsRequestedEventArgs args)
 {
-    var imageUri = new Uri(&quot;ms-appx:///test.png&quot;);
+    var imageUri = new Uri(&#34;ms-appx:///test.png&#34;);
     var imageRef = RandomAccessStreamReference.CreateFromUri(imageUri);
-    args.Request.SearchSuggestionCollection.AppendQuerySuggestion(&quot;test&quot;);
-    args.Request.SearchSuggestionCollection.AppendSearchSeparator(&quot;Foo Bar&quot;);
-    args.Request.SearchSuggestionCollection.AppendResultSuggestion(&quot;foo&quot;, &quot;Details&quot;, &quot;foo&quot;, imageRef, &quot;Result&quot;);
-    args.Request.SearchSuggestionCollection.AppendResultSuggestion(&quot;bar&quot;, &quot;Details&quot;, &quot;bar&quot;, imageRef, &quot;Result&quot;);
-    args.Request.SearchSuggestionCollection.AppendResultSuggestion(&quot;baz&quot;, &quot;Details&quot;, &quot;baz&quot;, imageRef, &quot;Result&quot;);
+    args.Request.SearchSuggestionCollection.AppendQuerySuggestion(&#34;test&#34;);
+    args.Request.SearchSuggestionCollection.AppendSearchSeparator(&#34;Foo Bar&#34;);
+    args.Request.SearchSuggestionCollection.AppendResultSuggestion(&#34;foo&#34;, &#34;Details&#34;, &#34;foo&#34;, imageRef, &#34;Result&#34;);
+    args.Request.SearchSuggestionCollection.AppendResultSuggestion(&#34;bar&#34;, &#34;Details&#34;, &#34;bar&#34;, imageRef, &#34;Result&#34;);
+    args.Request.SearchSuggestionCollection.AppendResultSuggestion(&#34;baz&#34;, &#34;Details&#34;, &#34;baz&#34;, imageRef, &#34;Result&#34;);
 }
 </code></pre><p>(Notez que la méthode n’est plus asynchrone, il n’y a donc plus besoin d’utiliser l’objet deferral).</p>
 <p>Les suggestions sont maintenant affichées comme je le voulais, avec l’image :</p>
@@ -251,7 +252,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

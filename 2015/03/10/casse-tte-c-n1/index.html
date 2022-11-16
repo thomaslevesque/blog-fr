@@ -13,8 +13,8 @@ Je viens de penser à celui-ci :
 static void Test(out int x, out int y) { x = 42; y = 123; Console.WriteLine (x == y); } Que pensez-vous que ce code affiche ? Pouvez-vous en être sûr ? Postez votre réponse dans les commentaires !" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/03/10/casse-tte-c-n1/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-03-10T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-03-10T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-03-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-03-10T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -30,17 +30,18 @@ static void Test(out int x, out int y) { x = 42; y = 123; Console.WriteLine (x =
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -83,7 +84,7 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>J’adore résoudre des casse-têtes en C#; je pense que c’est un excellent moyen d’approfondir sa connaissance du langage. Et en plus, c’est amusant !</p>
 <p>Je viens de penser à celui-ci :</p>
-<pre><code>static void Test(out int x, out int y)
+<pre tabindex="0"><code>static void Test(out int x, out int y)
 {
     x = 42;
     y = 123;
@@ -208,7 +209,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

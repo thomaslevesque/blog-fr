@@ -12,8 +12,8 @@
 Ma solution initiale était plus une preuve de concept qu’autre chose, et avait un sérieux problème de performance, dû à l’utilisation de DynamicInvoke à chaque fois que l’évènement était déclenché." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/08/16/weak-events-en-c-suite/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-08-16T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-08-16T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-08-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-08-16T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Ma solution initiale était plus une preuve de concept qu’autre chose, et avai
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -81,9 +82,9 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>Il y a quelques années, j’ai blogué à propos d’une <a href="/2010/05/16/c-une-implementation-du-pattern-weakevent/">implémentation générique du pattern “weak event” en C#</a>. Le but était de pallier les problèmes de fuites mémoire liés aux évènements quand on oublie de s’en désabonner. L’implémentation était basée sur l’utilisation de références faibles sur les abonnés, de façon à éviter d’empêcher qu’ils soient libérés par le garbage collector.</p>
 <p>Ma solution initiale était plus une preuve de concept qu’autre chose, et avait un sérieux problème de performance, dû à l’utilisation de <code>DynamicInvoke</code> à chaque fois que l’évènement était déclenché. Au fil des années, j’ai revisité le problème des “weak events” plusieurs fois, en apportant quelques améliorations à chaque fois, et j’ai maintenant une implémentation qui devrait être suffisamment performante pour la plupart des cas d’utilisation. L’API publique est similaire à celle de ma première solution. En gros, au lieu d’écrire un évènement comme ceci :</p>
-<pre><code>public event EventHandler MyEvent;
+<pre tabindex="0"><code>public event EventHandler MyEvent;
 </code></pre><p>On l’écrit comme ceci :</p>
-<pre><code>private readonly WeakEventSource _myEventSource = new WeakEventSource();
+<pre tabindex="0"><code>private readonly WeakEventSource _myEventSource = new WeakEventSource();
 public event EventHandler MyEvent
 {
     add { _myEventSource.Subscribe(value); }
@@ -91,7 +92,7 @@ public event EventHandler MyEvent
 }
 </code></pre><p>Du point de vue de celui qui s’abonne à l’évènement, c’est exactement pareil qu’un évènement normal, mais l’abonné restera éligible à la garbage collection s’il n’est plus référencé nulle part ailleurs.</p>
 <p>L’objet qui publie l’évènement peut le déclencher comme ceci :</p>
-<pre><code>_myEventSource.Raise(this, e);
+<pre tabindex="0"><code>_myEventSource.Raise(this, e);
 </code></pre><p>Il y a une petite limitation : la signature de l’évènement <em>doit</em> être <code>EventHandler&lt;TEventArgs&gt;</code> (avec ce que vous voulez comme <code>TEventArgs</code>, bien sûr). Ca ne peut pas être quelque chose comme <code>FooEventHandler</code>, ou un type de délégué custom. Je ne pense pas que ce soit un problème majeur, dans la mesure où une vaste majorité des évènements dans le monde .NET respecte le pattern recommandé <code>void (sender, args)</code>, et les delegates spécifiques comme <code>FooEventHandler</code> ont en fait la même signature que <code>EventHandler&lt;FooEventArgs&gt;</code>. J’avais d’abord essayé de supporter n’importe quel type de delegate, mais ça s’est avéré un peu trop compliqué… pour l’instant en tout cas <img src="wlEmoticon-winkingsmile.png" alt="Winking smile">.</p>
 <h3 id="comment-ça-marche">Comment ça marche?</h3>
 <p>La nouvelle solution est encore basée sur des références faibles, mais change la façon dont la méthode cible est appelée. Au lieu d’utiliser <code>DynamicInvoke</code>, on crée un “open-instance delegate” pour la méthode lors de l’abonnement. Cela signifie que pour une méthode ayant une signature comme <code>void EventHandler(object sender, EventArgs e)</code>, on  crée un delegate avec la signature <code>void OpenEventHandler(object target, object sender, EventArgs e)</code>. Le paramètre supplémentaire <code>target</code> représente l’instance sur laquelle la méthode est appelée. Pour invoquer le gestionnaire de l’évènement, il suffit de récupérer la cible à partir de la référence faible, et si elle est toujours vivante, de la passer au “open-instance delegate”.</p>
@@ -222,7 +223,7 @@ public event EventHandler MyEvent
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

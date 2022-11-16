@@ -9,17 +9,17 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="[Windows Forms] Glisser-déplacer automatique de contrôles (DragMove)" />
 <meta property="og:description" content="Je ressors de mes tiroirs un code que j&rsquo;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&rsquo;utilise comme ceci :
-private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché." />
+ private void Window_MouseDown(object sender, MouseButtonEventArgs e)  {  this.DragMove();  } A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2009-04-27T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2009-04-27T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2009-04-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2009-04-27T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[Windows Forms] Glisser-déplacer automatique de contrôles (DragMove)"/>
 <meta name="twitter:description" content="Je ressors de mes tiroirs un code que j&rsquo;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&rsquo;utilise comme ceci :
-private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché."/>
+ private void Window_MouseDown(object sender, MouseButtonEventArgs e)  {  this.DragMove();  } A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -28,17 +28,18 @@ private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.Drag
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -80,11 +81,11 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-27T00:00:00Z">April 27, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Je ressors de mes tiroirs un code que j&rsquo;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&hellip;  Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : <code>Window.DragMove</code>. Elle s&rsquo;utilise comme ceci :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> Window_MouseDown(<span style="color:#66d9ef">object</span> sender, MouseButtonEventArgs e)
-        {
-            <span style="color:#66d9ef">this</span>.DragMove();
-        }
-</code></pre></div><p>A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché. Difficile de faire plus simple ;)  Malheureusement, cette méthode n&rsquo;existe qu&rsquo;en WPF, et une majorité de développeurs travaillent encore avec Windows Forms. Je vous propose donc un code qui permet d&rsquo;utiliser en Windows Forms la technique décrite ci-dessus, en y apportant les améliorations suivantes :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> Window_MouseDown(<span style="color:#66d9ef">object</span> sender, MouseButtonEventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.DragMove();
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>A partir de l&rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&rsquo;à ce que le bouton soit relâché. Difficile de faire plus simple ;)  Malheureusement, cette méthode n&rsquo;existe qu&rsquo;en WPF, et une majorité de développeurs travaillent encore avec Windows Forms. Je vous propose donc un code qui permet d&rsquo;utiliser en Windows Forms la technique décrite ci-dessus, en y apportant les améliorations suivantes :</p>
 <ul>
 <li>Utilisable sur n&rsquo;importe quel contrôle, pas seulement sur une fenêtre</li>
 <li>Pas d&rsquo;obligation de gérer l&rsquo;évènement <code>MouseDown</code></li>
@@ -100,18 +101,18 @@ if (!doNotTrack) {
 <li>La méthode la plus simple, sans écrire une seule ligne de code : en mode design, poser un <code>DragMoveProvider</code> sur la Form, et positionner à <code>true</code> la propriété <code>EnableDragMove</code> sur la Form ou le contrôle
 <img src="dragmoveprovider1.png" alt="DragMoveProvider">- La méthode la plus proche de WPF : dans le handler de l&rsquo;évènement <code>MouseDown</code>, appeler la méthode d&rsquo;extension <code>DragMove</code> sur la Form ou le contrôle à déplacer</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> label2_MouseDown(<span style="color:#66d9ef">object</span> sender, MouseEventArgs e)
-        {
-            label2.DragMove();
-        }
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> label2_MouseDown(<span style="color:#66d9ef">object</span> sender, MouseEventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            label2.DragMove();
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><ul>
 <li>La méthode la plus souple : appeler, au cas par cas, la méthode d&rsquo;extension <code>EnableDragMove</code> sur la Form ou le contrôle à déplacer (aucun évènement à gérer).</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> checkBox1_CheckedChanged(<span style="color:#66d9ef">object</span> sender, EventArgs e)
-        {
-            <span style="color:#66d9ef">this</span>.EnableDragMove(checkBox1.Checked);
-        }
-</code></pre></div><p>La solution en pièce jointe contient la librairie réutilisable WinFormsDragMove, ainsi qu&rsquo;un projet de test qui illustre les différentes manières d&rsquo;utiliser cette librairie. Une version compatible C# 2 des ces projets est également inclue.  <a href="DragMove.zip">Télécharger les sources</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> checkBox1_CheckedChanged(<span style="color:#66d9ef">object</span> sender, EventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.EnableDragMove(checkBox1.Checked);
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>La solution en pièce jointe contient la librairie réutilisable WinFormsDragMove, ainsi qu&rsquo;un projet de test qui illustre les différentes manières d&rsquo;utiliser cette librairie. Une version compatible C# 2 des ces projets est également inclue.  <a href="DragMove.zip">Télécharger les sources</a></p>
 
 		</div>
 		<footer class="post__footer">
@@ -232,7 +233,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

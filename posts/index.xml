@@ -110,7 +110,7 @@ Aujourd&amp;rsquo;hui j&amp;rsquo;ai le plaisir d&amp;rsquo;annoncer la sortie d
       
       <guid>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</guid>
       <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&amp;rsquo;en-tête du bloc (la ligne qui commence par @@), comme ceci :
-diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;);  Console.WriteLine(&amp;#34;Hello World!&amp;#34;);  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
     </item>
     
     <item>
@@ -141,7 +141,7 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
       <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
       <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
 .NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
-private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) { int count = 0; double sum = 0.0; foreach (var value in values) { count++; sum += value; } return Tuple.</description>
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {  int count = 0;  double sum = 0.0;  foreach (var value in values)  {  count++;  sum += value;  }  return Tuple.</description>
     </item>
     
     <item>
@@ -151,7 +151,7 @@ private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&
       
       <guid>https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/</guid>
       <description>Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
-public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() { // .</description>
+public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) {  var store = await GetBookStoreAsync();  var book = store.GetBookByIdAsync(id);  return book != null; }  // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() {  // .</description>
     </item>
     
     <item>
@@ -219,7 +219,7 @@ Ma solution initiale était plus une preuve de concept qu’autre chose, et avai
       <guid>https://thomaslevesque.fr/2015/08/02/casse-tte-c-n2/</guid>
       <description>Encore un petit casse-tête basé sur un problème que j’ai rencontré au boulot…
 Regardez ce morceau de code :
-Console.WriteLine($&amp;quot;x &amp;gt; y is {x &amp;gt; y}&amp;quot;); Console.WriteLine($&amp;quot;!(x &amp;lt;= y) is {!(x &amp;lt;= y)}&amp;quot;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
+Console.WriteLine($&amp;#34;x &amp;gt; y is {x &amp;gt; y}&amp;#34;); Console.WriteLine($&amp;#34;!(x &amp;lt;= y) is {!(x &amp;lt;= y)}&amp;#34;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
 x &amp;gt; y is False !(x &amp;lt;= y) is True </description>
     </item>
     
@@ -239,7 +239,7 @@ x &amp;gt; y is False !(x &amp;lt;= y) is True </description>
       
       <guid>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</guid>
       <description>Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc catch :
-static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&amp;quot;Error 42 occurred&amp;quot;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.</description>
+static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&amp;#34;Error 42 occurred&amp;#34;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.</description>
     </item>
     
     <item>
@@ -287,7 +287,7 @@ static void Test(out int x, out int y) { x = 42; y = 123; Console.WriteLine (x =
       
       <guid>https://thomaslevesque.fr/2015/02/25/personnaliser-linterpolation-de-chaine-avec-c-6/</guid>
       <description>L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :
-string text = $&amp;quot;{p.Name} was born on {p.DateOfBirth:D}&amp;quot;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :</description>
+string text = $&amp;#34;{p.Name} was born on {p.DateOfBirth:D}&amp;#34;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :</description>
     </item>
     
     <item>
@@ -458,7 +458,7 @@ Il est souvent utile d&amp;rsquo;être notifié quand la valeur d&amp;rsquo;une 
       
       <guid>https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/</guid>
       <description>Les attributs d&amp;rsquo;informations de l&amp;rsquo;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&amp;rsquo;appliquent aux paramètres optionnels d&amp;rsquo;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&amp;rsquo;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
-static void Log( string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0) { Console.</description>
+ static void Log(  string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0)  {  Console.</description>
     </item>
     
     <item>
@@ -477,7 +477,7 @@ static void Log( string message, [CallerMemberName] string memberName = null, [C
       
       <guid>https://thomaslevesque.fr/2011/11/29/wpf-utiliser-linq-pour-filtrer-trier-et-grouper-les-donnes-dans-une-collectionview/</guid>
       <description>WPF offre un mécanisme assez simple pour la mise en forme de collections de données, via l’interface ICollectionView et ses propriétés Filter, SortDescriptions et GroupDescriptions :
-// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ... // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People); // Uniquement les adultes view.Filter = o =&amp;gt; ((Person)o).Age &amp;gt;= 18; // Tri par nom et prénom view.</description>
+// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ...  // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People);  // Uniquement les adultes view.Filter = o =&amp;gt; ((Person)o).Age &amp;gt;= 18;  // Tri par nom et prénom view.</description>
     </item>
     
     <item>
@@ -543,7 +543,7 @@ Lors de la PDC jeudi dernier, un coin du voile a enfin été levé, mais pas du 
       
       <guid>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</guid>
       <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&amp;rsquo;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&amp;rsquo;accès à ces entités :
-var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where ord.Date &amp;gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :</description>
+var query =  from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;)  where ord.Date &amp;gt;= DateTime.Today  select ord; Ou encore, pour inclure aussi le produit :</description>
     </item>
     
     <item>
@@ -553,7 +553,7 @@ var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where 
       
       <guid>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</guid>
       <description>Le composant Grid est l&amp;rsquo;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&amp;rsquo;utiliser, bien que simple à écrire, est relativement lourd :
-&amp;lt;Grid&amp;gt; &amp;lt;Grid.RowDefinitions&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt; &amp;lt;/Grid.RowDefinitions&amp;gt; &amp;lt;Grid.ColumnDefinitions&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt; &amp;lt;/Grid.ColumnDefinitions&amp;gt; &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;0&amp;#34; /&amp;gt; &amp;lt;TextBox Text=&amp;#34;Hello world&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;1&amp;#34;/&amp;gt; &amp;lt;Rectangle Fill=&amp;#34;Black&amp;#34; Grid.Row=&amp;#34;1&amp;#34; Grid.ColumnSpan=&amp;#34;2&amp;#34;/&amp;gt; &amp;lt;Label Content=&amp;#34;Image&amp;#34; Grid.</description>
+&amp;lt;Grid&amp;gt;  &amp;lt;Grid.RowDefinitions&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt;  &amp;lt;/Grid.RowDefinitions&amp;gt;  &amp;lt;Grid.ColumnDefinitions&amp;gt;  &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt;  &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt;  &amp;lt;/Grid.ColumnDefinitions&amp;gt;   &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.</description>
     </item>
     
     <item>
@@ -583,7 +583,7 @@ var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where 
       
       <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
       <description>Le problème Je suis sûr qu&amp;rsquo;il vous est déjà arrivé d&amp;rsquo;écrire ce genre de code :
-X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
     </item>
     
     <item>
@@ -648,7 +648,7 @@ X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&
       
       <guid>https://thomaslevesque.fr/2009/04/27/windows-forms-glisser-deplacer-automatique-controles/</guid>
       <description>Je ressors de mes tiroirs un code que j&amp;rsquo;avais écrit il y a quelque temps, et dont je voudrais vous faire profiter&amp;hellip; Il existe en WPF une méthode très pratique pour déplacer une fenêtre sans bordure : Window.DragMove. Elle s&amp;rsquo;utilise comme ceci :
-private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.DragMove(); } A partir de l&amp;rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&amp;rsquo;à ce que le bouton soit relâché.</description>
+ private void Window_MouseDown(object sender, MouseButtonEventArgs e)  {  this.DragMove();  } A partir de l&amp;rsquo;appel de cette méthode, la fenêtre est déplacée avec la souris jusqu&amp;rsquo;à ce que le bouton soit relâché.</description>
     </item>
     
     <item>
@@ -658,7 +658,7 @@ private void Window_MouseDown(object sender, MouseButtonEventArgs e) { this.Drag
       
       <guid>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</guid>
       <description>Comme je l&amp;rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&amp;rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&amp;rsquo;exemple d&amp;rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
-private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;(); public ObservableCollection&amp;lt;string&amp;gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&amp;#34;Strings&amp;#34;); } } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&amp;rsquo;exception citée plus haut.</description>
+ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;();  public ObservableCollection&amp;lt;string&amp;gt; Strings  {  get { return _strings; }  set  {  _strings = value;  OnPropertyChanged(&amp;#34;Strings&amp;#34;);  }  } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&amp;rsquo;exception citée plus haut.</description>
     </item>
     
     <item>
@@ -686,8 +686,7 @@ private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableColl
       
       <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
       <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
-&amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
- La propriété Command n&amp;rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&amp;rsquo;arbre logique ou visuel du contrôle, ils n&amp;rsquo;héritent donc pas du DataContext  Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&amp;rsquo;écrire du code-behind.</description>
+ &amp;lt;UserControl.InputBindings&amp;gt;  &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt;  &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :</description>
     </item>
     
     <item>

@@ -11,8 +11,8 @@
 <meta property="og:description" content="Middlewhat? L&rsquo;architecture d&rsquo;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2018-03-27T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2018-03-27T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2018-03-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-03-27T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -81,137 +82,137 @@ if (!doNotTrack) {
 <p>L&rsquo;architecture d&rsquo;ASP.NET Core est basée sur un système de <strong>middlewares</strong>, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un <strong>pipeline</strong>. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware">documentation officielle ASP.NET Core</a>, devrait aider à comprendre :  <img src="request-delegate-pipeline.png" alt="Middleware pipeline">  Les middlewares peuvent faire toutes sortent de choses, comme gérer l&rsquo;authentification, les erreurs, les fichiers statiques, etc. La couche MVC d&rsquo;ASP.NET Core est également implémentée comme un middleware.</p>
 <h2 id="configurer-le-pipeline">Configurer le pipeline</h2>
 <p>On configure habituellement le pipeline ASP.NET Core dans la méthode <code>Configure</code> de la classe <code>Startup</code>, en appelant des méthodes <code>Use*</code> sur le <code>IApplicationBuilder</code>. Voici un exemple tiré de la documentation :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app)
-{
-    app.UseExceptionHandler(<span style="color:#e6db74">&#34;/Home/Error&#34;</span>);
-    app.UseStaticFiles();
-    app.UseAuthentication();
-    app.UseMvcWithDefaultRoute();
-}
-</code></pre></div><p>Chaque méthode <code>Use*</code> ajoute un middleware au pipeline. L&rsquo;ordre dans lequel ils sont ajoutés détermine l&rsquo;ordre dans lequel les requêtes les traverseront. Dans cet exemple, une requête entrante va d&rsquo;abord passer par le middleware de gestion d&rsquo;exception, puis par le middleware de fichiers statiques, puis par le middleware d&rsquo;authentification, et sera finalement gérée par le middleware MVC.  Les méthodes <code>Use*</code> dans cet exemple sont en fait juste des raccourcis pour faciliter la construction du pipeline. Sous le capot, elles finissent toutes par appeler, directement ou indirectement, les primitives de bas niveau suivantes : <code>Use</code> et <code>Run</code>. Ces deux méthodes ajoutent un middleware au pipeline, la différence est que <code>Run</code> ajoute un middleware <em>terminal</em>, c&rsquo;est à dire qui est le dernier du pipeline.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    app.UseExceptionHandler(<span style="color:#e6db74">&#34;/Home/Error&#34;</span>);
+</span></span><span style="display:flex;"><span>    app.UseStaticFiles();
+</span></span><span style="display:flex;"><span>    app.UseAuthentication();
+</span></span><span style="display:flex;"><span>    app.UseMvcWithDefaultRoute();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Chaque méthode <code>Use*</code> ajoute un middleware au pipeline. L&rsquo;ordre dans lequel ils sont ajoutés détermine l&rsquo;ordre dans lequel les requêtes les traverseront. Dans cet exemple, une requête entrante va d&rsquo;abord passer par le middleware de gestion d&rsquo;exception, puis par le middleware de fichiers statiques, puis par le middleware d&rsquo;authentification, et sera finalement gérée par le middleware MVC.  Les méthodes <code>Use*</code> dans cet exemple sont en fait juste des raccourcis pour faciliter la construction du pipeline. Sous le capot, elles finissent toutes par appeler, directement ou indirectement, les primitives de bas niveau suivantes : <code>Use</code> et <code>Run</code>. Ces deux méthodes ajoutent un middleware au pipeline, la différence est que <code>Run</code> ajoute un middleware <em>terminal</em>, c&rsquo;est à dire qui est le dernier du pipeline.</p>
 <h2 id="un-pipeline-basique-sans-branches">Un pipeline basique sans branches</h2>
 <p>Regardons d&rsquo;abord un exemple simple, qui utilise simplement les primitives <code>Use</code> et <code>Run</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app)
-{
-    <span style="color:#75715e">// Middleware A
-</span><span style="color:#75715e"></span>    app.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
-    {
-        Console.WriteLine(<span style="color:#e6db74">&#34;A (before)&#34;</span>);
-        <span style="color:#66d9ef">await</span> next();
-        Console.WriteLine(<span style="color:#e6db74">&#34;A (after)&#34;</span>);
-    });
-
-    <span style="color:#75715e">// Middleware B
-</span><span style="color:#75715e"></span>    app.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
-    {
-        Console.WriteLine(<span style="color:#e6db74">&#34;B (before)&#34;</span>);
-        <span style="color:#66d9ef">await</span> next();
-        Console.WriteLine(<span style="color:#e6db74">&#34;B (after)&#34;</span>);
-    });
-
-    <span style="color:#75715e">// Middleware C (terminal)
-</span><span style="color:#75715e"></span>    app.Run(<span style="color:#66d9ef">async</span> context =&gt;
-    {
-        Console.WriteLine(<span style="color:#e6db74">&#34;C&#34;</span>);
-        <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">&#34;Hello world&#34;</span>);
-    });
-}
-</code></pre></div><p>Ici, les middleware sont définis &ldquo;inline&rdquo; avec des méthodes anonymes ; ils pourraient aussi être définis commes des classes complètes, mais pour cet exemple j&rsquo;ai opté pour la forme la plus concise. Les middleware non-terminaux prennent deux arguments : le <code>HttpContext</code> et un delegate qui appelle le middleware suivant. Le middleware terminal prend seulement le <code>HttpContext</code>. Ici on a deux middlewares non-terminaux A et B qui écrivent simplement dans la console, et un middleware terminal C qui écrit la réponse.  Voici la sortie console quand on envoie une requête à l&rsquo;application :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">A (before)
-B (before)
-C
-B (after)
-A (after)
-</code></pre></div><p>On voit que chaque middleware est traversé dans l&rsquo;ordre dans lequel il a été ajouté, puis traversé à nouveau en sens inverse. Le pipeline peut être représenté comme suit :  <img src="basic-pipeline.png" alt="Basic pipeline"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Middleware A</span>
+</span></span><span style="display:flex;"><span>    app.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;A (before)&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> next();
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;A (after)&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Middleware B</span>
+</span></span><span style="display:flex;"><span>    app.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;B (before)&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> next();
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;B (after)&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Middleware C (terminal)</span>
+</span></span><span style="display:flex;"><span>    app.Run(<span style="color:#66d9ef">async</span> context =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;C&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">&#34;Hello world&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ici, les middleware sont définis &ldquo;inline&rdquo; avec des méthodes anonymes ; ils pourraient aussi être définis commes des classes complètes, mais pour cet exemple j&rsquo;ai opté pour la forme la plus concise. Les middleware non-terminaux prennent deux arguments : le <code>HttpContext</code> et un delegate qui appelle le middleware suivant. Le middleware terminal prend seulement le <code>HttpContext</code>. Ici on a deux middlewares non-terminaux A et B qui écrivent simplement dans la console, et un middleware terminal C qui écrit la réponse.  Voici la sortie console quand on envoie une requête à l&rsquo;application :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>A (before)
+</span></span><span style="display:flex;"><span>B (before)
+</span></span><span style="display:flex;"><span>C
+</span></span><span style="display:flex;"><span>B (after)
+</span></span><span style="display:flex;"><span>A (after)
+</span></span></code></pre></div><p>On voit que chaque middleware est traversé dans l&rsquo;ordre dans lequel il a été ajouté, puis traversé à nouveau en sens inverse. Le pipeline peut être représenté comme suit :  <img src="basic-pipeline.png" alt="Basic pipeline"></p>
 <h2 id="court-circuiter-le-pipeline">Court-circuiter le pipeline</h2>
 <p>Un middleware n&rsquo;est pas obligé d&rsquo;appeler le middleware suivant. Par exemple, si le middleware de fichiers statiques peut gérer une requête, il n&rsquo;a pas besoin de la passer au reste du pipeline, il peut répondre immédiatement. Ce comportement s&rsquo;appelle &ldquo;court-circuiter le pipeline&rdquo;.  Dans l&rsquo;exemple précédent, si on commente l&rsquo;appel à <code>next()</code> dans le middleware B, on obtient la sortie suivante :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">A (before)
-B (before)
-B (after)
-A (after)
-</code></pre></div><p>Comme vous pouvez le voir, le middleware C n&rsquo;est jamais appelé. Le pipeline ressemble maintenant à ceci :  <img src="short-circuit.png" alt="Short-circuited pipeline"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>A (before)
+</span></span><span style="display:flex;"><span>B (before)
+</span></span><span style="display:flex;"><span>B (after)
+</span></span><span style="display:flex;"><span>A (after)
+</span></span></code></pre></div><p>Comme vous pouvez le voir, le middleware C n&rsquo;est jamais appelé. Le pipeline ressemble maintenant à ceci :  <img src="short-circuit.png" alt="Short-circuited pipeline"></p>
 <h2 id="faire-des-branches-dans-le-pipeline">Faire des branches dans le pipeline</h2>
 <p>Dans les exemples précédents, il y avait une seule &ldquo;branche&rdquo; dans le pipeline : le middleware qui suivait A était toujours B, et le middleware qui suivait B était toujours C. Mais rien n&rsquo;impose que ça se passe comme ça ; on peut aussi faire qu&rsquo;une requête donnée soit traitée par un autre pipeline, en fonction du chemin ou de tout autre critère.  Il y a deux types de branches : celles qui rejoignent le pipeline principal, et celles qui s&rsquo;en séparent définitivement.</p>
 <h3 id="faire-une-branche-entièrement-séparée">Faire une branche entièrement séparée</h3>
 <p>On peut faire cela à l&rsquo;aide de la méthode <code>Map</code> ou <code>MapWhen</code>. <code>Map</code> permet de spécifier une branche en fonction du chemin de la requête. <code>MapWhen</code> donne un contrôle plus fin : on peut spécifier un prédicat pour décider de passer ou non sur la branche. Prenons un exemple simple avec <code>Map</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app)
-{
-    app.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
-    {
-        Console.WriteLine(<span style="color:#e6db74">&#34;A (before)&#34;</span>);
-        <span style="color:#66d9ef">await</span> next();
-        Console.WriteLine(<span style="color:#e6db74">&#34;A (after)&#34;</span>);
-    });
-
-    app.Map(
-        <span style="color:#66d9ef">new</span> PathString(<span style="color:#e6db74">&#34;/foo&#34;</span>),
-        a =&gt; a.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
-        {
-            Console.WriteLine(<span style="color:#e6db74">&#34;B (before)&#34;</span>);
-            <span style="color:#66d9ef">await</span> next();
-            Console.WriteLine(<span style="color:#e6db74">&#34;B (after)&#34;</span>);
-        }));
-
-    app.Run(<span style="color:#66d9ef">async</span> context =&gt;
-    {
-        Console.WriteLine(<span style="color:#e6db74">&#34;C&#34;</span>);
-        <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">&#34;Hello world&#34;</span>);
-    });
-}
-</code></pre></div><p>Le premier argument de <code>Map</code> est un <code>PathString</code> qui représente le préfixe du chemin de la requête. Le second argument est un delegate qui configure le pipeline pour la branche (le paramètre <code>a</code> représente le <code>IApplicationBuilder</code> pour la branche). La branche définie par le delegate traitera la requête si son chemin commence par le préfixe spécifié.  Pour une requête qui ne commence pas par <code>/foo</code>, ce code produit la sortie suivante :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">A (before)
-C
-A (after)
-</code></pre></div><p>Le middleware B n&rsquo;est pas appelé, puisqu&rsquo;il est dans la branche, et que la requête ne correspond pas au préfixe pour la branche. Mais pour une requête dont le chemin commence par <code>/foo</code>, la sortie est la suivante :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">A (before)
-B (before)
-B (after)
-A (after)
-</code></pre></div><p>Remarquez que cette requête renvoie une erreur 404 (Not found) : c&rsquo;est parce que le middleware B appelle <code>next()</code>, mais il n&rsquo;y a pas de middleware suivant ; dans ce cas le comportement par défaut est de renvoyer une erreur 404. Pour régler ça, on pourrait utiliser <code>Run</code> au lieu de <code>Use</code>, ou alors ne pas appeler <code>next()</code>.  Le pipeline défini par ce code peut être représenté comme suit :  <img src="non-rejoining.png" alt="Non-rejoining branch">  (Pour plus de clarté, j&rsquo;ai omis les flèches des réponses)  Comme vous pouvez le voir, la branche où se trouve le middleware B ne rejoint pas le pipeline principal, le middleware C n&rsquo;est donc pas appelé.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    app.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;A (before)&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> next();
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;A (after)&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.Map(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> PathString(<span style="color:#e6db74">&#34;/foo&#34;</span>),
+</span></span><span style="display:flex;"><span>        a =&gt; a.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;B (before)&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> next();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;B (after)&#34;</span>);
+</span></span><span style="display:flex;"><span>        }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.Run(<span style="color:#66d9ef">async</span> context =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;C&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">&#34;Hello world&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Le premier argument de <code>Map</code> est un <code>PathString</code> qui représente le préfixe du chemin de la requête. Le second argument est un delegate qui configure le pipeline pour la branche (le paramètre <code>a</code> représente le <code>IApplicationBuilder</code> pour la branche). La branche définie par le delegate traitera la requête si son chemin commence par le préfixe spécifié.  Pour une requête qui ne commence pas par <code>/foo</code>, ce code produit la sortie suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>A (before)
+</span></span><span style="display:flex;"><span>C
+</span></span><span style="display:flex;"><span>A (after)
+</span></span></code></pre></div><p>Le middleware B n&rsquo;est pas appelé, puisqu&rsquo;il est dans la branche, et que la requête ne correspond pas au préfixe pour la branche. Mais pour une requête dont le chemin commence par <code>/foo</code>, la sortie est la suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>A (before)
+</span></span><span style="display:flex;"><span>B (before)
+</span></span><span style="display:flex;"><span>B (after)
+</span></span><span style="display:flex;"><span>A (after)
+</span></span></code></pre></div><p>Remarquez que cette requête renvoie une erreur 404 (Not found) : c&rsquo;est parce que le middleware B appelle <code>next()</code>, mais il n&rsquo;y a pas de middleware suivant ; dans ce cas le comportement par défaut est de renvoyer une erreur 404. Pour régler ça, on pourrait utiliser <code>Run</code> au lieu de <code>Use</code>, ou alors ne pas appeler <code>next()</code>.  Le pipeline défini par ce code peut être représenté comme suit :  <img src="non-rejoining.png" alt="Non-rejoining branch">  (Pour plus de clarté, j&rsquo;ai omis les flèches des réponses)  Comme vous pouvez le voir, la branche où se trouve le middleware B ne rejoint pas le pipeline principal, le middleware C n&rsquo;est donc pas appelé.</p>
 <h3 id="faire-une-branche-qui-rejoint-le-pipeline-principal">Faire une branche qui rejoint le pipeline principal</h3>
 <p>On peut créer une branche qui rejoint le pipeline principal à l&rsquo;aide de la méthode <code>UseWhen</code>. Cette méthode accepte un prédicat sur le <code>HttpContext</code> pour décider de passer ou non sur la branche. À la fin de son exécution, cette branche rejoindra le pipeline principal là où elle l&rsquo;a quitté. Voici un exemple similaire au précédent, mais avec une branche qui rejoint le pipeline principal :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app)
-{
-    app.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
-    {
-        Console.WriteLine(<span style="color:#e6db74">&#34;A (before)&#34;</span>);
-        <span style="color:#66d9ef">await</span> next();
-        Console.WriteLine(<span style="color:#e6db74">&#34;A (after)&#34;</span>);
-    });
-
-    app.UseWhen(
-        context =&gt; context.Request.Path.StartsWithSegments(<span style="color:#66d9ef">new</span> PathString(<span style="color:#e6db74">&#34;/foo&#34;</span>)),
-        a =&gt; a.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
-        {
-            Console.WriteLine(<span style="color:#e6db74">&#34;B (before)&#34;</span>);
-            <span style="color:#66d9ef">await</span> next();
-            Console.WriteLine(<span style="color:#e6db74">&#34;B (after)&#34;</span>);
-        }));
-
-    app.Run(<span style="color:#66d9ef">async</span> context =&gt;
-    {
-        Console.WriteLine(<span style="color:#e6db74">&#34;C&#34;</span>);
-        <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">&#34;Hello world&#34;</span>);
-    });
-}
-</code></pre></div><p>Pour une requête dont le chemin ne commence pas par <code>/foo</code>, ce code produit la même sortie que l&rsquo;exemple précédent :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">A (before)
-C
-A (after)
-</code></pre></div><p>Là encore, le middleware B n&rsquo;est pas appelé, puisque la requête ne correspond pas au prédicat de la branche. Mais pour une requête dont le chemin commence par <code>/foo</code>, on obtient la sortie suivante :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">A (before)
-B (before)
-C
-B (after)
-A (after)
-</code></pre></div><p>Comme on peut le voir, la requête passe par la branche (middleware B), puis revient sur le pipeline principal, en finissant par le middleware C. Le pipeline peut donc être représenté comme suit :  <img src="rejoining.png" alt="Rejoining branch">  Remarquez qu&rsquo;il n&rsquo;y a pas de méthode <code>Use</code> qui accepte un <code>PathString</code> pour spécifier le préfixe du chemin. Je ne sais pas pourquoi cette méthode n&rsquo;est pas incluse, mais il est facile de l&rsquo;écrire à l&rsquo;aide de <code>UseWhen</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IApplicationBuilder Use(<span style="color:#66d9ef">this</span> IApplicationBuilder builder, PathString pathMatch, Action&lt;IApplicationBuilder&gt; configuration)
-{
-    <span style="color:#66d9ef">return</span> builder.UseWhen(
-        context =&gt; context.Request.Path.StartsWithSegments(pathMatch),
-        configuration);
-}
-</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    app.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;A (before)&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> next();
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;A (after)&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseWhen(
+</span></span><span style="display:flex;"><span>        context =&gt; context.Request.Path.StartsWithSegments(<span style="color:#66d9ef">new</span> PathString(<span style="color:#e6db74">&#34;/foo&#34;</span>)),
+</span></span><span style="display:flex;"><span>        a =&gt; a.Use(<span style="color:#66d9ef">async</span> (context, next) =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;B (before)&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> next();
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;B (after)&#34;</span>);
+</span></span><span style="display:flex;"><span>        }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.Run(<span style="color:#66d9ef">async</span> context =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;C&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">&#34;Hello world&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Pour une requête dont le chemin ne commence pas par <code>/foo</code>, ce code produit la même sortie que l&rsquo;exemple précédent :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>A (before)
+</span></span><span style="display:flex;"><span>C
+</span></span><span style="display:flex;"><span>A (after)
+</span></span></code></pre></div><p>Là encore, le middleware B n&rsquo;est pas appelé, puisque la requête ne correspond pas au prédicat de la branche. Mais pour une requête dont le chemin commence par <code>/foo</code>, on obtient la sortie suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>A (before)
+</span></span><span style="display:flex;"><span>B (before)
+</span></span><span style="display:flex;"><span>C
+</span></span><span style="display:flex;"><span>B (after)
+</span></span><span style="display:flex;"><span>A (after)
+</span></span></code></pre></div><p>Comme on peut le voir, la requête passe par la branche (middleware B), puis revient sur le pipeline principal, en finissant par le middleware C. Le pipeline peut donc être représenté comme suit :  <img src="rejoining.png" alt="Rejoining branch">  Remarquez qu&rsquo;il n&rsquo;y a pas de méthode <code>Use</code> qui accepte un <code>PathString</code> pour spécifier le préfixe du chemin. Je ne sais pas pourquoi cette méthode n&rsquo;est pas incluse, mais il est facile de l&rsquo;écrire à l&rsquo;aide de <code>UseWhen</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IApplicationBuilder Use(<span style="color:#66d9ef">this</span> IApplicationBuilder builder, PathString pathMatch, Action&lt;IApplicationBuilder&gt; configuration)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> builder.UseWhen(
+</span></span><span style="display:flex;"><span>        context =&gt; context.Request.Path.StartsWithSegments(pathMatch),
+</span></span><span style="display:flex;"><span>        configuration);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Comme vous pouvez le voir, le principe du pipeline de middlewares est assez simple, mais très puissant. La plupart des fonctionnalités standard d&rsquo;ASP.NET Core (authentification, fichiers statiques, mise en cache, MVC, etc) sont implémentées comme des middlewares. Et bien sûr, il est très simple de créer son propre middleware !</p>
 
 		</div>
@@ -342,7 +343,7 @@ A (after)
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

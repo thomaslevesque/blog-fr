@@ -15,7 +15,7 @@
       <guid>https://thomaslevesque.fr/2015/08/02/casse-tte-c-n2/</guid>
       <description>Encore un petit casse-tête basé sur un problème que j’ai rencontré au boulot…
 Regardez ce morceau de code :
-Console.WriteLine($&amp;quot;x &amp;gt; y is {x &amp;gt; y}&amp;quot;); Console.WriteLine($&amp;quot;!(x &amp;lt;= y) is {!(x &amp;lt;= y)}&amp;quot;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
+Console.WriteLine($&amp;#34;x &amp;gt; y is {x &amp;gt; y}&amp;#34;); Console.WriteLine($&amp;#34;!(x &amp;lt;= y) is {!(x &amp;lt;= y)}&amp;#34;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
 x &amp;gt; y is False !(x &amp;lt;= y) is True </description>
     </item>
     

@@ -9,17 +9,17 @@
 	<meta name="description" content="">
 	<meta property="og:title" content="Filtres d’exception en C# 6 : leur plus grand avantage n’est pas celui qu’on croit" />
 <meta property="og:description" content="Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc catch :
-static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&quot;Error 42 occurred&quot;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex." />
+static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&#34;Error 42 occurred&#34;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-06-23T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-06-23T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-06-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-06-23T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Filtres d’exception en C# 6 : leur plus grand avantage n’est pas celui qu’on croit"/>
 <meta name="twitter:description" content="Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc catch :
-static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&quot;Error 42 occurred&quot;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex."/>
+static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&#34;Error 42 occurred&#34;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex."/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -28,17 +28,18 @@ static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyExcept
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -80,7 +81,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-06-23T00:00:00Z">June 23, 2015</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc <code>catch</code> :</p>
-<pre><code>static void Main()
+<pre tabindex="0"><code>static void Main()
 {
     try
     {
@@ -88,12 +89,12 @@ if (!doNotTrack) {
     }
     catch (MyException ex) when (ex.Code == 42)
     {
-        Console.WriteLine(&quot;Error 42 occurred&quot;);
+        Console.WriteLine(&#34;Error 42 occurred&#34;);
     }
 }
 </code></pre><p>Comme on pourrait s’y attendre, le bloc <code>catch</code> ne sera exécuté que si <code>ex.Code == 42</code>. Si cette condition n’est pas vérifiée, l’exception sera propagée en remontant la pile jusqu’à ce qu’elle soit interceptée ailleurs ou qu’elle termine le processus.</p>
 <p>A première vue, cela n’apporte rien de très nouveau. Après tout, on pouvait déjà faire ceci :</p>
-<pre><code>static void Main()
+<pre tabindex="0"><code>static void Main()
 {
     try
     {
@@ -102,7 +103,7 @@ if (!doNotTrack) {
     catch (MyException ex)
     {
         if (ex.Code == 42)
-            Console.WriteLine(&quot;Error 42 occurred&quot;);
+            Console.WriteLine(&#34;Error 42 occurred&#34;);
         else
             throw;
     }
@@ -122,11 +123,11 @@ if (!doNotTrack) {
 <p>Vous avez peut-être remarqué que j’ai parlé plus haut de la pile (call stack), et non de la trace de pile (stack trace). Bien qu’on utilise souvent le terme “pile” pour faire référence à la trace de pile, ce sont deux choses bien différentes. La pile est une zone mémoire allouée à chaque thread qui contient des informations sur les méthodes en cours d’exécution : adresse de retour, arguments, et variables locales. La trace de pile est juste une chaine qui contient les noms des méthodes actuellement sur la pile (et l’emplacement dans ces méthodes, si les symboles de débogage sont disponibles). La propriété <code>Exception.StackTrace</code> contient la trace de la pile telle qu’elle était quand l’exception a été lancée, et n’est pas affectée quand la pile est déroulée ; si on relance l’exception avec <code>throw;</code>, elle n’est pas modifiée non plus. Elle n’est écrasée que si on relance l’exception avec <code>throw ex;</code>. La pile elle-même, en revanche, est déroulée quand on entre dans un bloc <code>catch</code>, comme décrit plus haut.</p>
 <h3 id="effets-de-bord">Effets de bord</h3>
 <p>il est intéressant de noter qu’un filtre d’exception peut contenir n’importe quelle expression qui renvoie un <code>bool</code> (enfin presque… on ne peut pas utiliser <code>await</code> par exemple). Cela peut être une condition logique, une propriété, un appel de méthode, etc. Techniquement, rien n’empêche de causer des effets de bord dans un filtre d’exception. Dans la plupart des cas, je déconseillerais vivement de faire ça, car ça peut causer des comportements très déroutants ; il peut devenir très difficile de comprendre dans quel ordre les choses sont exécutées. Cependant, il y a un scénario courant qui pourrait bénéficier d’effets de bord dans un filtre d’exception: le logging. On pourrait facilement créer une méthode qui log l’exception et renvoie false pour qu’on n’entre pas dans le bloc <code>catch</code>. Cela permettrait de logger les exception à la volée sans les gérer, et donc sans dérouler la pile:</p>
-<pre><code>try
+<pre tabindex="0"><code>try
 {
     DoSomethingThatMightFail(s);
 }
-catch (Exception ex) when (Log(ex, &quot;An error occurred&quot;))
+catch (Exception ex) when (Log(ex, &#34;An error occurred&#34;))
 {
     // this catch block will never be reached
 }
@@ -260,7 +261,7 @@ static bool Log(Exception ex, string message, params object[] args)
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

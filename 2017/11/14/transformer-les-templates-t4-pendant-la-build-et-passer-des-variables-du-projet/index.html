@@ -11,8 +11,8 @@
 <meta property="og:description" content="T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&rsquo;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&rsquo;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&rsquo;on souhaite regénérer les sorties des templates à chaque build." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2017-11-14T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2017-11-14T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2017-11-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-11-14T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -81,31 +82,31 @@ if (!doNotTrack) {
 <h2 id="transformer-les-templates-lors-du-build">Transformer les templates lors du build</h2>
 <p>Si votre projet est un csproj ou vbproj &ldquo;classique&rdquo; (c&rsquo;est-à-dire <em>pas</em> un projet .NET Core &ldquo;SDK-style&rdquo;), les choses sont assez simples et bien documentées sur <a href="https://docs.microsoft.com/en-us/visualstudio/modeling/code-generation-in-a-build-process">cette page</a>.</p>
 <p>Déchargez votre projet, et ouvrez le dans l&rsquo;éditeur. Ajoutez le <code>PropertyGroup</code> suivant vers le début du fichier :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;PropertyGroup&gt;</span>
-    <span style="color:#75715e">&lt;!-- 15.0 is for VS2017, adjust if necessary --&gt;</span>
-    <span style="color:#f92672">&lt;VisualStudioVersion</span> <span style="color:#a6e22e">Condition=</span><span style="color:#e6db74">&#34;&#39;$(VisualStudioVersion)&#39; == &#39;&#39;&#34;</span><span style="color:#f92672">&gt;</span>15.0<span style="color:#f92672">&lt;/VisualStudioVersion&gt;</span>
-    <span style="color:#f92672">&lt;VSToolsPath</span> <span style="color:#a6e22e">Condition=</span><span style="color:#e6db74">&#34;&#39;$(VSToolsPath)&#39; == &#39;&#39;&#34;</span><span style="color:#f92672">&gt;</span>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)<span style="color:#f92672">&lt;/VSToolsPath&gt;</span>
-    <span style="color:#75715e">&lt;!-- This is what will cause the templates to be transformed when the project is built (default is false) --&gt;</span>
-    <span style="color:#f92672">&lt;TransformOnBuild&gt;</span>true<span style="color:#f92672">&lt;/TransformOnBuild&gt;</span>
-    <span style="color:#75715e">&lt;!-- Set to true to force overwriting of read-only output files, e.g. if they&#39;re not checked out (default is false) --&gt;</span>
-    <span style="color:#f92672">&lt;OverwriteReadOnlyOutputFiles&gt;</span>true<span style="color:#f92672">&lt;/OverwriteReadOnlyOutputFiles&gt;</span>
-    <span style="color:#75715e">&lt;!-- Set to false to transform files even if the output appears to be up-to-date (default is true)  --&gt;</span>
-    <span style="color:#f92672">&lt;TransformOutOfDateOnly&gt;</span>false<span style="color:#f92672">&lt;/TransformOutOfDateOnly&gt;</span>
-<span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
-</code></pre></div><p>Et ajoutez l'<code>Import</code> suivant à la fin, après l&rsquo;import de <code>Microsoft.CSharp.targets</code> ou <code>Microsoft.VisualBasic.targets</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Import</span> <span style="color:#a6e22e">Project=</span><span style="color:#e6db74">&#34;$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets&#34;</span> <span style="color:#f92672">/&gt;</span>
-</code></pre></div><p>Rechargez votre projet, et le tour est joué. Générer le projet devrait maintenant transformer les templates et regénérer leur sortie.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;PropertyGroup&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 15.0 is for VS2017, adjust if necessary --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;VisualStudioVersion</span> <span style="color:#a6e22e">Condition=</span><span style="color:#e6db74">&#34;&#39;$(VisualStudioVersion)&#39; == &#39;&#39;&#34;</span><span style="color:#f92672">&gt;</span>15.0<span style="color:#f92672">&lt;/VisualStudioVersion&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;VSToolsPath</span> <span style="color:#a6e22e">Condition=</span><span style="color:#e6db74">&#34;&#39;$(VSToolsPath)&#39; == &#39;&#39;&#34;</span><span style="color:#f92672">&gt;</span>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)<span style="color:#f92672">&lt;/VSToolsPath&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- This is what will cause the templates to be transformed when the project is built (default is false) --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;TransformOnBuild&gt;</span>true<span style="color:#f92672">&lt;/TransformOnBuild&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- Set to true to force overwriting of read-only output files, e.g. if they&#39;re not checked out (default is false) --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;OverwriteReadOnlyOutputFiles&gt;</span>true<span style="color:#f92672">&lt;/OverwriteReadOnlyOutputFiles&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- Set to false to transform files even if the output appears to be up-to-date (default is true)  --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;TransformOutOfDateOnly&gt;</span>false<span style="color:#f92672">&lt;/TransformOutOfDateOnly&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
+</span></span></code></pre></div><p>Et ajoutez l&rsquo;<code>Import</code> suivant à la fin, après l&rsquo;import de <code>Microsoft.CSharp.targets</code> ou <code>Microsoft.VisualBasic.targets</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;Import</span> <span style="color:#a6e22e">Project=</span><span style="color:#e6db74">&#34;$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span></code></pre></div><p>Rechargez votre projet, et le tour est joué. Générer le projet devrait maintenant transformer les templates et regénérer leur sortie.</p>
 <h2 id="projets-sdk-style">Projets &ldquo;SDK-style&rdquo;</h2>
 <p>Si vous utilisez le nouveau format de projet du SDK .NET Core (souvent appelé de façon informelle projet &ldquo;SDK-style&rdquo;), l&rsquo;approche décrite ci-dessus nécessite un petit changement pour fonctionner. C&rsquo;est parce que le fichier de cibles par défaut (<code>Sdk.targets</code> dans le SDK .NET Core) est maintenant importé implicitement à la toute fin du projet, il n&rsquo;est donc pas possible d&rsquo;importer les cibles T4 après les cibles par défaut. Du coup la variable <code>BuildDependsOn</code>, qui est modifiée par les cibles T4, est écrasée par les cibles par défaut, et la cible <code>TransformAll</code> ne s&rsquo;exécute plus avant la cible <code>Build</code>.</p>
 <p>Heureusement, il y a un workaround : vous pouvez importer les cibles par défaut explicitement, et importer les cibles T4 après celles-ci :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Import</span> <span style="color:#a6e22e">Project=</span><span style="color:#e6db74">&#34;Sdk.targets&#34;</span> <span style="color:#a6e22e">Sdk=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk&#34;</span> <span style="color:#f92672">/&gt;</span>
-<span style="color:#f92672">&lt;Import</span> <span style="color:#a6e22e">Project=</span><span style="color:#e6db74">&#34;$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets&#34;</span> <span style="color:#f92672">/&gt;</span>
-</code></pre></div><p>Notez que cela causera un avertissement MSBuild dans la sortie de la build (MSB4011), parce que <code>Sdk.targets</code> est importé deux fois ; cet avertissement peut être ignoré sans risque.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;Import</span> <span style="color:#a6e22e">Project=</span><span style="color:#e6db74">&#34;Sdk.targets&#34;</span> <span style="color:#a6e22e">Sdk=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;Import</span> <span style="color:#a6e22e">Project=</span><span style="color:#e6db74">&#34;$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span></code></pre></div><p>Notez que cela causera un avertissement MSBuild dans la sortie de la build (MSB4011), parce que <code>Sdk.targets</code> est importé deux fois ; cet avertissement peut être ignoré sans risque.</p>
 <h2 id="passer-des-variables-msbuild-aux-templates">Passer des variables MSBuild aux templates</h2>
 <p>À un moment donné, il est possible que la logique de génération de code devienne trop complexe pour rester entièrement dans le template T4. Vous pourriez vouloir en extraire une partie dans un assembly utilitaire, qui sera référencé depuis le template comme ceci :</p>
-<pre><code>&lt;#@ assembly name=&quot;../CodeGenHelper/bin/Release/net462/CodeGenHelper.dll&quot; #&gt;
+<pre tabindex="0"><code>&lt;#@ assembly name=&#34;../CodeGenHelper/bin/Release/net462/CodeGenHelper.dll&#34; #&gt;
 </code></pre><p>Mais spécifier le chemin de l&rsquo;assembly de cette façon n&rsquo;est pas très pratique&hellip; par exemple, si vous êtes actuellement sur la configuration <code>Debug</code>, la version <code>Release</code> de CodeGenHelper.dll ne sera pas forcément à jour. Heureusement, le custom tool <code>TextTemplatingFileGenerator</code> de Visual Studio supporte l&rsquo;utilisation de variables MSBuild du projet, il est donc possible de faire ceci :</p>
-<pre><code>&lt;#@ assembly name=&quot;$(SolutionDir)/CodeGenHelper/bin/$(Configuration)/net462/CodeGenHelper.dll&quot; #&gt;
+<pre tabindex="0"><code>&lt;#@ assembly name=&#34;$(SolutionDir)/CodeGenHelper/bin/$(Configuration)/net462/CodeGenHelper.dll&#34; #&gt;
 </code></pre><p>Les variables <code>$(SolutionDir)</code> et <code>$(Configuration)</code> seront remplacées par leurs valeurs respectives. Si vous enregistrez le template, il sera bien transformé en utilisant l&rsquo;assembly CodeGenHelper.dll. Pratique !</p>
 <p>Mais il y a un hic&hellip; Si vous avez configuré votre projet pour transformer les templates lors de la build, comme décrit plus haut, la build va maintenant échouer, avec une erreur comme celle-ci :</p>
 <blockquote>
@@ -113,17 +114,17 @@ if (!doNotTrack) {
 </blockquote>
 <p>Vous avez remarqué les variables <code>$(SolutionDir)</code> et <code>$(Configuration)</code> dans le chemin ? Elles n&rsquo;ont pas été remplacées ! C&rsquo;est parce que la cible MSBuild qui transforme les templates et le custom tool <code>TextTemplatingFileGenerator</code> n&rsquo;utilisent pas le même moteur de transformation de texte. Et malheureusement, celui utilisé par MSBuild ne supporte pas nativement les variables MSBuild&hellip; un comble !</p>
 <p>Cependant tout n&rsquo;est pas perdu. Il suffit de spécifier explicitement les variables que vous voulez passer en temps que paramètres T4. Éditez à nouveau votre fichier projet, et créez un nouveau <code>ItemGroup</code> avec les éléments suivants :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;ItemGroup&gt;</span>
-    <span style="color:#f92672">&lt;T4ParameterValues</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;SolutionDir&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;Value&gt;</span>$(SolutionDir)<span style="color:#f92672">&lt;/Value&gt;</span>
-        <span style="color:#f92672">&lt;Visible&gt;</span>False<span style="color:#f92672">&lt;/Visible&gt;</span>
-    <span style="color:#f92672">&lt;/T4ParameterValues&gt;</span>
-    <span style="color:#f92672">&lt;T4ParameterValues</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Configuration&#34;</span><span style="color:#f92672">&gt;</span>
-        <span style="color:#f92672">&lt;Value&gt;</span>$(Configuration)<span style="color:#f92672">&lt;/Value&gt;</span>
-        <span style="color:#f92672">&lt;Visible&gt;</span>False<span style="color:#f92672">&lt;/Visible&gt;</span>
-    <span style="color:#f92672">&lt;/T4ParameterValues&gt;</span>
-<span style="color:#f92672">&lt;/ItemGroup&gt;</span>
-</code></pre></div><p>L&rsquo;attribut <code>Include</code> est le nom du paramètre tel qu&rsquo;il sera passé au moteur de transformation de texte. L&rsquo;élément <code>Value</code>, comme son nom l&rsquo;indique, est la valeur du paramètre. Et l&rsquo;élément <code>Visible</code> permet d&rsquo;éviter que l&rsquo;élément <code>T4ParameterValues</code> n&rsquo;apparaisse comme élément du projet dans l&rsquo;explorateur de solution.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;ItemGroup&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;T4ParameterValues</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;SolutionDir&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Value&gt;</span>$(SolutionDir)<span style="color:#f92672">&lt;/Value&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Visible&gt;</span>False<span style="color:#f92672">&lt;/Visible&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/T4ParameterValues&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;T4ParameterValues</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Configuration&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Value&gt;</span>$(Configuration)<span style="color:#f92672">&lt;/Value&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;Visible&gt;</span>False<span style="color:#f92672">&lt;/Visible&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/T4ParameterValues&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/ItemGroup&gt;</span>
+</span></span></code></pre></div><p>L&rsquo;attribut <code>Include</code> est le nom du paramètre tel qu&rsquo;il sera passé au moteur de transformation de texte. L&rsquo;élément <code>Value</code>, comme son nom l&rsquo;indique, est la valeur du paramètre. Et l&rsquo;élément <code>Visible</code> permet d&rsquo;éviter que l&rsquo;élément <code>T4ParameterValues</code> n&rsquo;apparaisse comme élément du projet dans l&rsquo;explorateur de solution.</p>
 <p>Avec ce changement, la build devrait à nouveau transformer les templates correctement.</p>
 <p>Pour résumer, gardez à l&rsquo;esprit que le custom tool <code>TextTemplatingFileGenerator</code> et la cible MSBuild de transformation de texte ont des mécanismes différents pour passer des variables aux templates :</p>
 <ul>
@@ -257,7 +258,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

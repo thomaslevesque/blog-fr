@@ -12,8 +12,8 @@
  Le timeout est défini de façon globale, et s&rsquo;applique à toutes les requêtes, alors qu&rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2018-02-25T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2018-02-25T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2018-02-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-02-25T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -93,137 +94,137 @@ if (!doNotTrack) {
 </ul>
 <h2 id="spécifier-le-timeout-pour-une-requête">Spécifier le timeout pour une requête</h2>
 <p>Voyons d&rsquo;abord comment associer une valeur de timeout à une requête. La classe <code>HttpRequestMessage</code> a une propriété <code>Properties</code>, qui est un dictionnaire dans lequel on peut mettre ce qu&rsquo;on veut. On va donc l&rsquo;utiliser pour stocker le timeout pour une requête, et pour faciliter les choses, on va créer des méthodes d&rsquo;extension pour accéder à la valeur de façon fortement typée :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HttpRequestExtensions</span>
-{
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> TimeoutPropertyKey = <span style="color:#e6db74">&#34;RequestTimeout&#34;</span>;
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> SetTimeout(
-        <span style="color:#66d9ef">this</span> HttpRequestMessage request,
-        TimeSpan? timeout)
-    {
-        <span style="color:#66d9ef">if</span> (request == <span style="color:#66d9ef">null</span>)
-            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(nameof(request));
-
-        request.Properties[TimeoutPropertyKey] = timeout;
-    }
-
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> TimeSpan? GetTimeout(<span style="color:#66d9ef">this</span> HttpRequestMessage request)
-    {
-        <span style="color:#66d9ef">if</span> (request == <span style="color:#66d9ef">null</span>)
-            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(nameof(request));
-
-        <span style="color:#66d9ef">if</span> (request.Properties.TryGetValue(
-                TimeoutPropertyKey,
-                <span style="color:#66d9ef">out</span> <span style="color:#66d9ef">var</span> <span style="color:#66d9ef">value</span>)
-            &amp;&amp; <span style="color:#66d9ef">value</span> <span style="color:#66d9ef">is</span> TimeSpan timeout)
-            <span style="color:#66d9ef">return</span> timeout;
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
-    }
-}
-</code></pre></div><p>Rien de très compliqué ici, le timeout est une valeur optionnelle de type <code>TimeSpan</code>. Évidemment il n&rsquo;y a pour l&rsquo;instant aucun code pour tenir compte du timeout associé à une requête&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HttpRequestExtensions</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> TimeoutPropertyKey = <span style="color:#e6db74">&#34;RequestTimeout&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> SetTimeout(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span> HttpRequestMessage request,
+</span></span><span style="display:flex;"><span>        TimeSpan? timeout)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (request == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(nameof(request));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        request.Properties[TimeoutPropertyKey] = timeout;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> TimeSpan? GetTimeout(<span style="color:#66d9ef">this</span> HttpRequestMessage request)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (request == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(nameof(request));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (request.Properties.TryGetValue(
+</span></span><span style="display:flex;"><span>                TimeoutPropertyKey,
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">out</span> <span style="color:#66d9ef">var</span> <span style="color:#66d9ef">value</span>)
+</span></span><span style="display:flex;"><span>            &amp;&amp; <span style="color:#66d9ef">value</span> <span style="color:#66d9ef">is</span> TimeSpan timeout)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> timeout;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Rien de très compliqué ici, le timeout est une valeur optionnelle de type <code>TimeSpan</code>. Évidemment il n&rsquo;y a pour l&rsquo;instant aucun code pour tenir compte du timeout associé à une requête&hellip;</p>
 <h2 id="handler-http">Handler HTTP</h2>
 <p>L&rsquo;architecture de <code>HttpClient</code> est basée sur <strong>un système de pipeline</strong> : chaque requête est envoyée à travers une chaîne de handlers (de type <code>HttpMessageHandler</code>), et la réponse repasse en sens inverse à travers cette chaîne. <a href="/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/">Cet article</a> rentre un peu plus dans le détail si vous voulez en savoir plus. Nous allons donc <strong>insérer dans le pipeline notre propre handler</strong>, qui sera chargé de la gestion du timeout.</p>
 <p>Notre handler va hériter de <code>DelegatingHandler</code>, un type de handler conçu pour être chaîné à un autre handler. Pour implémenter un handler, il faut <strong>redéfinir la méthode <code>SendAsync</code></strong>. Une implémentation minimale ressemblerait à ceci :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TimeoutHandler</span> : DelegatingHandler
-{
-    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">override</span> Task&lt;HttpResponseMessage&gt; SendAsync(
-        HttpRequestMessage request,
-        CancellationToken cancellationToken)
-    {
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">base</span>.SendAsync(request, cancellationToken);
-    }
-}
-</code></pre></div><p>L&rsquo;appel à <code>base.SendAsync</code> va simplement passer la requête au handler suivant. Du coup, pour l&rsquo;instant notre implémentation ne sert à rien, mais on va l&rsquo;enrichir petit à petit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TimeoutHandler</span> : DelegatingHandler
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">override</span> Task&lt;HttpResponseMessage&gt; SendAsync(
+</span></span><span style="display:flex;"><span>        HttpRequestMessage request,
+</span></span><span style="display:flex;"><span>        CancellationToken cancellationToken)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">base</span>.SendAsync(request, cancellationToken);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>L&rsquo;appel à <code>base.SendAsync</code> va simplement passer la requête au handler suivant. Du coup, pour l&rsquo;instant notre implémentation ne sert à rien, mais on va l&rsquo;enrichir petit à petit.</p>
 <h2 id="prendre-en-compte-le-timeout-pour-une-requête">Prendre en compte le timeout pour une requête</h2>
 <p>Ajoutons d&rsquo;abord à notre classe une propriété <code>DefaultTimeout</code>, qui sera utilisée pour les requêtes dont le timeout n&rsquo;est pas explicitement défini :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> TimeSpan DefaultTimeout { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; } = TimeSpan.FromSeconds(<span style="color:#ae81ff">100</span>);
-</code></pre></div><p>La valeur par défaut de 100 secondes est la même que celle de <code>HttpClient.Timeout</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> TimeSpan DefaultTimeout { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; } = TimeSpan.FromSeconds(<span style="color:#ae81ff">100</span>);
+</span></span></code></pre></div><p>La valeur par défaut de 100 secondes est la même que celle de <code>HttpClient.Timeout</code>.</p>
 <p>Pour implémenter le timeout, on va récupérer la valeur associée à la requête (ou à défaut <code>DefaultTimeout</code>), <strong>créer un <code>CancellationToken</code> qui sera annulé après la durée du timeout, et passer ce <code>CancellationToken</code> au handler suivant</strong> : la requête sera donc annulée après l&rsquo;expiration de ce délai (ce qui correspond au comportement par défaut de <code>HttpClient</code>).</p>
 <p>Pour créer un <code>CancellationToken</code> dont on peut contrôler l&rsquo;annulation, <strong>on utilise un objet <code>CancellationTokenSource</code></strong>, qu&rsquo;on va créer comme ceci en fonction du timeout de la requête :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">private</span> CancellationTokenSource GetCancellationTokenSource(
-    HttpRequestMessage request,
-    CancellationToken cancellationToken)
-{
-    <span style="color:#66d9ef">var</span> timeout = request.GetTimeout() ?? DefaultTimeout;
-    <span style="color:#66d9ef">if</span> (timeout == Timeout.InfiniteTimeSpan)
-    {
-        <span style="color:#75715e">// No need to create a CTS if there&#39;s no timeout
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
-    }
-    <span style="color:#66d9ef">else</span>
-    {
-        <span style="color:#66d9ef">var</span> cts = CancellationTokenSource
-            .CreateLinkedTokenSource(cancellationToken);
-        cts.CancelAfter(timeout);
-        <span style="color:#66d9ef">return</span> cts;
-    }
-}
-</code></pre></div><p>Deux choses à noter ici :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> CancellationTokenSource GetCancellationTokenSource(
+</span></span><span style="display:flex;"><span>    HttpRequestMessage request,
+</span></span><span style="display:flex;"><span>    CancellationToken cancellationToken)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> timeout = request.GetTimeout() ?? DefaultTimeout;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (timeout == Timeout.InfiniteTimeSpan)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// No need to create a CTS if there&#39;s no timeout</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> cts = CancellationTokenSource
+</span></span><span style="display:flex;"><span>            .CreateLinkedTokenSource(cancellationToken);
+</span></span><span style="display:flex;"><span>        cts.CancelAfter(timeout);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cts;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Deux choses à noter ici :</p>
 <ul>
 <li>si le timeout de la requête est infini, on ne crée pas de <code>CancellationTokenSource</code>; il ne servirait à rien puisqu&rsquo;il ne serait jamais annulé, on économise donc une allocation inutile.</li>
 <li>Dans le cas contraire, on crée un <code>CancellationTokenSource</code> qui sera annulé après expiration du timeout (<code>CancelAfter</code>). Notez que <strong>ce CTS est <em>lié au <code>CancellationToken</code> reçu en paramètre de <code>SendAsync</code></em></strong>: il sera donc annulé soit par après expiration du timeout, soit quand ce <code>CancellationToken</code> sera lui-même annulé. Je vous renvoie à <a href="/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/">cet article</a> pour plus d&rsquo;infos à ce sujet.</li>
 </ul>
 <p>Enfin, modifions la méthode <code>SendAsync</code> pour prendre en compte le <code>CancellationTokenSource</code> qu&rsquo;on a créé :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">override</span> Task&lt;HttpResponseMessage&gt; SendAsync(
-    HttpRequestMessage request,
-    CancellationToken cancellationToken)
-{
-    <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> cts = GetCancellationTokenSource(request, cancellationToken))
-    {
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">base</span>.SendAsync(
-            request,
-            cts?.Token ?? cancellationToken);
-    }
-}
-</code></pre></div><p>On récupère le CTS, et on passe son token à <code>base.SendAsync</code>. Notez qu&rsquo;on utilise <code>cts?.Token</code> puisque <code>GetCancellationTokenSource</code> peut renvoyer null; si c&rsquo;est le cas, on utilise le <code>CancellationToken</code> reçu en paramètre.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">override</span> Task&lt;HttpResponseMessage&gt; SendAsync(
+</span></span><span style="display:flex;"><span>    HttpRequestMessage request,
+</span></span><span style="display:flex;"><span>    CancellationToken cancellationToken)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> cts = GetCancellationTokenSource(request, cancellationToken))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">base</span>.SendAsync(
+</span></span><span style="display:flex;"><span>            request,
+</span></span><span style="display:flex;"><span>            cts?.Token ?? cancellationToken);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>On récupère le CTS, et on passe son token à <code>base.SendAsync</code>. Notez qu&rsquo;on utilise <code>cts?.Token</code> puisque <code>GetCancellationTokenSource</code> peut renvoyer null; si c&rsquo;est le cas, on utilise le <code>CancellationToken</code> reçu en paramètre.</p>
 <p>À ce stade, on a un handler qui permet de spécifier un timeout différent pour chaque requête. Mais il reste le problème de l&rsquo;exception renvoyée en cas de timeout, qui est encore une <code>TaskCanceledException</code>&hellip; Mais on va régler ça très facilement!</p>
 <h2 id="lever-la-bonne-exception">Lever la bonne exception</h2>
 <p>En effet, il suffit d&rsquo;intercepter l&rsquo;exception <code>TaskCanceledException</code> (ou plutôt sa classe de base, <code>OperationCanceledException</code>), et de <strong>vérifier si le <code>CancellationToken</code> reçu en paramètre est annulé</strong>: si oui, l&rsquo;annulation vient de l&rsquo;appelant, et on laisse l&rsquo;exception se propager normalement; si non, c&rsquo;est qu&rsquo;elle est causée par le timeout, et dans ce cas on lance une <code>TimeoutException</code>. Voilà donc notre méthode <code>SendAsync</code> finale:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">override</span> Task&lt;HttpResponseMessage&gt; SendAsync(
-    HttpRequestMessage request,
-    CancellationToken cancellationToken)
-{
-    <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> cts = GetCancellationTokenSource(request, cancellationToken))
-    {
-        <span style="color:#66d9ef">try</span>
-        {
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">base</span>.SendAsync(
-                request,
-                cts?.Token ?? cancellationToken);
-        }
-        <span style="color:#66d9ef">catch</span>(OperationCanceledException)
-            when (!cancellationToken.IsCancellationRequested)
-        {
-            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> TimeoutException();
-        }
-    }
-}
-</code></pre></div><p>On utilise ici un <a href="/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/">filtre d&rsquo;exception</a> : cela évite d&rsquo;intercepter <code>OperationCanceledException</code> si on doit la laisser se propager; on évite ainsi de dérouler la pile inutilement.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">override</span> Task&lt;HttpResponseMessage&gt; SendAsync(
+</span></span><span style="display:flex;"><span>    HttpRequestMessage request,
+</span></span><span style="display:flex;"><span>    CancellationToken cancellationToken)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> cts = GetCancellationTokenSource(request, cancellationToken))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">base</span>.SendAsync(
+</span></span><span style="display:flex;"><span>                request,
+</span></span><span style="display:flex;"><span>                cts?.Token ?? cancellationToken);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">catch</span>(OperationCanceledException)
+</span></span><span style="display:flex;"><span>            when (!cancellationToken.IsCancellationRequested)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> TimeoutException();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>On utilise ici un <a href="/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/">filtre d&rsquo;exception</a> : cela évite d&rsquo;intercepter <code>OperationCanceledException</code> si on doit la laisser se propager; on évite ainsi de dérouler la pile inutilement.</p>
 <p>Notre handler est terminé, voyons maintenant comment l&rsquo;utiliser.</p>
 <h2 id="utilisation-du-handler">Utilisation du handler</h2>
 <p>Quand on crée un <code>HttpClient</code>, il est possible de <strong>passer en paramètre du constructeur le premier handler du pipeline</strong>. Si on ne spécifie rien, par défaut c&rsquo;est un <code>HttpClientHandler</code> qui est créé; ce handler envoie directement les requêtes vers le réseau. Pour utiliser notre nouveau <code>TimeoutHandler</code>, on va le créer, lui attacher un <code>HttpClientHandler</code> comme handler suivant, et le passer au <code>HttpClient</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> handler = <span style="color:#66d9ef">new</span> TimeoutHandler
-{
-    InnerHandler = <span style="color:#66d9ef">new</span> HttpClientHandler()
-};
-
-<span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> client = <span style="color:#66d9ef">new</span> HttpClient(handler))
-{
-    client.Timeout = Timeout.InfiniteTimeSpan;
-    ...
-}
-</code></pre></div><p>Notez qu&rsquo;il faut <strong>désactiver le timeout du <code>HttpClient</code> en lui donnant une valeur infinie</strong>, sinon le comportement par défaut viendra interférer avec notre handler.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> handler = <span style="color:#66d9ef">new</span> TimeoutHandler
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    InnerHandler = <span style="color:#66d9ef">new</span> HttpClientHandler()
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> client = <span style="color:#66d9ef">new</span> HttpClient(handler))
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    client.Timeout = Timeout.InfiniteTimeSpan;
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Notez qu&rsquo;il faut <strong>désactiver le timeout du <code>HttpClient</code> en lui donnant une valeur infinie</strong>, sinon le comportement par défaut viendra interférer avec notre handler.</p>
 <p>Essayons maintenant d&rsquo;envoyer une requête avec un timeout de 5 secondes vers un serveur qui met trop longtemps à répondre:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> request = <span style="color:#66d9ef">new</span> HttpRequestMessage(HttpMethod.Get, <span style="color:#e6db74">&#34;http://foo/&#34;</span>);
-request.SetTimeout(TimeSpan.FromSeconds(<span style="color:#ae81ff">5</span>));
-<span style="color:#66d9ef">var</span> response = <span style="color:#66d9ef">await</span> client.SendAsync(request);
-</code></pre></div><p>Si le serveur n&rsquo;a pas répondu au bout de 5 secondes, on obtiendra bien une <code>TimeoutException</code>, et non une <code>TaskCanceledException</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> request = <span style="color:#66d9ef">new</span> HttpRequestMessage(HttpMethod.Get, <span style="color:#e6db74">&#34;http://foo/&#34;</span>);
+</span></span><span style="display:flex;"><span>request.SetTimeout(TimeSpan.FromSeconds(<span style="color:#ae81ff">5</span>));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> response = <span style="color:#66d9ef">await</span> client.SendAsync(request);
+</span></span></code></pre></div><p>Si le serveur n&rsquo;a pas répondu au bout de 5 secondes, on obtiendra bien une <code>TimeoutException</code>, et non une <code>TaskCanceledException</code>.</p>
 <p>Vérifions maintenant que le cas de l&rsquo;annulation marche toujours correctement. Pour cela, on va passer un <code>CancellationToken</code> qui sera annulé au bout de 2 secondes (avant expiration du timeout, donc) :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">var</span> request = <span style="color:#66d9ef">new</span> HttpRequestMessage(HttpMethod.Get, <span style="color:#e6db74">&#34;http://foo/&#34;</span>);
-request.SetTimeout(TimeSpan.FromSeconds(<span style="color:#ae81ff">5</span>));
-<span style="color:#66d9ef">var</span> cts = <span style="color:#66d9ef">new</span> CancellationTokenSource(TimeSpan.FromSeconds(<span style="color:#ae81ff">2</span>));
-<span style="color:#66d9ef">var</span> response = <span style="color:#66d9ef">await</span> client.SendAsync(request, cts.Token);
-</code></pre></div><p>Et on obtient bien une <code>TaskCanceledException</code>!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> request = <span style="color:#66d9ef">new</span> HttpRequestMessage(HttpMethod.Get, <span style="color:#e6db74">&#34;http://foo/&#34;</span>);
+</span></span><span style="display:flex;"><span>request.SetTimeout(TimeSpan.FromSeconds(<span style="color:#ae81ff">5</span>));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> cts = <span style="color:#66d9ef">new</span> CancellationTokenSource(TimeSpan.FromSeconds(<span style="color:#ae81ff">2</span>));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> response = <span style="color:#66d9ef">await</span> client.SendAsync(request, cts.Token);
+</span></span></code></pre></div><p>Et on obtient bien une <code>TaskCanceledException</code>!</p>
 <p>En implémentant notre propre handler HTTP, on a donc pu régler notre problème de départ et avoir une gestion intelligente du timeout.</p>
 <p>Le code complet de cet article est disponible <a href="https://gist.github.com/thomaslevesque/b4fd8c3aa332c9582a57935d6ed3406f">ici</a>.</p>
 
@@ -355,7 +356,7 @@ request.SetTimeout(TimeSpan.FromSeconds(<span style="color:#ae81ff">5</span>));
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

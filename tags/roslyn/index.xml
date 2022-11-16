@@ -14,7 +14,7 @@
       
       <guid>https://thomaslevesque.fr/2015/02/25/personnaliser-linterpolation-de-chaine-avec-c-6/</guid>
       <description>L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :
-string text = $&amp;quot;{p.Name} was born on {p.DateOfBirth:D}&amp;quot;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :</description>
+string text = $&amp;#34;{p.Name} was born on {p.DateOfBirth:D}&amp;#34;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :</description>
     </item>
     
   </channel>

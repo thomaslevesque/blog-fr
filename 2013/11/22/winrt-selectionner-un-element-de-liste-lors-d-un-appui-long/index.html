@@ -11,8 +11,8 @@
 <meta property="og:description" content="Comme vous le savez probablement, la méthode standard pour sélectionner ou déselectionner un élément dans un contrôle de liste WinRT est de le faire glisser légèrement vers le haut ou vers le bas. Même si j’aime bien ce geste, il n’est pas très intuitif pour les utilisateurs qui ne sont pas habitués à Modern UI. Et ça devient encore plus déroutant, car ma déclaration précédente n’est pas tout à fait exacte : en fait, il faut faire glisser l’élément perpendiculairement à la direction de défilement de la liste." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2013/11/22/winrt-selectionner-un-element-de-liste-lors-d-un-appui-long/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2013-11-22T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2013-11-22T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2013-11-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2013-11-22T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -80,7 +81,7 @@ if (!doNotTrack) {
 			<p>Comme vous le savez probablement, la méthode standard pour sélectionner ou déselectionner un élément dans un contrôle de liste WinRT est de le faire glisser légèrement vers le haut ou vers le bas. Même si j’aime bien ce geste, il n’est pas très intuitif pour les utilisateurs qui ne sont pas habitués à Modern UI. Et ça devient encore plus déroutant, car ma déclaration précédente n’est pas tout à fait exacte : en fait, il faut faire glisser l’élément <em>perpendiculairement à la direction de défilement</em> de la liste. Dans une <code>GridView</code>, qui défile horizontalement (par défaut), c’est vers le haut ou vers le bas ; mais pour une <code>ListView</code>, qui défile verticalement, il faut faire glisser l’élément vers la gauche ou vers la droite. Si une application utilise les deux types de liste, ça devient vraiment <em>très</em> déroutant pour l’utilisateur.</p>
 <p>Bien sûr, dans le style par défaut, il y a une indication visuelle (une discrète animation “glissement vers le bas” avec une coche grise) quand l’utilisateur appuie longuement sur un élément, mais ce n’est pas toujours suffisant pour que tout le monde comprenne. Beaucoup de gens (par exemple les utilisateurs d’Android) on l’habitude de sélectionner les éléments par un appui long (appelé “Hold” dans la terminologie Modern UI). Donc, pour rendre votre application facilement utilisable par le plus grand nombre d’utilisateurs, il peut être intéressant de permettre la sélection par un appui long.</p>
 <p>Un moyen simple de le faire est de créer une propriété attachée qui, quand on la met à <code>true</code>, s’abonne à l’évènement <code>Holding</code> de l’élément, et change la valeur de la propriété <code>IsSelected</code> quand l’évènement se produit. Voilà une implémentation possible :</p>
-<pre><code>using Windows.UI.Input;
+<pre tabindex="0"><code>using Windows.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
@@ -101,7 +102,7 @@ namespace TestSelectOnHold
 
         public static readonly DependencyProperty ToggleSelectedOnHoldProperty =
             DependencyProperty.RegisterAttached(
-              &quot;ToggleSelectedOnHold&quot;,
+              &#34;ToggleSelectedOnHold&#34;,
               typeof(bool),
               typeof(SelectorItemEx),
               new PropertyMetadata(
@@ -139,10 +140,10 @@ namespace TestSelectOnHold
     }
 }
 </code></pre><p>Vous pouvez ensuite définir cette propriété dans l’<code>ItemContainerStyle</code> du contrôle de liste :</p>
-<pre><code>&lt;GridView.ItemContainerStyle&gt;
-    &lt;Style TargetType=&quot;GridViewItem&quot;&gt;
+<pre tabindex="0"><code>&lt;GridView.ItemContainerStyle&gt;
+    &lt;Style TargetType=&#34;GridViewItem&#34;&gt;
         ...
-        &lt;Setter Property=&quot;local:SelectorItemEx.ToggleSelectedOnHold&quot; Value=&quot;False&quot; /&gt;
+        &lt;Setter Property=&#34;local:SelectorItemEx.ToggleSelectedOnHold&#34; Value=&#34;False&#34; /&gt;
     &lt;/Style&gt;
 &lt;/GridView.ItemContainerStyle&gt;
 </code></pre><p>Et c’est tout : l’utilisateur peut maintenant sélectionner les éléments par un appui long. Le geste standard fonctionne toujours, bien sûr, donc les utilisateurs qui le connaissent peuvent toujours l’utiliser.</p>
@@ -283,7 +284,7 @@ namespace TestSelectOnHold
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

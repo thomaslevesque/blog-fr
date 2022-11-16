@@ -11,8 +11,8 @@
 <meta property="og:description" content="Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2016-04-17T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2016-04-17T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2016-04-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-04-17T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -82,7 +83,7 @@ if (!doNotTrack) {
 <p>Les nouvelles fonctionnalités ne sont pas activées par défaut. On peut les activer individuellement avec l’option <code>/feature:</code> en ligne de commande, mais le plus simple est de toutes les activer en ajoutant <code>__DEMO__</code> et <code>__DEMO_EXPERIMENTAL__</code> dans les symboles de compilation conditionnelle (Propriétés du projet, onglet <em>Build</em>).</p>
 <h3 id="fonctions-locales">Fonctions locales</h3>
 <p>La plupart des langages fonctionnels permettent de déclarer des fonctions dans le corps d’autres fonctions. Il est maintenant possible de faire la même chose en C# 7 ! La syntaxe pour déclarer une méthode dans une autre est sans grande surprise :</p>
-<pre><code>long Factorial(int n)
+<pre tabindex="0"><code>long Factorial(int n)
 {
     long Fact(int i, long acc)
     {
@@ -106,14 +107,14 @@ if (!doNotTrack) {
 <p>Pour en savoir plus sur les fonctions locales, allez voir <a href="https://github.com/dotnet/roslyn/issues/2930">sur le dépôt Github de Roslyn</a>.</p>
 <h3 id="valeurs-de-retour-et-variables-locales-par-référence">Valeurs de retour et variables locales par référence</h3>
 <p>Il est possible, depuis la première version de C#, de passer des paramètres par référence, ce qui est conceptuellement similaire au fait de passer un pointeur dans un langage comme C. Jusqu’ici, cette possibilité était limitée aux paramètres, mais C# 7 l’étend aux valeurs de retour et aux variables locales. Voici un exemple :</p>
-<pre><code>static void TestRefReturn()
+<pre tabindex="0"><code>static void TestRefReturn()
 {
     var foo = new Foo();
     Console.WriteLine(foo); // 0, 0
      
-    foo.GetByRef(&quot;x&quot;) = 42;
+    foo.GetByRef(&#34;x&#34;) = 42;
  
-    ref int y = ref foo.GetByRef(&quot;y&quot;);
+    ref int y = ref foo.GetByRef(&#34;y&#34;);
     y = 99;
  
     Console.WriteLine(foo); // 42, 99
@@ -126,14 +127,14 @@ class Foo
  
     public ref int GetByRef(string name)
     {
-        if (name == &quot;x&quot;)
+        if (name == &#34;x&#34;)
             return ref x;
-        if (name == &quot;y&quot;)
+        if (name == &#34;y&#34;)
             return ref y;
         throw new ArgumentException(nameof(name));
     }
  
-    public override string ToString() =&gt; $&quot;{x},{y}&quot;;
+    public override string ToString() =&gt; $&#34;{x},{y}&#34;;
 }
 </code></pre><p>Examinons ce code d’un peu plus près.</p>
 <ul>
@@ -141,7 +142,7 @@ class Foo
 <li>A la ligne 8, au lieu de simplement affecter une valeur directement au champ renvoyé par <code>GetByRef</code>, je passe par une variable locale <code>y</code>. Cette variable partage maintenant le même emplacement mémoire que le champ <code>foo.y</code>. Si j’affecte une valeur à <code>y</code>, cela modifie donc aussi <code>foo.y</code>.</li>
 </ul>
 <p>Notez qu’il est également possible de renvoyer par référence un emplacement dans un tableau :</p>
-<pre><code>private MyBigStruct[] array = new MyBigStruct[10];
+<pre tabindex="0"><code>private MyBigStruct[] array = new MyBigStruct[10];
 private int current;
  
 public ref MyBigStruct GetCurrentItem()
@@ -153,68 +154,68 @@ public ref MyBigStruct GetCurrentItem()
 <h3 id="pattern-matching">Pattern matching</h3>
 <p>Le pattern matching (parfois traduit en “filtrage par motif”, mais je trouve cette traduction un peu bancale) est une fonctionnalité très courante dans les langages fonctionnels. C# 7 introduit certains aspects du pattern matching, sous forme d’extensions de l’opérateur <code>is</code>. Par exemple, quand on teste le type d’une variable, on peut maintenant introduire une nouvelle variable après le type, de façon à ce que cette variable reçoive la valeur de l’opérande de gauche, mais avec le type indiqué par l’opérande de droite (ce sera plus clair dans un instant avec un exemple).</p>
 <p>Par exemple, si vous devez tester qu’une valeur est de type <code>DateTime</code>, puis faire quelque chose avec ce <code>DateTime</code>, il faut actuellement tester le type, puis convertir la valeur vers ce type :</p>
-<pre><code>object o = GetValue();
+<pre tabindex="0"><code>object o = GetValue();
 if (o is DateTime)
 {
     var d = (DateTime)o;
     // Do something with d
 }
 </code></pre><p>En C# 7, on peut simplifier un peu :</p>
-<pre><code>object o = GetValue();
+<pre tabindex="0"><code>object o = GetValue();
 if (o is DateTime d)
 {
     // Do something with d
 }
 </code></pre><p><code>d</code> est maintenant déclarée directement dans l’expression <code>o is DateTime</code>.</p>
 <p>Cette fonctionnalité peut aussi être utilisée dans un block <code>switch</code> :</p>
-<pre><code>object v = GetValue();
+<pre tabindex="0"><code>object v = GetValue();
 switch (v)
 {
     case string s:
-        Console.WriteLine($&quot;{v} is a string of length {s.Length}&quot;);
+        Console.WriteLine($&#34;{v} is a string of length {s.Length}&#34;);
         break;
     case int i:
-        Console.WriteLine($&quot;{v} is an {(i % 2 == 0 ? &quot;even&quot; : &quot;odd&quot;)} int&quot;);
+        Console.WriteLine($&#34;{v} is an {(i % 2 == 0 ? &#34;even&#34; : &#34;odd&#34;)} int&#34;);
         break;
     default:
-        Console.WriteLine($&quot;{v} is something else&quot;);
+        Console.WriteLine($&#34;{v} is something else&#34;);
         break;
 }
 </code></pre><p>Dans ce code, chaque <code>case</code> introduit une variable du type approprié, qu’on peut ensuite utiliser dans le corps du <code>case</code>.</p>
 <p>Pour l’instant, je n’ai couvert que le pattern matching avec un simple test du type, mais il existe aussi des formes plus sophistiquées. Par exemple :</p>
-<pre><code>switch (DateTime.Today)
+<pre tabindex="0"><code>switch (DateTime.Today)
 {
     case DateTime(*, 10, 31):
-        Console.WriteLine(&quot;Happy Halloween!&quot;);
+        Console.WriteLine(&#34;Happy Halloween!&#34;);
         break;
     case DateTime(var year, 7, 4) when year &gt; 1776:
-        Console.WriteLine(&quot;Happy Independance Day!&quot;);
+        Console.WriteLine(&#34;Happy Independance Day!&#34;);
         break;
     case DateTime { DayOfWeek is DayOfWeek.Saturday }:
     case DateTime { DayOfWeek is DayOfWeek.Sunday }:
-        Console.WriteLine(&quot;Have a nice week-end!&quot;);
+        Console.WriteLine(&#34;Have a nice week-end!&#34;);
         break;
     default:
         break;
 }
 </code></pre><p>Plutôt cool, non ?</p>
 <p>Le pattern matching existe aussi sous une autre forme (encore expérimentale), avec un nouveau mot-clé <code>match</code> :</p>
-<pre><code>object o = GetValue();
+<pre tabindex="0"><code>object o = GetValue();
 string description = o match
     (
-        case string s : $&quot;{o} is a string of length {s.Length}&quot;
-        case int i : $&quot;{o} is an {(i % 2 == 0 ? &quot;even&quot; : &quot;odd&quot;)} int&quot;
-        case * : $&quot;{o} is something else&quot;
+        case string s : $&#34;{o} is a string of length {s.Length}&#34;
+        case int i : $&#34;{o} is an {(i % 2 == 0 ? &#34;even&#34; : &#34;odd&#34;)} int&#34;
+        case * : $&#34;{o} is something else&#34;
     );
 </code></pre><p>Cela ressemble beaucoup à un <code>switch</code>, sauf que c’est une expression et non une instruction.</p>
 <p>Il y a encore beaucoup à dire sur le pattern matching, mais ça devient un peu long pour un article de blog, je vous invite donc à consulter <a href="https://github.com/dotnet/roslyn/blob/master/docs/features/patterns.md">la spec sur Github</a> pour plus de détails.</p>
 <h3 id="littéraux-binaires-et-séparateurs-de-chiffres">Littéraux binaires et séparateurs de chiffres</h3>
 <p>Ces fonctionnalités n’étaient pas explicitement mentionnées dans les notes de version, mais j’ai remarqué qu’elles étaient inclues aussi. Elles étaient initialement prévues pour C# 6, mais avaient finalement été retirées avant la release ; elles sont de retour en C# 7.</p>
 <p>Il est maintenant possible d’écrire des littéraux numériques sous forme binaire, en plus du décimal et de l’hexadécimal :</p>
-<pre><code>int x = 0b11001010;
+<pre tabindex="0"><code>int x = 0b11001010;
 </code></pre><p>Pratique pour définir des masques de bits !</p>
 <p>De plus, pour rendre les grands nombres plus lisibles, on peut désormais grouper les chiffres en introduisant des séparateurs. Cela fonctionne avec les littéraux décimaux, hexadécimaux, et binaires :</p>
-<pre><code>int oneBillion = 1_000_000_000;
+<pre tabindex="0"><code>int oneBillion = 1_000_000_000;
 int foo = 0x7FFF_1234;
 int bar = 0b1001_0110_1010_0101;
 </code></pre><h3 id="conclusion">Conclusion</h3>
@@ -339,7 +340,7 @@ int bar = 0b1001_0110_1010_0101;
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

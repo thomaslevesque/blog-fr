@@ -11,8 +11,8 @@
 <meta property="og:description" content="LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les InputBindings n&rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip; Jusqu&rsquo;ici, pour lier la commande d&rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2009-10-25T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2009-10-25T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2009-10-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2009-10-25T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -78,10 +79,10 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-10-25T00:00:00Z">October 25, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p><strong>LA fonctionnalité qui manquait à WPF !</strong>  La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les <code>InputBindings</code>.  Pour rappel, le problème de la version précédente était que la propriété <code>Command</code> de la classe <code>InputBinding</code> n&rsquo;était pas une <code>DependencyProperty</code>, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les <code>InputBindings</code> n&rsquo;héritaient pas du <code>DataContext</code>, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip;  Jusqu&rsquo;ici, pour lier la commande d&rsquo;un <code>KeyBinding</code> ou <code>MouseBinding</code> à une propriété du <code>DataContext</code>, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans <a href="/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/">ce post</a>, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;).  J&rsquo;ai découvert plus récemment le <a href="http://www.codeplex.com/wpf/Release/ProjectReleases.aspx?ReleaseId=14962">MVVM toolkit</a>, qui propose une approche un peu plus propre : une classe <code>CommandReference</code>, héritée de <code>Freezable</code>, qui permet de mettre dans les ressources de la page ou du contrôle une référence à la commande, qu&rsquo;on peut ensuite utiliser avec <code>StaticResource</code>. Plus propre, mais ça restait peu intuitif&hellip;  WPF 4.0 résout le problème une bonne fois pour toutes : la classe <code>InputBinding</code> hérite maintenant de <code>Freezable</code>, ce qui lui permet d&rsquo;hériter du <code>DataContext</code> parent. De plus les propriétés <code>Command</code>, <code>CommandParameter</code> et <code>CommandTarget</code> sont maintenant des <code>DependencyProperty</code>. On peut donc laisser tomber tous les bricolages qu&rsquo;il fallait utiliser jusqu&rsquo;à maintenant, et aller droit au but :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;Window.InputBindings&gt;</span>
-        <span style="color:#f92672">&lt;KeyBinding</span> <span style="color:#a6e22e">Key=</span><span style="color:#e6db74">&#34;F5&#34;</span> <span style="color:#a6e22e">Command=</span><span style="color:#e6db74">&#34;{Binding RefreshCommand}&#34;</span> <span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/Window.InputBindings&gt;</span>
-</code></pre></div><p>Voilà qui devrait faciliter un peu le développement d&rsquo;applications MVVM !  <strong>Help 3</strong>  Je change un peu de sujet pour vous parler du nouveau système de documentation offline de Visual Studio 2010, appelé &ldquo;Help 3&rdquo;. Il se présente comme une application web installée localement, les pages s&rsquo;affichent donc dans le navigateur. Globalement, c&rsquo;est beaucoup mieux&hellip; largement plus léger et plus réactif que le vieux Document Explorer livré avec les versions précédentes de Visual Studio.  En revanche, une fonction qui m&rsquo;était absolument indispensable a disparu : l&rsquo;index ! Il ne reste que la vue en arborescence et la recherche. Plus de trace de l&rsquo;index que j&rsquo;utilisais en permanence pour accéder directement à une classe ou un membre, sans forcément connaître son namespace. En plus, les résultats de la recherche ne montre pas clairement le namespace : par exemple, si vous tapez &ldquo;button class&rdquo; dans la recherche, pas moyen de voir la différence entre <code>System.Windows.Forms.Button</code>, <code>System.Windows.Controls.Button</code> et <code>System.Web.UI.WebControls</code> ! Avant, le volet &ldquo;Résultats de l&rsquo;index&rdquo; affichait cette information clairement.  Mon sentiment sur ce nouveau système d&rsquo;aide est donc un peu mitigé&hellip; il va falloir que je change ma façon d&rsquo;utiliser la doc. Mais à part ce détail agaçant, c&rsquo;est objectivement un gros progrès !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Window.InputBindings&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;KeyBinding</span> <span style="color:#a6e22e">Key=</span><span style="color:#e6db74">&#34;F5&#34;</span> <span style="color:#a6e22e">Command=</span><span style="color:#e6db74">&#34;{Binding RefreshCommand}&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/Window.InputBindings&gt;</span>
+</span></span></code></pre></div><p>Voilà qui devrait faciliter un peu le développement d&rsquo;applications MVVM !  <strong>Help 3</strong>  Je change un peu de sujet pour vous parler du nouveau système de documentation offline de Visual Studio 2010, appelé &ldquo;Help 3&rdquo;. Il se présente comme une application web installée localement, les pages s&rsquo;affichent donc dans le navigateur. Globalement, c&rsquo;est beaucoup mieux&hellip; largement plus léger et plus réactif que le vieux Document Explorer livré avec les versions précédentes de Visual Studio.  En revanche, une fonction qui m&rsquo;était absolument indispensable a disparu : l&rsquo;index ! Il ne reste que la vue en arborescence et la recherche. Plus de trace de l&rsquo;index que j&rsquo;utilisais en permanence pour accéder directement à une classe ou un membre, sans forcément connaître son namespace. En plus, les résultats de la recherche ne montre pas clairement le namespace : par exemple, si vous tapez &ldquo;button class&rdquo; dans la recherche, pas moyen de voir la différence entre <code>System.Windows.Forms.Button</code>, <code>System.Windows.Controls.Button</code> et <code>System.Web.UI.WebControls</code> ! Avant, le volet &ldquo;Résultats de l&rsquo;index&rdquo; affichait cette information clairement.  Mon sentiment sur ce nouveau système d&rsquo;aide est donc un peu mitigé&hellip; il va falloir que je change ma façon d&rsquo;utiliser la doc. Mais à part ce détail agaçant, c&rsquo;est objectivement un gros progrès !</p>
 
 		</div>
 		<footer class="post__footer">
@@ -220,7 +221,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

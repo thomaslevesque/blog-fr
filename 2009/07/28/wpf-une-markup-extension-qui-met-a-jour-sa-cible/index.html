@@ -12,8 +12,8 @@
   si la valeur de la markup extension peut changer en réponse à un évènement" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2009-07-28T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2009-07-28T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2009-07-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2009-07-28T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -89,83 +90,83 @@ if (!doNotTrack) {
 <p>Voyons donc comment on peut obtenir le comportement voulu&hellip;  La méthode <code>ProvideValue</code> d&rsquo;une markup extension prend un paramètre de type <code>IServiceProvider</code>, qui fournit, entre autres, un service <code>IProvideValueTarget</code>. Cette interface expose des propriétés <code>TargetObject</code> et <code>TargetProperty</code>, qui permettent d&rsquo;obtenir l&rsquo;objet et la propriété cibles de la markup extension. Il est donc possible, si l&rsquo;on sauvegarde cette information, de mettre à jour la propriété concernée alors que la markup extension a déjà été évaluée.  On va donc créer un classe abstraite <code>UpdatableMarkupExtension</code>, qui sauvegarde l&rsquo;objet et la propriété cible et fournit une méthode pour mettre à jour la valeur :</p>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdatableMarkupExtension</span> : MarkupExtension
-    {
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">object</span> <span style="color:#ae81ff">_</span>targetObject;
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">object</span> <span style="color:#ae81ff">_</span>targetProperty;
-
-        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">object</span> TargetObject
-        {
-            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>targetObject; }
-        }
-
-        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">object</span> TargetProperty
-        {
-            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>targetProperty; }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">object</span> ProvideValue(IServiceProvider serviceProvider)
-        {
-            IProvideValueTarget target = serviceProvider.GetService(<span style="color:#66d9ef">typeof</span>(IProvideValueTarget)) <span style="color:#66d9ef">as</span> IProvideValueTarget;
-            <span style="color:#66d9ef">if</span> (target != <span style="color:#66d9ef">null</span>)
-            {
-                <span style="color:#ae81ff">_</span>targetObject = target.TargetObject;
-                <span style="color:#ae81ff">_</span>targetProperty = target.TargetProperty;
-            }
-
-            <span style="color:#66d9ef">return</span> ProvideValueInternal(serviceProvider);
-        }
-
-        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> UpdateValue(<span style="color:#66d9ef">object</span> <span style="color:#66d9ef">value</span>)
-        {
-            <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">_</span>targetObject != <span style="color:#66d9ef">null</span>)
-            {
-                <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">_</span>targetProperty <span style="color:#66d9ef">is</span> DependencyProperty)
-                {
-                    DependencyObject obj = <span style="color:#ae81ff">_</span>targetObject <span style="color:#66d9ef">as</span> DependencyObject;
-                    DependencyProperty prop = <span style="color:#ae81ff">_</span>targetProperty <span style="color:#66d9ef">as</span> DependencyProperty;
-
-                    Action updateAction = () =&gt;  obj.SetValue(prop, <span style="color:#66d9ef">value</span>);
-
-                    <span style="color:#75715e">// Check whether the target object can be accessed from the
-</span><span style="color:#75715e"></span>                    <span style="color:#75715e">// current thread, and use Dispatcher.Invoke if it can&#39;t
-</span><span style="color:#75715e"></span>
-                    <span style="color:#66d9ef">if</span> (obj.CheckAccess())
-                        updateAction();
-                    <span style="color:#66d9ef">else</span>
-                        obj.Dispatcher.Invoke(updateAction);
-                }
-                <span style="color:#66d9ef">else</span> <span style="color:#75715e">// _targetProperty is PropertyInfo
-</span><span style="color:#75715e"></span>                {
-                    PropertyInfo prop = <span style="color:#ae81ff">_</span>targetProperty <span style="color:#66d9ef">as</span> PropertyInfo;
-                    prop.SetValue(<span style="color:#ae81ff">_</span>targetObject, <span style="color:#66d9ef">value</span>, <span style="color:#66d9ef">null</span>);
-                }
-            }
-        }
-
-        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">object</span> ProvideValueInternal(IServiceProvider serviceProvider);
-    }
-</code></pre></div><p>Comme il est indispensable de sauvegarder l&rsquo;objet et la propriété cibles, on marque la méthode <code>ProvideValue</code> comme <code>sealed</code> pour qu&rsquo;elle ne puisse pas être redéfinie, et on définit à la place une méthode abstraite <code>ProvideValueInternal</code> pour que les classes dérivées puissent fournir leur implémentation.  La méthode <code>UpdateValue</code> gère la mise à jour de la propriété cible, qui peut être soit une propriété de dépendance (<code>DependencyProperty</code>), soit une propriété CLR classique (<code>PropertyInfo</code>). Dans le cas d&rsquo;une <code>DependencyProperty</code>, l&rsquo;objet cible hérite de <code>DependencyObject</code>, et donc de <code>DispatcherObject</code> : il faut donc s&rsquo;assurer qu&rsquo;on n&rsquo;accède à cet objet qu&rsquo;à partir du thread qui le possède, à l&rsquo;aide des méthodes <code>CheckAccess</code> et <code>Invoke</code>.  Voyons maintenant comment utiliser cette classe, au travers d&rsquo;un exemple simple. Supposons qu&rsquo;on souhaite réaliser une markup extension qui indique si le réseau est disponible, et qui s&rsquo;utiliserait de la façon suivante :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;CheckBox</span> <span style="color:#a6e22e">IsChecked=</span><span style="color:#e6db74">&#34;{my:NetworkAvailable}&#34;</span> <span style="color:#a6e22e">Content=</span><span style="color:#e6db74">&#34;Network is available&#34;</span> <span style="color:#f92672">/&gt;</span>
-</code></pre></div><p>On souhaite que la checkbox se mette à jour si l&rsquo;état de la connexion change (cable branché ou débranché, Wifi hors de portée&hellip;). Il faut donc gérer l&rsquo;évènement <code>NetworkChange.NetworkAvailabilityChanged</code>, et mettre à jour la propriété <code>IsChecked</code> en conséquence. Notre extension va donc utiliser les fonctionnalités implémentées dans la classe <code>UpdatableMarkupExtension</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NetworkAvailableExtension</span> : UpdatableMarkupExtension
-    {
-        <span style="color:#66d9ef">public</span> NetworkAvailableExtension()
-        {
-            NetworkChange.NetworkAvailabilityChanged += <span style="color:#66d9ef">new</span> NetworkAvailabilityChangedEventHandler(NetworkChange_NetworkAvailabilityChanged);
-        }
-
-        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">object</span> ProvideValueInternal(IServiceProvider serviceProvider)
-        {
-            <span style="color:#66d9ef">return</span> NetworkInterface.GetIsNetworkAvailable();
-        }
-
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> NetworkChange_NetworkAvailabilityChanged(<span style="color:#66d9ef">object</span> sender, NetworkAvailabilityEventArgs e)
-        {
-            UpdateValue(e.IsAvailable);
-        }
-    }
-</code></pre></div><p>Notez qu&rsquo;on s&rsquo;abonne à l&rsquo;évènement <code>NetworkAvailabilityChanged</code> dans le constructeur de la classe. Si on voulait s&rsquo;abonner à un évènement de l&rsquo;objet cible, il faudrait plutôt le faire dans la méthode <code>ProvideValueInternal</code>,  pour avoir accès à l&rsquo;objet cible.  On voit donc qu&rsquo;il est très simple d&rsquo;implémenter une markup extension capable de mettre à jour sa cible a posteriori, après la première évaluation. Cela permet d&rsquo;obtenir un fonctionnement similaire à celui du binding, mais sans être limité aux propriétés de dépendance. J&rsquo;ai notamment utilisé cette possibilité pour réaliser un système de localisation qui permet de changer la langue &ldquo;à la volée&rdquo;, sans redémarrer le programme.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdatableMarkupExtension</span> : MarkupExtension
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">object</span> <span style="color:#ae81ff">_</span>targetObject;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">object</span> <span style="color:#ae81ff">_</span>targetProperty;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">object</span> TargetObject
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>targetObject; }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">object</span> TargetProperty
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>targetProperty; }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">object</span> ProvideValue(IServiceProvider serviceProvider)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            IProvideValueTarget target = serviceProvider.GetService(<span style="color:#66d9ef">typeof</span>(IProvideValueTarget)) <span style="color:#66d9ef">as</span> IProvideValueTarget;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (target != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span>targetObject = target.TargetObject;
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span>targetProperty = target.TargetProperty;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> ProvideValueInternal(serviceProvider);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> UpdateValue(<span style="color:#66d9ef">object</span> <span style="color:#66d9ef">value</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">_</span>targetObject != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">_</span>targetProperty <span style="color:#66d9ef">is</span> DependencyProperty)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    DependencyObject obj = <span style="color:#ae81ff">_</span>targetObject <span style="color:#66d9ef">as</span> DependencyObject;
+</span></span><span style="display:flex;"><span>                    DependencyProperty prop = <span style="color:#ae81ff">_</span>targetProperty <span style="color:#66d9ef">as</span> DependencyProperty;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    Action updateAction = () =&gt;  obj.SetValue(prop, <span style="color:#66d9ef">value</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// Check whether the target object can be accessed from the</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// current thread, and use Dispatcher.Invoke if it can&#39;t</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (obj.CheckAccess())
+</span></span><span style="display:flex;"><span>                        updateAction();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                        obj.Dispatcher.Invoke(updateAction);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#75715e">// _targetProperty is PropertyInfo</span>
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    PropertyInfo prop = <span style="color:#ae81ff">_</span>targetProperty <span style="color:#66d9ef">as</span> PropertyInfo;
+</span></span><span style="display:flex;"><span>                    prop.SetValue(<span style="color:#ae81ff">_</span>targetObject, <span style="color:#66d9ef">value</span>, <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">object</span> ProvideValueInternal(IServiceProvider serviceProvider);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Comme il est indispensable de sauvegarder l&rsquo;objet et la propriété cibles, on marque la méthode <code>ProvideValue</code> comme <code>sealed</code> pour qu&rsquo;elle ne puisse pas être redéfinie, et on définit à la place une méthode abstraite <code>ProvideValueInternal</code> pour que les classes dérivées puissent fournir leur implémentation.  La méthode <code>UpdateValue</code> gère la mise à jour de la propriété cible, qui peut être soit une propriété de dépendance (<code>DependencyProperty</code>), soit une propriété CLR classique (<code>PropertyInfo</code>). Dans le cas d&rsquo;une <code>DependencyProperty</code>, l&rsquo;objet cible hérite de <code>DependencyObject</code>, et donc de <code>DispatcherObject</code> : il faut donc s&rsquo;assurer qu&rsquo;on n&rsquo;accède à cet objet qu&rsquo;à partir du thread qui le possède, à l&rsquo;aide des méthodes <code>CheckAccess</code> et <code>Invoke</code>.  Voyons maintenant comment utiliser cette classe, au travers d&rsquo;un exemple simple. Supposons qu&rsquo;on souhaite réaliser une markup extension qui indique si le réseau est disponible, et qui s&rsquo;utiliserait de la façon suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;CheckBox</span> <span style="color:#a6e22e">IsChecked=</span><span style="color:#e6db74">&#34;{my:NetworkAvailable}&#34;</span> <span style="color:#a6e22e">Content=</span><span style="color:#e6db74">&#34;Network is available&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span></code></pre></div><p>On souhaite que la checkbox se mette à jour si l&rsquo;état de la connexion change (cable branché ou débranché, Wifi hors de portée&hellip;). Il faut donc gérer l&rsquo;évènement <code>NetworkChange.NetworkAvailabilityChanged</code>, et mettre à jour la propriété <code>IsChecked</code> en conséquence. Notre extension va donc utiliser les fonctionnalités implémentées dans la classe <code>UpdatableMarkupExtension</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NetworkAvailableExtension</span> : UpdatableMarkupExtension
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> NetworkAvailableExtension()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            NetworkChange.NetworkAvailabilityChanged += <span style="color:#66d9ef">new</span> NetworkAvailabilityChangedEventHandler(NetworkChange_NetworkAvailabilityChanged);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">object</span> ProvideValueInternal(IServiceProvider serviceProvider)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> NetworkInterface.GetIsNetworkAvailable();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> NetworkChange_NetworkAvailabilityChanged(<span style="color:#66d9ef">object</span> sender, NetworkAvailabilityEventArgs e)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            UpdateValue(e.IsAvailable);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Notez qu&rsquo;on s&rsquo;abonne à l&rsquo;évènement <code>NetworkAvailabilityChanged</code> dans le constructeur de la classe. Si on voulait s&rsquo;abonner à un évènement de l&rsquo;objet cible, il faudrait plutôt le faire dans la méthode <code>ProvideValueInternal</code>,  pour avoir accès à l&rsquo;objet cible.  On voit donc qu&rsquo;il est très simple d&rsquo;implémenter une markup extension capable de mettre à jour sa cible a posteriori, après la première évaluation. Cela permet d&rsquo;obtenir un fonctionnement similaire à celui du binding, mais sans être limité aux propriétés de dépendance. J&rsquo;ai notamment utilisé cette possibilité pour réaliser un système de localisation qui permet de changer la langue &ldquo;à la volée&rdquo;, sans redémarrer le programme.</p>
 <p><strong>Mise à jour :</strong> En l&rsquo;état actuel, cette markup extension ne supporte pas l&rsquo;utilisation dans un template. Pour une explication et une solution à ce problème, lisez <a href="/2009/08/22/wpf-markup-extensions-et-templates/">ce billet</a>.</p>
 
 		</div>
@@ -287,7 +288,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

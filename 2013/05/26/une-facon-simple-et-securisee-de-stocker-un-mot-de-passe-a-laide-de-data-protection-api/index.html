@@ -11,8 +11,8 @@
 <meta property="og:description" content="Si vous écrivez une application cliente qui a besoin de stocker des identifiants d&rsquo;utilisateur, ce n&rsquo;est généralement pas une bonne idée de stocker le mot de passe en clair, pour des raisons évidentes de sécurité. Il faut donc le chiffrer, mais dès qu&rsquo;on commence à envisager le chiffrement, cela soulève toutes sortes de problèmes&hellip; Quel algorithme utiliser ? Quelle clé de chiffrement ? Clairement on va avoir besoin de cette clé pour déchiffrer le mot de passe, il faut donc qu&rsquo;elle se trouve dans l&rsquo;exécutable ou dans la configuration." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2013-05-26T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2013-05-26T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2013-05-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2013-05-26T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -78,67 +79,67 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-05-26T00:00:00Z">May 26, 2013</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Si vous écrivez une application cliente qui a besoin de stocker des identifiants d&rsquo;utilisateur, ce n&rsquo;est généralement pas une bonne idée de stocker le mot de passe en clair, pour des raisons évidentes de sécurité. Il faut donc le chiffrer, mais dès qu&rsquo;on commence à envisager le chiffrement, cela soulève toutes sortes de problèmes&hellip; Quel algorithme utiliser ? Quelle clé de chiffrement ? Clairement on va avoir besoin de cette clé pour déchiffrer le mot de passe, il faut donc qu&rsquo;elle se trouve dans l&rsquo;exécutable ou dans la configuration. Mais dans ce cas, elle sera être assez facile à trouver&hellip;  Eh bien, la bonne nouvelle est qu&rsquo;en fait vous n&rsquo;avez pas vraiment besoin de résoudre ce problème, parce que Windows l&rsquo;a déjà résolu pour vous ! La solution s&rsquo;appelle <a href="http://msdn.microsoft.com/en-us/library/ms995355.aspx">Data Protection API</a>, et permet de protéger des données sans avoir à se préoccuper d&rsquo;une clé de chiffrement. La documentation est un peu longue et ennuyeuse, mais en fait c&rsquo;est très facile à utiliser depuis .NET, parce que le framework fournit une classe <a href="http://msdn.microsoft.com/en-us/library/system.security.cryptography.protecteddata.aspx"><code>ProtectedData</code></a> qui s&rsquo;occupe d&rsquo;appeler les APIs bas niveau pour vous.   Cette classe a deux méthodes, avec des noms qui se passent d&rsquo;explication: <code>Protect</code> et <code>Unprotect</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">byte</span>[] Protect(<span style="color:#66d9ef">byte</span>[] userData, <span style="color:#66d9ef">byte</span>[] optionalEntropy, DataProtectionScope scope);
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">byte</span>[] Unprotect(<span style="color:#66d9ef">byte</span>[] encryptedData, <span style="color:#66d9ef">byte</span>[] optionalEntropy, DataProtectionScope scope);
-</code></pre></div><p>Le paramètre <code>userData</code> correspond aux données binaires en clair, non chiffrées. Le <code>scope</code> est une valeur qui indique si les données doivent être protégées pour l&rsquo;utilisateur courant (seul cet utilisateur pourra les déchiffrer) ou pour la machine locale (n&rsquo;importe quel utilisateur sur la même machine pourra les déchiffrer). Et le paramètre <code>optionalEntropy</code> ? Eh bien, je ne suis pas un expert en cryptographie, mais tel que je le comprends, c&rsquo;est une sorte de &ldquo;salt&rdquo;: d&rsquo;après la documentation, il sert à &ldquo;augmenter la complexité du chiffrage&rdquo;. Evidemment, il faudra fournir la même entropie pour déchiffrer les données plus tard. Comme son nom l&rsquo;indique, ce paramètre est optionnel, il suffit de passer null si on ne veut pas l&rsquo;utiliser.  Cette API est donc assez simple, mais pas directement utilisable pour notre objectif : l&rsquo;entrée et la sortie sont des tableaux d&rsquo;octets, mais on veux chiffrer un mot de passe, qui est une chaine de caractères; de plus, il est généralement plus pratique de stocker une chaine que des données binaires. Pour obtenir un tableau d&rsquo;octets à partir d&rsquo;une chaine, c&rsquo;est assez simple : il suffit d&rsquo;utiliser un encodage de texte, comme UTF-8. Mais on ne peut pas utiliser cette approche pour obtenir une chaine à partir des données binaires chiffrées, car elles ne correspondront sans doute pas à du texte &ldquo;imprimable&rdquo;; au lieu de ça, on peut encoder le résultat en Base64, qui donne une bonne représentation textuelle des données binaires. Donc, en gros voilà ce qu&rsquo;on va faire :</p>
-<pre><code>                         texte en clair
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">byte</span>[] Protect(<span style="color:#66d9ef">byte</span>[] userData, <span style="color:#66d9ef">byte</span>[] optionalEntropy, DataProtectionScope scope);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">byte</span>[] Unprotect(<span style="color:#66d9ef">byte</span>[] encryptedData, <span style="color:#66d9ef">byte</span>[] optionalEntropy, DataProtectionScope scope);
+</span></span></code></pre></div><p>Le paramètre <code>userData</code> correspond aux données binaires en clair, non chiffrées. Le <code>scope</code> est une valeur qui indique si les données doivent être protégées pour l&rsquo;utilisateur courant (seul cet utilisateur pourra les déchiffrer) ou pour la machine locale (n&rsquo;importe quel utilisateur sur la même machine pourra les déchiffrer). Et le paramètre <code>optionalEntropy</code> ? Eh bien, je ne suis pas un expert en cryptographie, mais tel que je le comprends, c&rsquo;est une sorte de &ldquo;salt&rdquo;: d&rsquo;après la documentation, il sert à &ldquo;augmenter la complexité du chiffrage&rdquo;. Evidemment, il faudra fournir la même entropie pour déchiffrer les données plus tard. Comme son nom l&rsquo;indique, ce paramètre est optionnel, il suffit de passer null si on ne veut pas l&rsquo;utiliser.  Cette API est donc assez simple, mais pas directement utilisable pour notre objectif : l&rsquo;entrée et la sortie sont des tableaux d&rsquo;octets, mais on veux chiffrer un mot de passe, qui est une chaine de caractères; de plus, il est généralement plus pratique de stocker une chaine que des données binaires. Pour obtenir un tableau d&rsquo;octets à partir d&rsquo;une chaine, c&rsquo;est assez simple : il suffit d&rsquo;utiliser un encodage de texte, comme UTF-8. Mais on ne peut pas utiliser cette approche pour obtenir une chaine à partir des données binaires chiffrées, car elles ne correspondront sans doute pas à du texte &ldquo;imprimable&rdquo;; au lieu de ça, on peut encoder le résultat en Base64, qui donne une bonne représentation textuelle des données binaires. Donc, en gros voilà ce qu&rsquo;on va faire :</p>
+<pre tabindex="0"><code>                         texte en clair
 (encodage en UTF-8)   =&gt; données binaires en clair
 (Protect)             =&gt; données binaires chiffrées
 (encodage en base64)  =&gt; texte chiffré
 </code></pre><p>Et pour le déchiffrement, il suffit d&rsquo;inverser les étapes:</p>
-<pre><code>                            texte chiffré
+<pre tabindex="0"><code>                            texte chiffré
 (decodage depuis base64) =&gt; données binaires chiffrées
 (Unprotect)              =&gt; données binaires en clair
 (décodage depuis UTF-8)  =&gt; texte en clair
 </code></pre><p>Je n&rsquo;ai pas parlé de l&rsquo;entropie dans l&rsquo;explication ci-dessus ; dans la plupart des cas il sera sans doute plus pratique de la manipuler aussi comme une chaine, donc on pourra là aussi utiliser l&rsquo;encodage UTF-8 pour obtenir la forme binaire.  Finalement, on peut emballer tout ça sous forme de deux simples méthodes d&rsquo;extension :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DataProtectionExtensions</span>
-{
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> Protect(
-        <span style="color:#66d9ef">this</span> <span style="color:#66d9ef">string</span> clearText,
-        <span style="color:#66d9ef">string</span> optionalEntropy = <span style="color:#66d9ef">null</span>,
-        DataProtectionScope scope = DataProtectionScope.CurrentUser)
-    {
-        <span style="color:#66d9ef">if</span> (clearText == <span style="color:#66d9ef">null</span>)
-            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(<span style="color:#e6db74">&#34;clearText&#34;</span>);
-        <span style="color:#66d9ef">byte</span>[] clearBytes = Encoding.UTF8.GetBytes(clearText);
-        <span style="color:#66d9ef">byte</span>[] entropyBytes = <span style="color:#66d9ef">string</span>.IsNullOrEmpty(optionalEntropy)
-            ? <span style="color:#66d9ef">null</span>
-            : Encoding.UTF8.GetBytes(optionalEntropy);
-        <span style="color:#66d9ef">byte</span>[] encryptedBytes = ProtectedData.Protect(clearBytes, entropyBytes, scope);
-        <span style="color:#66d9ef">return</span> Convert.ToBase64String(encryptedBytes);
-    }
-    
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> Unprotect(
-        <span style="color:#66d9ef">this</span> <span style="color:#66d9ef">string</span> encryptedText,
-        <span style="color:#66d9ef">string</span> optionalEntropy = <span style="color:#66d9ef">null</span>,
-        DataProtectionScope scope = DataProtectionScope.CurrentUser)
-    {
-        <span style="color:#66d9ef">if</span> (encryptedText == <span style="color:#66d9ef">null</span>)
-            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(<span style="color:#e6db74">&#34;encryptedText&#34;</span>);
-        <span style="color:#66d9ef">byte</span>[] encryptedBytes = Convert.FromBase64String(encryptedText);
-        <span style="color:#66d9ef">byte</span>[] entropyBytes = <span style="color:#66d9ef">string</span>.IsNullOrEmpty(optionalEntropy)
-            ? <span style="color:#66d9ef">null</span>
-            : Encoding.UTF8.GetBytes(optionalEntropy);
-        <span style="color:#66d9ef">byte</span>[] clearBytes = ProtectedData.Unprotect(encryptedBytes, entropyBytes, scope);
-        <span style="color:#66d9ef">return</span> Encoding.UTF8.GetString(clearBytes);
-    }
-}
-</code></pre></div><p>Exemple de chiffrement :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">string</span> encryptedPassword = password.Protect();
-</code></pre></div><p>Exemple de déchiffrement :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">try</span>
-{
-    <span style="color:#66d9ef">string</span> password = encryptedPassword.Unprotect();
-}
-<span style="color:#66d9ef">catch</span>(CryptographicException)
-{
-    <span style="color:#75715e">// Causes possible:
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// - l&#39;entropie n&#39;est pas celle qui a été utilisée pour le chiffrage
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// - les données ont été chiffrées par un autre utilisateur (pour scope == CurrentUser)
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// - les données ont été chiffrées sur une autre machine (pour scope == LocalMachine)
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Dans ce cas, le mot de passe stocké n&#39;est pas utilisable ; il faut demander à l&#39;utilisateur de le saisir à nouveau.
-</span><span style="color:#75715e"></span>}
-</code></pre></div><p>Ce que j&rsquo;aime avec cette technique, c&rsquo;est que ça marche tout seul : pas besoin de se préoccuper de la façon dont les données sont chiffrées, de l&rsquo;endroit où est stockée la clé, ou quoi que ce soit, Windows s&rsquo;occupe de tout.  Le code ci-dessus fonctionne avec le .NET Framework complet, mais la Data Protection API est également disponible :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DataProtectionExtensions</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> Protect(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span> <span style="color:#66d9ef">string</span> clearText,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">string</span> optionalEntropy = <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>        DataProtectionScope scope = DataProtectionScope.CurrentUser)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (clearText == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(<span style="color:#e6db74">&#34;clearText&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span>[] clearBytes = Encoding.UTF8.GetBytes(clearText);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span>[] entropyBytes = <span style="color:#66d9ef">string</span>.IsNullOrEmpty(optionalEntropy)
+</span></span><span style="display:flex;"><span>            ? <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>            : Encoding.UTF8.GetBytes(optionalEntropy);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span>[] encryptedBytes = ProtectedData.Protect(clearBytes, entropyBytes, scope);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Convert.ToBase64String(encryptedBytes);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">string</span> Unprotect(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span> <span style="color:#66d9ef">string</span> encryptedText,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">string</span> optionalEntropy = <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>        DataProtectionScope scope = DataProtectionScope.CurrentUser)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (encryptedText == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(<span style="color:#e6db74">&#34;encryptedText&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span>[] encryptedBytes = Convert.FromBase64String(encryptedText);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span>[] entropyBytes = <span style="color:#66d9ef">string</span>.IsNullOrEmpty(optionalEntropy)
+</span></span><span style="display:flex;"><span>            ? <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>            : Encoding.UTF8.GetBytes(optionalEntropy);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span>[] clearBytes = ProtectedData.Unprotect(encryptedBytes, entropyBytes, scope);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Encoding.UTF8.GetString(clearBytes);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Exemple de chiffrement :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">string</span> encryptedPassword = password.Protect();
+</span></span></code></pre></div><p>Exemple de déchiffrement :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> password = encryptedPassword.Unprotect();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">catch</span>(CryptographicException)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Causes possible:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// - l&#39;entropie n&#39;est pas celle qui a été utilisée pour le chiffrage</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// - les données ont été chiffrées par un autre utilisateur (pour scope == CurrentUser)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// - les données ont été chiffrées sur une autre machine (pour scope == LocalMachine)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Dans ce cas, le mot de passe stocké n&#39;est pas utilisable ; il faut demander à l&#39;utilisateur de le saisir à nouveau.</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ce que j&rsquo;aime avec cette technique, c&rsquo;est que ça marche tout seul : pas besoin de se préoccuper de la façon dont les données sont chiffrées, de l&rsquo;endroit où est stockée la clé, ou quoi que ce soit, Windows s&rsquo;occupe de tout.  Le code ci-dessus fonctionne avec le .NET Framework complet, mais la Data Protection API est également disponible :</p>
 <ul>
 <li>pour Windows Phone : ce sont les mêmes méthodes, mais sans le paramètre scope</li>
 <li>pour les applications Windows Store, en utilisant la classe <a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.security.cryptography.dataprotection.dataprotectionprovider">DataProtectionProvider</a>. L&rsquo;API est assez différente (asynchrone, pas d&rsquo;entropie) et un peu plus complexe à utiliser, mais elle permet d&rsquo;arriver au même résultat. <a href="https://gist.github.com/thomaslevesque/5652991">Voilà une version WinRT des méthodes d&rsquo;extension ci-dessus</a>.</li>
@@ -266,7 +267,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

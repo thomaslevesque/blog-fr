@@ -11,8 +11,8 @@
 <meta property="og:description" content="Me revoilà avec un peu de retard, j&rsquo;ai un peu manqué de temps libre ces dernières semaines&hellip; Voilà donc un petit post pour présenter une idée qui m&rsquo;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&rsquo;est de conception C# qu&rsquo;il s&rsquo;agit ! Le problème Il est assez courant, dans un programme, d&rsquo;avoir un objet parent qui possède une collection d&rsquo;enfants ayant une référence vers leur parent." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/06/11/c-relation-parentenfant-et-serialisation-xml/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2009-06-11T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2009-06-11T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2009-06-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2009-06-11T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -78,229 +79,229 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-06-11T00:00:00Z">June 11, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>Me revoilà avec un peu de retard, j&rsquo;ai un peu manqué de temps libre ces dernières semaines&hellip; Voilà donc un petit post pour présenter une idée qui m&rsquo;est venue récemment. Pour une fois, il ne sera pas question de WPF, c&rsquo;est de conception C# qu&rsquo;il s&rsquo;agit !  <strong>Le problème</strong>  Il est assez courant, dans un programme, d&rsquo;avoir un objet parent qui possède une collection d&rsquo;enfants ayant une référence vers leur parent. C&rsquo;est le cas, par exemple, des contrôles Windows Forms, qui possèdent une collection de contrôles enfants (<code>Controls</code>), et une propriété qui indique le contrôle parent (<code>Parent</code>).  Ce type de structure est assez simple à réaliser, cela nécessite juste un peu de code pour maintenir la cohérence de la relation. Là où ça se complique un peu, c&rsquo;est quand on veut sérialiser l&rsquo;objet parent en XML&hellip; Prenons un exemple simple (purement théorique bien sûr) :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Parent</span>
-    {
-        <span style="color:#66d9ef">public</span> Parent()
-        {
-            <span style="color:#66d9ef">this</span>.Children = <span style="color:#66d9ef">new</span> List&lt;Child&gt;();
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#66d9ef">public</span> List&lt;Child&gt; Children { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> AddChild(Child child)
-        {
-            child.ParentObject = <span style="color:#66d9ef">this</span>;
-            <span style="color:#66d9ef">this</span>.Children.Add(child);
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> RemoveChild(Child child)
-        {
-            <span style="color:#66d9ef">this</span>.Children.Remove(child);
-            child.ParentObject = <span style="color:#66d9ef">null</span>;
-        }
-    }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Child</span>
-    {
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#66d9ef">public</span> Parent ParentObject { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-    }
-</code></pre></div><p>Créons une instance de <code>Parent</code> avec quelques enfants, et essayons de la sérialiser en XML :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">            Parent p = <span style="color:#66d9ef">new</span> Parent { Name = <span style="color:#e6db74">&#34;The parent&#34;</span> };
-            p.AddChild(<span style="color:#66d9ef">new</span> Child { Name = <span style="color:#e6db74">&#34;First child&#34;</span> });
-            p.AddChild(<span style="color:#66d9ef">new</span> Child { Name = <span style="color:#e6db74">&#34;Second child&#34;</span> });
-
-            <span style="color:#66d9ef">string</span> xml;
-            XmlSerializer xs = <span style="color:#66d9ef">new</span> XmlSerializer(<span style="color:#66d9ef">typeof</span>(Parent));
-            <span style="color:#66d9ef">using</span> (StringWriter wr = <span style="color:#66d9ef">new</span> StringWriter())
-            {
-                xs.Serialize(wr, p);
-                xml = wr.ToString();
-            }
-
-            Console.WriteLine(xml);
-</code></pre></div><p>Quand on sérialise l&rsquo;objet <code>Parent</code>, il se produit une <code>InvalidOperationException</code> due à une référence circulaire : en effet, le parent référence les enfants, qui référencent le parent, qui référence les enfants&hellip; et ainsi de suite. La première solution qui vient à l&rsquo;esprit est de ne pas sérialiser la propriété <code>Child.ParentObject</code> : il suffit pour cela de lui appliquer l&rsquo;attribut <code>XmlIgnore</code>. La sérialisation se passe alors sans problème, mais quand on désérialise, mauvaise surprise : la propriété <code>ParentObject</code> n&rsquo;est pas renseignée, et pour cause, puisqu&rsquo;elle n&rsquo;a pas été sauvegardée&hellip;  On pourrait opter pour une solution simple : après la désérialisation : parcourir la liste des enfants pour affecter manuellement la propriété <code>ParentObject</code>. Mais ce n&rsquo;est vraiment pas très élégant&hellip; et comme j&rsquo;aime bien écrire du beau code, j&rsquo;ai donc cherché autre chose ;)  <strong>La solution</strong>  La solution qui m&rsquo;est venue à l&rsquo;esprit consiste en une collection générique spécialisée <code>ChildItemCollection&lt;P,T&gt;</code>, et une interface <code>IChildItem&lt;P&gt;</code> que les enfants doivent implémenter.  L&rsquo;interface <code>IChildItem&lt;P&gt;</code> définit simplement une propriété <code>Parent</code>, de type <code>P</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// Defines the contract for an object that has a parent object
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;typeparam name=&#34;P&#34;&gt;Type of the parent object&lt;/typeparam&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> IChildItem&lt;P&gt; <span style="color:#66d9ef">where</span> P : <span style="color:#66d9ef">class</span>
-    {
-        P Parent { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-    }
-</code></pre></div><p>La collection <code>ChildItemCollection&lt;P,T&gt;</code> implémente <code>IList&lt;T&gt;</code> en délégant l&rsquo;implémentation à une <code>List&lt;T&gt;</code> ou à la collection passée en paramètre du constructeur, et gère le maintien de la relation parent/enfant :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// Collection of child items. This collection automatically set the
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// Parent property of the child items when they are added or removed
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;typeparam name=&#34;P&#34;&gt;Type of the parent object&lt;/typeparam&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">/// &lt;typeparam name=&#34;T&#34;&gt;Type of the child items&lt;/typeparam&gt;
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChildItemCollection</span>&lt;P, T&gt; : IList&lt;T&gt;
-        <span style="color:#66d9ef">where</span> P : <span style="color:#66d9ef">class</span>
-        <span style="color:#a6e22e">where</span> T : IChildItem&lt;P&gt;
-    {
-        <span style="color:#66d9ef">private</span> P <span style="color:#ae81ff">_</span>parent;
-        <span style="color:#66d9ef">private</span> IList&lt;T&gt; <span style="color:#ae81ff">_</span>collection;
-
-        <span style="color:#66d9ef">public</span> ChildItemCollection(P parent)
-        {
-            <span style="color:#66d9ef">this</span>.<span style="color:#ae81ff">_</span>parent = parent;
-            <span style="color:#66d9ef">this</span>.<span style="color:#ae81ff">_</span>collection = <span style="color:#66d9ef">new</span> List&lt;T&gt;();
-        }
-
-        <span style="color:#66d9ef">public</span> ChildItemCollection(P parent, IList&lt;T&gt; collection)
-        {
-            <span style="color:#66d9ef">this</span>.<span style="color:#ae81ff">_</span>parent = parent;
-            <span style="color:#66d9ef">this</span>.<span style="color:#ae81ff">_</span>collection = collection;
-        }
-
-        <span style="color:#75715e">#region IList&lt;T&gt; Members
-</span><span style="color:#75715e"></span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> IndexOf(T item)
-        {
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.IndexOf(item);
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Insert(<span style="color:#66d9ef">int</span> index, T item)
-        {
-            <span style="color:#66d9ef">if</span> (item != <span style="color:#66d9ef">null</span>)
-                item.Parent = <span style="color:#ae81ff">_</span>parent;
-            <span style="color:#ae81ff">_</span>collection.Insert(index, item);
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> RemoveAt(<span style="color:#66d9ef">int</span> index)
-        {
-            T oldItem = <span style="color:#ae81ff">_</span>collection[index];
-            <span style="color:#ae81ff">_</span>collection.RemoveAt(index);
-            <span style="color:#66d9ef">if</span> (oldItem != <span style="color:#66d9ef">null</span>)
-                oldItem.Parent = <span style="color:#66d9ef">null</span>;
-        }
-
-        <span style="color:#66d9ef">public</span> T <span style="color:#66d9ef">this</span>[<span style="color:#66d9ef">int</span> index]
-        {
-            <span style="color:#66d9ef">get</span>
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection[index];
-            }
-            <span style="color:#66d9ef">set</span>
-            {
-                T oldItem = <span style="color:#ae81ff">_</span>collection[index];
-                <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">value</span> != <span style="color:#66d9ef">null</span>)
-                    <span style="color:#66d9ef">value</span>.Parent = <span style="color:#ae81ff">_</span>parent;
-                <span style="color:#ae81ff">_</span>collection[index] = <span style="color:#66d9ef">value</span>;
-                <span style="color:#66d9ef">if</span> (oldItem != <span style="color:#66d9ef">null</span>)
-                    oldItem.Parent = <span style="color:#66d9ef">null</span>;
-            }
-        }
-
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
-        <span style="color:#75715e">#region ICollection&lt;T&gt; Members
-</span><span style="color:#75715e"></span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Add(T item)
-        {
-            <span style="color:#66d9ef">if</span> (item != <span style="color:#66d9ef">null</span>)
-                item.Parent = <span style="color:#ae81ff">_</span>parent;
-            <span style="color:#ae81ff">_</span>collection.Add(item);
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Clear()
-        {
-            <span style="color:#66d9ef">foreach</span> (T item <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">_</span>collection)
-            {
-                <span style="color:#66d9ef">if</span> (item != <span style="color:#66d9ef">null</span>)
-                    item.Parent = <span style="color:#66d9ef">null</span>;
-            }
-            <span style="color:#ae81ff">_</span>collection.Clear();
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Contains(T item)
-        {
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.Contains(item);
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> CopyTo(T[] array, <span style="color:#66d9ef">int</span> arrayIndex)
-        {
-            <span style="color:#ae81ff">_</span>collection.CopyTo(array, arrayIndex);
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Count
-        {
-            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.Count; }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> IsReadOnly
-        {
-            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.IsReadOnly; }
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Remove(T item)
-        {
-            <span style="color:#66d9ef">bool</span> b = <span style="color:#ae81ff">_</span>collection.Remove(item);
-            <span style="color:#66d9ef">if</span> (item != <span style="color:#66d9ef">null</span>)
-                item.Parent = <span style="color:#66d9ef">null</span>;
-            <span style="color:#66d9ef">return</span> b;
-        }
-
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
-        <span style="color:#75715e">#region IEnumerable&lt;T&gt; Members
-</span><span style="color:#75715e"></span>
-        <span style="color:#66d9ef">public</span> IEnumerator&lt;T&gt; GetEnumerator()
-        {
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.GetEnumerator();
-        }
-
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>
-        <span style="color:#75715e">#region IEnumerable Members
-</span><span style="color:#75715e"></span>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            <span style="color:#66d9ef">return</span> (<span style="color:#ae81ff">_</span>collection <span style="color:#66d9ef">as</span> System.Collections.IEnumerable).GetEnumerator();
-        }
-
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>    }
-</code></pre></div><p>Voyons donc comment utiliser cette solution dans notre exemple précédent&hellip; Nous allons d&rsquo;abord modifier la classe <code>Child</code> pour qu&rsquo;elle implémente l&rsquo;interface <code>IChildItem&lt;Parent&gt;</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Child</span> : IChildItem&lt;Parent&gt;
-    {
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">        [XmlIgnore]</span>
-        <span style="color:#66d9ef">public</span> Parent ParentObject { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#75715e">#region IChildItem&lt;Parent&gt; Members
-</span><span style="color:#75715e"></span>
-        Parent IChildItem&lt;Parent&gt;.Parent
-        {
-            <span style="color:#66d9ef">get</span>
-            {
-                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.ParentObject;
-            }
-            <span style="color:#66d9ef">set</span>
-            {
-                <span style="color:#66d9ef">this</span>.ParentObject = <span style="color:#66d9ef">value</span>;
-            }
-        }
-
-        <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>    }
-</code></pre></div><p>Vous remarquerez qu&rsquo;on implémente l&rsquo;interface <code>IChildItem&lt;Parent&gt;</code> de façon <em>explicite</em> : l&rsquo;intérêt est de &ldquo;masquer&rdquo; la propriété <code>Parent</code>, qui ne sera accessible que si on manipule l&rsquo;objet <code>Child</code> via une variable de type <code>IChildItem&lt;Parent&gt;</code>. On définit aussi l&rsquo;accesseur <code>set</code> de la propriété <code>ParentObject</code> comme étant <code>internal</code>, de façon à empêcher sa modification à partir d&rsquo;un autre assembly.  Dans la classe <code>Parent</code>, il suffit de remplacer la <code>List&lt;Child&gt;</code> par une <code>ChildItemCollection&lt;Parent, Child&gt;</code>. On supprime au passage les méthodes <code>AddChild</code> et <code>RemoveChild</code>, qui ne sont plus nécessaires puisque la classe <code>ChildItemCollection&lt;P,T&gt;</code> se charge de renseigner la propriété <code>Parent</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Parent</span>
-    {
-        <span style="color:#66d9ef">public</span> Parent()
-        {
-            <span style="color:#66d9ef">this</span>.Children = <span style="color:#66d9ef">new</span> ChildItemCollection&lt;Parent, Child&gt;(<span style="color:#66d9ef">this</span>);
-        }
-
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#66d9ef">public</span> ChildItemCollection&lt;Parent, Child&gt; Children { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">set</span>; }
-    }
-</code></pre></div><p>Notez qu&rsquo;on passe au constructeur de <code>ChildItemCollection&lt;Parent, Child&gt;</code> une référence vers l&rsquo;objet courant : c&rsquo;est de cette façon que la collection sait quel doit être le parent de ses éléments.  Le code utilisé précédemment pour sérialiser un <code>Parent</code> fonctionne maintenant correctement. Lors de la désérialisation, la propriété <code>Child.ParentObject</code> n&rsquo;est pas affectée quand le <code>Child</code> est désérialisé (puisqu&rsquo;elle a l&rsquo;attribut <code>XmlIgnore</code>), mais lors de l&rsquo;ajout à la collection <code>Parent.Children</code>.  Cette solution permet donc de conserver la relation parent/enfant lors de la sérialisation XML, sans recourir à des bricolages peu élégants&hellip; Notez cependant une restriction : si la propriété <code>ParentObject</code> est modifiée autrement que par la classe <code>ChildItemCollection&lt;P,T&gt;</code>, la cohérence de la relation parent/enfant est rompue. Il est cependant assez simple d&rsquo;ajouter à l&rsquo;accesseur <code>set</code> la logique pour maintenir la cohérence, je ne l&rsquo;ai pas fait dans cet exemple par souci de clarté et de simplicité.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Parent</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Parent()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.Children = <span style="color:#66d9ef">new</span> List&lt;Child&gt;();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> List&lt;Child&gt; Children { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> AddChild(Child child)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            child.ParentObject = <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.Children.Add(child);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> RemoveChild(Child child)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.Children.Remove(child);
+</span></span><span style="display:flex;"><span>            child.ParentObject = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Child</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Parent ParentObject { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Créons une instance de <code>Parent</code> avec quelques enfants, et essayons de la sérialiser en XML :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>            Parent p = <span style="color:#66d9ef">new</span> Parent { Name = <span style="color:#e6db74">&#34;The parent&#34;</span> };
+</span></span><span style="display:flex;"><span>            p.AddChild(<span style="color:#66d9ef">new</span> Child { Name = <span style="color:#e6db74">&#34;First child&#34;</span> });
+</span></span><span style="display:flex;"><span>            p.AddChild(<span style="color:#66d9ef">new</span> Child { Name = <span style="color:#e6db74">&#34;Second child&#34;</span> });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">string</span> xml;
+</span></span><span style="display:flex;"><span>            XmlSerializer xs = <span style="color:#66d9ef">new</span> XmlSerializer(<span style="color:#66d9ef">typeof</span>(Parent));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> (StringWriter wr = <span style="color:#66d9ef">new</span> StringWriter())
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                xs.Serialize(wr, p);
+</span></span><span style="display:flex;"><span>                xml = wr.ToString();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(xml);
+</span></span></code></pre></div><p>Quand on sérialise l&rsquo;objet <code>Parent</code>, il se produit une <code>InvalidOperationException</code> due à une référence circulaire : en effet, le parent référence les enfants, qui référencent le parent, qui référence les enfants&hellip; et ainsi de suite. La première solution qui vient à l&rsquo;esprit est de ne pas sérialiser la propriété <code>Child.ParentObject</code> : il suffit pour cela de lui appliquer l&rsquo;attribut <code>XmlIgnore</code>. La sérialisation se passe alors sans problème, mais quand on désérialise, mauvaise surprise : la propriété <code>ParentObject</code> n&rsquo;est pas renseignée, et pour cause, puisqu&rsquo;elle n&rsquo;a pas été sauvegardée&hellip;  On pourrait opter pour une solution simple : après la désérialisation : parcourir la liste des enfants pour affecter manuellement la propriété <code>ParentObject</code>. Mais ce n&rsquo;est vraiment pas très élégant&hellip; et comme j&rsquo;aime bien écrire du beau code, j&rsquo;ai donc cherché autre chose ;)  <strong>La solution</strong>  La solution qui m&rsquo;est venue à l&rsquo;esprit consiste en une collection générique spécialisée <code>ChildItemCollection&lt;P,T&gt;</code>, et une interface <code>IChildItem&lt;P&gt;</code> que les enfants doivent implémenter.  L&rsquo;interface <code>IChildItem&lt;P&gt;</code> définit simplement une propriété <code>Parent</code>, de type <code>P</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// Defines the contract for an object that has a parent object</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;typeparam name=&#34;P&#34;&gt;Type of the parent object&lt;/typeparam&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IChildItem</span>&lt;P&gt; <span style="color:#66d9ef">where</span> P : <span style="color:#66d9ef">class</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        P Parent { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>La collection <code>ChildItemCollection&lt;P,T&gt;</code> implémente <code>IList&lt;T&gt;</code> en délégant l&rsquo;implémentation à une <code>List&lt;T&gt;</code> ou à la collection passée en paramètre du constructeur, et gère le maintien de la relation parent/enfant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// Collection of child items. This collection automatically set the</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// Parent property of the child items when they are added or removed</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;typeparam name=&#34;P&#34;&gt;Type of the parent object&lt;/typeparam&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/// &lt;typeparam name=&#34;T&#34;&gt;Type of the child items&lt;/typeparam&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChildItemCollection</span>&lt;P, T&gt; : IList&lt;T&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">where</span> P : <span style="color:#66d9ef">class</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">where</span> T : IChildItem&lt;P&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> P <span style="color:#ae81ff">_</span>parent;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> IList&lt;T&gt; <span style="color:#ae81ff">_</span>collection;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ChildItemCollection(P parent)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#ae81ff">_</span>parent = parent;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#ae81ff">_</span>collection = <span style="color:#66d9ef">new</span> List&lt;T&gt;();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ChildItemCollection(P parent, IList&lt;T&gt; collection)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#ae81ff">_</span>parent = parent;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#ae81ff">_</span>collection = collection;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#region IList&lt;T&gt; Members</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> IndexOf(T item)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.IndexOf(item);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Insert(<span style="color:#66d9ef">int</span> index, T item)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (item != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                item.Parent = <span style="color:#ae81ff">_</span>parent;
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">_</span>collection.Insert(index, item);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> RemoveAt(<span style="color:#66d9ef">int</span> index)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            T oldItem = <span style="color:#ae81ff">_</span>collection[index];
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">_</span>collection.RemoveAt(index);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (oldItem != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                oldItem.Parent = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> T <span style="color:#66d9ef">this</span>[<span style="color:#66d9ef">int</span> index]
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection[index];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">set</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                T oldItem = <span style="color:#ae81ff">_</span>collection[index];
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">value</span> != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">value</span>.Parent = <span style="color:#ae81ff">_</span>parent;
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span>collection[index] = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (oldItem != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                    oldItem.Parent = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">#</span>endregion
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#region ICollection&lt;T&gt; Members</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Add(T item)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (item != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                item.Parent = <span style="color:#ae81ff">_</span>parent;
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">_</span>collection.Add(item);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Clear()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">foreach</span> (T item <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">_</span>collection)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (item != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                    item.Parent = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">_</span>collection.Clear();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Contains(T item)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.Contains(item);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> CopyTo(T[] array, <span style="color:#66d9ef">int</span> arrayIndex)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#ae81ff">_</span>collection.CopyTo(array, arrayIndex);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Count
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.Count; }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> IsReadOnly
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.IsReadOnly; }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> Remove(T item)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">bool</span> b = <span style="color:#ae81ff">_</span>collection.Remove(item);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (item != <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                item.Parent = <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> b;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">#</span>endregion
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#region IEnumerable&lt;T&gt; Members</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> IEnumerator&lt;T&gt; GetEnumerator()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>collection.GetEnumerator();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">#</span>endregion
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#region IEnumerable Members</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> (<span style="color:#ae81ff">_</span>collection <span style="color:#66d9ef">as</span> System.Collections.IEnumerable).GetEnumerator();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">#</span>endregion
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Voyons donc comment utiliser cette solution dans notre exemple précédent&hellip; Nous allons d&rsquo;abord modifier la classe <code>Child</code> pour qu&rsquo;elle implémente l&rsquo;interface <code>IChildItem&lt;Parent&gt;</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Child</span> : IChildItem&lt;Parent&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [XmlIgnore]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Parent ParentObject { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#region IChildItem&lt;Parent&gt; Members</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Parent IChildItem&lt;Parent&gt;.Parent
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.ParentObject;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">set</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">this</span>.ParentObject = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">#</span>endregion
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Vous remarquerez qu&rsquo;on implémente l&rsquo;interface <code>IChildItem&lt;Parent&gt;</code> de façon <em>explicite</em> : l&rsquo;intérêt est de &ldquo;masquer&rdquo; la propriété <code>Parent</code>, qui ne sera accessible que si on manipule l&rsquo;objet <code>Child</code> via une variable de type <code>IChildItem&lt;Parent&gt;</code>. On définit aussi l&rsquo;accesseur <code>set</code> de la propriété <code>ParentObject</code> comme étant <code>internal</code>, de façon à empêcher sa modification à partir d&rsquo;un autre assembly.  Dans la classe <code>Parent</code>, il suffit de remplacer la <code>List&lt;Child&gt;</code> par une <code>ChildItemCollection&lt;Parent, Child&gt;</code>. On supprime au passage les méthodes <code>AddChild</code> et <code>RemoveChild</code>, qui ne sont plus nécessaires puisque la classe <code>ChildItemCollection&lt;P,T&gt;</code> se charge de renseigner la propriété <code>Parent</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Parent</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Parent()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.Children = <span style="color:#66d9ef">new</span> ChildItemCollection&lt;Parent, Child&gt;(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ChildItemCollection&lt;Parent, Child&gt; Children { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Notez qu&rsquo;on passe au constructeur de <code>ChildItemCollection&lt;Parent, Child&gt;</code> une référence vers l&rsquo;objet courant : c&rsquo;est de cette façon que la collection sait quel doit être le parent de ses éléments.  Le code utilisé précédemment pour sérialiser un <code>Parent</code> fonctionne maintenant correctement. Lors de la désérialisation, la propriété <code>Child.ParentObject</code> n&rsquo;est pas affectée quand le <code>Child</code> est désérialisé (puisqu&rsquo;elle a l&rsquo;attribut <code>XmlIgnore</code>), mais lors de l&rsquo;ajout à la collection <code>Parent.Children</code>.  Cette solution permet donc de conserver la relation parent/enfant lors de la sérialisation XML, sans recourir à des bricolages peu élégants&hellip; Notez cependant une restriction : si la propriété <code>ParentObject</code> est modifiée autrement que par la classe <code>ChildItemCollection&lt;P,T&gt;</code>, la cohérence de la relation parent/enfant est rompue. Il est cependant assez simple d&rsquo;ajouter à l&rsquo;accesseur <code>set</code> la logique pour maintenir la cohérence, je ne l&rsquo;ai pas fait dans cet exemple par souci de clarté et de simplicité.</p>
 
 		</div>
 		<footer class="post__footer">
@@ -424,7 +425,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

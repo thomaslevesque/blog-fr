@@ -11,8 +11,8 @@
 <meta property="og:description" content="Mise à jour : Comme l&rsquo;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&hellip; J&rsquo;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&rsquo;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2009-04-01T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2009-04-01T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2009-04-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2009-04-01T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -78,32 +79,32 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-01T00:00:00Z">April 01, 2009</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p><em><strong>Mise à jour</strong> : Comme l&rsquo;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&hellip;</em>  J&rsquo;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&rsquo;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP). Au départ, j&rsquo;ai simplement implémenté la propriété en suivant le principe du <em>lazy loading</em> : le binding sur cette propriété provoquait donc l&rsquo;obtention de la valeur par une requête HTTP. Le résultat, prévisible, était un gel de l&rsquo;interface pendant la récupération de la valeur. La solution classique pour ce genre de problème est de récupérer la valeur sur un autre thread, et d&rsquo;affecter le résultat au contrôle qui doit l&rsquo;afficher&hellip; sauf qu&rsquo;en MVVM on n&rsquo;a pas accès à ce contrôle. Une autre approche, plus adaptée, est d&rsquo;affecter la valeur à la propriété du ViewModel, ce qui déclenche l&rsquo;évènement <code>PropertyChanged</code> et rafraichit la vue.  J&rsquo;ai essayé pas mal de choses avant d&rsquo;arriver à une solution avec le moins possible de code de &ldquo;plomberie&rdquo;, je vais donc vous la faire partager. Voilà le code de la propriété :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">bool</span> <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">false</span>;
-
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">object</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span>;
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> Value
-        {
-            <span style="color:#66d9ef">get</span>
-            {
-                <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span> == <span style="color:#66d9ef">null</span> &amp;&amp; !<span style="color:#ae81ff">_</span>retrievingValue)
-                {
-                    <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">true</span>;
-                    ThreadPool.QueueUserWorkItem(
-                        (state) =&gt;
-                        {
-                            <span style="color:#66d9ef">this</span>.Value = <span style="color:#ae81ff">_</span>model.RetrieveValue(); <span style="color:#75715e">// Very long operation...
-</span><span style="color:#75715e"></span>                            <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">false</span>;
-                        });
-                }
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span>;
-            }
-            <span style="color:#66d9ef">set</span>
-            {
-                <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span> = <span style="color:#66d9ef">value</span>;
-                OnPropertyChanged(<span style="color:#e6db74">&#34;Value&#34;</span>);
-            }
-        }
-</code></pre></div><p>Ce code est assez simple à comprendre, mais mérite quand même quelques commentaires :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">bool</span> <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">object</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> Value
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span> == <span style="color:#66d9ef">null</span> &amp;&amp; !<span style="color:#ae81ff">_</span>retrievingValue)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>                    ThreadPool.QueueUserWorkItem(
+</span></span><span style="display:flex;"><span>                        (state) =&gt;
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">this</span>.Value = <span style="color:#ae81ff">_</span>model.RetrieveValue(); <span style="color:#75715e">// Very long operation...</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>                        });
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">set</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span> = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>                OnPropertyChanged(<span style="color:#e6db74">&#34;Value&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>Ce code est assez simple à comprendre, mais mérite quand même quelques commentaires :</p>
 <ul>
 <li>Le premier binding sur cette propriété récupère d&rsquo;abord une valeur nulle, mais déclenche aussi la récupération asynchrone de la valeur. Notez le flag <code>_retrievingValue</code> qui évite de lancer plusieurs fois la récupération</li>
 <li>Quand la récupération de la valeur est terminée, la propriété est mise à jour, et l&rsquo;évènement <code>PropertyChanged</code> met à jour le binding</li>
@@ -113,120 +114,120 @@ if (!doNotTrack) {
 <blockquote>
 <p>Ce type de CollectionView ne prend pas en charge les modifications de son SourceCollection à partir d’un thread différent du thread du Dispatcher.</p>
 </blockquote>
-<p>Pour modifier des collections de façon asynchrone, il faudra donc se débrouiller autrement&hellip; cela fera l&rsquo;objet d&rsquo;un prochain billet si je trouve une solution satisfaisante (peut-être à base d'<code>AsyncOperation</code>&hellip;). Si vous avez une idée là-dessus, n&rsquo;hésitez pas à la poster en commentaire !<br><br>Fermons cette parenthèse et revenons à notre propriété Value. La méthode décrite plus haut fonctionne bien et nécessite assez peu de code, mais elle a un inconvénient : pendant la récupération de la valeur, l&rsquo;utilisateur ne voit rien&hellip; On aimerait pouvoir afficher quelque chose qui indique que l&rsquo;application travaille. Pour ça, on peut introduire une propriété<code>IsValueReady</code>qui indiquera si la valeur est prête. Côté XAML, on pourra utiliser un Trigger sur cette propriété pour modifier l&rsquo;affichage.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">bool</span> <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">false</span>;
-
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">object</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span>;
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> Value
-        {
-            <span style="color:#66d9ef">get</span>
-            {
-                <span style="color:#66d9ef">if</span> (!<span style="color:#ae81ff">_</span>isValueReady &amp;&amp; !<span style="color:#ae81ff">_</span>retrievingValue)
-                {
-                    <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">true</span>;
-                    ThreadPool.QueueUserWorkItem(
-                        (state) =&gt;
-                        {
-                            <span style="color:#66d9ef">this</span>.Value = <span style="color:#ae81ff">_</span>model.RetrieveValue(); <span style="color:#75715e">// Very long operation...
-</span><span style="color:#75715e"></span>                            <span style="color:#66d9ef">this</span>.IsValueReady = <span style="color:#66d9ef">true</span>;
-                            <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">false</span>;
-                        });
-                }
-                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span>;
-            }
-            <span style="color:#66d9ef">set</span>
-            {
-                <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span> = <span style="color:#66d9ef">value</span>;
-                OnPropertyChanged(<span style="color:#e6db74">&#34;Value&#34;</span>);
-            }
-        }
-
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">bool</span> <span style="color:#ae81ff">_</span>isValueReady = <span style="color:#66d9ef">false</span>;
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> IsValueReady
-        {
-            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>isValueReady; }
-            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">set</span>
-            {
-                <span style="color:#ae81ff">_</span>isValueReady = <span style="color:#66d9ef">value</span>;
-                OnPropertyChanged(<span style="color:#e6db74">&#34;IsValueReady&#34;</span>);
-            }
-        }
-</code></pre></div><p>Ça commence à faire un code un peu plus conséquent pour une simple propriété, mais ce code est toujours le même&hellip; les seules choses qui changent sont le nom de la propriété, son type, et le code qui récupère la valeur. Si on a beaucoup de propriétés de ce genre à créer, on pourrait donc facilement écrire un<em>code snippet</em>qui génèrerait le plus gros du code.<br><br>Avec Blend, il est probablement assez simple de créer un trigger pour prendre en compte la propriété IsValueReady dans la vue&hellip; mais je ne me suis toujours pas mis à Blend, je code directement la vue en XAML, et je trouve les Triggers beaucoup trop lourds à écrire&hellip; J&rsquo;ai donc utilisé une autre solution que je trouve  beaucoup plus simple et plus lisible, à base de markup extension (oui, j&rsquo;aime bien les markup extensions&hellip;). Ca donne le XAML suivant :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;Grid&gt;</span>
-        <span style="color:#f92672">&lt;TextBlock</span> <span style="color:#a6e22e">Text=</span><span style="color:#e6db74">&#34;{Binding Value, FallbackValue=Blabla}&#34;</span>
-                   <span style="color:#a6e22e">Visibility=</span><span style="color:#e6db74">&#34;{my:SwitchBinding IsValueReady, Visible, Hidden}&#34;</span><span style="color:#f92672">/&gt;</span>
-        <span style="color:#f92672">&lt;ProgressBar</span> <span style="color:#a6e22e">IsIndeterminate=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#a6e22e">Width=</span><span style="color:#e6db74">&#34;150&#34;</span> <span style="color:#a6e22e">Height=</span><span style="color:#e6db74">&#34;30&#34;</span>
-                     <span style="color:#a6e22e">Visibility=</span><span style="color:#e6db74">&#34;{my:SwitchBinding IsValueReady, Hidden, Visible}&#34;</span><span style="color:#f92672">/&gt;</span>
-    <span style="color:#f92672">&lt;/Grid&gt;</span>
-</code></pre></div><p>Ce code masque le<code>TextBlock</code>et affiche la<code>ProgressBar</code>tant que la valeur n&rsquo;est pas prête. Quand la récupération de la valeur est terminée, la<code>ProgressBar</code>disparait et le<code>TextBlock</code>redevient visible&hellip;<code>SwitchBinding</code>est une markup extension qui hérite de<code>Binding</code>et renvoie une valeur ou une autre selon que la propriété bindée vaut<code>true</code>ou<code>false</code>. Je ne m&rsquo;étendrai pas sur le fonctionnement de cette extension, car ce n&rsquo;est pas le sujet de ce billet, mais voici tout de même son code :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SwitchBindingExtension</span> : Binding
-    {
-        <span style="color:#66d9ef">public</span> SwitchBindingExtension()
-        {
-            Initialize();
-        }
-
-        <span style="color:#66d9ef">public</span> SwitchBindingExtension(<span style="color:#66d9ef">string</span> path)
-            : <span style="color:#66d9ef">base</span>(path)
-        {
-            Initialize();
-        }
-
-        <span style="color:#66d9ef">public</span> SwitchBindingExtension(<span style="color:#66d9ef">string</span> path, <span style="color:#66d9ef">object</span> valueIfTrue, <span style="color:#66d9ef">object</span> valueIfFalse)
-            : <span style="color:#66d9ef">base</span>(path)
-        {
-            Initialize();
-            <span style="color:#66d9ef">this</span>.ValueIfTrue = valueIfTrue;
-            <span style="color:#66d9ef">this</span>.ValueIfFalse = valueIfFalse;
-        }
-
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> Initialize()
-        {
-            <span style="color:#66d9ef">this</span>.ValueIfTrue = Binding.DoNothing;
-            <span style="color:#66d9ef">this</span>.ValueIfFalse = Binding.DoNothing;
-            <span style="color:#66d9ef">this</span>.Converter = <span style="color:#66d9ef">new</span> SwitchConverter(<span style="color:#66d9ef">this</span>);
-        }
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">        [ConstructorArgument(&#34;valueIfTrue&#34;)]</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> ValueIfTrue { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-<span style="color:#a6e22e">
-</span><span style="color:#a6e22e">        [ConstructorArgument(&#34;valueIfFalse&#34;)]</span>
-        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> ValueIfFalse { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
-
-        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SwitchConverter</span> : IValueConverter
-        {
-            <span style="color:#66d9ef">public</span> SwitchConverter(SwitchBindingExtension switchExtension)
-            {
-                <span style="color:#ae81ff">_</span><span style="color:#66d9ef">switch</span> = switchExtension;
-            }
-
-            <span style="color:#66d9ef">private</span> SwitchBindingExtension <span style="color:#ae81ff">_</span><span style="color:#66d9ef">switch</span>;
-
-            <span style="color:#75715e">#region IValueConverter Members
-</span><span style="color:#75715e"></span>
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> Convert(<span style="color:#66d9ef">object</span> <span style="color:#66d9ef">value</span>, Type targetType, <span style="color:#66d9ef">object</span> parameter, System.Globalization.CultureInfo culture)
-            {
-                <span style="color:#66d9ef">try</span>
-                {
-                    <span style="color:#66d9ef">bool</span> b = System.Convert.ToBoolean(<span style="color:#66d9ef">value</span>);
-                    <span style="color:#66d9ef">return</span> b ? <span style="color:#ae81ff">_</span><span style="color:#66d9ef">switch</span>.ValueIfTrue : <span style="color:#ae81ff">_</span><span style="color:#66d9ef">switch</span>.ValueIfFalse;
-                }
-                <span style="color:#66d9ef">catch</span>
-                {
-                    <span style="color:#66d9ef">return</span> DependencyProperty.UnsetValue;
-                }
-            }
-
-            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> ConvertBack(<span style="color:#66d9ef">object</span> <span style="color:#66d9ef">value</span>, Type targetType, <span style="color:#66d9ef">object</span> parameter, System.Globalization.CultureInfo culture)
-            {
-                <span style="color:#66d9ef">return</span> Binding.DoNothing;
-            }
-
-            <span style="color:#75715e">#endregion
-</span><span style="color:#75715e"></span>        }
-
-    }
-</code></pre></div><p>Cette markup extension est en fait l&rsquo;équivalent XAML de l&rsquo;opérateur conditionnel de C# (<code>condition ? valeurSiVrai : valeurSiFaux</code>), et peut être utilisée pour toutes sortes de valeurs.<br><br>Une autre option pour réaliser le comportement voulu aurait été de créer des propriétés qui renvoient une valeur de Visibility selon la valeur de IsValueReady, mais ça fait encore 2 propriétés de plus à créer, ce qui alourdit pas mal le ViewModel.<br><br>Voilà, c&rsquo;est tout pour aujourd&rsquo;hui&hellip; N&rsquo;hésitez pas à me faire part de vos commentaires ou suggestions ;)</p>
+<p>Pour modifier des collections de façon asynchrone, il faudra donc se débrouiller autrement&hellip; cela fera l&rsquo;objet d&rsquo;un prochain billet si je trouve une solution satisfaisante (peut-être à base d&rsquo;<code>AsyncOperation</code>&hellip;). Si vous avez une idée là-dessus, n&rsquo;hésitez pas à la poster en commentaire !<br><br>Fermons cette parenthèse et revenons à notre propriété Value. La méthode décrite plus haut fonctionne bien et nécessite assez peu de code, mais elle a un inconvénient : pendant la récupération de la valeur, l&rsquo;utilisateur ne voit rien&hellip; On aimerait pouvoir afficher quelque chose qui indique que l&rsquo;application travaille. Pour ça, on peut introduire une propriété<code>IsValueReady</code>qui indiquera si la valeur est prête. Côté XAML, on pourra utiliser un Trigger sur cette propriété pour modifier l&rsquo;affichage.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">bool</span> <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">object</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> Value
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (!<span style="color:#ae81ff">_</span>isValueReady &amp;&amp; !<span style="color:#ae81ff">_</span>retrievingValue)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>                    ThreadPool.QueueUserWorkItem(
+</span></span><span style="display:flex;"><span>                        (state) =&gt;
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">this</span>.Value = <span style="color:#ae81ff">_</span>model.RetrieveValue(); <span style="color:#75715e">// Very long operation...</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">this</span>.IsValueReady = <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>                            <span style="color:#ae81ff">_</span>retrievingValue = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>                        });
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">set</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span><span style="color:#66d9ef">value</span> = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>                OnPropertyChanged(<span style="color:#e6db74">&#34;Value&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">bool</span> <span style="color:#ae81ff">_</span>isValueReady = <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> IsValueReady
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span> { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>isValueReady; }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">set</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span>isValueReady = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>                OnPropertyChanged(<span style="color:#e6db74">&#34;IsValueReady&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></div><p>Ça commence à faire un code un peu plus conséquent pour une simple propriété, mais ce code est toujours le même&hellip; les seules choses qui changent sont le nom de la propriété, son type, et le code qui récupère la valeur. Si on a beaucoup de propriétés de ce genre à créer, on pourrait donc facilement écrire un<em>code snippet</em>qui génèrerait le plus gros du code.<br><br>Avec Blend, il est probablement assez simple de créer un trigger pour prendre en compte la propriété IsValueReady dans la vue&hellip; mais je ne me suis toujours pas mis à Blend, je code directement la vue en XAML, et je trouve les Triggers beaucoup trop lourds à écrire&hellip; J&rsquo;ai donc utilisé une autre solution que je trouve  beaucoup plus simple et plus lisible, à base de markup extension (oui, j&rsquo;aime bien les markup extensions&hellip;). Ca donne le XAML suivant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Grid&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;TextBlock</span> <span style="color:#a6e22e">Text=</span><span style="color:#e6db74">&#34;{Binding Value, FallbackValue=Blabla}&#34;</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#a6e22e">Visibility=</span><span style="color:#e6db74">&#34;{my:SwitchBinding IsValueReady, Visible, Hidden}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;ProgressBar</span> <span style="color:#a6e22e">IsIndeterminate=</span><span style="color:#e6db74">&#34;True&#34;</span> <span style="color:#a6e22e">Width=</span><span style="color:#e6db74">&#34;150&#34;</span> <span style="color:#a6e22e">Height=</span><span style="color:#e6db74">&#34;30&#34;</span>
+</span></span><span style="display:flex;"><span>                     <span style="color:#a6e22e">Visibility=</span><span style="color:#e6db74">&#34;{my:SwitchBinding IsValueReady, Hidden, Visible}&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/Grid&gt;</span>
+</span></span></code></pre></div><p>Ce code masque le<code>TextBlock</code>et affiche la<code>ProgressBar</code>tant que la valeur n&rsquo;est pas prête. Quand la récupération de la valeur est terminée, la<code>ProgressBar</code>disparait et le<code>TextBlock</code>redevient visible&hellip;<code>SwitchBinding</code>est une markup extension qui hérite de<code>Binding</code>et renvoie une valeur ou une autre selon que la propriété bindée vaut<code>true</code>ou<code>false</code>. Je ne m&rsquo;étendrai pas sur le fonctionnement de cette extension, car ce n&rsquo;est pas le sujet de ce billet, mais voici tout de même son code :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SwitchBindingExtension</span> : Binding
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> SwitchBindingExtension()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Initialize();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> SwitchBindingExtension(<span style="color:#66d9ef">string</span> path)
+</span></span><span style="display:flex;"><span>            : <span style="color:#66d9ef">base</span>(path)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Initialize();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> SwitchBindingExtension(<span style="color:#66d9ef">string</span> path, <span style="color:#66d9ef">object</span> valueIfTrue, <span style="color:#66d9ef">object</span> valueIfFalse)
+</span></span><span style="display:flex;"><span>            : <span style="color:#66d9ef">base</span>(path)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Initialize();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.ValueIfTrue = valueIfTrue;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.ValueIfFalse = valueIfFalse;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> Initialize()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.ValueIfTrue = Binding.DoNothing;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.ValueIfFalse = Binding.DoNothing;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.Converter = <span style="color:#66d9ef">new</span> SwitchConverter(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [ConstructorArgument(&#34;valueIfTrue&#34;)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> ValueIfTrue { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [ConstructorArgument(&#34;valueIfFalse&#34;)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> ValueIfFalse { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SwitchConverter</span> : IValueConverter
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> SwitchConverter(SwitchBindingExtension switchExtension)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span><span style="color:#66d9ef">switch</span> = switchExtension;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">private</span> SwitchBindingExtension <span style="color:#ae81ff">_</span><span style="color:#66d9ef">switch</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">#region IValueConverter Members</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> Convert(<span style="color:#66d9ef">object</span> <span style="color:#66d9ef">value</span>, Type targetType, <span style="color:#66d9ef">object</span> parameter, System.Globalization.CultureInfo culture)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">bool</span> b = System.Convert.ToBoolean(<span style="color:#66d9ef">value</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> b ? <span style="color:#ae81ff">_</span><span style="color:#66d9ef">switch</span>.ValueIfTrue : <span style="color:#ae81ff">_</span><span style="color:#66d9ef">switch</span>.ValueIfFalse;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">catch</span>
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> DependencyProperty.UnsetValue;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">object</span> ConvertBack(<span style="color:#66d9ef">object</span> <span style="color:#66d9ef">value</span>, Type targetType, <span style="color:#66d9ef">object</span> parameter, System.Globalization.CultureInfo culture)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> Binding.DoNothing;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>endregion
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Cette markup extension est en fait l&rsquo;équivalent XAML de l&rsquo;opérateur conditionnel de C# (<code>condition ? valeurSiVrai : valeurSiFaux</code>), et peut être utilisée pour toutes sortes de valeurs.<br><br>Une autre option pour réaliser le comportement voulu aurait été de créer des propriétés qui renvoient une valeur de Visibility selon la valeur de IsValueReady, mais ça fait encore 2 propriétés de plus à créer, ce qui alourdit pas mal le ViewModel.<br><br>Voilà, c&rsquo;est tout pour aujourd&rsquo;hui&hellip; N&rsquo;hésitez pas à me faire part de vos commentaires ou suggestions ;)</p>
 
 		</div>
 		<footer class="post__footer">
@@ -353,7 +354,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

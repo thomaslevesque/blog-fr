@@ -11,8 +11,8 @@
 <meta property="og:description" content="L’asynchronisme dans C# est une fonctionnalité géniale, et je l’ai beaucoup utilisé depuis son apparition. Mais il y a quelques limitations agaçantes; par exemple, on ne peut pas passer des paramètres par référence (ref ou out) à une méthode asynchrone. Il y a de bonnes raisons pour cela; la plus évidente est que si vous passez par référence une variable locale, elle est stockée sur la pile, or la pile ne va pas rester disponible pendant toute l’exécution de la méthode asynchone (seulement jusqu’au premier await), donc l’emplacement de la variable n’existera plus." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2014-11-04T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2014-11-04T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2014-11-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-11-04T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -79,12 +80,12 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>L’asynchronisme dans C# est une fonctionnalité géniale, et je l’ai beaucoup utilisé depuis son apparition. Mais il y a quelques limitations agaçantes; par exemple, on ne peut pas passer des paramètres par référence (<code>ref</code> ou <code>out</code>) à une méthode asynchrone. Il y a de bonnes raisons pour cela; la plus évidente est que si vous passez par référence une variable locale, elle est stockée sur la pile, or la pile ne va pas rester disponible pendant toute l’exécution de la méthode asynchone (seulement jusqu’au premier <code>await</code>), donc l’emplacement de la variable n’existera plus.</p>
 <p>Cependant, cette limitation est assez facile à contourner : il suffit de créer une classe <code>Ref&lt;T&gt;</code> pour encapsuler la valeur, et de passer une instance de cette classe par valeur à la méthode asynchrone:</p>
-<pre><code>async void btnFilesStats_Click(object sender, EventArgs e)
+<pre tabindex="0"><code>async void btnFilesStats_Click(object sender, EventArgs e)
 {
     var count = new Ref&lt;int&gt;();
     var size = new Ref&lt;ulong&gt;();
     await GetFileStats(tbPath.Text, count, size);
-    txtFileStats.Text = string.Format(&quot;{0} files ({1} bytes)&quot;, count, size);
+    txtFileStats.Text = string.Format(&#34;{0} files ({1} bytes)&#34;, count, size);
 }
 
 async Task GetFileStats(string path, Ref&lt;int&gt; totalCount, Ref&lt;ulong&gt; totalSize)
@@ -102,7 +103,7 @@ async Task GetFileStats(string path, Ref&lt;int&gt; totalCount, Ref&lt;ulong&gt;
     }
 }
 </code></pre><p>La class <code>Ref&lt;T&gt;</code> ressemble à ceci:</p>
-<pre><code>public class Ref&lt;T&gt;
+<pre tabindex="0"><code>public class Ref&lt;T&gt;
 {
     public Ref() { }
     public Ref(T value) { Value = value; }
@@ -110,7 +111,7 @@ async Task GetFileStats(string path, Ref&lt;int&gt; totalCount, Ref&lt;ulong&gt;
     public override string ToString()
     {
         T value = Value;
-        return value == null ? &quot;&quot; : value.ToString();
+        return value == null ? &#34;&#34; : value.ToString();
     }
     public static implicit operator T(Ref&lt;T&gt; r) { return r.Value; }
     public static implicit operator Ref&lt;T&gt;(T value) { return new Ref&lt;T&gt;(value); }
@@ -251,7 +252,7 @@ async Task GetFileStats(string path, Ref&lt;int&gt; totalCount, Ref&lt;ulong&gt;
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

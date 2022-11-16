@@ -12,8 +12,8 @@
 Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a généralement besoin de créer des objets factices (fakes) pour les dépendances et de les injecter manuellement dans la classe testée (SUT, System Under Test), ou d’utiliser un conteneur IoC pour enregistrer les dépendances factices et construire le SUT. C’est un peu laborieux, et il y a quelques mois j’avais créé une extension Unity pour créer automatiquement les fakes et rendre tout ça plus facile." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2016-01-17T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2016-01-17T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2016-01-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-01-17T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -81,7 +82,7 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>Aujourd’hui j’aimerais partager avec vous une fonctionnalité sympa de <a href="http://fakeiteasy.github.io/">FakeItEasy</a> que j’ai découverte récemment.</p>
 <p>Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a généralement besoin de créer des objets factices (fakes) pour les dépendances et de les injecter manuellement dans la classe testée (SUT, System Under Test), ou d’utiliser un conteneur IoC pour enregistrer les dépendances factices et construire le SUT. C’est un peu laborieux, et il y a quelques mois j’avais créé <a href="/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/">une extension Unity pour créer automatiquement les fakes</a> et rendre tout ça plus facile. Mais maintenant je réalise que FakeItEasy offre une solution encore meilleure : déclarer simplement les dépendances et le SUT comme des propriétés de la fixture, et appeler <code>Fake.InitializeFixture</code> sur la fixture pour les initialiser. Voilà à quoi ça ressemble :</p>
-<pre><code>public class BlogManagerTests
+<pre tabindex="0"><code>public class BlogManagerTests
 {
     [Fake] public IBlogPostRepository BlogPostRepository { get; set; }
     [Fake] public ISocialNetworkNotifier SocialNetworkNotifier { get; set; }
@@ -260,7 +261,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

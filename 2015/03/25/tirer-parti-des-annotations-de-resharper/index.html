@@ -11,8 +11,8 @@
 <meta property="og:description" content="Je ne pense pas qu’il soit vraiment nécessaire de présenter ReSharper (souvent abbrégé R#), mais au cas où vous ne connaitriez pas, il s’agit d’un outil créé par JetBrains qui analyse votre code C# ou VB.NET en temps réel pour vous avertir des bugs potentiels, mauvaises pratiques, non-respect des conventions, etc. Il propose aussi de nombreux refactorings et générateurs de code bien utiles. Je l’utilise depuis quelques années maintenant, et cela a beaucoup amélioré ma productivité et la qualité de mon code." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/03/25/tirer-parti-des-annotations-de-resharper/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-03-25T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-03-25T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-03-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-03-25T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -91,18 +92,18 @@ if (!doNotTrack) {
 <h3 id="notnull">NotNull</h3>
 <p>Cette annotation indique que l’élément sur lequel il est appliqué ne peut pas, ou ne doit pas, être null.</p>
 <p>Si elle est appliquée sur une méthode ou propriété, cela signifie que celle-ci ne renverra jamais null:</p>
-<pre><code>[NotNull]
+<pre tabindex="0"><code>[NotNull]
 public string GetString()
 {
-    return &quot;Hello world!&quot;;
+    return &#34;Hello world!&#34;;
 }
 </code></pre><p>Quand une méthode a cet attribut, si vous testez que la valeur de retour est null (ou non null), R# vous avertira que la condition est toujours fausse (ou vraie) :</p>
 <p><img src="image6.png" alt="image" title="image"></p>
 <p>Si l’annotation est appliquée à un paramètre de méthode, cela signifie que null n’est pas une valeur d’argument valide :</p>
-<pre><code>public string Repeat([NotNull] string s)
+<pre tabindex="0"><code>public string Repeat([NotNull] string s)
 {
     if (s == null)
-        throw new ArgumentNullException(&quot;s&quot;);
+        throw new ArgumentNullException(&#34;s&#34;);
     return s + s;
 }
 </code></pre><p>Si R# détermine que la valeur passée pour <code>s</code> peut être null, il vous en avertira, comme illustré dans le premier exemple de cet article.</p>
@@ -117,7 +118,7 @@ public string GetString()
 <h3 id="heading"> </h3>
 <h3 id="stringformatmethod">StringFormatMethod</h3>
 <p>Cette annotation indique qu’une méthode fonctionne sur le même principe que la méthode <code>String.Format</code>, c’est-à-dire qu’elle prend une chaine de format composite, suivie d’un nombre variable d’arguments qui remplaceront les “trous” dans la chaine de format.</p>
-<pre><code>[StringFormatMethod(&quot;format&quot;)]
+<pre tabindex="0"><code>[StringFormatMethod(&#34;format&#34;)]
 public static void Log(string format, params object[] args)
 {
     ...
@@ -128,7 +129,7 @@ public static void Log(string format, params object[] args)
 <p>Celle-ci indique à ReSharper qu’un élément de code est utilisé, même si R# ne peut pas le détecter statiquement. Cela a pour effet d’inhiber l’avertissement qui dit qu’un élément n’est pas utilisé. Cela est utile, par exemple, quand un type ou membre est utilisé uniquement via la réflexion.</p>
 <h3 id="noenumeration">NoEnumeration</h3>
 <p>Cette annotation est appliquée à un paramètre <code>IEnumerable</code>, et signifie que la méthode n’énumèrera pas la séquence. R# donne un avertissement quand un <code>IEnumerable</code> est énuméré plusieurs fois, donc utiliser cet attribut permet d’éviter les faux positifs pour cet avertissement :</p>
-<pre><code>public static IEnumerable&lt;T&gt; EmptyIfNull&lt;T&gt;([NoEnumeration] this IEnumerable&lt;T&gt; source)
+<pre tabindex="0"><code>public static IEnumerable&lt;T&gt; EmptyIfNull&lt;T&gt;([NoEnumeration] this IEnumerable&lt;T&gt; source)
 {
     return source ?? Enumerable.Empty&lt;T&gt;();
 }
@@ -136,14 +137,14 @@ public static void Log(string format, params object[] args)
 <p>Celle-ci s’applique à un paramètre de type delegate, et signifie que le delegate sera exécuté uniquement pendant l’exécution de la méthode. Cela permet d’empêcher l’avertissement <em>“Access to modified closure”,</em> qui apparait quand une expression lambda capture une variable qui est modifiée ultérieurement.</p>
 <h3 id="contractannotation">ContractAnnotation</h3>
 <p>Cette annotation est un moyen puissant de décrire les dépendances entre les entrées et la sortie d’une méthode. Cela permet à R# de prédire la façon dont une méthode se comportera. Par exemple, cette méthode renverra null si son argument est null, et non null sinon :</p>
-<pre><code>[ContractAnnotation(&quot;null =&gt; null; notnull =&gt; notnull&quot;)]
+<pre tabindex="0"><code>[ContractAnnotation(&#34;null =&gt; null; notnull =&gt; notnull&#34;)]
 public object Transform(object data)
 {
     ...
 }
 </code></pre><p>Grâce à cette annotation, ReSharper saura que si l’argument était non null, le résultat ne sera pas null non plus.</p>
 <p>La méthode suivante ne se termine pas normalement (elle lance une exception) si son argument est null:</p>
-<pre><code>[ContractAnnotation(&quot;value:null =&gt; halt&quot;)]
+<pre tabindex="0"><code>[ContractAnnotation(&#34;value:null =&gt; halt&#34;)]
 public static void CheckArgumentNull&lt;T&gt;(
     [NoEnumeration] this T value,
     [InvokerParameterName] string paramName)
@@ -279,7 +280,7 @@ public static void CheckArgumentNull&lt;T&gt;(
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

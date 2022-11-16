@@ -12,8 +12,8 @@
 Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutions que j’ai trouvées suggéraient d’intercepter la frappe de touches Ctrl-V, et de bloquer l’événement si le presse-papiers contient une image." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-09-05T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-09-05T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-09-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-09-05T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -94,16 +95,16 @@ if (!doNotTrack) {
 </ul>
 <p>Dans mon cas, je voulais juste empêcher le collage ou le glisser-déposer d’une image, donc j’ai simplement annulé l’opération quand le <code>FormatToApply</code> était <code>&quot;Bitmap&quot;</code>, comme illustré ci-dessous.</p>
 <p>XAML:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;RichTextBox</span> <span style="color:#a6e22e">DataObject.Pasting=</span><span style="color:#e6db74">&#34;RichTextBox1_Pasting&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span> <span style="color:#f92672">/&gt;</span>
-</code></pre></div><p>Code-behind:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> RichTextBox1_Pasting(<span style="color:#66d9ef">object</span> sender, DataObjectPastingEventArgs e)
-{
-    <span style="color:#66d9ef">if</span> (e.FormatToApply == <span style="color:#e6db74">&#34;Bitmap&#34;</span>)
-    {
-        e.CancelCommand();
-    }
-}
-</code></pre></div><p>Bien sûr, il est également possible de gérer ça plus intelligemment. Par exemple, si le <code>DataObject</code> contient plusieurs formats, on pourrait créer un nouveau <code>DataObject</code> avec uniquement les formats acceptables. Comme ça l’utilisateur peut encore coller <em>quelque chose</em>, tant que ce n’est pas une image.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;RichTextBox</span> <span style="color:#a6e22e">DataObject.Pasting=</span><span style="color:#e6db74">&#34;RichTextBox1_Pasting&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span> <span style="color:#f92672">/&gt;</span>
+</span></span></code></pre></div><p>Code-behind:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> RichTextBox1_Pasting(<span style="color:#66d9ef">object</span> sender, DataObjectPastingEventArgs e)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (e.FormatToApply == <span style="color:#e6db74">&#34;Bitmap&#34;</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        e.CancelCommand();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Bien sûr, il est également possible de gérer ça plus intelligemment. Par exemple, si le <code>DataObject</code> contient plusieurs formats, on pourrait créer un nouveau <code>DataObject</code> avec uniquement les formats acceptables. Comme ça l’utilisateur peut encore coller <em>quelque chose</em>, tant que ce n’est pas une image.</p>
 
 		</div>
 		<footer class="post__footer">
@@ -230,7 +231,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

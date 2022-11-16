@@ -11,8 +11,8 @@
 <meta property="og:description" content="La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, une approche standardisée pour gérer l’annulation a été introduite : les jetons d’annulation. L’idée générale est que vous créez un CancellationTokenSource qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2015-12-31T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2015-12-31T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2015-12-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-12-31T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -78,7 +79,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-12-31T00:00:00Z">December 31, 2015</time></div></div>
 		</header><div class="content post__content clearfix">
 			<p>La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, <a href="https://msdn.microsoft.com/fr-fr/library/dd997364%28v=vs.110%29.aspx">une approche standardisée pour gérer l’annulation</a> a été introduite : les jetons d’annulation. L’idée générale est que vous créez un <code>CancellationTokenSource</code> qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler. Cette méthode le passera ensuite aux autres méthodes qu’elle appelle si elles peuvent être annulées, et/où vérifiera régulièrement si l’annulation a été demandée. Lors de l’annulation, la méthode lancera une <code>OperationCanceledException</code>. Exemple vite fait mal fait :</p>
-<pre><code>private readonly IBusinessService _businessService;
+<pre tabindex="0"><code>private readonly IBusinessService _businessService;
 private CancellationTokenSource _cancellationSource;
 private Task _asyncOperation;
  
@@ -133,7 +134,7 @@ class BusinessService : IBusinessService
 </code></pre><p>Dans ce cas, <code>StopAsyncOperation</code> serait appelée, par exemple, si l’utilisateur décide d’annuler l’opération.</p>
 <p>Tout ça marche très bien et est assez facile à mettre en œuvre. Mais que se passe-t-il s’il y a une autre raison d’annuler l’opération, connue seulement du <code>BusinessService</code> et hors du contrôle de la méthode appelante ? C’est là que la méthode <code>CancellationSource.CreateLinkedTokenSource</code> entre en jeu ; en gros, cette méthode crée une nouvelle source d’annulation qui sera annulée quand l’un des jetons spécifiés sera annulé.</p>
 <p>Commençons par un cas simple : vous avez un autre jeton d’annulation que vous voulez aussi prendre en compte. Le code pourrait ressembler à ceci :</p>
-<pre><code>public async Task DoSomethingAsync(CancellationToken cancellationToken)
+<pre tabindex="0"><code>public async Task DoSomethingAsync(CancellationToken cancellationToken)
 {
     var otherToken = GetOtherCancellationToken();
     using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, otherToken))
@@ -148,7 +149,7 @@ class BusinessService : IBusinessService
 }
 </code></pre><p>On crée une source d’annulation liée, basée sur les deux jetons d’annulation, et on utilise le jeton de cette nouvelle source à la place de <code>cancellationToken</code>. Si <code>cancellationToken</code> ou <code>otherToken</code> est annulé, <code>linkedCts.Token</code> sera annulé aussi. Si nécessaire, le code appelant peut détecter comment l’opération a été annulée en vérifiant la propriété <code>CancellationToken</code> de l’exception <code>OperationCanceledException</code>.</p>
 <p>Maintenant, un cas un peu plus difficile : la seconde source d’annulation est en fait un évènement. On veut annuler l’opération quand cet évènement se produit, en plus de l’annulation par l’utilisateur représentée par le paramètre <code>cancellationToken</code>. On va donc s’abonner à l’évènement et déclencher l’annulation quand il se produit. Voilà un moyen de le faire :</p>
-<pre><code>public async Task DoSomethingAsync(CancellationToken cancellationToken)
+<pre tabindex="0"><code>public async Task DoSomethingAsync(CancellationToken cancellationToken)
 {
     using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
     {
@@ -171,7 +172,7 @@ class BusinessService : IBusinessService
 }
 </code></pre><p>Ici on passe seulement <code>cancellationToken</code> à <code>CreateLinkedTokenSource</code>, et on annule directement <code>linkedCts</code> quand l’évènement se produit. Le code devient un peu plus alambiqué, mais il atteint l’objectif.</p>
 <p>Je ne peux pas vraiment vous donner un cas d’utilisation spécifique de cette technique dans le monde réel, parce que les cas où je l’ai utilisée sont trop spécifiques pour être d’intérêt général, mais je peux décrire le scénario général. J’ai une opération de longue durée qui est constituée de plusieurs sous-opérations de longue durée. L’opération entière peut être annulée globalement, et chacune des sous-opérations peut également être annulée individuellement, sans affecter les autres. Voilà à quoi ça peut ressembler (en quasi pseudo-code) :</p>
-<pre><code>async Task GlobalOperationAsync(CancellationToken cancellationToken)
+<pre tabindex="0"><code>async Task GlobalOperationAsync(CancellationToken cancellationToken)
 {
     foreach (var subOperation is SubOperations)
     {
@@ -319,7 +320,7 @@ class BusinessService : IBusinessService
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

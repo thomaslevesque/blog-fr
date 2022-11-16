@@ -14,7 +14,7 @@
       
       <guid>https://thomaslevesque.fr/2015/06/23/filtres-dexception-en-c-6-leur-plus-grand-avantage-nest-pas-celui-quon-croit/</guid>
       <description>Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc catch :
-static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&amp;quot;Error 42 occurred&amp;quot;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.</description>
+static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&amp;#34;Error 42 occurred&amp;#34;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.</description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@ static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyExcept
       
       <guid>https://thomaslevesque.fr/2015/02/25/personnaliser-linterpolation-de-chaine-avec-c-6/</guid>
       <description>L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :
-string text = $&amp;quot;{p.Name} was born on {p.DateOfBirth:D}&amp;quot;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :</description>
+string text = $&amp;#34;{p.Name} was born on {p.DateOfBirth:D}&amp;#34;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :</description>
     </item>
     
     <item>

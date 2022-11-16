@@ -12,8 +12,8 @@
 Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&rsquo;est pas toujours le cas." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2013-04-21T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2013-04-21T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2013-04-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2013-04-21T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une proprié
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -82,7 +83,7 @@ if (!doNotTrack) {
 			<p>Aujourd&rsquo;hui j&rsquo;aimerais partager une astuce que j&rsquo;ai utilisée en développant ma première application Windows Store. Je suis complètement nouveau sur cette technologie et c&rsquo;est mon premier billet à ce sujet, donc j&rsquo;espère que je ne vais pas trop me ridiculiser&hellip;</p>
 <p>Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&rsquo;est pas toujours le cas. Par exemple, récemment j&rsquo;essayais de détecter les changements de la propriété <code>Content</code> d&rsquo;un <code>ContentControl</code>. En WPF, j&rsquo;aurais utilisé la classe <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dependencypropertydescriptor.aspx"><code>DependencyPropertyDescriptor</code></a>, mais elle n&rsquo;est pas disponible dans WinRT.</p>
 <p>Heureusement, il y a un mécanisme qui existe sur toutes les plateformes XAML, et qui peut résoudre ce problème: le binding. La solution est donc simplement de créer une classe avec un propriété &ldquo;bidon&rdquo; qui est liée à la propriété qu&rsquo;on souhaite observer, et d&rsquo;appeler un handler quand la valeur de cette propriété bidon change. Pour rendre ça un peu plus propre et masquer l&rsquo;implémentation réelle, j&rsquo;ai emballé ça sous forme d&rsquo;une méthode d&rsquo;extension qui renvoie un <code>IDisposable</code>:</p>
-<pre><code>    public static class DependencyObjectExtensions
+<pre tabindex="0"><code>    public static class DependencyObjectExtensions
     {
         public static IDisposable WatchProperty(this DependencyObject target,
                                                 string propertyPath,
@@ -99,9 +100,9 @@ if (!doNotTrack) {
                                              string propertyPath,
                                              DependencyPropertyChangedEventHandler handler)
             {
-                if (target == null) throw new ArgumentNullException(&quot;target&quot;);
-                if (propertyPath == null) throw new ArgumentNullException(&quot;propertyPath&quot;);
-                if (handler == null) throw new ArgumentNullException(&quot;handler&quot;);
+                if (target == null) throw new ArgumentNullException(&#34;target&#34;);
+                if (propertyPath == null) throw new ArgumentNullException(&#34;propertyPath&#34;);
+                if (handler == null) throw new ArgumentNullException(&#34;handler&#34;);
 
                 _handler = handler;
 
@@ -116,7 +117,7 @@ if (!doNotTrack) {
 
             private static readonly DependencyProperty ValueProperty =
                 DependencyProperty.Register(
-                    &quot;Value&quot;,
+                    &#34;Value&#34;,
                     typeof(object),
                     typeof(DependencyPropertyWatcher),
                     new PropertyMetadata(null, ValuePropertyChanged));
@@ -146,8 +147,8 @@ if (!doNotTrack) {
         }
     }
 </code></pre><p>On peut l&rsquo;utiliser comme ceci:</p>
-<pre><code>// Abonnement
-watcher = myControl.WatchProperty(&quot;Content&quot;, myControl_ContentChanged);
+<pre tabindex="0"><code>// Abonnement
+watcher = myControl.WatchProperty(&#34;Content&#34;, myControl_ContentChanged);
 
 // Désabonnement
 watcher.Dispose();
@@ -278,7 +279,7 @@ watcher.Dispose();
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

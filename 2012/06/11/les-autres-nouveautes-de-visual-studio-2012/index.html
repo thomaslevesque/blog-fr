@@ -11,8 +11,8 @@
 <meta property="og:description" content="Visual Studio 2012 RC est sorti il y a 10 jours, et bien que je n’ai pas encore eu beaucoup de temps pour jouer avec, j’en suis assez satisfait pour l’instant. Beaucoup de choses ont déjà été dites sur le design, ainsi que sur les nouvelles fonctionnalités les plus importantes, mais il y a aussi beaucoup de petites améliorations moins remarquables qui vont nous faciliter la vie. Comme je n’ai pas vu grand chose d’écrit à ce sujet, je me suis dit qu’il serait utile de faire une petite liste de ce que j’ai remarqué jusqu’ici." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2012/06/11/les-autres-nouveautes-de-visual-studio-2012/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2012-06-11T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2012-06-11T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2012-06-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2012-06-11T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -115,7 +116,7 @@ if (!doNotTrack) {
 <h3 id="un-explorateur-de-solution-plus-malin">Un explorateur de solution plus malin</h3>
 <p>Jusqu’à maintenant, l’explorateur de solution affichait seulement les fichiers qui se trouvaient dans votre projet, mais rien sur le contenu des fichiers. Si vous vouliez voir les classes et membres, il fallait basculer sur la vue des classes. Visual Studio 2012 change cela : vous pouvez maintenant voir ce qui est déclaré dans le fichier, en dépliant simplement le nœud correspondant dans l’explorateur de solution :</p>
 <p><img src="image_thumb6.png" alt="image_thumb6" title="image_thumb6"></p>
-<p>Cette fonctionnalité était présente dans Eclipse depuis longtemps, il était donc temps que Visual Studio rattrape ce retard <img src="wlEmoticon-winkingsmile.png" alt="Clignement d&#39;œil">.</p>
+<p>Cette fonctionnalité était présente dans Eclipse depuis longtemps, il était donc temps que Visual Studio rattrape ce retard <img src="wlEmoticon-winkingsmile.png" alt="Clignement d&amp;#39;œil">.</p>
 <p>Quelques autres fonctionnalités intéressantes du nouvel explorateur de solution :</p>
 <ul>
 <li><em>Scope to This</em> : permet de voir seulement l’arborescence à partir d’un nœud spécifique (par exemple si vous voulez voir seulement le contenu d’un dossier). La nouvelle arborescence peut être ouverte dans une vue séparée.</li>
@@ -250,7 +251,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="fr">
 <head>
-	<meta name="generator" content="Hugo 0.83.1" />
+	<meta name="generator" content="Hugo 0.99.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,17 +26,18 @@
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -99,7 +100,7 @@ Ma solution initiale était plus une preuve de concept qu’autre chose, et avai
 	<div class="content list__excerpt post__content clearfix">
 		Encore un petit casse-tête basé sur un problème que j’ai rencontré au boulot…
 Regardez ce morceau de code :
-Console.WriteLine($&quot;x &gt; y is {x &gt; y}&quot;); Console.WriteLine($&quot;!(x &lt;= y) is {!(x &lt;= y)}&quot;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
+Console.WriteLine($&#34;x &gt; y is {x &gt; y}&#34;); Console.WriteLine($&#34;!(x &lt;= y) is {!(x &lt;= y)}&#34;); Comment faudrait-il déclarer x et y pour que le programme produise la sortie (apparemment illogique) suivante ?
 x &gt; y is False !(x &lt;= y) is True 
 	</div>
 </article><article class="list__item post">
@@ -129,7 +130,7 @@ x &gt; y is False !(x &lt;= y) is True
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Les filtres d’exception sont l’une des fonctionnalités majeures de C# 6. Ils tirent parti d’une fonctionnalité du CLR qui a toujours existé, mais qui n’était pas exploitée en C# jusqu’ici. Ils permettent de spécifier une condition sur un bloc catch :
-static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&quot;Error 42 occurred&quot;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.
+static void Main() { try { Foo.DoSomethingThatMightFail(null); } catch (MyException ex) when (ex.Code == 42) { Console.WriteLine(&#34;Error 42 occurred&#34;); } } Comme on pourrait s’y attendre, le bloc catch ne sera exécuté que si ex.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -202,7 +203,7 @@ static void Test(out int x, out int y) { x = 42; y = 123; Console.WriteLine (x =
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		L’une des principales nouveautés de C# 6 est l’interpolation de chaines de caractères, qui permet d’écrire ce genre de chose :
-string text = $&quot;{p.Name} was born on {p.DateOfBirth:D}&quot;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :
+string text = $&#34;{p.Name} was born on {p.DateOfBirth:D}&#34;; Un aspect peu connu de cette fonctionnalité est qu’une chaine interpolée peut être traitée soit comme un String, soit comme un IFormattable, selon le contexte. Quand elle est convertie en IFormattable, cela crée un objet FormattableString qui implémente l’interface et expose :
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -288,7 +289,7 @@ Supposons que le système à tester soit cette très intéressante classe Calcul
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

@@ -12,8 +12,8 @@
 Lors de la PDC jeudi dernier, un coin du voile a enfin été levé, mais pas du tout sur ce qu’on attendait !" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2010/10/30/c-5-programmation-asynchrone-avec-c-5/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2010-10-30T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2010-10-30T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2010-10-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2010-10-30T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Lors de la PDC jeudi dernier, un coin du voile a enfin été levé, mais pas du 
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -84,12 +85,12 @@ if (!doNotTrack) {
 <p>Il est bien sûr déjà possible d’effectuer des traitements asynchrones en C#, mais c’est généralement assez pénible et peu intuitif… On est souvent obligé de passer par des callbacks pour indiquer ce qui doit être exécuté à la fin du traitement asynchrone, et on se retrouve rapidement avec un code difficile à relire et à comprendre, et donc à maintenir. Pour une démonstration de ce problème, je vous invite à lire l’<a href="https://docs.microsoft.com/en-us/archive/blogs/ericlippert/continuation-passing-style-revisited-part-five-cps-and-asynchrony">excellent article d’Eric Lippert</a> à ce sujet, il explique ça beaucoup mieux que moi…</p>
 <p>Cet article (et la série qu’il conclut) était en fait un prélude à l’annonce faite à la PDC : <strong>C# 5 intègrera une nouvelle syntaxe permettant d’écrire du code asynchrone</strong> de façon beaucoup plus naturelle, avec l’introduction de deux nouveaux mots-clés : <code>async</code> et <code>await</code>. Le code à écrire pour réaliser un traitement asynchrone sera quasiment identique à celui d’un traitement synchrone : toute la complexité sera masquée par cette nouvelle fonctionnalité du langage.</p>
 <p>Puisqu’un exemple vaut mieux qu’un long discours, je vais reprendre l’exemple utilisé par Anders Hejlsberg pendant sa présentation, en le simplifiant un peu. Supposons qu’on veuille rechercher des titres de films par leur année de sortie. Pour simplifier, on utilisera le service OData de <a href="http://www.netflix.com/">Netflix</a>. Le code suivant effectue la recherche de façon synchrone, en récupérant les résultats 10 par 10 :</p>
-<pre><code>        private void btnSearch_Click(object sender, RoutedEventArgs e)
+<pre tabindex="0"><code>        private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             int year;
             if (!int.TryParse(txtYear.Text, out year))
             {
-                MessageBox.Show(&quot;L'année saisie est incorrecte&quot;);
+                MessageBox.Show(&#34;L&#39;année saisie est incorrecte&#34;);
                 return;
             }
             SearchMovies(year);
@@ -97,7 +98,7 @@ if (!doNotTrack) {
 
         private void SearchMovies(int year)
         {
-            var netflixUri = new Uri(&quot;http://odata.netflix.com/Catalog/&quot;);
+            var netflixUri = new Uri(&#34;http://odata.netflix.com/Catalog/&#34;);
             var catalog = new Netflix.NetflixCatalog(netflixUri);
             lstTitles.Items.Clear();
             int count = 0;
@@ -124,12 +125,12 @@ if (!doNotTrack) {
             return query.Skip(count).Take(pageSize).ToArray();
         }
 </code></pre><p>Ce code a le mérite d’être assez simple, mais il suffit de l’exécuter pour se rendre compte qu’il y a un problème : la récupération des résultats peut prendre un certain temps, pendant lequel l’interface reste figée. Il faut donc effectuer la recherche de façon asynchrone, pour que l’interface reste réactive. Voici une approche possible, avec la version actuelle de C# :</p>
-<pre><code>        private void SearchMoviesAsync(int year)
+<pre tabindex="0"><code>        private void SearchMoviesAsync(int year)
         {
             lstTitles.Items.Clear();
             Thread t = new Thread(() =&gt;
             {
-                var netflixUri = new Uri(&quot;http://odata.netflix.com/Catalog/&quot;);
+                var netflixUri = new Uri(&#34;http://odata.netflix.com/Catalog/&#34;);
                 var catalog = new Netflix.NetflixCatalog(netflixUri);
                 int count = 0;
                 int pageSize = 10;
@@ -150,9 +151,9 @@ if (!doNotTrack) {
 </code></pre><p>(Les deux autres méthodes sont inchangées)</p>
 <p>On voit que le code commence déjà à être moins clair, à cause de l’expression lambda passée au constructeur du thread, et de l’utilisation de <code>Dispatcher.Invoke</code> pour mettre à jour l’interface graphique. Imaginez un peu ce que ça donnerait dans un scénario plus complexe, avec plusieurs tâches asynchrones interdépendantes (comme dans l’article d’Eric Lippert mentionné plus haut).</p>
 <p>Avec la nouvelle syntaxe introduite par C# 5, voici comment on pourrait écrire ce code :</p>
-<pre><code>        private async void SearchMoviesAsync(int year)
+<pre tabindex="0"><code>        private async void SearchMoviesAsync(int year)
         {
-            var netflixUri = new Uri(&quot;http://odata.netflix.com/Catalog/&quot;);
+            var netflixUri = new Uri(&#34;http://odata.netflix.com/Catalog/&#34;);
             var catalog = new Netflix.NetflixCatalog(netflixUri);
             lstTitles.Items.Clear();
             int count = 0;
@@ -186,11 +187,11 @@ if (!doNotTrack) {
 <p>Un peu comme pour les blocs itérateurs, le compilateur réécrit le code de la méthode en créant un delegate avec le code qui suit l’appel asynchrone, et appelle ce delegate quand la tâche asynchrone se termine. Remarquez d’ailleurs que ce delegate est appelé sur le même thread, celui du dispatcher en l’occurrence : on n’a donc pas besoin de <code>Dispatcher.Invoke</code> pour mettre à jour l’interface graphique.</p>
 <p>En pratique, tout ce système se base sur la classe <code>Task</code> introduite dans .NET 4. Remarquez d’ailleurs que le type de retour de la méthode <code>SearchMoviesBatchAsync</code> est <code>Task&lt;Title[]&gt;</code>. Pourtant, quand on appelle cette méthode à partir de <code>SearchMoviesAsync</code>, on récupère bien un objet de type <font face="Courier New">Title[]</font>, et non <code>Task&lt;Title[]&gt;</code>. C’est l’autre effet du mot-clé <code>await</code> : il récupère le <em>résultat</em> d’une tâche une fois qu’elle est terminée.</p>
 <p>Encore une chose : j’ai utilisé dans le code une méthode d’extension <code>ToArrayAsync</code>, voici son code :</p>
-<pre><code>        public static Task&lt;T[]&gt; ToArrayAsync&lt;T&gt;(this IQueryable&lt;T&gt; source)
+<pre tabindex="0"><code>        public static Task&lt;T[]&gt; ToArrayAsync&lt;T&gt;(this IQueryable&lt;T&gt; source)
         {
             return TaskEx.Run(() =&gt; source.ToArray());
         }
-</code></pre><p>Voilà pour l’introduction à cette future nouvelle fonctionnalité de C#. J’espère que c’était à peu près compréhensible et que je n’ai pas dit trop de bêtises… tout n’est pas encore complètement clair dans ma tête<img src="wlemoticon-winkingsmile.png" alt="Clignement d&#039;œil">. Pour en savoir plus, voici quelques liens utiles :</p>
+</code></pre><p>Voilà pour l’introduction à cette future nouvelle fonctionnalité de C#. J’espère que c’était à peu près compréhensible et que je n’ai pas dit trop de bêtises… tout n’est pas encore complètement clair dans ma tête<img src="wlemoticon-winkingsmile.png" alt="Clignement d&amp;#039;œil">. Pour en savoir plus, voici quelques liens utiles :</p>
 <ul>
 <li>Eric Lippert, encore lui, a commencé une série d’articles sur la programmation asynchrone en C# 5, voici les deux premiers :
 <ul>
@@ -322,7 +323,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

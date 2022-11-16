@@ -12,8 +12,8 @@
 Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle de version : le remote pour VS Online doit s’appeler origin, sinon Team Explorer ne détecte pas qu’il s’agit d’un projet VS Online, et n’affiche pas les pages “Builds” et “Work Items”." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2014-10-12T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2014-10-12T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2014-10-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-10-12T00:00:00+00:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
@@ -28,17 +28,18 @@ Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle d
 	<link rel="stylesheet" href="/css/social.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
-<script type="application/javascript">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-31645024-1', 'auto');
-	
-	ga('send', 'pageview');
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-1BQPR1D5F6', { 'anonymize_ip': false });
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -81,9 +82,9 @@ if (!doNotTrack) {
 		</header><div class="content post__content clearfix">
 			<p>J’ai commencé récemment à utiliser Visual Studio Online pour des projets personnels, et je dois dire que c’est une très bonne plateforme, même si ce serait bien de pouvoir héberger des projets publics et non pas seulement privés. J’apprécie particulièrement l’intégration dans le Team Explorer de Visual Studio pour gérer les tâches et les builds.</p>
 <p>Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle de version : le remote pour VS Online <strong>doit</strong> s’appeler <code>origin</code>, sinon Team Explorer ne détecte pas qu’il s’agit d’un projet VS Online, et n’affiche pas les pages “Builds” et “Work Items”.</p>
-<p><img src="image_thumb.png" alt="Quand le remote VSO s&#39;appelle &quot;origin&quot;" title="Quand le remote VSO s'appelle &quot;origin&quot;"><img src="image_thumb1.png" alt="Quand le remote VSO s&#39;appelle &quot;vso&quot;" title="Quand le remote VSO s'appelle &quot;vso&quot;"></p>
+<p><img src="image_thumb.png" alt="Quand le remote VSO s&amp;#39;appelle &amp;quot;origin&amp;quot;" title="Quand le remote VSO s'appelle &quot;origin&quot;"><img src="image_thumb1.png" alt="Quand le remote VSO s&amp;#39;appelle &amp;quot;vso&amp;quot;" title="Quand le remote VSO s'appelle &quot;vso&quot;"></p>
 <p>C’est clairement un bug (quoique mineur), car le nom <code>origin</code> est juste une convention, et un remote Git peut s’appeler n’importe comment ; je l’ai signalé <a href="https://connect.microsoft.com/VisualStudio/feedback/details/998359/visual-studio-online-git-integration-in-team-explorer-doesnt-work-if-the-remote-for-vso-isnt-named-origin">sur Connect</a>. Si vous rencontrez ce problème, vous pouvez le contourner en renommant le remote en <code>origin</code> :</p>
-<pre><code>git remote rename vso origin
+<pre tabindex="0"><code>git remote rename vso origin
 </code></pre>
 		</div>
 		<footer class="post__footer">
@@ -207,7 +208,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 Thomas Levesque.
+			&copy; 2022 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
