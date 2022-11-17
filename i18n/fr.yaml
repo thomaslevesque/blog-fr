@@ -1,0 +1,2 @@
+- id: authorbox_name
+  translation: "À propos de {{ .Name }}"
