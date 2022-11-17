@@ -7,23 +7,27 @@
 	<title>C# - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="C#" />
+		<meta property="og:title" content="C#" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/c#/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="C#"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/tags/c#/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/tags/c#/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -36,18 +40,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -73,12 +79,13 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">C#</h1>
 	</header><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/" rel="bookmark">
 			Afficher facilement une taille de fichier sous forme lisible par un humain
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-24T00:00:00Z">November 24, 2014</time></div></div>
@@ -88,12 +95,13 @@ if (!doNotTrack) {
 Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/" rel="bookmark">
 			Passage de paramètres par référence à une méthode asynchrone
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-04T00:00:00Z">November 04, 2014</time></div></div>
@@ -102,12 +110,13 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 		L’asynchronisme dans C# est une fonctionnalité géniale, et je l’ai beaucoup utilisé depuis son apparition. Mais il y a quelques limitations agaçantes; par exemple, on ne peut pas passer des paramètres par référence (ref ou out) à une méthode asynchrone. Il y a de bonnes raisons pour cela; la plus évidente est que si vous passez par référence une variable locale, elle est stockée sur la pile, or la pile ne va pas rester disponible pendant toute l’exécution de la méthode asynchone (seulement jusqu’au premier await), donc l’emplacement de la variable n’existera plus.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/11/02/easy-unit-testing-of-null-argument-validation/" rel="bookmark">
 			Un moyen facile de tester unitairement la validation des arguments null
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-02T00:00:00Z">November 02, 2014</time></div></div>
@@ -116,12 +125,13 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 		Quand on teste unitairement une méthode, une des choses à tester est la validation des arguments : par exemple, vérifier que la méthode lève bien une ArgumentNullException quand un argument null est passé pour un paramètre qui ne doit pas être null. Ecrire ce genre de test est très facile, mais c’est une tâche fastidieuse et répétitive, surtout pour une méthode qui a beaucoup de paramètres. J’ai donc écrit une méthode qui automatise en partie cette tâche : elle essaie de passer null pour chacun des arguments spécifiés, et vérifie que la méthode lève bien une ArgumentNullException.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/" rel="bookmark">
 			Afficher des suggestions de résultat dans une SearchBox WinRT : bug concernant l’image
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-04T00:00:00Z">November 04, 2013</time></div></div>
@@ -131,12 +141,13 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scénarios de recherche directement dans une application Windows Store. L’une de ses fonctionnalités est l’affichage de suggestions basées sur la saisie de l’utilisateur.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/" rel="bookmark">
 			Détecter les changements d’une propriété de dépendance dans WinRT
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-04-21T00:00:00Z">April 21, 2013</time></div></div>
@@ -146,12 +157,13 @@ Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scén
 Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&rsquo;est pas toujours le cas.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2011/08/30/rcursion-terminale-en-c/" rel="bookmark">
 			Récursion terminale en C#
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-08-30T00:00:00Z">August 30, 2011</time></div></div>
@@ -160,12 +172,13 @@ Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une proprié
 		<p>Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (<code>StackOverflowException</code> en .NET).</p>
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2010/05/16/c-une-implementation-du-pattern-weakevent/" rel="bookmark">
 			[C#] Une implémentation du pattern WeakEvent
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-05-16T00:00:00Z">May 16, 2010</time></div></div>
@@ -174,12 +187,13 @@ Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une proprié
 		Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&rsquo;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&rsquo;exécution de l&rsquo;application.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/" rel="bookmark">
 			Automatiser la vérification des null avec les expressions Linq
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-02-20T00:00:00Z">February 20, 2010</time></div></div>
@@ -189,12 +203,13 @@ Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une proprié
 X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&rsquo;il n&rsquo;est pas nul, ce qui peut vite s&rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&rsquo;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/06/11/c-relation-parentenfant-et-serialisation-xml/" rel="bookmark">
 			[C#] Relation parent/enfant et sérialisation XML
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-06-11T00:00:00Z">June 11, 2009</time></div></div>
@@ -215,10 +230,10 @@ X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo 
 <aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

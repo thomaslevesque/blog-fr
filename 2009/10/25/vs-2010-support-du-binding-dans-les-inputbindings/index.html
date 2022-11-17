@@ -7,7 +7,7 @@
 	<title>[VS 2010] Support du binding dans les InputBindings - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="[VS 2010] Support du binding dans les InputBindings" />
+		<meta property="og:title" content="[VS 2010] Support du binding dans les InputBindings" />
 <meta property="og:description" content="LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les InputBindings n&rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip; Jusqu&rsquo;ici, pour lier la commande d&rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/" /><meta property="article:section" content="posts" />
@@ -15,16 +15,20 @@
 <meta property="article:modified_time" content="2009-10-25T00:00:00+00:00" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[VS 2010] Support du binding dans les InputBindings"/>
 <meta name="twitter:description" content="LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les InputBindings n&rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip; Jusqu&rsquo;ici, pour lier la commande d&rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;)."/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -37,18 +41,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -77,7 +83,8 @@ if (!doNotTrack) {
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-10-25T00:00:00Z">October 25, 2009</time></div></div>
-		</header><div class="content post__content clearfix">
+		</header>
+		<div class="content post__content clearfix">
 			<p><strong>LA fonctionnalité qui manquait à WPF !</strong>  La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les <code>InputBindings</code>.  Pour rappel, le problème de la version précédente était que la propriété <code>Command</code> de la classe <code>InputBinding</code> n&rsquo;était pas une <code>DependencyProperty</code>, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les <code>InputBindings</code> n&rsquo;héritaient pas du <code>DataContext</code>, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip;  Jusqu&rsquo;ici, pour lier la commande d&rsquo;un <code>KeyBinding</code> ou <code>MouseBinding</code> à une propriété du <code>DataContext</code>, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans <a href="/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/">ce post</a>, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;).  J&rsquo;ai découvert plus récemment le <a href="http://www.codeplex.com/wpf/Release/ProjectReleases.aspx?ReleaseId=14962">MVVM toolkit</a>, qui propose une approche un peu plus propre : une classe <code>CommandReference</code>, héritée de <code>Freezable</code>, qui permet de mettre dans les ressources de la page ou du contrôle une référence à la commande, qu&rsquo;on peut ensuite utiliser avec <code>StaticResource</code>. Plus propre, mais ça restait peu intuitif&hellip;  WPF 4.0 résout le problème une bonne fois pour toutes : la classe <code>InputBinding</code> hérite maintenant de <code>Freezable</code>, ce qui lui permet d&rsquo;hériter du <code>DataContext</code> parent. De plus les propriétés <code>Command</code>, <code>CommandParameter</code> et <code>CommandTarget</code> sont maintenant des <code>DependencyProperty</code>. On peut donc laisser tomber tous les bricolages qu&rsquo;il fallait utiliser jusqu&rsquo;à maintenant, et aller droit au but :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Window.InputBindings&gt;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;KeyBinding</span> <span style="color:#a6e22e">Key=</span><span style="color:#e6db74">&#34;F5&#34;</span> <span style="color:#a6e22e">Command=</span><span style="color:#e6db74">&#34;{Binding RefreshCommand}&#34;</span> <span style="color:#f92672">/&gt;</span>
@@ -128,7 +135,7 @@ if (!doNotTrack) {
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
+		<span class="authorbox__name">À propos de Thomas Levesque</span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -149,7 +156,6 @@ if (!doNotTrack) {
 		</a>
 	</div>
 </nav>
-
 <div>
     <script src="https://utteranc.es/client.js"
             repo="thomaslevesque/blog-fr"
@@ -166,10 +172,10 @@ if (!doNotTrack) {
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

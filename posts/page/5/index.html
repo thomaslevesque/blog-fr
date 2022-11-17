@@ -7,23 +7,27 @@
 	<title>Posts - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Posts" />
+		<meta property="og:title" content="Posts" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/posts/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -36,18 +40,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -73,12 +79,13 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/11/22/winrt-selectionner-un-element-de-liste-lors-d-un-appui-long/" rel="bookmark">
 			[WinRT] Sélectionner un élément de liste lors d’un appui long
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-22T00:00:00Z">November 22, 2013</time></div></div>
@@ -87,12 +94,13 @@ if (!doNotTrack) {
 		Comme vous le savez probablement, la méthode standard pour sélectionner ou déselectionner un élément dans un contrôle de liste WinRT est de le faire glisser légèrement vers le haut ou vers le bas. Même si j’aime bien ce geste, il n’est pas très intuitif pour les utilisateurs qui ne sont pas habitués à Modern UI. Et ça devient encore plus déroutant, car ma déclaration précédente n’est pas tout à fait exacte : en fait, il faut faire glisser l’élément perpendiculairement à la direction de défilement de la liste.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/" rel="bookmark">
 			Exécuter un outil personnalisé automatiquement quand un fichier est modifié
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-15T00:00:00Z">November 15, 2013</time></div></div>
@@ -101,12 +109,13 @@ if (!doNotTrack) {
 		Aussi loin que je me souvienne, il y a toujours eu dans Visual Studio quelque chose appelé “outils personnalisés” (custom tools), également connus sous le nom de single-file generators. Quand vous appliquez un tel outil à un fichier de votre projet, il génère quelque chose (généralement du code, mais pas forcément) en fonction du contenu du fichier. Par exemple, l’outil personnalisé par défaut pour les fichiers de ressource s’appelle ResXFileCodeGenerator, et génère une classe qui permet d’accéder facilement aux ressources définies dans le fichier resx.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/11/10/helper-fortement-type-pour-les-notifications-toast/" rel="bookmark">
 			Helper fortement typé pour les notifications toast
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-10T00:00:00Z">November 10, 2013</time></div></div>
@@ -115,12 +124,13 @@ if (!doNotTrack) {
 		Windows 8 fournit une API pour afficher des notifications toast. Malheureusement, elle est très peu pratique à utiliser : pour définir le contenu d’une notification, il faut utiliser un modèle prédéfini qui est fourni sous la forme d’un XmlDocument, et fixer la valeur de chaque champ dans le XML. Il n’y a rien dans l’API pour indiquer quels champs sont définis dans le modèle et à quoi ils correspondent, il faut consulter le catalogue de modèles de toast dans la documentation.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/11/04/afficher-des-suggestions-de-rsultat-dans-une-searchbox-winrt-bug-concernant-limage/" rel="bookmark">
 			Afficher des suggestions de résultat dans une SearchBox WinRT : bug concernant l’image
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-04T00:00:00Z">November 04, 2013</time></div></div>
@@ -130,12 +140,13 @@ if (!doNotTrack) {
 Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scénarios de recherche directement dans une application Windows Store. L’une de ses fonctionnalités est l’affichage de suggestions basées sur la saisie de l’utilisateur.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/" rel="bookmark">
 			Une façon simple et sécurisée de stocker un mot de passe à l&#39;aide de Data Protection API
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-05-26T00:00:00Z">May 26, 2013</time></div></div>
@@ -144,12 +155,13 @@ Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scén
 		Si vous écrivez une application cliente qui a besoin de stocker des identifiants d&rsquo;utilisateur, ce n&rsquo;est généralement pas une bonne idée de stocker le mot de passe en clair, pour des raisons évidentes de sécurité. Il faut donc le chiffrer, mais dès qu&rsquo;on commence à envisager le chiffrement, cela soulève toutes sortes de problèmes&hellip; Quel algorithme utiliser ? Quelle clé de chiffrement ? Clairement on va avoir besoin de cette clé pour déchiffrer le mot de passe, il faut donc qu&rsquo;elle se trouve dans l&rsquo;exécutable ou dans la configuration.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/04/21/detecter-les-changements-dune-propriete-de-dependance-dans-winrt/" rel="bookmark">
 			Détecter les changements d’une propriété de dépendance dans WinRT
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-04-21T00:00:00Z">April 21, 2013</time></div></div>
@@ -159,12 +171,13 @@ Le contrôle SearchBox a été ajouté dans Windows 8.1 pour permettre des scén
 Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une propriété de dépendance change ; beaucoup de contrôles exposent des évènements à cet effet, mais ce n&rsquo;est pas toujours le cas.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/" rel="bookmark">
 			Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-06-13T00:00:00Z">June 13, 2012</time></div></div>
@@ -174,12 +187,13 @@ Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une proprié
  static void Log(  string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0)  {  Console.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2012/06/11/les-autres-nouveautes-de-visual-studio-2012/" rel="bookmark">
 			Les autres nouveautés de Visual Studio 2012
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-06-11T00:00:00Z">June 11, 2012</time></div></div>
@@ -188,12 +202,13 @@ Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une proprié
 		Visual Studio 2012 RC est sorti il y a 10 jours, et bien que je n’ai pas encore eu beaucoup de temps pour jouer avec, j’en suis assez satisfait pour l’instant. Beaucoup de choses ont déjà été dites sur le design, ainsi que sur les nouvelles fonctionnalités les plus importantes, mais il y a aussi beaucoup de petites améliorations moins remarquables qui vont nous faciliter la vie. Comme je n’ai pas vu grand chose d’écrit à ce sujet, je me suis dit qu’il serait utile de faire une petite liste de ce que j’ai remarqué jusqu’ici.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2011/11/29/wpf-utiliser-linq-pour-filtrer-trier-et-grouper-les-donnes-dans-une-collectionview/" rel="bookmark">
 			[WPF] Utiliser Linq pour filtrer, trier et grouper les données dans une CollectionView
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-11-29T00:00:00Z">November 29, 2011</time></div></div>
@@ -203,12 +218,13 @@ Il est souvent utile d&rsquo;être notifié quand la valeur d&rsquo;une proprié
 // Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ...  // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People);  // Uniquement les adultes view.Filter = o =&gt; ((Person)o).Age &gt;= 18;  // Tri par nom et prénom view.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2011/09/30/wpf-creer-des-styles-parametrables-a-laide-des-proprietes-attachees/" rel="bookmark">
 			[WPF] Créer des styles paramétrables à l&#39;aide des propriétés attachées
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-09-30T00:00:00Z">September 30, 2011</time></div></div>
@@ -231,10 +247,10 @@ Bon, je ne suis pas designer, hein&hellip; mais ça fera parfaitement l&rsquo;af
 <aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

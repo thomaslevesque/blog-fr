@@ -7,23 +7,27 @@
 	<title>Code sample - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Code sample" />
+		<meta property="og:title" content="Code sample" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/categories/code-sample/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Code sample"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/categories/code-sample/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/categories/code-sample/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -36,18 +40,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -73,12 +79,13 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Code sample</h1>
 	</header><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/" rel="bookmark">
 			Support de l’asynchronisme et de l’annulation pour les wait handles
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-06-07T00:00:00Z">June 07, 2015</time></div></div>
@@ -87,12 +94,13 @@ if (!doNotTrack) {
 		Le .NET Framework fournit un certain nombre de primitives de synchronisation bas niveau. Les plus couramment utilisées sont appelées “wait handles”, et héritent de la classe WaitHandle : Semaphore, Mutex, AutoResetEvent et ManualResetEvent. Ces classes existent depuis .NET 2.0 (voire 1.1 pour certaines), mais elles n’ont pas beaucoup évolué depuis, ce qui fait qu’elles ne supportent pas des fonctionnalités introduites plus tard et devenues très courantes. En particulier, elles ne supportent pas l’attente asynchrone, ni l’annulation de l’attente.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/01/14/gerer-problemes-timeout-upload-gros-fichiers-httpwebrequest/" rel="bookmark">
 			Gérer les problèmes de timeout lors de l’upload de gros fichiers avec HttpWebRequest
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-01-14T00:00:00Z">January 14, 2014</time></div></div>
@@ -101,12 +109,13 @@ if (!doNotTrack) {
 		Si vous avez déjà eu à uploader de gros volumes de données en HTTP, vous avez probablement rencontré des problèmes de timeout. La valeur par défault de Timeout pour HttpWebRequest est de 100 secondes, ce qui signifie que s’il s’écoule plus que cette durée entre le moment où vous envoyez les en-têtes de la requête et celui où vous recevez les en-têtes de la réponse, votre requête échouera. Bien sûr, si vous uploadez un gros fichier, vous devez augmenter ce timeout… mais à quelle valeur ?
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/05/26/une-facon-simple-et-securisee-de-stocker-un-mot-de-passe-a-laide-de-data-protection-api/" rel="bookmark">
 			Une façon simple et sécurisée de stocker un mot de passe à l&#39;aide de Data Protection API
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-05-26T00:00:00Z">May 26, 2013</time></div></div>
@@ -115,12 +124,13 @@ if (!doNotTrack) {
 		Si vous écrivez une application cliente qui a besoin de stocker des identifiants d&rsquo;utilisateur, ce n&rsquo;est généralement pas une bonne idée de stocker le mot de passe en clair, pour des raisons évidentes de sécurité. Il faut donc le chiffrer, mais dès qu&rsquo;on commence à envisager le chiffrement, cela soulève toutes sortes de problèmes&hellip; Quel algorithme utiliser ? Quelle clé de chiffrement ? Clairement on va avoir besoin de cette clé pour déchiffrer le mot de passe, il faut donc qu&rsquo;elle se trouve dans l&rsquo;exécutable ou dans la configuration.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2011/08/30/rcursion-terminale-en-c/" rel="bookmark">
 			Récursion terminale en C#
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2011-08-30T00:00:00Z">August 30, 2011</time></div></div>
@@ -129,12 +139,13 @@ if (!doNotTrack) {
 		<p>Quel que soit le langage de programmation utilisé, certains traitements s’implémentent naturellement sous forme d’un algorithme récursif (même si ce n’est pas toujours la solution la plus optimale). Le problème de l’approche récursive, c’est qu’elle consomme potentiellement beaucoup d’espace sur la pile : à partir d’un certain niveau de “profondeur” de la récursion, l’espace alloué pour la pile d’exécution du thread est épuisé, et on obtient une erreur de type “débordement de la pile” (<code>StackOverflowException</code> en .NET).</p>
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/" rel="bookmark">
 			[Entity Framework] Utiliser Include avec des expressions lambda
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-10-03T00:00:00Z">October 03, 2010</time></div></div>
@@ -144,12 +155,13 @@ if (!doNotTrack) {
 var query =  from ord in db.Orders.Include(&#34;OrderDetails&#34;)  where ord.Date &gt;= DateTime.Today  select ord; Ou encore, pour inclure aussi le produit :
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/" rel="bookmark">
 			[WPF] Une grille simplifiée utilisant des attributs XAML
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-07-20T00:00:00Z">July 20, 2010</time></div></div>
@@ -159,12 +171,13 @@ var query =  from ord in db.Orders.Include(&#34;OrderDetails&#34;)  where ord.Da
 &lt;Grid&gt;  &lt;Grid.RowDefinitions&gt;  &lt;RowDefinition Height=&#34;Auto&#34;/&gt;  &lt;RowDefinition Height=&#34;5&#34;/&gt;  &lt;RowDefinition Height=&#34;*&#34;/&gt;  &lt;/Grid.RowDefinitions&gt;  &lt;Grid.ColumnDefinitions&gt;  &lt;ColumnDefinition Width=&#34;60&#34; /&gt;  &lt;ColumnDefinition Width=&#34;*&#34; /&gt;  &lt;/Grid.ColumnDefinitions&gt;   &lt;Label Content=&#34;Name&#34; Grid.Row=&#34;0&#34; Grid.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2010/05/16/c-une-implementation-du-pattern-weakevent/" rel="bookmark">
 			[C#] Une implémentation du pattern WeakEvent
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-05-16T00:00:00Z">May 16, 2010</time></div></div>
@@ -173,12 +186,13 @@ var query =  from ord in db.Orders.Include(&#34;OrderDetails&#34;)  where ord.Da
 		Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&rsquo;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&rsquo;exécution de l&rsquo;application.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/" rel="bookmark">
 			Automatiser la vérification des null avec les expressions Linq
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-02-20T00:00:00Z">February 20, 2010</time></div></div>
@@ -188,12 +202,13 @@ var query =  from ord in db.Orders.Include(&#34;OrderDetails&#34;)  where ord.Da
 X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&rsquo;il n&rsquo;est pas nul, ce qui peut vite s&rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&rsquo;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/10/06/c-4-0-implementer-un-objet-dynamique-personnalise/" rel="bookmark">
 			[C# 4.0] Implémenter un objet dynamique personnalisé
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-10-06T00:00:00Z">October 06, 2009</time></div></div>
@@ -202,12 +217,13 @@ X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo 
 		Comme vous le savez sans doute déjà si vous vous intéressez à l’actualité de .NET, la future version 4.0 de C#, actuellement en beta, introduit un nouveau type appelé dynamic. Celui ci permet d’accéder à des propriétés ou méthodes d’un objet qui ne sont pas connus statiquement (à la compilation). Ils seront résolus dynamiquement à l’exécution grâce au DLR (Dynamic Language Runtime), qui est l’une des grandes nouveautés de .NET 4.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/08/22/wpf-markup-extensions-et-templates/" rel="bookmark">
 			[WPF] Markup extensions et templates
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-08-22T00:00:00Z">August 22, 2009</time></div></div>
@@ -228,10 +244,10 @@ X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo 
 <aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

@@ -8,23 +8,27 @@
 	<title>Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET">
-	<meta property="og:title" content="Blog .NET de Thomas Levesque" />
+		<meta property="og:title" content="Blog .NET de Thomas Levesque" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Blog .NET de Thomas Levesque"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -37,18 +41,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -72,12 +78,13 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/" rel="bookmark">
 			[WPF] Utiliser les InputBindings avec le pattern MVVM
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-03-17T00:00:00Z">March 17, 2009</time></div></div>
@@ -87,12 +94,13 @@ if (!doNotTrack) {
  &lt;UserControl.InputBindings&gt;  &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt;  &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/" rel="bookmark">
 			[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-03-05T00:00:00Z">March 05, 2009</time></div></div>
@@ -101,12 +109,13 @@ if (!doNotTrack) {
 		Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&rsquo;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : L&rsquo;astuce suivante permet d&rsquo;obtenir le même comportement pour vos propres fichiers. Supposons que vous souhaitiez personnaliser les classes générées par le designer d&rsquo;entités. Vous ne pouvez pas modifier le fichier Model1.Designer.cs, puisque vos modifications seraient écrasées par le designer.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/02/25/wpf-article-de-josh-smith-sur-le-design-pattern-model-view-viewmodel/" rel="bookmark">
 			[WPF] Article de Josh Smith sur le design pattern Model-View-ViewModel
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-25T00:00:00Z">February 25, 2009</time></div></div>
@@ -115,12 +124,13 @@ if (!doNotTrack) {
 		Depuis l&rsquo;apparition de WPF, on entend de plus en plus souvent parler de &ldquo;Model-View-ViewModel&rdquo; (MVVM). Il s&rsquo;agit d&rsquo;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/02/13/creer-un-lecteur-rss-en-5-minutes/" rel="bookmark">
 			Créer un lecteur RSS en 5 minutes
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-13T00:00:00Z">February 13, 2009</time></div></div>
@@ -129,12 +139,13 @@ if (!doNotTrack) {
 		Aujourd&rsquo;hui, je suis tombé par hasard sur une petite classe bien pratique : SyndicationFeed. Cette classe, apparue dans le framework 3.5, permet de manipuler des flux de syndication (comme RSS 2.0 ou Atom 1.0) avec un minimum de code. On peut l&rsquo;utiliser pour créer et diffuser des flux, ou pour lire des flux existants. Par exemple, voilà comment récupérer le fil d&rsquo;actualité de Google News et afficher son titre, son lien d&rsquo;origine et les titres de ses articles :
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/02/05/wpf-coller-une-image-du-presse-papier/" rel="bookmark">
 			[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-05T00:00:00Z">February 05, 2009</time></div></div>
@@ -144,12 +155,13 @@ if (!doNotTrack) {
 Si vous avez déjà essayé d&rsquo;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&rsquo;afficher dans un contrôle Image : aucune exception n&rsquo;est levée, la taille de l&rsquo;image est correcte, mais&hellip; l&rsquo;affichage reste désespérément vide, ou alors l&rsquo;image est méconnaissable.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/" rel="bookmark">
 			[WPF] Binding sur les paramètres d’application à l’aide d’une Markup extension
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2008-11-18T00:00:00Z">November 18, 2008</time></div></div>
@@ -169,10 +181,10 @@ Si vous avez déjà essayé d&rsquo;utiliser la méthode Clipboard.GetImage avec
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

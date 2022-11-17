@@ -7,23 +7,27 @@
 	<title>WPF - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="WPF" />
+		<meta property="og:title" content="WPF" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/categories/wpf/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="WPF"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/categories/wpf/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/categories/wpf/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -36,18 +40,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -73,12 +79,13 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">WPF</h1>
 	</header><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/" rel="bookmark">
 			[WPF] Une markup extension qui met à jour sa cible
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-07-28T00:00:00Z">July 28, 2009</time></div></div>
@@ -88,12 +95,13 @@ if (!doNotTrack) {
   si la valeur de la markup extension peut changer en réponse à un évènement
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/04/17/wpf-binding-sur-une-collection-asynchrone/" rel="bookmark">
 			[WPF] Binding sur une collection asynchrone
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-17T00:00:00Z">April 17, 2009</time></div></div>
@@ -103,12 +111,13 @@ if (!doNotTrack) {
  private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;();  public ObservableCollection&lt;string&gt; Strings  {  get { return _strings; }  set  {  _strings = value;  OnPropertyChanged(&#34;Strings&#34;);  }  } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&rsquo;exception citée plus haut.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/04/01/wpf-binding-asynchrone-sur-une-propriete-du-viewmodel/" rel="bookmark">
 			[WPF] Binding asynchrone sur une propriété du ViewModel
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-04-01T00:00:00Z">April 01, 2009</time></div></div>
@@ -117,12 +126,13 @@ if (!doNotTrack) {
 		Mise à jour : Comme l&rsquo;a très justement indiqué Jérémy en commentaire, la propriété IsAsync du Binding permet de faire à peu près la même chose beaucoup plus simplement&hellip; Bien que ma méthode puisse servir pour certains besoins spécifiques, dans la plupart des cas la propriété IsAsync est probablement le meilleur choix ! Je laisse le billet malgré tout, ne serait-ce que pour la classe SwitchBinding qui me semble assez utile&hellip; J&rsquo;ai eu récemment besoin, dans une application basée sur le pattern MVVM, d&rsquo;afficher une propriété dont la valeur était assez longue à obtenir (récupérer par une requête HTTP).
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/03/27/wpf-tri-automatique-dun-gridview-lors-du-clic-sur-une-colonne/" rel="bookmark">
 			[WPF] Tri automatique d&#39;un GridView lors du clic sur une colonne
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-03-27T00:00:00Z">March 27, 2009</time></div></div>
@@ -131,12 +141,13 @@ if (!doNotTrack) {
 		Il est assez simple, en WPF, de présenter des données sous forme de grille, grâce à la classe GridView. Pour le tri, en revanche, ça se complique&hellip; Avec le DataGridView de Windows Forms, c&rsquo;était &ldquo;automagique&rdquo; : quand l&rsquo;utilisateur cliquait sur un en-tête de colonne, le tri se faisait automatiquement sur cette colonne. En WPF, par contre, il faut un peu mettre les mains dans le cambouis&hellip; La méthode préconisée par Microsoft pour trier un GridView lors du clic sur une colonne est décrite dans cet article ; elle est basée sur l&rsquo;évènement Click du GridViewColumnHeader.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/" rel="bookmark">
 			[WPF] Utiliser les InputBindings avec le pattern MVVM
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-03-17T00:00:00Z">March 17, 2009</time></div></div>
@@ -146,12 +157,13 @@ if (!doNotTrack) {
  &lt;UserControl.InputBindings&gt;  &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt;  &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/02/25/wpf-article-de-josh-smith-sur-le-design-pattern-model-view-viewmodel/" rel="bookmark">
 			[WPF] Article de Josh Smith sur le design pattern Model-View-ViewModel
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-25T00:00:00Z">February 25, 2009</time></div></div>
@@ -160,12 +172,13 @@ if (!doNotTrack) {
 		Depuis l&rsquo;apparition de WPF, on entend de plus en plus souvent parler de &ldquo;Model-View-ViewModel&rdquo; (MVVM). Il s&rsquo;agit d&rsquo;un design pattern, inspiré entre autres de Model-View-Controller (MVC) et Presentation Model (PM), conçu spécifiquement pour tirer le meilleur parti des fonctionnalités de WPF. Ce pattern permet notamment un excellent découplage entre les données, le comportement, et la présentation des données, ce qui rend le code plus facile à comprendre et à maintenir, et facilite la collaboration entre un développeur et un designer.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/02/13/creer-un-lecteur-rss-en-5-minutes/" rel="bookmark">
 			Créer un lecteur RSS en 5 minutes
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-13T00:00:00Z">February 13, 2009</time></div></div>
@@ -174,12 +187,13 @@ if (!doNotTrack) {
 		Aujourd&rsquo;hui, je suis tombé par hasard sur une petite classe bien pratique : SyndicationFeed. Cette classe, apparue dans le framework 3.5, permet de manipuler des flux de syndication (comme RSS 2.0 ou Atom 1.0) avec un minimum de code. On peut l&rsquo;utiliser pour créer et diffuser des flux, ou pour lire des flux existants. Par exemple, voilà comment récupérer le fil d&rsquo;actualité de Google News et afficher son titre, son lien d&rsquo;origine et les titres de ses articles :
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/02/05/wpf-coller-une-image-du-presse-papier/" rel="bookmark">
 			[WPF] Coller une image du presse-papier (bug dans Clipboard.GetImage)
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-02-05T00:00:00Z">February 05, 2009</time></div></div>
@@ -189,12 +203,13 @@ if (!doNotTrack) {
 Si vous avez déjà essayé d&rsquo;utiliser la méthode Clipboard.GetImage avec WPF, vous avez dû avoir une mauvaise surprise&hellip; En effet, cette méthode renvoie un InteropBitmap qui, dans certains cas (voire tout le temps), refuse de s&rsquo;afficher dans un contrôle Image : aucune exception n&rsquo;est levée, la taille de l&rsquo;image est correcte, mais&hellip; l&rsquo;affichage reste désespérément vide, ou alors l&rsquo;image est méconnaissable.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2008/11/18/wpf-binding-sur-les-parametres-dapplication-a-laide-dune-markup-extension/" rel="bookmark">
 			[WPF] Binding sur les paramètres d’application à l’aide d’une Markup extension
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2008-11-18T00:00:00Z">November 18, 2008</time></div></div>
@@ -215,10 +230,10 @@ Si vous avez déjà essayé d&rsquo;utiliser la méthode Clipboard.GetImage avec
 <aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

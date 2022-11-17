@@ -7,23 +7,27 @@
 	<title>C# - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="C#" />
+		<meta property="og:title" content="C#" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/c#/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="C#"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/tags/c#/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/tags/c#/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -36,18 +40,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -73,12 +79,13 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">C#</h1>
 	</header><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/" rel="bookmark">
 			Injecter automatiquement des fakes dans une test fixture avec FakeItEasy
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-17T00:00:00Z">January 17, 2016</time></div></div>
@@ -88,12 +95,13 @@ if (!doNotTrack) {
 Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a généralement besoin de créer des objets factices (fakes) pour les dépendances et de les injecter manuellement dans la classe testée (SUT, System Under Test), ou d’utiliser un conteneur IoC pour enregistrer les dépendances factices et construire le SUT. C’est un peu laborieux, et il y a quelques mois j’avais créé une extension Unity pour créer automatiquement les fakes et rendre tout ça plus facile.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/" rel="bookmark">
 			Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-12-31T00:00:00Z">December 31, 2015</time></div></div>
@@ -102,12 +110,13 @@ Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a
 		La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, une approche standardisée pour gérer l’annulation a été introduite : les jetons d’annulation. L’idée générale est que vous créez un CancellationTokenSource qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/" rel="bookmark">
 			[WPF] Empêcher l’utilisateur de coller une image dans un RichTextBox
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-05T00:00:00Z">September 05, 2015</time></div></div>
@@ -117,12 +126,13 @@ Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a
 Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutions que j’ai trouvées suggéraient d’intercepter la frappe de touches Ctrl-V, et de bloquer l’événement si le presse-papiers contient une image.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/08/02/casse-tte-c-n2/" rel="bookmark">
 			Casse-tête C# n°2
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-08-02T00:00:00Z">August 02, 2015</time></div></div>
@@ -134,12 +144,13 @@ Console.WriteLine($&#34;x &gt; y is {x &gt; y}&#34;); Console.WriteLine($&#34;!(
 x &gt; y is False !(x &lt;= y) is True 
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/06/28/comment-rcuprer-une-date-en-utc-avec-sqlite/" rel="bookmark">
 			Comment récupérer une date en UTC avec SQLite
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-06-28T00:00:00Z">June 28, 2015</time></div></div>
@@ -148,12 +159,13 @@ x &gt; y is False !(x &lt;= y) is True
 		SQLite est un super moteur de base de données “in-process” : il est très léger, ne nécessite aucun serveur ni configuration, et fonctionne sur toutes les plateformes. Il y a même un provider ADO.NET officiel très bien réalisé. Cependant, si vous stockez des dates en UTC avec ce provider, vous allez probablement rencontrer un sérieux problème : bien que la date soit correctement stockée en UTC (elle est stockée dans un format similaire à ISO8601, avec un ‘Z’ pour indiquer la zone UTC), quand on la relit depuis la base de données, on obtient un DateTime converti en heure locale, avec Kind = Unspecified.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/06/16/crer-un-conteneur-qui-cre-automatiquement-des-objets-factices-avec-unity-et-fakeiteasy/" rel="bookmark">
 			Créer un conteneur qui crée automatiquement des objets factices avec Unity et FakeItEasy
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-06-16T00:00:00Z">June 16, 2015</time></div></div>
@@ -162,12 +174,13 @@ x &gt; y is False !(x &lt;= y) is True
 		L’écriture de tests unitaires peut parfois être un peu rébarbative, surtout quand on teste des classes qui ont des dépendances complexes. Heureusement, certains outils rendent cela un peu plus facile. J’utilise beaucoup FakeItEasy ces derniers temps ; c’est un framework de mock pour .NET très facile à utiliser. Il a une API simple et élégante, basée sur les génériques et les expressions lambda, et c’est un vrai plaisir de l’utiliser. Ça a été une bouffée d’air frais par rapport au vieux RhinoMocks que j’utilisais jusqu’ici.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/06/07/support-de-lasynchronisme-et-de-lannulation-pour-les-wait-handles/" rel="bookmark">
 			Support de l’asynchronisme et de l’annulation pour les wait handles
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-06-07T00:00:00Z">June 07, 2015</time></div></div>
@@ -176,12 +189,13 @@ x &gt; y is False !(x &lt;= y) is True
 		Le .NET Framework fournit un certain nombre de primitives de synchronisation bas niveau. Les plus couramment utilisées sont appelées “wait handles”, et héritent de la classe WaitHandle : Semaphore, Mutex, AutoResetEvent et ManualResetEvent. Ces classes existent depuis .NET 2.0 (voire 1.1 pour certaines), mais elles n’ont pas beaucoup évolué depuis, ce qui fait qu’elles ne supportent pas des fonctionnalités introduites plus tard et devenues très courantes. En particulier, elles ne supportent pas l’attente asynchrone, ni l’annulation de l’attente.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/03/10/casse-tte-c-n1/" rel="bookmark">
 			Casse-tête C# n°1
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-03-10T00:00:00Z">March 10, 2015</time></div></div>
@@ -192,12 +206,13 @@ Je viens de penser à celui-ci :
 static void Test(out int x, out int y) { x = 42; y = 123; Console.WriteLine (x == y); } Que pensez-vous que ce code affiche ? Pouvez-vous en être sûr ? Postez votre réponse dans les commentaires !
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/02/02/test-unitaires-asynchrones-avec-nunit/" rel="bookmark">
 			Test unitaires asynchrones avec NUnit
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-02-02T00:00:00Z">February 02, 2015</time></div></div>
@@ -208,12 +223,13 @@ Supposons que le système à tester soit cette très intéressante classe Calcul
  public class Calculator { public async Task&lt;int&gt; AddAsync(int x, int y) { // simulate long calculation await Task.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/12/08/optimiser-toarray-et-tolist-en-fournissant-le-nombre-dlments/" rel="bookmark">
 			Optimiser ToArray et ToList en fournissant le nombre d’éléments
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-12-08T00:00:00Z">December 08, 2014</time></div></div>
@@ -235,10 +251,10 @@ Supposons que le système à tester soit cette très intéressante classe Calcul
 <aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

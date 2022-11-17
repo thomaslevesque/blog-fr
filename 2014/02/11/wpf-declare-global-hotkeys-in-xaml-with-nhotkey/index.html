@@ -7,7 +7,7 @@
 	<title>[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey" />
+		<meta property="og:title" content="[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey" />
 <meta property="og:description" content="Un besoin fréquent pour les applications de bureau est de gérer des raccourcis claviers globaux, pour pouvoir réagir aux raccourcis même quand l’application n’a pas le focus. Malheureusement, il n’y aucune fonctionnalité intégrée dans le .NET Framework pour gérer ça.
 Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de librairies open-source qui se proposent d’y remédier (par exemple VirtualInput). La plupart d’entre elles sont basées sur des hooks système globaux, ce qui leur permet d’intercepter toutes les frappes de touche, même celles qui ne vous intéressent pas." />
 <meta property="og:type" content="article" />
@@ -16,17 +16,21 @@ Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de libr
 <meta property="article:modified_time" content="2014-02-11T00:00:00+00:00" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey"/>
 <meta name="twitter:description" content="Un besoin fréquent pour les applications de bureau est de gérer des raccourcis claviers globaux, pour pouvoir réagir aux raccourcis même quand l’application n’a pas le focus. Malheureusement, il n’y aucune fonctionnalité intégrée dans le .NET Framework pour gérer ça.
 Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de librairies open-source qui se proposent d’y remédier (par exemple VirtualInput). La plupart d’entre elles sont basées sur des hooks système globaux, ce qui leur permet d’intercepter toutes les frappes de touche, même celles qui ne vous intéressent pas."/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -39,18 +43,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -79,7 +85,8 @@ if (!doNotTrack) {
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-02-11T00:00:00Z">February 11, 2014</time></div></div>
-		</header><div class="content post__content clearfix">
+		</header>
+		<div class="content post__content clearfix">
 			<p>Un besoin fréquent pour les applications de bureau est de gérer des raccourcis claviers globaux, pour pouvoir réagir aux raccourcis même quand l’application n’a pas le focus. Malheureusement, il n’y aucune fonctionnalité intégrée dans le .NET Framework pour gérer ça.</p>
 <p>Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de librairies open-source qui se proposent d’y remédier (par exemple <a href="https://github.com/SaqibS/VirtualInput">VirtualInput</a>). La plupart d’entre elles sont basées sur des hooks système globaux, ce qui leur permet d’intercepter <em>toutes</em> les frappes de touche, même celles qui ne vous intéressent pas. J’ai déjà utilisé certaines de ces librairies, mais je n’en suis pas vraiment satisfait :</p>
 <ul>
@@ -146,7 +153,7 @@ HotkeyManager.Current.AddOrReplace(&#34;Decrement&#34;, Key.Subtract, ModifierKe
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
+		<span class="authorbox__name">À propos de Thomas Levesque</span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -167,7 +174,6 @@ HotkeyManager.Current.AddOrReplace(&#34;Decrement&#34;, Key.Subtract, ModifierKe
 		</a>
 	</div>
 </nav>
-
 <div>
     <script src="https://utteranc.es/client.js"
             repo="thomaslevesque/blog-fr"
@@ -184,10 +190,10 @@ HotkeyManager.Current.AddOrReplace(&#34;Decrement&#34;, Key.Subtract, ModifierKe
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

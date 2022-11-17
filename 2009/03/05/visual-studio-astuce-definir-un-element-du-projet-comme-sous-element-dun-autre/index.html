@@ -7,7 +7,7 @@
 	<title>[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre" />
+		<meta property="og:title" content="[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre" />
 <meta property="og:description" content="Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&rsquo;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : L&rsquo;astuce suivante permet d&rsquo;obtenir le même comportement pour vos propres fichiers. Supposons que vous souhaitiez personnaliser les classes générées par le designer d&rsquo;entités. Vous ne pouvez pas modifier le fichier Model1.Designer.cs, puisque vos modifications seraient écrasées par le designer." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/" /><meta property="article:section" content="posts" />
@@ -15,16 +15,20 @@
 <meta property="article:modified_time" content="2009-03-05T00:00:00+00:00" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre"/>
 <meta name="twitter:description" content="Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&rsquo;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : L&rsquo;astuce suivante permet d&rsquo;obtenir le même comportement pour vos propres fichiers. Supposons que vous souhaitiez personnaliser les classes générées par le designer d&rsquo;entités. Vous ne pouvez pas modifier le fichier Model1.Designer.cs, puisque vos modifications seraient écrasées par le designer."/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -37,18 +41,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -77,7 +83,8 @@ if (!doNotTrack) {
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-03-05T00:00:00Z">March 05, 2009</time></div></div>
-		</header><div class="content post__content clearfix">
+		</header>
+		<div class="content post__content clearfix">
 			<p>Vous avez certainement remarqué que, dans un projet C#, certains éléments sont placés sous un élément parent : c&rsquo;est le cas, par exemple, pour les fichiers générés par un designer ou assistant : <img src="project1.png" alt="Explorateur de solution">  L&rsquo;astuce suivante permet d&rsquo;obtenir le même comportement pour vos propres fichiers.  Supposons que vous souhaitiez personnaliser les classes générées par le designer d&rsquo;entités. Vous ne pouvez pas modifier le fichier <em>Model1.Designer.cs</em>, puisque vos modifications seraient écrasées par le designer. Vous allez donc créer un nouveau fichier, par exemple <em>Model1.Custom.cs</em>, où vous allez mettre votre code pour les classes d&rsquo;entité (à l&rsquo;aide du mot clé <em>partial</em>). Par défaut, ce fichier est placé directement à la racine du projet : <img src="project23.png" alt="Explorateur de solution">  Pour bien mettre en évidence le lien avec <em>Model1.edmx</em>, on préfèrerait le voir &ldquo;sous&rdquo; <em>Model1.edmx</em>&hellip; Bien que l&rsquo;interface de Visual Studio ne propose pas cette option, c&rsquo;est possible : il faut pour celà modifier le fichier <em>.csproj</em> à la main. Le plus simple, pour celà, est de décharger le projet (clic droit sur le projet, &ldquo;<em>décharger le projet</em>&rdquo;) et de l&rsquo;éditer directement dans Visual Studio (clic droit sur le projet déchargé, &ldquo;<em>modifier FooBar.csproj</em>&rdquo;). Cherchez l&rsquo;élément  correspondant au fichier <em>Model1.Custom.cs</em>, et ajoutez un sous-élément  comme indiqué ci-dessous :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="color:#f92672">&lt;Compile</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Model1.Custom.cs&#34;</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;DependentUpon&gt;</span>Model1.edmx<span style="color:#f92672">&lt;/DependentUpon&gt;</span>
@@ -107,7 +114,7 @@ if (!doNotTrack) {
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
+		<span class="authorbox__name">À propos de Thomas Levesque</span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -128,7 +135,6 @@ if (!doNotTrack) {
 		</a>
 	</div>
 </nav>
-
 <div>
     <script src="https://utteranc.es/client.js"
             repo="thomaslevesque/blog-fr"
@@ -145,10 +151,10 @@ if (!doNotTrack) {
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

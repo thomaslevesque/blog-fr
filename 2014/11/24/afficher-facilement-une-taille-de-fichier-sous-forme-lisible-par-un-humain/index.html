@@ -7,7 +7,7 @@
 	<title>Afficher facilement une taille de fichier sous forme lisible par un humain - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Afficher facilement une taille de fichier sous forme lisible par un humain" />
+		<meta property="og:title" content="Afficher facilement une taille de fichier sous forme lisible par un humain" />
 <meta property="og:description" content="Si vous écrivez une application qui a un rapport avec la gestion de fichiers, vous aurez probablement besoin d’afficher la taille des fichiers. Mais si un fichier a une taille de 123456789 octets, ce n’est évidemment pas la valeur qu’il faudra afficher, car c’est difficile à lire, et l’utilisateur n’a généralement pas besoin de connaitre la taille à l’octet près. Vous allez plutôt afficher quelque chose comme 118 Mo.
 Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :" />
 <meta property="og:type" content="article" />
@@ -16,17 +16,21 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 <meta property="article:modified_time" content="2014-11-24T00:00:00+00:00" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Afficher facilement une taille de fichier sous forme lisible par un humain"/>
 <meta name="twitter:description" content="Si vous écrivez une application qui a un rapport avec la gestion de fichiers, vous aurez probablement besoin d’afficher la taille des fichiers. Mais si un fichier a une taille de 123456789 octets, ce n’est évidemment pas la valeur qu’il faudra afficher, car c’est difficile à lire, et l’utilisateur n’a généralement pas besoin de connaitre la taille à l’octet près. Vous allez plutôt afficher quelque chose comme 118 Mo.
 Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -39,18 +43,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -79,7 +85,8 @@ if (!doNotTrack) {
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-24T00:00:00Z">November 24, 2014</time></div></div>
-		</header><div class="content post__content clearfix">
+		</header>
+		<div class="content post__content clearfix">
 			<p>Si vous écrivez une application qui a un rapport avec la gestion de fichiers, vous aurez probablement besoin d’afficher la taille des fichiers. Mais si un fichier a une taille de 123456789 octets, ce n’est évidemment pas la valeur qu’il faudra afficher, car c’est difficile à lire, et l’utilisateur n’a généralement pas besoin de connaitre la taille à l’octet près. Vous allez plutôt afficher quelque chose comme 118 Mo.</p>
 <p>Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :</p>
 <ul>
@@ -152,7 +159,7 @@ Console.WriteLine(&#34;The size of &#39;{0}&#39; is {1}&#34;, f, f.Length.Bytes(
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
+		<span class="authorbox__name">À propos de Thomas Levesque</span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -173,7 +180,6 @@ Console.WriteLine(&#34;The size of &#39;{0}&#39; is {1}&#34;, f, f.Length.Bytes(
 		</a>
 	</div>
 </nav>
-
 <div>
     <script src="https://utteranc.es/client.js"
             repo="thomaslevesque/blog-fr"
@@ -190,10 +196,10 @@ Console.WriteLine(&#34;The size of &#39;{0}&#39; is {1}&#34;, f, f.Length.Bytes(
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

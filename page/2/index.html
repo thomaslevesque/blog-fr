@@ -8,23 +8,27 @@
 	<title>Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET">
-	<meta property="og:title" content="Blog .NET de Thomas Levesque" />
+		<meta property="og:title" content="Blog .NET de Thomas Levesque" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Blog .NET de Thomas Levesque"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -37,18 +41,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -72,12 +78,13 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/" rel="bookmark">
 			Méthodes C# dans les en-têtes de diff git
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-10T00:00:00Z">February 10, 2017</time></div></div>
@@ -87,12 +94,13 @@ if (!doNotTrack) {
 diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&#34;Hello World!&#34;);  Console.WriteLine(&#34;Hello World!&#34;);  Console.WriteLine(&#34;Hello World!&#34;); + Console.WriteLine(&#34;blah&#34;);  } C&rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/12/11/tout-faire-ou-presque-avec-le-pipeline-de-httpclient/" rel="bookmark">
 			Tout faire ou presque avec le pipeline de HttpClient
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-12-11T00:00:00Z">December 11, 2016</time></div></div>
@@ -102,12 +110,13 @@ diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program
 Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un HttpMessageHandler. De quoi s&rsquo;agit-il ? Un HttpMessageHandler est un objet qui accepte une requête (HttpRequestMessage) et renvoie une réponse (HttpResponseMessage) ; la façon dont il le fait dépend complètement de l&rsquo;implémentation.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/08/23/deconstruction-de-tuples-en-c-7/" rel="bookmark">
 			Déconstruction de tuples en C# 7
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-08-23T00:00:00Z">August 23, 2016</time></div></div>
@@ -117,12 +126,13 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
  la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&rsquo;équipe du langage C# n&rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/07/28/tuples-en-c-7/" rel="bookmark">
 			Tuples en C# 7
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-07-28T00:00:00Z">July 28, 2016</time></div></div>
@@ -133,12 +143,13 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
 private static Tuple&lt;int, double&gt; Tally(IEnumerable&lt;double&gt; values) {  int count = 0;  double sum = 0.0;  foreach (var value in values)  {  count++;  sum += value;  }  return Tuple.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/06/24/piege-utiliser-var-et-async-ensemble/" rel="bookmark">
 			Piège: utiliser var et async ensemble
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-06-24T00:00:00Z">June 24, 2016</time></div></div>
@@ -148,12 +159,13 @@ private static Tuple&lt;int, double&gt; Tally(IEnumerable&lt;double&gt; values) 
 public async Task&lt;bool&gt; BookExistsAsync(int id) {  var store = await GetBookStoreAsync();  var book = store.GetBookByIdAsync(id);  return book != null; }  // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&lt;IBookStore&gt; GetBookStoreAsync() {  // .
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/04/26/publier-un-package-sur-nuget-org-depuis-appveyor/" rel="bookmark">
 			Publier un package sur NuGet.org depuis AppVeyor
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-04-26T00:00:00Z">April 26, 2016</time></div></div>
@@ -162,12 +174,13 @@ public async Task&lt;bool&gt; BookExistsAsync(int id) {  var store = await GetBo
 		Depuis quelques mois, j’utilise AppVeyor CI pour certains de mes projets open-source (avec Cake pour les scripts de build). J’en suis très content, mais il y avait un point qui m’ennuyait : je ne trouvais pas comment publier des packages sur NuGet.org directement depuis AppVeyor. Il fallait que je télécharge le package en local, puis que je l’uploade manuellement depuis ma machine (soit avec nuget push en ligne de commande, soit via le formulaire web sur NuGet.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/" rel="bookmark">
 			Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-04-17T00:00:00Z">April 17, 2016</time></div></div>
@@ -176,12 +189,13 @@ public async Task&lt;bool&gt; BookExistsAsync(int id) {  var store = await GetBo
 		Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/01/17/injecter-automatiquement-des-fakes-dans-une-test-fixture-avec-fakeiteasy/" rel="bookmark">
 			Injecter automatiquement des fakes dans une test fixture avec FakeItEasy
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-17T00:00:00Z">January 17, 2016</time></div></div>
@@ -191,12 +205,13 @@ public async Task&lt;bool&gt; BookExistsAsync(int id) {  var store = await GetBo
 Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a généralement besoin de créer des objets factices (fakes) pour les dépendances et de les injecter manuellement dans la classe testée (SUT, System Under Test), ou d’utiliser un conteneur IoC pour enregistrer les dépendances factices et construire le SUT. C’est un peu laborieux, et il y a quelques mois j’avais créé une extension Unity pour créer automatiquement les fakes et rendre tout ça plus facile.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/" rel="bookmark">
 			Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-12-31T00:00:00Z">December 31, 2015</time></div></div>
@@ -205,12 +220,13 @@ Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a
 		La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, une approche standardisée pour gérer l’annulation a été introduite : les jetons d’annulation. L’idée générale est que vous créez un CancellationTokenSource qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/09/05/wpf-empcher-lutilisateur-de-coller-une-image-dans-un-richtextbox/" rel="bookmark">
 			[WPF] Empêcher l’utilisateur de coller une image dans un RichTextBox
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-05T00:00:00Z">September 05, 2015</time></div></div>
@@ -232,10 +248,10 @@ Quand j’ai cherché sur le web un moyen d’empêcher cela, les seules solutio
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

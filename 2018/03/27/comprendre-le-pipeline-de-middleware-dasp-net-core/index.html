@@ -7,7 +7,7 @@
 	<title>Comprendre le pipeline de middleware d&#39;ASP.NET Core - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Comprendre le pipeline de middleware d&#39;ASP.NET Core" />
+		<meta property="og:title" content="Comprendre le pipeline de middleware d&#39;ASP.NET Core" />
 <meta property="og:description" content="Middlewhat? L&rsquo;architecture d&rsquo;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/" /><meta property="article:section" content="posts" />
@@ -15,16 +15,20 @@
 <meta property="article:modified_time" content="2018-03-27T00:00:00+00:00" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Comprendre le pipeline de middleware d&#39;ASP.NET Core"/>
 <meta name="twitter:description" content="Middlewhat? L&rsquo;architecture d&rsquo;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP."/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -37,18 +41,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -77,7 +83,8 @@ if (!doNotTrack) {
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-27T00:00:00Z">March 27, 2018</time></div></div>
-		</header><div class="content post__content clearfix">
+		</header>
+		<div class="content post__content clearfix">
 			<h2 id="middlewhat">Middlewhat?</h2>
 <p>L&rsquo;architecture d&rsquo;ASP.NET Core est basée sur un système de <strong>middlewares</strong>, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un <strong>pipeline</strong>. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware">documentation officielle ASP.NET Core</a>, devrait aider à comprendre :  <img src="request-delegate-pipeline.png" alt="Middleware pipeline">  Les middlewares peuvent faire toutes sortent de choses, comme gérer l&rsquo;authentification, les erreurs, les fichiers statiques, etc. La couche MVC d&rsquo;ASP.NET Core est également implémentée comme un middleware.</p>
 <h2 id="configurer-le-pipeline">Configurer le pipeline</h2>
@@ -250,7 +257,7 @@ if (!doNotTrack) {
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
+		<span class="authorbox__name">À propos de Thomas Levesque</span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -271,7 +278,6 @@ if (!doNotTrack) {
 		</a>
 	</div>
 </nav>
-
 <div>
     <script src="https://utteranc.es/client.js"
             repo="thomaslevesque/blog-fr"
@@ -288,10 +294,10 @@ if (!doNotTrack) {
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

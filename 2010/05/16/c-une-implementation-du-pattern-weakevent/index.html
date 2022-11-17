@@ -7,7 +7,7 @@
 	<title>[C#] Une implémentation du pattern WeakEvent - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="[C#] Une implémentation du pattern WeakEvent" />
+		<meta property="og:title" content="[C#] Une implémentation du pattern WeakEvent" />
 <meta property="og:description" content="Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&rsquo;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&rsquo;exécution de l&rsquo;application." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2010/05/16/c-une-implementation-du-pattern-weakevent/" /><meta property="article:section" content="posts" />
@@ -15,16 +15,20 @@
 <meta property="article:modified_time" content="2010-05-16T00:00:00+00:00" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[C#] Une implémentation du pattern WeakEvent"/>
 <meta name="twitter:description" content="Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&rsquo;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&rsquo;exécution de l&rsquo;application."/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -37,18 +41,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -77,7 +83,8 @@ if (!doNotTrack) {
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2010-05-16T00:00:00Z">May 16, 2010</time></div></div>
-		</header><div class="content post__content clearfix">
+		</header>
+		<div class="content post__content clearfix">
 			<p>Comme vous le savez peut-être, la mauvaise utilisation des évènements est l&rsquo;une des principales causes de fuites mémoires dans une application .NET : en effet, un évènement garde des références aux objets qui y sont abonnés (via le delegate), ce qui empêche le garbage collector de collecter ces objets quand ils ne sont plus utilisés. Le problème est particulièrement vrai pour un évènement statique, puisque les références sont conservées pendant toute l&rsquo;exécution de l&rsquo;application. Si on crée de nombreux objets qui s&rsquo;abonnent à un évènement statique et qu&rsquo;on ne les désabonne pas, ils restent indéfiniment en mémoire, même si on n&rsquo;en a plus besoin depuis longtemps, ce qui peut finir par saturer la mémoire.  La solution &ldquo;évidente&rdquo; au problème est bien sûr de désabonner les objets qui ne sont plus utilisés. Malheureusement, il n&rsquo;y a pas toujours de moyen simple de savoir à quel moment on peut désabonner un objet. Une autre approche est d&rsquo;implémenter le pattern <a href="http://msdn.microsoft.com/en-us/library/aa970850.aspx">WeakEvent</a>, qui permet de ne garder qu&rsquo;une référence faible vers les objets abonnés à l&rsquo;évènement, de façon à ne pas empêcher le garbage collector de les collecter. Microsoft inclut dans WPF des éléments pour implémenter le pattern WeakEvent, et explique comment créer ses propres évènements selon ce pattern, à l&rsquo;aide de la classe <code>WeakEventManager</code> et de l&rsquo;interface <code>IWeakEventListener</code>. Cependant, cette technique est assez lourde à mettre en œuvre, aussi bien pour exposer un tel évènement (il faut créer une nouvelle classe dédiée) que pour s&rsquo;abonner à l&rsquo;évènement (implémentation de <code>IWeakEventListener</code>).  J&rsquo;ai donc réfléchi à une autre solution, permettant d&rsquo;implémenter plus facilement le pattern WeakEvent. Ma première idée était d&rsquo;utiliser une liste de <code>WeakReference</code> pour stocker la liste des delegates abonnés à l&rsquo;évènement. Malheureusement, lorsqu&rsquo;on s&rsquo;abonne à un évènement, on écrit généralement quelque chose comme ça :</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>myObject.MyEvent += <span style="color:#66d9ef">new</span> EventHandler(myObject_MyEvent);
 </span></span></code></pre></div><p>On crée donc un delegate, mais on ne garde aucune référence dessus. Puisque l&rsquo;évènement ne référence ce delegate que via une WeakReference, rien n&rsquo;empêche le garbage collector de le collecter&hellip; et c&rsquo;est effectivement ce qui arrive. Au bout d&rsquo;un temps variable (pas plus de quelques secondes d&rsquo;après mes observations), le delegate est collecté et n&rsquo;est donc plus appelé quand l&rsquo;évènement est déclenché.  Plutôt que de conserver une référence faible vers le delegate lui même, une meilleure solution serait de faire une référence faible sur l&rsquo;objet qui implémente la méthode (<code>Delegate.Target</code>). J&rsquo;ai donc créé une classe <code>WeakDelegate&lt;TDelegate&gt;</code> pour gérer cela :</p>
@@ -266,7 +273,7 @@ if (!doNotTrack) {
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
+		<span class="authorbox__name">À propos de Thomas Levesque</span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -287,7 +294,6 @@ if (!doNotTrack) {
 		</a>
 	</div>
 </nav>
-
 <div>
     <script src="https://utteranc.es/client.js"
             repo="thomaslevesque/blog-fr"
@@ -304,10 +310,10 @@ if (!doNotTrack) {
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

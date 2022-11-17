@@ -7,23 +7,27 @@
 	<title>Visual Studio - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Visual Studio" />
+		<meta property="og:title" content="Visual Studio" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/visual-studio/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Visual Studio"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/tags/visual-studio/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/tags/visual-studio/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -36,18 +40,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -73,12 +79,13 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Visual Studio</h1>
 	</header><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/" rel="bookmark">
 			Transformer les templates T4 pendant la build, et passer des variables du projet
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-14T00:00:00Z">November 14, 2017</time></div></div>
@@ -87,12 +94,13 @@ if (!doNotTrack) {
 		T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&rsquo;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&rsquo;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&rsquo;on souhaite regénérer les sorties des templates à chaque build.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/" rel="bookmark">
 			Propriétés et éléments MSBuild partagés avec Directory.Build.props
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-09-20T00:00:00Z">September 20, 2017</time></div></div>
@@ -102,12 +110,13 @@ if (!doNotTrack) {
 MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&rsquo;est le nom officiel, mais c&rsquo;est celui que j&rsquo;utiliserai).
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/" rel="bookmark">
 			Tester et déboguer une bibliothèque depuis LINQPad
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-26T00:00:00Z">August 26, 2017</time></div></div>
@@ -116,12 +125,13 @@ MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports im
 		Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&rsquo;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&rsquo;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code .
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/07/28/tuples-en-c-7/" rel="bookmark">
 			Tuples en C# 7
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-07-28T00:00:00Z">July 28, 2016</time></div></div>
@@ -132,12 +142,13 @@ MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports im
 private static Tuple&lt;int, double&gt; Tally(IEnumerable&lt;double&gt; values) {  int count = 0;  double sum = 0.0;  foreach (var value in values)  {  count++;  sum += value;  }  return Tuple.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2016/04/17/essai-des-fonctionnalits-de-c-7-dans-visual-studio-15-preview/" rel="bookmark">
 			Essai des fonctionnalités de C# 7 dans Visual Studio “15” Preview
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-04-17T00:00:00Z">April 17, 2016</time></div></div>
@@ -146,12 +157,13 @@ private static Tuple&lt;int, double&gt; Tally(IEnumerable&lt;double&gt; values) 
 		Il y a environ deux semaines, Microsoft a publié la première version préliminaire de la prochaine mouture de Visual Studio. Vous pourrez découvrir toutes les nouveautés qu’elle contient dans les notes de version. Il y a quelques nouveautés vraiment sympa (j’aime particulièrement le nouvel “installeur léger”), mais le plus intéressant pour moi est que le compilateur C# livré avec inclut quelques unes des fonctionnalités prévues pour C# 7. Regardons ça de plus près !
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/" rel="bookmark">
 			Intégration avec Visual Studio Online &#43; Git dans Team Explorer
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-12T00:00:00Z">October 12, 2014</time></div></div>
@@ -161,12 +173,13 @@ private static Tuple&lt;int, double&gt; Tally(IEnumerable&lt;double&gt; values) 
 Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle de version : le remote pour VS Online doit s’appeler origin, sinon Team Explorer ne détecte pas qu’il s’agit d’un projet VS Online, et n’affiche pas les pages “Builds” et “Work Items”.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/11/15/executer-un-outil-personnalise-automatiquement-quand-un-fichier-est-modifie/" rel="bookmark">
 			Exécuter un outil personnalisé automatiquement quand un fichier est modifié
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-11-15T00:00:00Z">November 15, 2013</time></div></div>
@@ -175,12 +188,13 @@ Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle d
 		Aussi loin que je me souvienne, il y a toujours eu dans Visual Studio quelque chose appelé “outils personnalisés” (custom tools), également connus sous le nom de single-file generators. Quand vous appliquez un tel outil à un fichier de votre projet, il génère quelque chose (généralement du code, mais pas forcément) en fonction du contenu du fichier. Par exemple, l’outil personnalisé par défaut pour les fichiers de ressource s’appelle ResXFileCodeGenerator, et génère une classe qui permet d’accéder facilement aux ressources définies dans le fichier resx.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/10/25/vs-2010-support-du-binding-dans-les-inputbindings/" rel="bookmark">
 			[VS 2010] Support du binding dans les InputBindings
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-10-25T00:00:00Z">October 25, 2009</time></div></div>
@@ -189,12 +203,13 @@ Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle d
 		LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les InputBindings n&rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip; Jusqu&rsquo;ici, pour lier la commande d&rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;).
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2009/03/05/visual-studio-astuce-definir-un-element-du-projet-comme-sous-element-dun-autre/" rel="bookmark">
 			[Visual Studio] Astuce : définir un élément du projet comme sous-élément d&#39;un autre
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2009-03-05T00:00:00Z">March 05, 2009</time></div></div>
@@ -211,10 +226,10 @@ Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle d
 <aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

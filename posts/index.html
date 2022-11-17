@@ -7,23 +7,27 @@
 	<title>Posts - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Posts" />
+		<meta property="og:title" content="Posts" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/posts/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -36,18 +40,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -73,12 +79,13 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2018/04/17/fin-de-mon-blog-en-francais/" rel="bookmark">
 			Fin de mon blog en français
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-17T00:00:00Z">April 17, 2018</time></div></div>
@@ -87,12 +94,13 @@ if (!doNotTrack) {
 		Chers lecteurs, J&rsquo;ai créé ce blog en français il y a 10 ans environ. Quelque temps plus tard, j&rsquo;en ai créé une version anglaise pour toucher une plus large audience. Pendant des années, j&rsquo;ai publié tous mes articles dans les deux langues. Mais l&rsquo;audience de la version française n&rsquo;a jamais vraiment décollé, et le fait de devoir traduire tous mes articles nuit à ma motivation pour écrire. J&rsquo;ai donc décidé d&rsquo;arrêter pour consacrer mon énergie à la version anglaise, qui est lue par beaucoup plus de monde (environ 20 fois plus).
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2018/03/27/comprendre-le-pipeline-de-middleware-dasp-net-core/" rel="bookmark">
 			Comprendre le pipeline de middleware d&#39;ASP.NET Core
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-27T00:00:00Z">March 27, 2018</time></div></div>
@@ -101,12 +109,13 @@ if (!doNotTrack) {
 		Middlewhat? L&rsquo;architecture d&rsquo;ASP.NET Core est basée sur un système de middlewares, des morceaux de code qui gèrent les requêtes et réponses. Les middlewares sont chainés les uns aux autres pour constituer un pipeline. Les requêtes entrantes passent dans le pipeline, où chaque middleware a l&rsquo;occasion de les examiner et/ou de les modifier avant des les passer au middleware suivant. Les réponses sortantes passent aussi dans le pipeline, dans l&rsquo;ordre inverse. Si tout cela semble très abstrait, le schéma suivant, tiré de la documentation officielle ASP.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2018/03/06/nettoyer-lhistorique-dune-branche-git-pour-supprimer-les-fichiers-indesirables/" rel="bookmark">
 			Nettoyer l&#39;historique d&#39;une branche Git pour supprimer les fichiers indésirables
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-06T00:00:00Z">March 06, 2018</time></div></div>
@@ -116,12 +125,13 @@ if (!doNotTrack) {
 Heureusement, Git permet assez facilement de &ldquo;nettoyer&rdquo; une branche, en recréant les mêmes commits sans les fichiers qui n&rsquo;auraient pas dû se trouver là.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/" rel="bookmark">
 			Meilleure gestion du timeout avec HttpClient
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-02-25T00:00:00Z">February 25, 2018</time></div></div>
@@ -131,12 +141,13 @@ Heureusement, Git permet assez facilement de &ldquo;nettoyer&rdquo; une branche,
  Le timeout est défini de façon globale, et s&rsquo;applique à toutes les requêtes, alors qu&rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/11/14/transformer-les-templates-t4-pendant-la-build-et-passer-des-variables-du-projet/" rel="bookmark">
 			Transformer les templates T4 pendant la build, et passer des variables du projet
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-14T00:00:00Z">November 14, 2017</time></div></div>
@@ -145,12 +156,13 @@ Heureusement, Git permet assez facilement de &ldquo;nettoyer&rdquo; une branche,
 		T4 (Text Template Transformation Toolkit) est un excellent outil pour générer du code ; on peut, par exemple, créer des classes POCO à partir des tables d&rsquo;une base de données, générer du code répétitif, etc. Dans Visual Studio, les fichiers T4 (extension .tt) sont associés au custom tool TextTemplatingFileGenerator, qui transforme un template pour générer un fichier de sortie à chaque fois qu&rsquo;on enregistre le template. Mais il arrive que ce ne soit pas suffisant, et qu&rsquo;on souhaite regénérer les sorties des templates à chaque build.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/09/20/proprietes-et-elements-msbuild-partages-avec-directory-build-props/" rel="bookmark">
 			Propriétés et éléments MSBuild partagés avec Directory.Build.props
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-09-20T00:00:00Z">September 20, 2017</time></div></div>
@@ -160,12 +172,13 @@ Heureusement, Git permet assez facilement de &ldquo;nettoyer&rdquo; une branche,
 MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports implicites (je ne sais pas si c&rsquo;est le nom officiel, mais c&rsquo;est celui que j&rsquo;utiliserai).
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/08/26/tester-et-deboguer-une-bibliotheque-depuis-linqpad/" rel="bookmark">
 			Tester et déboguer une bibliothèque depuis LINQPad
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-26T00:00:00Z">August 26, 2017</time></div></div>
@@ -174,12 +187,13 @@ MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports im
 		Cela faisait bien longtemps que je voulais bloguer à propos de LINQPad. Au cas où vous ne connaissez pas, LINQPad est un outil qui permet d&rsquo;écrire et de tester du code très rapidement sans avoir besoin de créer un projet complet dans Visual Studio. Il supporte C#, VB.NET, F# et SQL. Il était initialement conçu comme un outil éducatif pour expérimenter avec LINQ (son auteur, Joe Albahari, l&rsquo;avait développé pour accompagner son livre C# in a Nutshell), mais il est aussi extrêmement utile comme outil générique pour tester du code .
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/04/01/amelioration-des-performances-de-linq-dans-net-core/" rel="bookmark">
 			Amélioration des performances de Linq dans .NET Core
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-01T00:00:00Z">April 01, 2017</time></div></div>
@@ -189,12 +203,13 @@ MSBuild 15 a introduit une nouvelle fonctionnalité assez sympa : les imports im
 Par exemple, Linq est plus rapide dans .
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/02/28/parser-du-texte-facilement-en-c-avec-sprache/" rel="bookmark">
 			Parser du texte facilement en C# avec Sprache
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-28T00:00:00Z">February 28, 2017</time></div></div>
@@ -204,12 +219,13 @@ Par exemple, Linq est plus rapide dans .
 Analyse syntaxique L&rsquo;analyse syntaxique (parsing) est une tâche très courante, mais qui peut être laborieuse et où il est facile de faire des erreurs.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2017/02/26/quoi-de-neuf-dans-fakeiteasy-3-0-0/" rel="bookmark">
 			Quoi de neuf dans FakeItEasy 3.0.0 ?
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-02-26T00:00:00Z">February 26, 2017</time></div></div>
@@ -231,10 +247,10 @@ Aujourd&rsquo;hui j&rsquo;ai le plaisir d&rsquo;annoncer la sortie de FakeItEasy
 <aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

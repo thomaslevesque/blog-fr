@@ -7,23 +7,27 @@
 	<title>Posts - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Posts" />
+		<meta property="og:title" content="Posts" />
 <meta property="og:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/posts/" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Blog .NET de Thomas Levesque">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+	<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Blog .NET de Thomas Levesque">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -36,18 +40,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -73,12 +79,13 @@ if (!doNotTrack) {
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/" rel="bookmark">
 			Une nouvelle bibliothèque pour afficher des GIFs animés dans les applications XAML
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-01-18T00:00:00Z">January 18, 2015</time></div></div>
@@ -87,12 +94,13 @@ if (!doNotTrack) {
 		Il y a quelques années, j’avais écrit un article qui montrait comment afficher un GIF animé en WPF. L’article incluait le code complet, et avait eu un certain succès, puisque WPF n’avait pas de support intégré pour les GIFs animés. Suite aux problèmes mentionnés dans les commentaires, j’ai apporté de nombreuses modifications au code dans l’article. Au bout d’un certain temps j’ai fini par trouver que ce n’était vraiment pas pratique, j’ai donc publié le code sur CodePlex (il a depuis déménagé vers GitHub) sous le nom WpfAnimatedGif, et j’ai commencé à le maintenir en tant que projet open-source.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/12/08/optimiser-toarray-et-tolist-en-fournissant-le-nombre-dlments/" rel="bookmark">
 			Optimiser ToArray et ToList en fournissant le nombre d’éléments
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-12-08T00:00:00Z">December 08, 2014</time></div></div>
@@ -101,12 +109,13 @@ if (!doNotTrack) {
 		Les méthodes d’extension ToArray et ToList sont des moyens pratiques de matérialiser une séquence énumérable (par exemple une requête Linq). Cependant, quelque chose me chiffonne : ces deux méthodes sont très inefficaces si elles ne connaissent pas le nombre d’éléments dans la séquence (ce qui est presque toujours le cas quand on les utilise sur une requête Linq). Concentrons nous sur ToArray pour l’instant (ToList a quelques différences, mais le principe est essentiellement le même).
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/11/24/afficher-facilement-une-taille-de-fichier-sous-forme-lisible-par-un-humain/" rel="bookmark">
 			Afficher facilement une taille de fichier sous forme lisible par un humain
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-24T00:00:00Z">November 24, 2014</time></div></div>
@@ -116,12 +125,13 @@ if (!doNotTrack) {
 Ca ne devrait a priori pas être très compliqué, mais en fait il y a différentes façons d’afficher une taille en octets… Par exemple, plusieurs conventions coexistent pour les unités et préfixes :
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/11/17/stringtemplate-une-autre-approche-de-l-interpolation-de-chaines/" rel="bookmark">
 			StringTemplate: une autre approche de l’interpolation de chaines
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-17T00:00:00Z">November 17, 2014</time></div></div>
@@ -130,12 +140,13 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 		Avec la version 6 de C# qui approche, il y a beaucoup de discussions sur CodePlex et ailleurs à propos de l’interpolation de chaines. Pas très étonnant, puisqu’il s’agit d’une des fonctionnalités majeures de cette version… Au cas où vous auriez vécu dans une grotte ces derniers mois et n’en auriez pas entendu parler, l’interpolation de chaines est un moyen d’insérer des expressions C# à l’intérieur d’une chaine de caractère, de façon à ce qu’elles soient évaluées lors de l’exécution et remplacées par leurs valeurs.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/11/04/passing-parameters-by-reference-to-an-asynchronous-method/" rel="bookmark">
 			Passage de paramètres par référence à une méthode asynchrone
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-04T00:00:00Z">November 04, 2014</time></div></div>
@@ -144,12 +155,13 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 		L’asynchronisme dans C# est une fonctionnalité géniale, et je l’ai beaucoup utilisé depuis son apparition. Mais il y a quelques limitations agaçantes; par exemple, on ne peut pas passer des paramètres par référence (ref ou out) à une méthode asynchrone. Il y a de bonnes raisons pour cela; la plus évidente est que si vous passez par référence une variable locale, elle est stockée sur la pile, or la pile ne va pas rester disponible pendant toute l’exécution de la méthode asynchone (seulement jusqu’au premier await), donc l’emplacement de la variable n’existera plus.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/11/02/easy-unit-testing-of-null-argument-validation/" rel="bookmark">
 			Un moyen facile de tester unitairement la validation des arguments null
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-02T00:00:00Z">November 02, 2014</time></div></div>
@@ -158,12 +170,13 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 		Quand on teste unitairement une méthode, une des choses à tester est la validation des arguments : par exemple, vérifier que la méthode lève bien une ArgumentNullException quand un argument null est passé pour un paramètre qui ne doit pas être null. Ecrire ce genre de test est très facile, mais c’est une tâche fastidieuse et répétitive, surtout pour une méthode qui a beaucoup de paramètres. J’ai donc écrit une méthode qui automatise en partie cette tâche : elle essaie de passer null pour chacun des arguments spécifiés, et vérifie que la méthode lève bien une ArgumentNullException.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/10/12/intgration-avec-visual-studio-online-git-dans-team-explorer/" rel="bookmark">
 			Intégration avec Visual Studio Online &#43; Git dans Team Explorer
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-12T00:00:00Z">October 12, 2014</time></div></div>
@@ -173,12 +186,13 @@ Ca ne devrait a priori pas être très compliqué, mais en fait il y a différen
 Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle de version : le remote pour VS Online doit s’appeler origin, sinon Team Explorer ne détecte pas qu’il s’agit d’un projet VS Online, et n’affiche pas les pages “Builds” et “Work Items”.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/02/11/wpf-declare-global-hotkeys-in-xaml-with-nhotkey/" rel="bookmark">
 			[WPF] Déclarer des raccourcis clavier globaux en XAML avec NHotkey
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-02-11T00:00:00Z">February 11, 2014</time></div></div>
@@ -188,12 +202,13 @@ Cependant j’ai remarqué un petit bug quand on utilise Git pour le contrôle d
 Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de librairies open-source qui se proposent d’y remédier (par exemple VirtualInput). La plupart d’entre elles sont basées sur des hooks système globaux, ce qui leur permet d’intercepter toutes les frappes de touche, même celles qui ne vous intéressent pas.
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2014/01/14/gerer-problemes-timeout-upload-gros-fichiers-httpwebrequest/" rel="bookmark">
 			Gérer les problèmes de timeout lors de l’upload de gros fichiers avec HttpWebRequest
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-01-14T00:00:00Z">January 14, 2014</time></div></div>
@@ -202,12 +217,13 @@ Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de libr
 		Si vous avez déjà eu à uploader de gros volumes de données en HTTP, vous avez probablement rencontré des problèmes de timeout. La valeur par défault de Timeout pour HttpWebRequest est de 100 secondes, ce qui signifie que s’il s’écoule plus que cette durée entre le moment où vous envoyez les en-têtes de la requête et celui où vous recevez les en-têtes de la réponse, votre requête échouera. Bien sûr, si vous uploadez un gros fichier, vous devez augmenter ce timeout… mais à quelle valeur ?
 	</div>
 </article><article class="list__item post">
+	
 	<header class="list__header">
-		<h3 class="list__title post__title ">
+		<h2 class="list__title post__title">
 			<a href="/2013/12/01/envoyer-des-donnees-avec-httpclient-selon-un-modele-push/" rel="bookmark">
 			Envoyer des données avec HttpClient selon un modèle “push”
 			</a>
-		</h3>
+		</h2>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2013-12-01T00:00:00Z">December 01, 2013</time></div></div>
@@ -230,10 +246,10 @@ Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de libr
 <aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

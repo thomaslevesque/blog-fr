@@ -7,7 +7,7 @@
 	<title>Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource" />
+		<meta property="og:title" content="Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource" />
 <meta property="og:description" content="La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, une approche standardisée pour gérer l’annulation a été introduite : les jetons d’annulation. L’idée générale est que vous créez un CancellationTokenSource qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/12/31/utiliser-plusieurs-sources-dannulation-avec-createlinkedtokensource/" /><meta property="article:section" content="posts" />
@@ -15,16 +15,20 @@
 <meta property="article:modified_time" content="2015-12-31T00:00:00+00:00" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Utiliser plusieurs sources d’annulation avec CreateLinkedTokenSource"/>
 <meta name="twitter:description" content="La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, une approche standardisée pour gérer l’annulation a été introduite : les jetons d’annulation. L’idée générale est que vous créez un CancellationTokenSource qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler."/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -37,18 +41,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -77,7 +83,8 @@ if (!doNotTrack) {
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-12-31T00:00:00Z">December 31, 2015</time></div></div>
-		</header><div class="content post__content clearfix">
+		</header>
+		<div class="content post__content clearfix">
 			<p>La programmation asynchrone en C# était auparavant quelque chose de difficile ; grâce à la Task Parallel Library de .NET 4 et au async/await de C# 5, elle est devenu relativement facile, et en conséquence, est de plus en plus couramment utilisée. Dans le même temps, <a href="https://msdn.microsoft.com/fr-fr/library/dd997364%28v=vs.110%29.aspx">une approche standardisée pour gérer l’annulation</a> a été introduite : les jetons d’annulation. L’idée générale est que vous créez un <code>CancellationTokenSource</code> qui contrôle l’annulation, et vous passez le jeton qu’il fournit à la méthode que vous voulez pouvoir annuler. Cette méthode le passera ensuite aux autres méthodes qu’elle appelle si elles peuvent être annulées, et/où vérifiera régulièrement si l’annulation a été demandée. Lors de l’annulation, la méthode lancera une <code>OperationCanceledException</code>. Exemple vite fait mal fait :</p>
 <pre tabindex="0"><code>private readonly IBusinessService _businessService;
 private CancellationTokenSource _cancellationSource;
@@ -227,7 +234,7 @@ class BusinessService : IBusinessService
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
+		<span class="authorbox__name">À propos de Thomas Levesque</span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -248,7 +255,6 @@ class BusinessService : IBusinessService
 		</a>
 	</div>
 </nav>
-
 <div>
     <script src="https://utteranc.es/client.js"
             repo="thomaslevesque/blog-fr"
@@ -265,10 +271,10 @@ class BusinessService : IBusinessService
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">

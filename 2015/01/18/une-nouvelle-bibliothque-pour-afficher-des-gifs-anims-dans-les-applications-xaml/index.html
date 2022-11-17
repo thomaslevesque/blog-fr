@@ -7,7 +7,7 @@
 	<title>Une nouvelle bibliothèque pour afficher des GIFs animés dans les applications XAML - Blog .NET de Thomas Levesque</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Une nouvelle bibliothèque pour afficher des GIFs animés dans les applications XAML" />
+		<meta property="og:title" content="Une nouvelle bibliothèque pour afficher des GIFs animés dans les applications XAML" />
 <meta property="og:description" content="Il y a quelques années, j’avais écrit un article qui montrait comment afficher un GIF animé en WPF. L’article incluait le code complet, et avait eu un certain succès, puisque WPF n’avait pas de support intégré pour les GIFs animés. Suite aux problèmes mentionnés dans les commentaires, j’ai apporté de nombreuses modifications au code dans l’article. Au bout d’un certain temps j’ai fini par trouver que ce n’était vraiment pas pratique, j’ai donc publié le code sur CodePlex (il a depuis déménagé vers GitHub) sous le nom WpfAnimatedGif, et j’ai commencé à le maintenir en tant que projet open-source." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2015/01/18/une-nouvelle-bibliothque-pour-afficher-des-gifs-anims-dans-les-applications-xaml/" /><meta property="article:section" content="posts" />
@@ -15,16 +15,20 @@
 <meta property="article:modified_time" content="2015-01-18T00:00:00+00:00" />
 
 
-	<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Une nouvelle bibliothèque pour afficher des GIFs animés dans les applications XAML"/>
 <meta name="twitter:description" content="Il y a quelques années, j’avais écrit un article qui montrait comment afficher un GIF animé en WPF. L’article incluait le code complet, et avait eu un certain succès, puisque WPF n’avait pas de support intégré pour les GIFs animés. Suite aux problèmes mentionnés dans les commentaires, j’ai apporté de nombreuses modifications au code dans l’article. Au bout d’un certain temps j’ai fini par trouver que ce n’était vraiment pas pratique, j’ai donc publié le code sur CodePlex (il a depuis déménagé vers GitHub) sous le nom WpfAnimatedGif, et j’ai commencé à le maintenir en tant que projet open-source."/>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/social.css">
+
 	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BQPR1D5F6"></script>
 <script>
@@ -37,18 +41,20 @@ if (!doNotTrack) {
 }
 </script>
 
-	<link rel="me" href="https://mastodon.cloud/@thomaslevesque">
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
-	<div class="container">
-		<div class="logo">
-			<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
-				<div class="logo__title">Blog .NET de Thomas Levesque</div>
-				<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
-			</a>
-		</div>
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Blog .NET de Thomas Levesque" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Blog .NET de Thomas Levesque</div>
+					<div class="logo__tagline">Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET</div>
+				</div>
+		</a>
+	</div>
 		
 <nav class="menu">
 	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
@@ -77,7 +83,8 @@ if (!doNotTrack) {
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-01-18T00:00:00Z">January 18, 2015</time></div></div>
-		</header><div class="content post__content clearfix">
+		</header>
+		<div class="content post__content clearfix">
 			<p>Il y a quelques années, j’avais écrit <a href="/2011/03/27/wpf-afficher-une-image-gif-animee/">un article</a> qui montrait comment afficher un GIF animé en WPF. L’article incluait le code complet, et avait eu un certain succès, puisque WPF n’avait pas de support intégré pour les GIFs animés. Suite aux problèmes mentionnés dans les commentaires, j’ai apporté de nombreuses modifications au code dans l’article. Au bout d’un certain temps j’ai fini par trouver que ce n’était vraiment pas pratique, j’ai donc publié le code sur CodePlex (il a depuis déménagé vers GitHub) sous le nom <a href="https://github.com/thomaslevesque/WpfAnimatedGif">WpfAnimatedGif</a>, et j’ai commencé à le maintenir en tant que projet open-source. C’était mon premier projet open-source sérieux, et il a connu une certaine popularité.</p>
 <p>Quand les signalement de bugs ont commencé à arriver, un problème sérieux a rapidement été mis en évidence : la bibliothèque consommait une <em>énorme</em> quantité de mémoire. Il y avait quelques fuites, que j’ai corrigées, mais au final le problème était inhérent au mode de fonctionnement de la librairie : elle préparait toutes les frames à l’avance, les gardait en mémoire, et les affichait chacune à leur tour à l’aide d’une animation WPF. Avoir toutes les frames pré-rendues en mémoire était raisonnable pour de petites images avec peu de frames, mais posait un vrai problème pour de grosses animations GIF avec de nombreuses frames.</p>
 <p>Il aurait peut-être été possible de modifier le cœur de la bibliothèque pour utiliser une autre approche, mais il y avait d’autres problèmes auxquels je voulais m’attaquer. Par exemple, elle se reposait en grande partie sur les fonctionnalités de manipulation d’image de WPF, ce qui rendait impossible le portage vers Windows Phone ou les apps Windows Store. De plus, certaines parties du code étaient assez complexes et inefficaces, en partie à cause de mon choix initial de spécifier l’image sous forme d’une <code>ImageSource</code>, et changer cela aurait cassé la compatibilité avec les versions précédentes.</p>
@@ -119,7 +126,7 @@ if (!doNotTrack) {
 		<img alt="Thomas Levesque avatar" src="/images/avatar.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
+		<span class="authorbox__name">À propos de Thomas Levesque</span>
 	</div>
 	<div class="authorbox__description">
 		Thomas Levesque est un développeur français vivant à Paris.
@@ -140,7 +147,6 @@ if (!doNotTrack) {
 		</a>
 	</div>
 </nav>
-
 <div>
     <script src="https://utteranc.es/client.js"
             repo="thomaslevesque/blog-fr"
@@ -157,10 +163,10 @@ if (!doNotTrack) {
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="Rechercher..." value="" name="q" aria-label="Rechercher...">
+			<input class="widget-search__field" type="search" placeholder="Rechercher…" value="" name="q" aria-label="Rechercher…">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/" />
+		<input type="hidden" name="sitesearch" value="https://thomaslevesque.fr/">
 	</form>
 </div>
 <div class="widget-social widget">
