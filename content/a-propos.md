@@ -14,4 +14,4 @@ Je suis Thomas Levesque, un développeur .NET français vivant à Paris. Je prog
 
 Je suis un des principaux mainteneurs de [FakeItEasy](https://fakeiteasy.github.io/), la bibliothèque de mock facile à utiliser pour .NET. Je maintiens également quelques projets open-source peronnels, que vous pouvez retrouver sur [mon compte Github](https://github.com/thomaslevesque).
 
-Je suis MVP Microsoft depuis 2012.
+J'ai été [Microsoft MVP](https://www.credly.com/badges/a7fb8699-d53e-4555-bb52-44a7e9fee901/public_url) (Developer Technologies) de 2012 à 2023.
