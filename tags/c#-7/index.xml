@@ -14,7 +14,7 @@
       
       <guid>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</guid>
       <description>Dans mon précedent billet, j&amp;rsquo;ai parlé d&amp;rsquo;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&amp;rsquo;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
- la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&amp;rsquo;équipe du langage C# n&amp;rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
+la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes Eh bien, il semble que l&amp;rsquo;équipe du langage C# n&amp;rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
     </item>
     
     <item>
@@ -25,7 +25,7 @@
       <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
       <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
 .NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
-private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {  int count = 0;  double sum = 0.0;  foreach (var value in values)  {  count++;  sum += value;  }  return Tuple.</description>
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) { int count = 0; double sum = 0.0; foreach (var value in values) { count++; sum += value; } return Tuple.</description>
     </item>
     
     <item>

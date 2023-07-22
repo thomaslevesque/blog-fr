@@ -35,7 +35,7 @@ Quand on écrit des tests unitaires pour une classe qui a des dépendances, on a
       <guid>https://thomaslevesque.fr/2015/02/02/test-unitaires-asynchrones-avec-nunit/</guid>
       <description>Récemment, mon équipe et moi avons commencé à écrire des tests unitaires pour une application qui utilise beaucoup de code asynchrone. Nous avons utilisé NUnit (2.6) parce que nous le connaissions déjà bien, mais nous ne l’avions encore jamais utilisé pour tester du code asynchrone.
 Supposons que le système à tester soit cette très intéressante classe Calculator :
- public class Calculator { public async Task&amp;lt;int&amp;gt; AddAsync(int x, int y) { // simulate long calculation await Task.</description>
+public class Calculator { public async Task&amp;lt;int&amp;gt; AddAsync(int x, int y) { // simulate long calculation await Task.</description>
     </item>
     
     <item>

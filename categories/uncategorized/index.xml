@@ -42,7 +42,7 @@ Heureusement, Git permet assez facilement de &amp;ldquo;nettoyer&amp;rdquo; une 
       
       <guid>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</guid>
       <description>Le problème Si vous avez l&amp;rsquo;habitude d&amp;rsquo;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
- Le timeout est défini de façon globale, et s&amp;rsquo;applique à toutes les requêtes, alors qu&amp;rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
+Le timeout est défini de façon globale, et s&amp;rsquo;applique à toutes les requêtes, alors qu&amp;rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
     </item>
     
     <item>
@@ -101,7 +101,7 @@ Aujourd&amp;rsquo;hui j&amp;rsquo;ai le plaisir d&amp;rsquo;annoncer la sortie d
       
       <guid>https://thomaslevesque.fr/2017/02/10/methodes-c-dans-les-en-tetes-de-diff-git/</guid>
       <description>Si vous utilisez git en ligne de commande, vous aurez peut-être remarqué que les diffs indiquent souvent la signature de la méthode dans l&amp;rsquo;en-tête du bloc (la ligne qui commence par @@), comme ceci :
-diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args)  Console.WriteLine(&amp;#34;Hello World!&amp;#34;);  Console.WriteLine(&amp;#34;Hello World!&amp;#34;);  Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;);  } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
+diff --git a/Program.cs b/Program.cs index 655a213..5ae1016 100644 --- a/Program.cs +++ b/Program.cs @@ -13,6 +13,7 @@ static void Main(string[] args) Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); Console.WriteLine(&amp;#34;Hello World!&amp;#34;); + Console.WriteLine(&amp;#34;blah&amp;#34;); } C&amp;rsquo;est très pratique pour savoir où vous vous trouvez quand vous regardez un diff.</description>
     </item>
     
     <item>
@@ -121,7 +121,7 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
       
       <guid>https://thomaslevesque.fr/2016/08/23/deconstruction-de-tuples-en-c-7/</guid>
       <description>Dans mon précedent billet, j&amp;rsquo;ai parlé d&amp;rsquo;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&amp;rsquo;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
- la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&amp;rsquo;équipe du langage C# n&amp;rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
+la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes Eh bien, il semble que l&amp;rsquo;équipe du langage C# n&amp;rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !</description>
     </item>
     
     <item>
@@ -132,7 +132,7 @@ Vous avez peut-être remarqué que HttpClient a un constructeur qui accepte un H
       <guid>https://thomaslevesque.fr/2016/07/28/tuples-en-c-7/</guid>
       <description>Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
 .NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
-private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) {  int count = 0;  double sum = 0.0;  foreach (var value in values)  {  count++;  sum += value;  }  return Tuple.</description>
+private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&amp;gt; values) { int count = 0; double sum = 0.0; foreach (var value in values) { count++; sum += value; } return Tuple.</description>
     </item>
     
     <item>
@@ -142,7 +142,7 @@ private static Tuple&amp;lt;int, double&amp;gt; Tally(IEnumerable&amp;lt;double&
       
       <guid>https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/</guid>
       <description>Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
-public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) {  var store = await GetBookStoreAsync();  var book = store.GetBookByIdAsync(id);  return book != null; }  // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() {  // .</description>
+public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync: private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() { // .</description>
     </item>
     
     <item>

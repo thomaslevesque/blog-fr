@@ -14,7 +14,7 @@
       
       <guid>https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/</guid>
       <description>Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
-public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) {  var store = await GetBookStoreAsync();  var book = store.GetBookByIdAsync(id);  return book != null; }  // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() {  // .</description>
+public async Task&amp;lt;bool&amp;gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync: private Task&amp;lt;IBookStore&amp;gt; GetBookStoreAsync() { // .</description>
     </item>
     
   </channel>

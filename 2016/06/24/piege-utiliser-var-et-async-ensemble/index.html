@@ -9,17 +9,16 @@
 	<meta name="description" content="">
 		<meta property="og:title" content="Piège: utiliser var et async ensemble" />
 <meta property="og:description" content="Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
-public async Task&lt;bool&gt; BookExistsAsync(int id) {  var store = await GetBookStoreAsync();  var book = store.GetBookByIdAsync(id);  return book != null; }  // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&lt;IBookStore&gt; GetBookStoreAsync() {  // ." />
+public async Task&lt;bool&gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync: private Task&lt;IBookStore&gt; GetBookStoreAsync() { // ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2016/06/24/piege-utiliser-var-et-async-ensemble/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2016-06-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2016-06-24T00:00:00+00:00" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Piège: utiliser var et async ensemble"/>
 <meta name="twitter:description" content="Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
-public async Task&lt;bool&gt; BookExistsAsync(int id) {  var store = await GetBookStoreAsync();  var book = store.GetBookByIdAsync(id);  return book != null; }  // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&lt;IBookStore&gt; GetBookStoreAsync() {  // ."/>
+public async Task&lt;bool&gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync: private Task&lt;IBookStore&gt; GetBookStoreAsync() { // ."/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -249,7 +248,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

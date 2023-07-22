@@ -12,7 +12,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/c#-7/" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="C# 7"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
@@ -92,7 +91,7 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Dans mon précedent billet, j&rsquo;ai parlé d&rsquo;une nouvelle fonctionnalité de C# 7 : les tuples. Dans Visual Studio 15 Preview 3, cette feature n&rsquo;était pas tout à fait terminée ; il lui manquait 2 aspects importants :
- la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes  Eh bien, il semble que l&rsquo;équipe du langage C# n&rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !
+la génération de métadonnées pour les noms des éléments des tuples, pour que les noms soient préservés entre les assemblies la déconstruction des tuples en variables distinctes Eh bien, il semble que l&rsquo;équipe du langage C# n&rsquo;a pas chômé au cours du mois écoulé, car ces deux éléments sont maintenant implémentés dans VS 15 Preview 4, qui a été publié hier !
 	</div>
 </article><article class="list__item post">
 	
@@ -109,7 +108,7 @@ if (!doNotTrack) {
 	<div class="content list__excerpt post__content clearfix">
 		Un tuple est une liste finie et ordonnée de valeurs, éventuellement de types différents, et est utilisé pour regrouper des valeurs liées entre elles sans avoir à créer une type spécifique pour les contenir.
 .NET 4.0 a introduit un ensemble de classes Tuple , qui s’utilisent de la façon suivante
-private static Tuple&lt;int, double&gt; Tally(IEnumerable&lt;double&gt; values) {  int count = 0;  double sum = 0.0;  foreach (var value in values)  {  count++;  sum += value;  }  return Tuple.
+private static Tuple&lt;int, double&gt; Tally(IEnumerable&lt;double&gt; values) { int count = 0; double sum = 0.0; foreach (var value in values) { count++; sum += value; } return Tuple.
 	</div>
 </article><article class="list__item post">
 	
@@ -190,7 +189,7 @@ private static Tuple&lt;int, double&gt; Tally(IEnumerable&lt;double&gt; values) 
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

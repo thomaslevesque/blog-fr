@@ -33,7 +33,7 @@ Par exemple, Linq est plus rapide dans .</description>
       
       <guid>https://thomaslevesque.fr/2011/11/29/wpf-utiliser-linq-pour-filtrer-trier-et-grouper-les-donnes-dans-une-collectionview/</guid>
       <description>WPF offre un mécanisme assez simple pour la mise en forme de collections de données, via l’interface ICollectionView et ses propriétés Filter, SortDescriptions et GroupDescriptions :
-// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ...  // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People);  // Uniquement les adultes view.Filter = o =&amp;gt; ((Person)o).Age &amp;gt;= 18;  // Tri par nom et prénom view.</description>
+// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ... // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People); // Uniquement les adultes view.Filter = o =&amp;gt; ((Person)o).Age &amp;gt;= 18; // Tri par nom et prénom view.</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@ Par exemple, Linq est plus rapide dans .</description>
       
       <guid>https://thomaslevesque.fr/2010/10/03/entity-framework-utiliser-include-avec-des-expressions-lambda/</guid>
       <description>Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&amp;rsquo;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&amp;rsquo;accès à ces entités :
-var query =  from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;)  where ord.Date &amp;gt;= DateTime.Today  select ord; Ou encore, pour inclure aussi le produit :</description>
+var query = from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;) where ord.Date &amp;gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@ var query =  from ord in db.Orders.Include(&amp;#34;OrderDetails&amp;#34;)  wher
       
       <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
       <description>Le problème Je suis sûr qu&amp;rsquo;il vous est déjà arrivé d&amp;rsquo;écrire ce genre de code :
-X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
     </item>
     
   </channel>

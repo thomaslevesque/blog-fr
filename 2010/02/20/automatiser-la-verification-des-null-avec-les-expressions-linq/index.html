@@ -9,17 +9,16 @@
 	<meta name="description" content="">
 		<meta property="og:title" content="Automatiser la vérification des null avec les expressions Linq" />
 <meta property="og:description" content="Le problème Je suis sûr qu&rsquo;il vous est déjà arrivé d&rsquo;écrire ce genre de code :
-X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&rsquo;il n&rsquo;est pas nul, ce qui peut vite s&rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&rsquo;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions." />
+X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&rsquo;il n&rsquo;est pas nul, ce qui peut vite s&rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&rsquo;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2010-02-20T00:00:00+00:00" />
 <meta property="article:modified_time" content="2010-02-20T00:00:00+00:00" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Automatiser la vérification des null avec les expressions Linq"/>
 <meta name="twitter:description" content="Le problème Je suis sûr qu&rsquo;il vous est déjà arrivé d&rsquo;écrire ce genre de code :
-X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&rsquo;il n&rsquo;est pas nul, ce qui peut vite s&rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&rsquo;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions."/>
+X x = GetX(); string name = &#34;Default&#34;; if (xx != null &amp;&amp; xx.Foo != null &amp;&amp; xx.Foo.Bar != null &amp;&amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&rsquo;il n&rsquo;est pas nul, ce qui peut vite s&rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&rsquo;objets&hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions."/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -338,7 +337,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

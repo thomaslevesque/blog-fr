@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2015-06-07T00:00:00+00:00" />
 <meta property="article:modified_time" content="2015-06-07T00:00:00+00:00" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Support de l’asynchronisme et de l’annulation pour les wait handles"/>
 <meta name="twitter:description" content="Le .NET Framework fournit un certain nombre de primitives de synchronisation bas niveau. Les plus couramment utilisées sont appelées “wait handles”, et héritent de la classe WaitHandle : Semaphore, Mutex, AutoResetEvent et ManualResetEvent. Ces classes existent depuis .NET 2.0 (voire 1.1 pour certaines), mais elles n’ont pas beaucoup évolué depuis, ce qui fait qu’elles ne supportent pas des fonctionnalités introduites plus tard et devenues très courantes. En particulier, elles ne supportent pas l’attente asynchrone, ni l’annulation de l’attente."/>
@@ -296,7 +295,7 @@ if (await mre.WaitOneAsync(2000, cancellationToken))
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

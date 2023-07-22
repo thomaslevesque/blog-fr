@@ -12,7 +12,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/wpf/" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="WPF"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
@@ -124,7 +123,7 @@ Bien sûr, le problème n’est pas nouveau, et il y a un certain nombre de libr
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		WPF offre un mécanisme assez simple pour la mise en forme de collections de données, via l’interface ICollectionView et ses propriétés Filter, SortDescriptions et GroupDescriptions :
-// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ...  // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People);  // Uniquement les adultes view.Filter = o =&gt; ((Person)o).Age &gt;= 18;  // Tri par nom et prénom view.
+// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ... // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People); // Uniquement les adultes view.Filter = o =&gt; ((Person)o).Age &gt;= 18; // Tri par nom et prénom view.
 	</div>
 </article><article class="list__item post">
 	
@@ -201,7 +200,7 @@ Bon, je ne suis pas designer, hein&hellip; mais ça fera parfaitement l&rsquo;af
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Le composant Grid est l&rsquo;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&rsquo;utiliser, bien que simple à écrire, est relativement lourd :
-&lt;Grid&gt;  &lt;Grid.RowDefinitions&gt;  &lt;RowDefinition Height=&#34;Auto&#34;/&gt;  &lt;RowDefinition Height=&#34;5&#34;/&gt;  &lt;RowDefinition Height=&#34;*&#34;/&gt;  &lt;/Grid.RowDefinitions&gt;  &lt;Grid.ColumnDefinitions&gt;  &lt;ColumnDefinition Width=&#34;60&#34; /&gt;  &lt;ColumnDefinition Width=&#34;*&#34; /&gt;  &lt;/Grid.ColumnDefinitions&gt;   &lt;Label Content=&#34;Name&#34; Grid.Row=&#34;0&#34; Grid.
+&lt;Grid&gt; &lt;Grid.RowDefinitions&gt; &lt;RowDefinition Height=&#34;Auto&#34;/&gt; &lt;RowDefinition Height=&#34;5&#34;/&gt; &lt;RowDefinition Height=&#34;*&#34;/&gt; &lt;/Grid.RowDefinitions&gt; &lt;Grid.ColumnDefinitions&gt; &lt;ColumnDefinition Width=&#34;60&#34; /&gt; &lt;ColumnDefinition Width=&#34;*&#34; /&gt; &lt;/Grid.ColumnDefinitions&gt; &lt;Label Content=&#34;Name&#34; Grid.Row=&#34;0&#34; Grid.Column=&#34;0&#34; /&gt; &lt;TextBox Text=&#34;Hello world&#34; Grid.Row=&#34;0&#34; Grid.Column=&#34;1&#34;/&gt; &lt;Rectangle Fill=&#34;Black&#34; Grid.Row=&#34;1&#34; Grid.ColumnSpan=&#34;2&#34;/&gt; &lt;Label Content=&#34;Image&#34; Grid.
 	</div>
 </article><article class="list__item post">
 	
@@ -301,7 +300,7 @@ Bon, je ne suis pas designer, hein&hellip; mais ça fera parfaitement l&rsquo;af
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

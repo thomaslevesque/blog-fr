@@ -42,7 +42,7 @@ Il est souvent utile d&amp;rsquo;être notifié quand la valeur d&amp;rsquo;une 
       
       <guid>https://thomaslevesque.fr/2009/04/17/wpf-binding-sur-une-collection-asynchrone/</guid>
       <description>Comme je l&amp;rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&amp;rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&amp;rsquo;exemple d&amp;rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
- private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;();  public ObservableCollection&amp;lt;string&amp;gt; Strings  {  get { return _strings; }  set  {  _strings = value;  OnPropertyChanged(&amp;#34;Strings&amp;#34;);  }  } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&amp;rsquo;exception citée plus haut.</description>
+private ObservableCollection&amp;lt;string&amp;gt; _strings = new ObservableCollection&amp;lt;string&amp;gt;(); public ObservableCollection&amp;lt;string&amp;gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&amp;#34;Strings&amp;#34;); } } &amp;lt;ListBox ItemsSource=&amp;#34;{Binding Strings}&amp;#34;/&amp;gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&amp;rsquo;exception citée plus haut.</description>
     </item>
     
     <item>

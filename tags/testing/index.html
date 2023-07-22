@@ -12,7 +12,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/testing/" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="testing"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
@@ -92,7 +91,7 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Il y a quelques jours au bureau, je suis tombé sur un bug assez sournois dans notre application principale. Le code semblait assez innocent, et à première vue je ne voyais vraiment pas ce qui n’allait pas… Le code était similaire à ceci:
-public async Task&lt;bool&gt; BookExistsAsync(int id) {  var store = await GetBookStoreAsync();  var book = store.GetBookByIdAsync(id);  return book != null; }  // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync:  private Task&lt;IBookStore&gt; GetBookStoreAsync() {  // .
+public async Task&lt;bool&gt; BookExistsAsync(int id) { var store = await GetBookStoreAsync(); var book = store.GetBookByIdAsync(id); return book != null; } // Pour donner le contexte, voici les types et méthodes utilisés dans BookExistsAsync: private Task&lt;IBookStore&gt; GetBookStoreAsync() { // .
 	</div>
 </article>
 </main>
@@ -158,7 +157,7 @@ public async Task&lt;bool&gt; BookExistsAsync(int id) {  var store = await GetBo
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

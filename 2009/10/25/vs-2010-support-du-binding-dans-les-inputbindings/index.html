@@ -14,7 +14,6 @@
 <meta property="article:published_time" content="2009-10-25T00:00:00+00:00" />
 <meta property="article:modified_time" content="2009-10-25T00:00:00+00:00" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[VS 2010] Support du binding dans les InputBindings"/>
 <meta name="twitter:description" content="LA fonctionnalité qui manquait à WPF ! La beta 2 de Visual Studio 2010 est là depuis quelques jours, et apporte à WPF une nouveauté que j&rsquo;attendais depuis longtemps : le support du binding dans les InputBindings. Pour rappel, le problème de la version précédente était que la propriété Command de la classe InputBinding n&rsquo;était pas une DependencyProperty, on ne pouvait donc pas la définir par un binding. D&rsquo;ailleurs, les InputBindings n&rsquo;héritaient pas du DataContext, ce qui compliquait beaucoup les implémentations alternatives de cette fonctionnalité&hellip; Jusqu&rsquo;ici, pour lier la commande d&rsquo;un KeyBinding ou MouseBinding à une propriété du DataContext, il fallait donc passer par des détours pas forcément très élégants&hellip; J&rsquo;avais fini par trouver une solution acceptable, détaillée dans ce post, mais qui me laissait assez insatisfait (utilisation de la réflexion sur des membres privés, pas mal de limitations&hellip;)."/>
@@ -227,7 +226,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

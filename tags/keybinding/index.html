@@ -12,7 +12,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/keybinding/" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="KeyBinding"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
@@ -92,7 +91,8 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
- &lt;UserControl.InputBindings&gt;  &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt;  &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+&lt;UserControl.InputBindings&gt; &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt; &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+La propriété Command n&rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&rsquo;arbre logique ou visuel du contrôle, ils n&rsquo;héritent donc pas du DataContext Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&rsquo;écrire du code-behind.
 	</div>
 </article>
 </main>
@@ -158,7 +158,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

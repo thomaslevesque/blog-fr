@@ -14,7 +14,7 @@
       
       <guid>https://thomaslevesque.fr/2011/11/29/wpf-utiliser-linq-pour-filtrer-trier-et-grouper-les-donnes-dans-une-collectionview/</guid>
       <description>WPF offre un mécanisme assez simple pour la mise en forme de collections de données, via l’interface ICollectionView et ses propriétés Filter, SortDescriptions et GroupDescriptions :
-// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ...  // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People);  // Uniquement les adultes view.Filter = o =&amp;gt; ((Person)o).Age &amp;gt;= 18;  // Tri par nom et prénom view.</description>
+// Collection à laquelle la vue est liée public ObservableCollection People { get; private set; } ... // Vue par défaut de la collection People ICollectionView view = CollectionViewSource.GetDefaultView(People); // Uniquement les adultes view.Filter = o =&amp;gt; ((Person)o).Age &amp;gt;= 18; // Tri par nom et prénom view.</description>
     </item>
     
   </channel>

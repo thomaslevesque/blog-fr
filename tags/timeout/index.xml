@@ -14,7 +14,7 @@
       
       <guid>https://thomaslevesque.fr/2018/02/25/meilleure-gestion-du-timeout-avec-httpclient/</guid>
       <description>Le problème Si vous avez l&amp;rsquo;habitude d&amp;rsquo;utiliser HttpClient pour appeler des APIs REST ou transférer des fichiers, vous avez peut-être déjà pesté contre la façon dont cette classe gère le timeout. Il y a en effet deux problèmes majeurs dans la gestion du timeout par HttpClient :
- Le timeout est défini de façon globale, et s&amp;rsquo;applique à toutes les requêtes, alors qu&amp;rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
+Le timeout est défini de façon globale, et s&amp;rsquo;applique à toutes les requêtes, alors qu&amp;rsquo;il serait plus pratique de pouvoir le définir individuellement pour chaque requête.</description>
     </item>
     
     <item>

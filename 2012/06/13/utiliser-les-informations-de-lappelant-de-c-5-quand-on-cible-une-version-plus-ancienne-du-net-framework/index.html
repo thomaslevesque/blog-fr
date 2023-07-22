@@ -9,17 +9,16 @@
 	<meta name="description" content="">
 		<meta property="og:title" content="Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework" />
 <meta property="og:description" content="Les attributs d&rsquo;informations de l&rsquo;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&rsquo;appliquent aux paramètres optionnels d&rsquo;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&rsquo;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
- static void Log(  string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0)  {  Console." />
+static void Log( string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0) { Console." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://thomaslevesque.fr/2012/06/13/utiliser-les-informations-de-lappelant-de-c-5-quand-on-cible-une-version-plus-ancienne-du-net-framework/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2012-06-13T00:00:00+00:00" />
 <meta property="article:modified_time" content="2012-06-13T00:00:00+00:00" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Utiliser les informations de l&#39;appelant de C# 5 quand on cible une version plus ancienne du .NET Framework"/>
 <meta name="twitter:description" content="Les attributs d&rsquo;informations de l&rsquo;appelant (caller info attributes) sont une des nouveautés de C# 5. Ce sont des attributs qui s&rsquo;appliquent aux paramètres optionnels d&rsquo;une méthode, et qui permettent de passer implicitement à cette méthode des informations sur l&rsquo;appelant. Je ne suis pas sûr que cette description soit très claire, voilà donc un exemple pour bien comprendre :
- static void Log(  string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0)  {  Console."/>
+static void Log( string message, [CallerMemberName] string memberName = null, [CallerFilePath] string filePath = null, [CallerLineNumber] int lineNumber = 0) { Console."/>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -244,7 +243,7 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

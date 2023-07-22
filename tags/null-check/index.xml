@@ -14,7 +14,7 @@
       
       <guid>https://thomaslevesque.fr/2010/02/20/automatiser-la-verification-des-null-avec-les-expressions-linq/</guid>
       <description>Le problème Je suis sûr qu&amp;rsquo;il vous est déjà arrivé d&amp;rsquo;écrire ce genre de code :
-X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) {  name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
+X x = GetX(); string name = &amp;#34;Default&amp;#34;; if (xx != null &amp;amp;&amp;amp; xx.Foo != null &amp;amp;&amp;amp; xx.Foo.Bar != null &amp;amp;&amp;amp; xx.Foo.Bar.Baz != null) { name = xx.Foo.Bar.Baz.Name; } On veut juste obtenir name = xx.Foo.Bar.Baz.Name, mais on est obligé de tester chaque objet intermédiaire pour vérifier qu&amp;rsquo;il n&amp;rsquo;est pas nul, ce qui peut vite s&amp;rsquo;avérer pénible si la propriété voulue est profondément enfouie dans un graphe d&amp;rsquo;objets&amp;hellip; Une solution Linq offre une fonctionnalité qui permet (entre autres) de régler ce problème : les expressions.</description>
     </item>
     
   </channel>

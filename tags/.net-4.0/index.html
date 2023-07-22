@@ -12,7 +12,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/.net-4.0/" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=".NET 4.0"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
@@ -92,7 +91,7 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Je travaille en ce moment sur un projet qui utilise Entity Framework 4. Bien que le lazy loading soit activé, j&rsquo;utilise généralement la méthode ObjectQuery.Include pour charger les entités associées en une seule fois, de façon à éviter des appels supplémentaires à la base de données lors de l&rsquo;accès à ces entités :
-var query =  from ord in db.Orders.Include(&#34;OrderDetails&#34;)  where ord.Date &gt;= DateTime.Today  select ord; Ou encore, pour inclure aussi le produit :
+var query = from ord in db.Orders.Include(&#34;OrderDetails&#34;) where ord.Date &gt;= DateTime.Today select ord; Ou encore, pour inclure aussi le produit :
 	</div>
 </article><article class="list__item post">
 	
@@ -188,7 +187,7 @@ var query =  from ord in db.Orders.Include(&#34;OrderDetails&#34;)  where ord.Da
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>

@@ -52,7 +52,7 @@ Il est souvent utile d&amp;rsquo;être notifié quand la valeur d&amp;rsquo;une 
       
       <guid>https://thomaslevesque.fr/2010/07/20/wpf-une-grille-simplifiee-utilisant-des-attributs-xaml/</guid>
       <description>Le composant Grid est l&amp;rsquo;un des contrôles les plus utilisés en WPF. Il permet de disposer facilement des éléments selon des lignes et des colonnes. Malheureusement le code pour l&amp;rsquo;utiliser, bien que simple à écrire, est relativement lourd :
-&amp;lt;Grid&amp;gt;  &amp;lt;Grid.RowDefinitions&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt;  &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt;  &amp;lt;/Grid.RowDefinitions&amp;gt;  &amp;lt;Grid.ColumnDefinitions&amp;gt;  &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt;  &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt;  &amp;lt;/Grid.ColumnDefinitions&amp;gt;   &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.</description>
+&amp;lt;Grid&amp;gt; &amp;lt;Grid.RowDefinitions&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;Auto&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;5&amp;#34;/&amp;gt; &amp;lt;RowDefinition Height=&amp;#34;*&amp;#34;/&amp;gt; &amp;lt;/Grid.RowDefinitions&amp;gt; &amp;lt;Grid.ColumnDefinitions&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;60&amp;#34; /&amp;gt; &amp;lt;ColumnDefinition Width=&amp;#34;*&amp;#34; /&amp;gt; &amp;lt;/Grid.ColumnDefinitions&amp;gt; &amp;lt;Label Content=&amp;#34;Name&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;0&amp;#34; /&amp;gt; &amp;lt;TextBox Text=&amp;#34;Hello world&amp;#34; Grid.Row=&amp;#34;0&amp;#34; Grid.Column=&amp;#34;1&amp;#34;/&amp;gt; &amp;lt;Rectangle Fill=&amp;#34;Black&amp;#34; Grid.Row=&amp;#34;1&amp;#34; Grid.ColumnSpan=&amp;#34;2&amp;#34;/&amp;gt; &amp;lt;Label Content=&amp;#34;Image&amp;#34; Grid.</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@ Il est souvent utile d&amp;rsquo;être notifié quand la valeur d&amp;rsquo;une 
       
       <guid>https://thomaslevesque.fr/2009/07/28/wpf-une-markup-extension-qui-met-a-jour-sa-cible/</guid>
       <description>Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&amp;hellip; Cependant, celles-ci ont une limitation qui peut s&amp;rsquo;avérer assez gênante : elles ne sont évaluées qu&amp;rsquo;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&amp;hellip; Cela peut être utile dans différents cas, notamment :
-  si la valeur de la markup extension peut changer en réponse à un évènement</description>
+si la valeur de la markup extension peut changer en réponse à un évènement</description>
     </item>
     
     <item>
@@ -99,7 +99,8 @@ Il est souvent utile d&amp;rsquo;être notifié quand la valeur d&amp;rsquo;une 
       
       <guid>https://thomaslevesque.fr/2009/03/17/wpf-utiliser-les-inputbindings-avec-le-pattern-mvvm/</guid>
       <description>Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
- &amp;lt;UserControl.InputBindings&amp;gt;  &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt;  &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :</description>
+&amp;lt;UserControl.InputBindings&amp;gt; &amp;lt;KeyBinding Modifiers=&amp;#34;Control&amp;#34; Key=&amp;#34;E&amp;#34; Command=&amp;#34;{Binding EditCommand}&amp;#34;/&amp;gt; &amp;lt;/UserControl.InputBindings&amp;gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+La propriété Command n&amp;rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&amp;rsquo;arbre logique ou visuel du contrôle, ils n&amp;rsquo;héritent donc pas du DataContext Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&amp;rsquo;écrire du code-behind.</description>
     </item>
     
     <item>

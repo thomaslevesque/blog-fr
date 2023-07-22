@@ -12,7 +12,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomaslevesque.fr/tags/wpf/" />
 
-
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="WPF"/>
 <meta name="twitter:description" content="Nouveautés, découvertes, réflexions, trucs, astuces en tous genres sur les technologies .NET"/>
@@ -107,7 +106,7 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Si vous avez lu mes précédents billets sur le sujet, vous savez que je suis un grand fan des markup extensions&hellip; Cependant, celles-ci ont une limitation qui peut s&rsquo;avérer assez gênante : elles ne sont évaluées qu&rsquo;une seule fois. Il serait pourtant utile de pouvoir les réévaluer pour mettre à jour la propriété cible, comme pour un binding&hellip; Cela peut être utile dans différents cas, notamment :
-  si la valeur de la markup extension peut changer en réponse à un évènement
+si la valeur de la markup extension peut changer en réponse à un évènement
 	</div>
 </article><article class="list__item post">
 	
@@ -123,7 +122,7 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Comme je l&rsquo;avais évoqué dans mon précédent post, on ne peut pas ajouter des éléments à une ObservableCollection à partir d&rsquo;un autre thread si une vue est bindée sur la collection : cela provoque une NotSupportedException. Prenons l&rsquo;exemple d&rsquo;une ListBox bindée sur une collection de chaines de caractères appartenant au ViewModel :
- private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;();  public ObservableCollection&lt;string&gt; Strings  {  get { return _strings; }  set  {  _strings = value;  OnPropertyChanged(&#34;Strings&#34;);  }  } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&rsquo;exception citée plus haut.
+private ObservableCollection&lt;string&gt; _strings = new ObservableCollection&lt;string&gt;(); public ObservableCollection&lt;string&gt; Strings { get { return _strings; } set { _strings = value; OnPropertyChanged(&#34;Strings&#34;); } } &lt;ListBox ItemsSource=&#34;{Binding Strings}&#34;/&gt; Si on ajoute des éléments à cette collection hors du thread principal, on obtient l&rsquo;exception citée plus haut.
 	</div>
 </article><article class="list__item post">
 	
@@ -169,7 +168,8 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Si vous développez des applications WPF en suivant le design pattern Model-View-ViewModel, vous vous êtes peut-être déjà trouvé confronté au problème suivant : comment, en XAML, lier un raccourci clavier ou une action de la souris à une commande du ViewModel ? Idéalement, on aimerait pouvoir faire comme ça :
- &lt;UserControl.InputBindings&gt;  &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt;  &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+&lt;UserControl.InputBindings&gt; &lt;KeyBinding Modifiers=&#34;Control&#34; Key=&#34;E&#34; Command=&#34;{Binding EditCommand}&#34;/&gt; &lt;/UserControl.InputBindings&gt; Malheureusement, ce code ne fonctionne pas, pour deux raisons :
+La propriété Command n&rsquo;est pas une DependencyProperty, on ne peut donc pas faire de binding dessus Les InputBindings ne font pas partie de l&rsquo;arbre logique ou visuel du contrôle, ils n&rsquo;héritent donc pas du DataContext Une solution, bien sûr, serait de passer par le code-behind pour créer les InputBindings, mais en général, dans une application développée selon le pattern MVVM, on préfère éviter d&rsquo;écrire du code-behind.
 	</div>
 </article><article class="list__item post">
 	
@@ -300,7 +300,7 @@ Si vous avez déjà essayé d&rsquo;utiliser la méthode Clipboard.GetImage avec
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 Thomas Levesque.
+			&copy; 2023 Thomas Levesque.
 			<span class="footer__copyright-credits">Produit par <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> et le thème <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
